@@ -15,6 +15,7 @@ import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
 import com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger;
+
 //首页activity
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -28,6 +29,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ImageView iv_red_point;
     private MainActivity_P mMainActivity_p;
     private LinearLayout mActivity_01_ll;
+    private ImageView mMain_iv;
+    private TextView mMain_tv_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mTv3 = (XueDaiButton) findViewById(R.id.tv3);
         mTv4 = (XueDaiButton) findViewById(R.id.tv4);
 
-               mMain_vp = (MyViewPger) findViewById(R.id.main_vp);
+
+        mMain_iv = (ImageView) findViewById(R.id.main_iv);
+        mMain_iv.setOnClickListener(this);
+        mMain_tv_name = (TextView) findViewById(R.id.main_tv_name);
+        mMain_tv_name.setOnClickListener(this);
+
+
+        mMain_vp = (MyViewPger) findViewById(R.id.main_vp);
 
         iv_red_point = (ImageView) findViewById(R.id.activity_01_point_red);
 
@@ -181,6 +191,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.main_iv:
 
+            break;
+        }
     }
 }

@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -178,6 +179,11 @@ public class MainActivity_P implements MainActivity_method{
                 context.startActivity(intent);
                 break;
         }
+
+    }
+
+    @Override
+    public void initClickView(View view) {
 
     }
 

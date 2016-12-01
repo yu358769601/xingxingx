@@ -1,5 +1,6 @@
 package com.xinxinxuedai.MVP.mainActivity;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -24,5 +25,7 @@ public interface MainActivity_method {
     void initViewData(LinearLayout activity_01_ll , ImageView iv_red_point);
     //按钮被点击了
     void initClick(XueDaiButton xueDaiButton);
+    //按钮被点击了
+    void initClickView(View view);
 
 }

@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xinxinxuedai.MVP.RegisterActivity.RegisterActivity_P;
@@ -30,14 +31,18 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private RegisterActivity_P mRegisterActivity_p;
     private initAction_Bar mRelativeLayout_title;
     private InnerReceiver1 mReceiver1;
+    private TextView mRegister_ok_;
+    private TextView mRegister_ok_again;
+    private EditText mRegister_et_passwrold;
+    private EditText mRegister_et_passwrold_ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initReceiver();
         getbox();
-        initP();
         initView();
+        initP();
     }
 
 
@@ -119,9 +124,26 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void getAction_barView_title(TextView textView) {
-                textView.setText("注册界面");
+                if (mClasstag == REGISTERCLASS){
+                    textView.setText("注册界面");
+                }else if (mClasstag == AGAINCLASS){
+                    textView.setText("重置密码");
+                }
+
+
             }
         });
+        //确定注册(注册页面)
+        mRegister_ok_ = (TextView) findViewById(R.id.register_ok_);
+        //确定重置(重置页面)
+        mRegister_ok_again = (TextView) findViewById(R.id.register_ok_again);
+        //密码
+        mRegister_et_passwrold = (EditText) findViewById(R.id.register_et_passwrold);
+        //确定密码
+        mRegister_et_passwrold_ok = (EditText) findViewById(R.id.register_et_passwrold_ok);
+
+
+
     }
 
     @Override
@@ -130,10 +152,22 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         Register_countTime_P login_countTime_p = Register_countTime_P.getLogin_countTime_P(this);
         login_countTime_p.setCallBack(this);
         LogUtils.i("注册页面的对象"+login_countTime_p);
+        //如果是 注册页面
         if (mClasstag == REGISTERCLASS){
+            mRegister_ok_.setVisibility(View.VISIBLE);
+            mRegister_ok_again.setVisibility(View.INVISIBLE);
 
-        }else if(mClasstag == AGAINCLASS){
+            mRegister_et_passwrold.setHint("密码");
+            mRegister_et_passwrold_ok.setHint("确认密码");
 
+        }else
+        //如果是 重置页面
+        if(mClasstag == AGAINCLASS){
+            mRegister_ok_.setVisibility(View.INVISIBLE);
+            mRegister_ok_again.setVisibility(View.VISIBLE);
+
+            mRegister_et_passwrold.setHint("新密码");
+            mRegister_et_passwrold_ok.setHint("确认新密码");
         }
 
     }

@@ -93,11 +93,21 @@
             android:drawableLeft="@mipmap/ic_launcher"
             android:layout_width="match_parent"
             />
-
+        <TextView
+            android:id="@+id/register_ok_"
+            android:text="确认注册"
+            android:layout_marginTop="@dimen/size_base480_10dp"
+            android:layout_below="@+id/register_et_passwrold_ok"
+            android:padding="@dimen/size_base480_20dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/an_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/register_ok"
-            android:text="确认注册"
+            android:id="@+id/register_ok_again"
+            android:text="确认重置"
             android:padding="@dimen/size_base480_20dp"
             android:gravity="center"
             android:layout_alignParentBottom="true"
