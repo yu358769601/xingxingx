@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xinxinxuedai.view.initAction_Bar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+    tools:context="com.xinxinxuedai.ui.MainActivity">
+    <RelativeLayout
+        android:id="@+id/main_re"
+        android:layout_below="@+id/relativeLayout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--      android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+
+        android:layout_alignBottom="@+id/main_vp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"-->
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@+id/main_vp"
+            android:layout_marginBottom="@dimen/size_base480_10dp"
+            >
+            <LinearLayout
+                android:id="@+id/activity_01_ll"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/activity_01_point_red"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_point_red" />
+
+
+        </RelativeLayout>
+
+        <com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger
+            android:id="@+id/main_vp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_base480_100dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+        </com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger>
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/main_rl"
+        android:padding="@dimen/size_base480_20dp"
+        android:layout_below="@+id/main_re"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/main_tv_name"
+            android:layout_toRightOf="@+id/main_iv"
+            android:padding="@dimen/size_base480_5dp"
+            android:textColor="@color/black"
+            android:text="姓名:玉田"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/main_tv_money"
+            android:padding="@dimen/size_base480_5dp"
+            android:layout_below="@+id/main_tv_name"
+            android:layout_toRightOf="@+id/main_iv"
+            android:textColor="@color/white"
+            android:text="账户余额:99999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/main_iv"
+            android:background="@drawable/home_ren"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/size_base480_10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@+id/main_rl"
+        android:orientation="vertical"
+        android:paddingRight="@dimen/size_base480_20dp"
+        android:paddingLeft="@dimen/size_base480_20dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:padding="@dimen/size_base480_5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.xinxinxuedai.view.xuedai_button.XueDaiButton
+                android:id="@+id/tv1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/size_base480_5dp"
+                android:text="我要借款"
+                />
+            <com.xinxinxuedai.view.xuedai_button.XueDaiButton
+                android:id="@+id/tv2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:layout_marginRight="@dimen/size_base480_5dp"
+                android:text="我要借款"
+
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:padding="@dimen/size_base480_5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.xinxinxuedai.view.xuedai_button.XueDaiButton
+                android:id="@+id/tv3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:layout_marginRight="@dimen/size_base480_5dp"
+                android:text="我要借款"
+                />
+
+            <com.xinxinxuedai.view.xuedai_button.XueDaiButton
+                android:id="@+id/tv4"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:layout_marginRight="@dimen/size_base480_5dp"
+                android:text="我要借款"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</com.xinxinxuedai.view.initAction_Bar>

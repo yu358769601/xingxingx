@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xinxinxuedai.view.initAction_Bar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+    tools:context="com.xinxinxuedai.ui.LoginActivity">
+    <ImageView
+        android:id="@+id/register_iv"
+        android:layout_below="@+id/relativeLayout_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/size_base480_20dp"
+        android:padding="@dimen/size_base480_20dp"
+        android:background="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:id="@+id/login_rl"
+        android:padding="@dimen/size_base480_20dp"
+        android:layout_below="@+id/register_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/login_et_phone_num"
+            android:drawableLeft="@mipmap/ic_launcher"
+            android:hint="手机号"
+
+            style="@style/edit_style"
+            android:layout_width="match_parent"
+
+            />
+        <View
+            android:id="@+id/view_1"
+            android:layout_below="@+id/login_et_phone_num"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/white"
+            >
+
+        </View>
+        <EditText
+            android:id="@+id/login_et_passworld"
+            android:layout_below="@+id/view_1"
+            android:drawableLeft="@mipmap/ic_launcher"
+            android:hint="密码"
+
+            style="@style/edit_style"
+            android:layout_width="match_parent"
+
+            />
+        <TextView
+            android:id="@+id/login_tv_login"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:layout_below="@+id/login_et_passworld"
+            android:text="登陆"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:padding="@dimen/size_base480_25dp"
+            android:background="@drawable/an_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/login_tv_forget_the_password"
+                android:layout_below="@+id/login_tv_login"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+               android:layout_centerHorizontal="true"
+                android:text="忘记密码?"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/login_tv_register"
+                android:text="立即注册"
+                android:layout_alignParentBottom="true"
+                android:padding="@dimen/size_base480_25dp"
+                android:background="@drawable/an_long"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+
+</com.xinxinxuedai.view.initAction_Bar>

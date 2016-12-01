@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xinxinxuedai.view.initAction_Bar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+
+    tools:context="com.xinxinxuedai.ui.ApplyForActivity">
+    <RelativeLayout
+        android:layout_below="@+id/relativeLayout_title"
+        android:layout_width="match_parent"
+        android:padding="@dimen/size_base480_30dp"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/apply_for_tv1"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:text="借款用途详细说明"
+
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:padding="@dimen/size_base480_10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/apply_for_tv2"
+            android:text="请再次认真填写申请理由,用途的真实性将直\n接影响到系统对额度的评价"
+            android:layout_below="@+id/apply_for_tv1"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_below="@+id/apply_for_tv2"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:orientation="vertical"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:padding="@dimen/size_base480_5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.xinxinxuedai.view.xuedai_button.XueDaiButton
+                    android:id="@+id/tv1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/size_base480_5dp"
+                    android:text="我要借款"
+                    />
+                <com.xinxinxuedai.view.xuedai_button.XueDaiButton
+                    android:id="@+id/tv2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@mipmap/ic_launcher"
+                    android:layout_marginRight="@dimen/size_base480_5dp"
+                    android:text="我要借款"
+
+
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:padding="@dimen/size_base480_5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.xinxinxuedai.view.xuedai_button.XueDaiButton
+                    android:id="@+id/tv3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@mipmap/ic_launcher"
+                    android:layout_marginRight="@dimen/size_base480_5dp"
+                    android:text="我要借款"
+                    />
+
+                <com.xinxinxuedai.view.xuedai_button.XueDaiButton
+                    android:id="@+id/tv4"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@mipmap/ic_launcher"
+                    android:layout_marginRight="@dimen/size_base480_5dp"
+                    android:text="我要借款"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/apply_for_sub"
+            android:text="立即申请"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/size_base480_20dp"
+            android:padding="@dimen/size_base480_25dp"
+            android:background="@drawable/an_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+
+</com.xinxinxuedai.view.initAction_Bar>

@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">xuedai</string>
+
+
+    <!--载入动画dialog相关的字_09-->
+    <string name="click_to_refresh_08"><Data><![CDATA[网络连接失败，点击<font color="#e7383e">重试</font>]]></Data></string>
+    <string name="no_data_08">本页无数据</string>
+    <string name="catg_refreshing_08">正在加载&#8230;</string>
+    <string name="nodatatext1">您还没有发出配件采购需求</string>
+    <string name="nodatatext2">请使用"配件云购"采购</string>
+    <string name="nodatatext3">让所有配件商同时给你报价</string>
+
+    <string name="nooffertext1">目前还没有商家报价</string>
+    <string name="nooffertext2">请稍等片刻</string>
+    <string name="nooffertext3">目前商家已收到采购信息正积极准备报价</string>
+    <string name="loading">加载中...</string>
+
+
+    <!--主界面 home文字-->
+    <string name="home_tv1">我要借款</string>
+    <string name="home_tv1_small">hello</string>
+
+    <string name="home_tv2">我要还款</string>
+    <string name="home_tv2_small">hello</string>
+
+    <string name="home_tv3">借款状态</string>
+    <string name="home_tv3_small">hello</string>
+
+    <string name="home_tv4">关于我们</string>
+    <string name="home_tv4_small">hello</string>
+
+
+</resources>
