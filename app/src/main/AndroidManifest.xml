@@ -43,6 +43,8 @@
         </activity>
         <activity android:name=".ui.BankCardInfoActivity">
         </activity>
+        <activity android:name=".ui.PersonalDetailsActivity">
+        </activity>
     </application>
 
 </manifest>

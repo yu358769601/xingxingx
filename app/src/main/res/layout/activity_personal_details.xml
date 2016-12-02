@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xinxinxuedai.view.initAction_Bar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+    tools:context="com.xinxinxuedai.ui.PersonalDetailsActivity">
+    <ScrollView
+        android:layout_below="@+id/relativeLayout_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/personalpdetails_rl"
+            android:layout_below="@+id/relativeLayout_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/size_base480_20dp"
+            >
+
+            <!--标题-->
+            <TextView
+                android:id="@+id/personalpdetails_title"
+
+                android:layout_marginTop="@dimen/size_base480_10dp"
+                android:layout_centerHorizontal="true"
+                android:text="请使用真实有效信息以免影响使用!"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <!--选择男生女生-->
+            <RadioGroup
+                android:id="@+id/personalpdetails_rg"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                android:orientation="horizontal"
+                android:layout_below="@+id/personalpdetails_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <RadioButton
+                    android:text="我是男生Man"
+                    style="@style/radiobutton_touming_long"
+                    android:button="@null"
+                    android:layout_marginRight="@dimen/size_base480_10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:text="我是女生Gril"
+                    android:layout_width="0dp"
+                    style="@style/radiobutton_touming_long"
+                    android:button="@null"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+            </RadioGroup>
+            <EditText
+                android:id="@+id/personalpdetails_et1_name"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                android:layout_below="@+id/personalpdetails_rg"
+                style="@style/edtext_touming_long"
+                android:hint="请输入真实姓名"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/personalpdetails_et2_name_num"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                android:layout_below="@+id/personalpdetails_et1_name"
+                style="@style/edtext_touming_long"
+                android:hint="身份证号"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/personalpdetails_et3_weixin_num"
+                android:layout_marginTop="15dp"
+                style="@style/edtext_touming_long"
+                android:hint="微信号码"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/personalpdetails_et2_name_num"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/personalpdetails_tv_address"
+                android:text="您的家庭地址"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                android:layout_below="@+id/personalpdetails_et3_weixin_num"
+                android:textSize="20sp"
+                android:layout_marginBottom="@dimen/size_base480_20dp"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/cancellation_ed"
+                android:layout_below="@+id/personalpdetails_tv_address"
+                android:hint="请输入您父母的现住址精确到门牌号"
+                android:gravity="left"
+                android:textColorHint="@color/white"
+                android:background="@drawable/border_money_touming"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_base480_150dp"/>
+
+            <TextView
+                android:id="@+id/personalpdetails_tv_tellname"
+                android:text="紧急联系人最好是你的父母或者是导员"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                android:layout_below="@+id/cancellation_ed"
+                android:textSize="20sp"
+                android:layout_marginBottom="@dimen/size_base480_20dp"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</com.xinxinxuedai.view.initAction_Bar>

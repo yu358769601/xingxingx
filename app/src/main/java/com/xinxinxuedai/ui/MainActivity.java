@@ -192,8 +192,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            //点击了注册
             case R.id.main_iv:
-
+                v.setTag(1);
+                mMainActivity_p.initClickView(v);
+            break;
+            //点击了重置
+            case R.id.main_tv_name:
+                v.setTag(2);
+                mMainActivity_p.initClickView(v);
             break;
         }
     }

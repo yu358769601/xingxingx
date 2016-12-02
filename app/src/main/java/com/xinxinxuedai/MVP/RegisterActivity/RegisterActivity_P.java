@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.xinxinxuedai.MVP.RegisterActivity.countTime.Register_countTime_P;
+import com.xinxinxuedai.Utils.LogUtils;
 
 /**
  * Created by 35876 于萌萌
@@ -46,7 +47,16 @@ public class RegisterActivity_P implements RegisterActivity_interface {
         switch ((int)view.getTag()){
             //按下去的是倒计时
             case 1:
+                LogUtils.i("点击了注册/重置验证码倒计时");
                 mRegister_countTime_p.startCountDown();
+            break;
+            //按下去确定注册
+            case 2:
+                LogUtils.i("点击了注册");
+            break;
+            //按下去的是确认重置
+            case 3:
+                LogUtils.i("点击了重置");
             break;
         }
     }

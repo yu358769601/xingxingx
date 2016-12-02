@@ -20,6 +20,7 @@ import com.xinxinxuedai.view.initAction_Bar;
 
 import static com.xinxinxuedai.R.id.register_cunttime;
 
+
 //注册activity  重置密码activity
 public class RegisterActivity extends BaseActivity implements View.OnClickListener, Register_countTime_P_CallBack {
     public static final int REGISTERCLASS = 100;
@@ -185,11 +186,24 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case register_cunttime:
+            //点击了验证码
+            case R.id.register_cunttime:
                 v.setTag(1);
 
                 mRegisterActivity_p.onClick(v);
                 mRegister_cunttime.setEnabled(false);
+            break;
+            //确定注册
+            case R.id.register_ok_:
+                v.setTag(2);
+
+                mRegisterActivity_p.onClick(v);
+            break;
+            //确定重置
+            case R.id.register_ok_again:
+                v.setTag(3);
+
+                mRegisterActivity_p.onClick(v);
             break;
         }
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDrawable;
@@ -36,8 +38,11 @@ import java.util.ArrayList;
  * 备注:
  */
 
-public class MainActivity_P implements MainActivity_method{
+public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements MainActivity_method{
     Context context;
+
+    MainActivity_CallBack mainActivity_callBack;
+
     private final MainActivity mMainActivity;
     public static final int BANNER_LOOP_TIME = 5000;
     private int displayWidth;
@@ -184,7 +189,31 @@ public class MainActivity_P implements MainActivity_method{
 
     @Override
     public void initClickView(View view) {
-
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        switch ((int)view.getTag()){
+            case 1:
+            LogUtils.i("点击了进入注册activity");
+                intent.setClass(context, RegisterActivity.class);
+                bundle.putInt("classtag",RegisterActivity.REGISTERCLASS);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            break;
+            case 2:
+                LogUtils.i("点击了进入重置activity");
+                intent.setClass(context, RegisterActivity.class);
+                bundle.putInt("classtag",RegisterActivity.AGAINCLASS);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            break;
+        }
     }
+
+
+    @Override
+    public void setCallBack(MainActivity_CallBack mainActivity_callBack) {
+            this.mainActivity_callBack =mainActivity_callBack;
+    }
+
 
 }
