@@ -5,8 +5,9 @@
     android:id="@+id/relativeLayout_title"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home"
+    android:background="@drawable/personaldetails"
     tools:context="com.xinxinxuedai.ui.PersonalDetailsActivity">
+    <!--个人信息xml-->
     <ScrollView
         android:layout_below="@+id/relativeLayout_title"
         android:layout_width="match_parent"
@@ -26,6 +27,7 @@
                 android:layout_marginTop="@dimen/size_base480_10dp"
                 android:layout_centerHorizontal="true"
                 android:text="请使用真实有效信息以免影响使用!"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -98,6 +100,7 @@
                 android:layout_below="@+id/personalpdetails_tv_address"
                 android:hint="请输入您父母的现住址精确到门牌号"
                 android:gravity="left"
+                android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:background="@drawable/border_money_touming"
                 android:layout_width="match_parent"
@@ -115,6 +118,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+            <EditText
+                android:id="@+id/personalpdetails_et4_tellname"
+                android:layout_marginTop="15dp"
+                style="@style/edtext_touming_long"
+                android:hint="紧急联系人姓名"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/personalpdetails_tv_tellname"
+                />
+            <EditText
+                android:id="@+id/personalpdetails_et5_tellname_tell"
+                android:layout_marginTop="15dp"
+                style="@style/edtext_touming_long"
+                android:hint="紧急联系人电话"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/personalpdetails_et4_tellname"
+                />
+            <TextView
+                android:id="@+id/personalpdetails_tv_sub"
+                android:layout_marginTop="15dp"
+                style="@style/button_touming_long"
+                android:text="提交信息"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/personalpdetails_et5_tellname_tell"
+                />
         </RelativeLayout>
 
     </ScrollView>

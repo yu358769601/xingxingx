@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xinxinxuedai.view.initAction_Bar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+    tools:context="com.xinxinxuedai.ui.LoanProductsActivity">
+    <!--借贷产品xml-->
+    <RelativeLayout
+        android:id="@+id/loanproducts_rl"
+        android:padding="@dimen/size_base480_20dp"
+        android:layout_below="@+id/relativeLayout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/loanproducts_tv_title"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+
+            android:text="HI~同学你只能选择一种借贷,请仔细看完再申请哦!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/loanproducts_tv_title_A"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/loanproducts_tv_title"
+            android:text="零用金"
+            android:layout_marginBottom="@dimen/size_base480_20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.xinxinxuedai.view.xuedai_button.XueDaiButton_1
+            android:id="@+id/xuedaibutton_1"
+            android:layout_below="@+id/loanproducts_tv_title_A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.xinxinxuedai.view.xuedai_button.XueDaiButton_1>
+
+        <TextView
+            android:id="@+id/loanproducts_tv_title_B"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/xuedaibutton_1"
+            android:text="月分期"
+            android:layout_marginBottom="@dimen/size_base480_20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.xinxinxuedai.view.xuedai_button.XueDaiButton_1
+            android:id="@+id/xuedaibutton_2"
+            android:layout_below="@+id/loanproducts_tv_title_B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.xinxinxuedai.view.xuedai_button.XueDaiButton_1>
+    </RelativeLayout>
+
+
+
+
+</com.xinxinxuedai.view.initAction_Bar>

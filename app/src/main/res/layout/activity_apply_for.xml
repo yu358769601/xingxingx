@@ -8,6 +8,7 @@
     android:background="@drawable/home"
 
     tools:context="com.xinxinxuedai.ui.ApplyForActivity">
+    <!--申请借贷xml-->
     <RelativeLayout
         android:layout_below="@+id/relativeLayout_title"
         android:layout_width="match_parent"

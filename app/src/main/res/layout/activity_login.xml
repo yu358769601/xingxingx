@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/home"
     tools:context="com.xinxinxuedai.ui.LoginActivity">
+    <!--登陆xml-->
     <ImageView
         android:id="@+id/register_iv"
         android:layout_below="@+id/relativeLayout_title"

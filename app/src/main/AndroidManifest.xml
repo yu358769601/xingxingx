@@ -43,7 +43,15 @@
         </activity>
         <activity android:name=".ui.BankCardInfoActivity">
         </activity>
-        <activity android:name=".ui.PersonalDetailsActivity">
+        <activity
+            android:name=".ui.PersonalDetailsActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <activity android:name=".ui.LoanProductsActivity">
+        </activity>
+        <activity android:name=".ui.LoanApplicationActivity">
+        </activity>
+        <activity android:name=".ui.ReimbursementActivity">
         </activity>
     </application>
 

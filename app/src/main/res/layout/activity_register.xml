@@ -8,6 +8,7 @@
     android:background="@drawable/home"
 
     tools:context="com.xinxinxuedai.ui.RegisterActivity">
+    <!--注册xml-->
     <ImageView
         android:id="@+id/register_iv"
         android:layout_below="@+id/relativeLayout_title"

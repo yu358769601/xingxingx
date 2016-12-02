@@ -18,7 +18,7 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDrawable;
 import com.xinxinxuedai.WebView.ui.WebViewActivity;
-import com.xinxinxuedai.ui.ApplyForActivity;
+import com.xinxinxuedai.ui.LoanProductsActivity;
 import com.xinxinxuedai.ui.MainActivity;
 import com.xinxinxuedai.ui.RegisterActivity;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
@@ -169,7 +169,8 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
         Intent intent = new Intent();
         switch (xueDaiButton.getType()){
             case 1:
-                intent.setClass(context, ApplyForActivity.class);
+                //点了我要借款
+                intent.setClass(context, LoanProductsActivity.class);
                 context.startActivity(intent);
                 break;
             case 2:

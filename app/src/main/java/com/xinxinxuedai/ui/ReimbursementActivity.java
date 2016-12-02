@@ -7,8 +7,8 @@ import android.widget.TextView;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
-//银行卡信息activity
-public class BankCardInfoActivity extends BaseActivity {
+//我要还款activity
+public class ReimbursementActivity extends BaseActivity {
 
     private initAction_Bar mRelativeLayout_title;
 
@@ -20,7 +20,7 @@ public class BankCardInfoActivity extends BaseActivity {
 
     @Override
     public int getlayouXML() {
-        return R.layout.activity_bank_card_info;
+        return R.layout.activity_reimbursement;
     }
 
     @Override
@@ -34,13 +34,9 @@ public class BankCardInfoActivity extends BaseActivity {
 
             @Override
             public void getAction_barView_title(TextView textView) {
-                textView.setText("银行卡信息");
+                textView.setText("我要还款");
             }
         });
-
-
-
-
     }
 
     @Override

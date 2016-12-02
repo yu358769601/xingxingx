@@ -13,6 +13,9 @@
     <color name="orange_an">#FFFFA500</color> <!-- 橙色 -->
     <color name="red">#B0FF0000</color>
     <color name="red_an">#FFFF0000</color>
+    <color name="white_half">#79ffffff</color>
+    <color name="blue_half">#4b636ed8</color>
+
     
     <!--主页颜色-->
     <color name="home_tv1">#2c68b1</color>

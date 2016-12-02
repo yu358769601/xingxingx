@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/home"
     tools:context="com.xinxinxuedai.ui.MainActivity">
-
+    <!--主界面xml-->
     <RelativeLayout
         android:id="@+id/main_re"
         android:layout_below="@+id/relativeLayout_title"
@@ -20,6 +20,16 @@
         android:layout_alignBottom="@+id/main_vp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"-->
+        <com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger
+            android:id="@+id/main_vp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_base480_100dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+        </com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger>
+
         <RelativeLayout
             android:gravity="center_vertical"
             android:layout_width="wrap_content"
@@ -48,15 +58,7 @@
 
         </RelativeLayout>
 
-        <com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger
-            android:id="@+id/main_vp"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_base480_100dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
 
-        </com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger>
 
 
     </RelativeLayout>

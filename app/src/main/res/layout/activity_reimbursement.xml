@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xinxinxuedai.view.initAction_Bar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+    tools:context="com.xinxinxuedai.ui.ReimbursementActivity">
+    <ScrollView
+        android:layout_below="@+id/relativeLayout_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/reimbursement_rl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/reimbursement_tv_hint"
+                android:text="巴拉巴拉"
+                android:gravity="center"
+                android:padding="@dimen/size_base480_20dp"
+                android:textColor="@color/orange"
+                android:background="@color/white_half"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/reimbursement_tv_logo"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/reimbursement_tv_hint"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:text="您好:玉田大神"
+                android:drawablePadding="@dimen/size_base480_10dp"
+                android:padding="@dimen/size_base480_30dp"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:background="@color/blue_half"
+                android:layout_height="wrap_content"/>
+
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</com.xinxinxuedai.view.initAction_Bar>

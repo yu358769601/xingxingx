@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/xuedai_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/an"
+        >
+    <ImageView
+        android:id="@+id/xuedai_1_iv_star"
+        android:text="hello"
+        android:layout_alignParentRight="true"
+        android:background="@mipmap/ic_launcher"
+        android:padding="@dimen/size_base480_10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/xuedai_tv_1_button"
+       android:layout_centerHorizontal="true"
+        android:drawablePadding="@dimen/size_base480_10dp"
+        android:layout_marginTop="@dimen/size_base480_30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/ic_launcher"
+        android:layout_marginBottom="@dimen/size_base480_20dp"
+        android:layout_marginRight="@dimen/size_base480_5dp"
+        android:text="我要借款"
+        />
+    <TextView
+        android:id="@+id/xuedai_tv_infotext"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_below="@+id/xuedai_tv_1_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:textSize="16sp"
+        android:layout_marginTop="@dimen/size_base480_10dp"
+        android:layout_marginBottom="@dimen/size_base480_30dp"
+        android:text="适用于短期借款随借随还借贷\n金额6000以下"
+        />
+
+
+
+</RelativeLayout>

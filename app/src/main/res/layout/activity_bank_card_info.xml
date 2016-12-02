@@ -7,6 +7,7 @@
     android:background="@drawable/home"
     android:layout_height="match_parent"
     tools:context="com.xinxinxuedai.ui.BankCardInfoActivity">
+    <!--银行卡信息xml-->
     <RelativeLayout
         android:id="@+id/bank_card_info_rl"
         android:padding="@dimen/size_base480_30dp"
@@ -21,28 +22,29 @@
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <TextView
+        <EditText
             android:id="@+id/bank_card_info_tv1_bank"
+
             android:layout_marginTop="@dimen/size_base480_20dp"
             android:layout_below="@+id/bank_card_info_tv_title"
-            android:text="选择银行卡所属银行"
-            style="@style/button_touming_long"
+            android:hint="选择银行卡所属银行"
+            style="@style/edtext_touming_long"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <TextView
+        <EditText
             android:id="@+id/bank_card_info_tv2_open_bank_name"
             android:layout_marginTop="@dimen/size_base480_20dp"
             android:layout_below="@+id/bank_card_info_tv1_bank"
-            android:text="开户行名称"
-            style="@style/button_touming_long"
+            android:hint="开户行名称"
+            style="@style/edtext_touming_long"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <TextView
+        <EditText
             android:id="@+id/bank_card_info_tv3_bank_card_num"
             android:layout_marginTop="@dimen/size_base480_20dp"
             android:layout_below="@+id/bank_card_info_tv2_open_bank_name"
-            android:text="银行卡号"
-            style="@style/button_touming_long"
+            android:hint="银行卡号"
+            style="@style/edtext_touming_long"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
