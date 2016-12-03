@@ -1,45 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/xuedai_button"
+                android:id="@+id/xuedai_button_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/an"
+                android:padding="@dimen/size_base480_20dp"
+                android:background="@drawable/border_money_touming"
         >
-    <ImageView
-        android:id="@+id/xuedai_1_iv_star"
-        android:text="hello"
-        android:layout_alignParentRight="true"
-        android:background="@mipmap/ic_launcher"
-        android:padding="@dimen/size_base480_10dp"
+   <LinearLayout
+       android:id="@+id/xuedai_button_2_ll"
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <TextView
+           android:id="@+id/xuedai_button_2_balance_of_account"
+           android:text="账户余额:0.00"
+           android:textColor="@color/white"
+
+           android:layout_width="0dp"
+           android:layout_weight="4"
+           android:layout_height="wrap_content"/>
+
+       <TextView
+            android:id="@+id/xuedai_button_2_top_up"
+            android:background="@drawable/an_long"
+            android:text="充值"
+            android:gravity="center"
+            android:padding="@dimen/size_base480_10dp"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+   </LinearLayout>
+    <View
+        android:id="@+id/view1"
+        android:layout_marginTop="@dimen/size_base480_10dp"
+        android:layout_marginBottom="@dimen/size_base480_10dp"
+        android:layout_below="@+id/xuedai_button_2_ll"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="0.5dp">
+
+    </View>
+    <TextView
+        android:id="@+id/xuedai_button_2_borrow_money"
+        android:text="借款金额:0.00"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/size_base480_10dp"
+        android:layout_marginBottom="@dimen/size_base480_20dp"
+        android:layout_below="@+id/view1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
-        android:id="@+id/xuedai_tv_1_button"
-       android:layout_centerHorizontal="true"
-        android:drawablePadding="@dimen/size_base480_10dp"
-        android:layout_marginTop="@dimen/size_base480_30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableTop="@mipmap/ic_launcher"
+        android:id="@+id/xuedai_button_2_return_the_principal"
+        android:text="返还本金:0.00"
         android:layout_marginBottom="@dimen/size_base480_20dp"
-        android:layout_marginRight="@dimen/size_base480_5dp"
-        android:text="我要借款"
-        />
-    <TextView
-        android:id="@+id/xuedai_tv_infotext"
-        android:layout_centerHorizontal="true"
         android:textColor="@color/white"
-        android:layout_below="@+id/xuedai_tv_1_button"
+        android:layout_below="@+id/xuedai_button_2_borrow_money"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-
-        android:textSize="16sp"
-        android:layout_marginTop="@dimen/size_base480_10dp"
-        android:layout_marginBottom="@dimen/size_base480_30dp"
-        android:text="适用于短期借款随借随还借贷\n金额6000以下"
-        />
-
-
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_below="@+id/xuedai_button_2_return_the_principal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/xuedai_button_2_tv1"
+            android:gravity="center"
+            android:padding="@dimen/size_base480_10dp"
+            android:text="借款协议"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/xuedai_button_2_tv2"
+            android:gravity="center"
+            android:text="服务协议"
+            android:padding="@dimen/size_base480_10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 </RelativeLayout>

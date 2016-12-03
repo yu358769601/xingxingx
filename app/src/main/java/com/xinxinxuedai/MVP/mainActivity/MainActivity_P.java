@@ -18,9 +18,11 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDrawable;
 import com.xinxinxuedai.WebView.ui.WebViewActivity;
+import com.xinxinxuedai.ui.AboutUsActivity;
 import com.xinxinxuedai.ui.LoanProductsActivity;
 import com.xinxinxuedai.ui.MainActivity;
 import com.xinxinxuedai.ui.RegisterActivity;
+import com.xinxinxuedai.ui.ReimbursementActivity;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 import com.xinxinxuedai.yumengmeng.yumengmeng01.adapter.ImageAdapter;
 import com.xinxinxuedai.yumengmeng.yumengmeng01.bean.Banner;
@@ -174,14 +176,15 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
                 context.startActivity(intent);
                 break;
             case 2:
-                intent.setClass(context, RegisterActivity.class);
+                intent.setClass(context, ReimbursementActivity.class);
                 context.startActivity(intent);
                 break;
             case 3:
-
+                intent.setClass(context, WebViewActivity.class);
+                context.startActivity(intent);
                 break;
             case 4:
-                intent.setClass(context, WebViewActivity.class);
+                intent.setClass(context, AboutUsActivity.class);
                 context.startActivity(intent);
                 break;
         }

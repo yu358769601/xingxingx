@@ -49,9 +49,13 @@
         </activity>
         <activity android:name=".ui.LoanProductsActivity">
         </activity>
-        <activity android:name=".ui.LoanApplicationActivity">
+        <activity
+            android:name=".ui.LoanApplicationActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
         <activity android:name=".ui.ReimbursementActivity">
+        </activity>
+        <activity android:name=".ui.AboutUsActivity">
         </activity>
     </application>
 

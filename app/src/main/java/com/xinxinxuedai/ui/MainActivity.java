@@ -202,6 +202,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 v.setTag(2);
                 mMainActivity_p.initClickView(v);
             break;
+
         }
     }
 }

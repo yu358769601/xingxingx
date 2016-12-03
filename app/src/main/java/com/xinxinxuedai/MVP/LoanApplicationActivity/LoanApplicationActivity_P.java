@@ -10,7 +10,7 @@ import com.xinxinxuedai.ui.ApplyForActivity;
 /**
  * Created by 35876 于萌萌
  * 创建日期: 16:38 . 2016年12月02日
- * 描述:
+ * 描述:零用金借款申请P
  * <p>
  * <p>
  * 备注:

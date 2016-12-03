@@ -16,6 +16,8 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
     private initAction_Bar mRelativeLayout_title;
     private TextView mLoanapplication_tv;
     private LoanApplicationActivity_P mLoanApplicationActivity_p;
+    private TextView mLoanapplication_et_1;
+    private TextView mLoanapplication_tv_sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,18 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
         mLoanapplication_tv = (TextView) findViewById(R.id.loanapplication_tv);
         mLoanapplication_tv.setOnClickListener(this);
 
+        mLoanapplication_et_1 = (TextView) findViewById(R.id.loanapplication_et_1);
+        mLoanapplication_et_1.setOnClickListener(this);
+
+        mLoanapplication_tv_sub = (TextView) findViewById(R.id.loanapplication_tv_sub);
+        mLoanapplication_tv_sub.setOnClickListener(this);
+//        String s = mLoanapplication_et_1.getText().toString();
+//        String s2 = mLoanapplication_et_1.getHint().toString();
+//        LogUtils.i("测试"+"tv默认的内容是"+s+"提示内容是"+s2);
+//        mLoanapplication_et_1.setText("666");
+//        String s1 = mLoanapplication_et_1.getText().toString();
+//        String s3 = mLoanapplication_et_1.getHint().toString();
+//        LogUtils.i("测试"+"tv现在的内容是"+s1+"提示内容是"+s3);
 
     }
 

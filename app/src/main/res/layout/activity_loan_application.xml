@@ -7,11 +7,97 @@
     android:layout_height="match_parent"
     android:background="@drawable/home"
     tools:context="com.xinxinxuedai.ui.LoanApplicationActivity">
-    <TextView
-        android:id="@+id/loanapplication_tv"
-        android:padding="@dimen/size_base480_10dp"
+<!--零用金xml-->
+    <ScrollView
         android:layout_below="@+id/relativeLayout_title"
-        android:text="点我进行下一个步骤"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+    <!--    android:focusable="true"
+        android:focusableInTouchMode="true"-->
+        <RelativeLayout
+            android:padding="@dimen/size_base480_20dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/loanapplication_tv"
+                android:padding="@dimen/size_base480_10dp"
+
+                android:text="点我进行下一个步骤"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/loanApplication_ed_1"
+                android:layout_below="@+id/loanapplication_tv"
+                android:hint="借款用途明细"
+                android:gravity="left"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:background="@drawable/border_money_touming"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_base480_150dp"/>
+            <TextView
+                android:id="@+id/loanapplication_et_1"
+                android:hint="选择申请借款用途"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                style="@style/edtext_touming_long"
+                android:background="@drawable/long_button_touming"
+                android:layout_below="@+id/loanApplication_ed_1"
+                android:padding="@dimen/size_base480_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/loanapplication_et_2"
+                android:hint="选择申请借款额度"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                style="@style/edtext_touming_long"
+                android:background="@drawable/long_button_touming"
+                android:layout_below="@+id/loanapplication_et_1"
+                android:padding="@dimen/size_base480_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/loanapplication_et_3"
+                android:hint="选择借款期限"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                style="@style/edtext_touming_long"
+                android:background="@drawable/long_button_touming"
+                android:layout_below="@+id/loanapplication_et_2"
+                android:padding="@dimen/size_base480_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/loanapplication_tv_sub"
+                    android:layout_marginTop="@dimen/size_base480_20dp"
+                    android:layout_below="@+id/loanapplication_et_3"
+                    style="@style/button_touming_long"
+                    android:text="提交消息"
+                    android:padding="@dimen/size_base480_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            <com.xinxinxuedai.view.xuedai_button.XueDaiButton_4
+                android:id="@+id/loanapplication_tv_zhou"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                android:layout_below="@+id/loanapplication_tv_sub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.xinxinxuedai.view.xuedai_button.XueDaiButton_4>
+
+            <View
+                android:layout_below="@+id/loanapplication_tv_zhou"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_base480_200dp">
+
+            </View>
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
 </com.xinxinxuedai.view.initAction_Bar>

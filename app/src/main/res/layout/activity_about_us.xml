@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xinxinxuedai.view.initAction_Bar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+    tools:context="com.xinxinxuedai.ui.AboutUsActivity">
+    <TextView
+        android:id="@+id/about_us_tv_1"
+        android:layout_below="@+id/relativeLayout_title"
+        android:text="400-400-4000"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/size_base480_40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/ic_launcher"
+        android:drawablePadding="@dimen/size_base480_20dp"
+        />
+    <TextView
+        android:id="@+id/about_us_tv_2"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/size_base480_20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/about_us_tv_1"
+        android:gravity="center_horizontal"
+        android:text="同学在使用过程中\n有疑问请致电客服热线"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <View
+        android:id="@+id/view1"
+        android:layout_below="@+id/about_us_tv_2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_base480_150dp">
+
+    </View>
+    <TextView
+        android:id="@+id/about_us_tv_3"
+        android:layout_below="@+id/view1"
+        android:padding="@dimen/size_base480_30dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="\t\t\t星星学贷为了帮助填补在学费,生活费及业余爱好培养方面的资金短缺,为丰富校园文化生活助一把力"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/about_us_tv_4"
+        android:layout_below="@+id/about_us_tv_3"
+        android:padding="@dimen/size_base480_30dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="\t\t\t星星学贷提供的借贷金额为500-2000元 借贷周期为7天-3年 ,扫描上方二维码或者APP应用商店搜索&#168;星星学贷&#168;下载安装后即可申请"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</com.xinxinxuedai.view.initAction_Bar>
