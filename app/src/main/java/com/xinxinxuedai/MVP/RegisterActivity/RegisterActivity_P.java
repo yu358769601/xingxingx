@@ -15,7 +15,7 @@ import com.xinxinxuedai.Utils.LogUtils;
  * 备注:
  */
 
-public class RegisterActivity_P implements RegisterActivity_interface {
+public class RegisterActivity_P implements RegisterActivity_M {
     static RegisterActivity_P mRegisterActivity_p;
     Context context;
     private Register_countTime_P mRegister_countTime_p;
@@ -49,6 +49,8 @@ public class RegisterActivity_P implements RegisterActivity_interface {
             case 1:
                 LogUtils.i("点击了注册/重置验证码倒计时");
                 mRegister_countTime_p.startCountDown();
+                //发送验证码的请求  SendBy_Request
+
             break;
             //按下去确定注册
             case 2:

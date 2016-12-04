@@ -71,16 +71,17 @@
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-            <TextView
+          <!--  <TextView
                 android:id="@+id/login_tv_register"
                 android:text="立即注册"
                 android:layout_alignParentBottom="true"
                 android:padding="@dimen/size_base480_25dp"
+
                 android:background="@drawable/an_long"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"/>-->
 
     </RelativeLayout>
 

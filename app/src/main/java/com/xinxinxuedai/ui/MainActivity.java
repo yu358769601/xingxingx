@@ -31,6 +31,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private LinearLayout mActivity_01_ll;
     private ImageView mMain_iv;
     private TextView mMain_tv_name;
+    private TextView mMain_tv_money;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +82,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         iv_red_point = (ImageView) findViewById(R.id.activity_01_point_red);
 
         mActivity_01_ll = (LinearLayout) findViewById(R.id.activity_01_ll);
+        //点击了登陆
+        mMain_tv_money = (TextView) findViewById(R.id.main_tv_money);
+        mMain_tv_money.setOnClickListener(this);
 
         initData();
         initListener();
@@ -200,6 +204,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             //点击了重置
             case R.id.main_tv_name:
                 v.setTag(2);
+                mMainActivity_p.initClickView(v);
+            break;
+            //点击了登陆
+            case R.id.main_tv_money:
+                v.setTag(3);
                 mMainActivity_p.initClickView(v);
             break;
 

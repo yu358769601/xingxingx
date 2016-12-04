@@ -12,20 +12,11 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\35876\Desktop\xuedai\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="0a9d0a226de6c31a7fb7ab938e1289380e595149">
-        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_fb1a48b8a909e1c40fc51e2664dc5f6ac9f30437\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\35876\Desktop\xuedai\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="cc6257e8d7298ec143b62758a552809fb2681f7b">
+        sha1="b238f7936079638cbf5339f237bf20876034ca87">
         <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_09007962b42640864c2c856c6c7757b9c417969a\classes.dex" />
     </item>
     <item
@@ -45,6 +36,15 @@
         revision="22.0.1"
         sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
         <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.8.0_a552f7d86aebee588c9f507d77ee9560ca4e18a3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\35876\Desktop\xuedai\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="09383a28509b093c283195b8143a23dd79894dee">
+        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_fb1a48b8a909e1c40fc51e2664dc5f6ac9f30437\classes.dex" />
     </item>
     <item
         is-multidex="true"

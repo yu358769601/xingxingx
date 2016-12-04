@@ -11,4 +11,6 @@ package com.xinxinxuedai.MVP.baseMVP;
 
 public abstract class BaseMvp<T> {
     public abstract void setCallBack(T t);
+
+
 }

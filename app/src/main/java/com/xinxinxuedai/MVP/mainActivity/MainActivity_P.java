@@ -20,6 +20,7 @@ import com.xinxinxuedai.Utils.UtilsDrawable;
 import com.xinxinxuedai.WebView.ui.WebViewActivity;
 import com.xinxinxuedai.ui.AboutUsActivity;
 import com.xinxinxuedai.ui.LoanProductsActivity;
+import com.xinxinxuedai.ui.LoginActivity;
 import com.xinxinxuedai.ui.MainActivity;
 import com.xinxinxuedai.ui.RegisterActivity;
 import com.xinxinxuedai.ui.ReimbursementActivity;
@@ -208,6 +209,11 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
                 intent.setClass(context, RegisterActivity.class);
                 bundle.putInt("classtag",RegisterActivity.AGAINCLASS);
                 intent.putExtras(bundle);
+                context.startActivity(intent);
+            break;
+            case 3:
+                LogUtils.i("点击了进入登陆activity");
+                intent.setClass(context, LoginActivity.class);
                 context.startActivity(intent);
             break;
         }
