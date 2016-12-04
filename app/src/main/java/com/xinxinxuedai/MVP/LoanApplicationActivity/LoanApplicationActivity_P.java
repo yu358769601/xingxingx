@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.view.View;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
+import com.xinxinxuedai.Utils.UtilsDialog;
 import com.xinxinxuedai.ui.ApplyForActivity;
+
+import java.util.ArrayList;
 
 /**
  * Created by 35876 于萌萌
@@ -42,9 +45,16 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
     public void clicks(View view) {
         Intent intent = new Intent();
         switch ((int)view.getTag()){
-            case 1:
+            case 99:
                 intent.setClass(context, ApplyForActivity.class);
                 context.startActivity(intent);
+            break;
+            case 1:
+                ArrayList<String> strings = new ArrayList<>();
+                for (int i = 0; i < 20; i++) {
+                    strings.add("测试"+i);
+                }
+                UtilsDialog.showDialog(context,"测试",strings);
             break;
         }
     }

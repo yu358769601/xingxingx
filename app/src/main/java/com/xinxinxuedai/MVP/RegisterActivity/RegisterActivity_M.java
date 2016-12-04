@@ -1,6 +1,9 @@
 package com.xinxinxuedai.MVP.RegisterActivity;
 
 import android.view.View;
+import android.widget.EditText;
+
+import java.util.List;
 
 /**
  * Created by 35876 于萌萌
@@ -16,6 +19,10 @@ public interface RegisterActivity_M {
     void onClick(View view);
     //开启服务
     void startService();
-    //整到注册了
-    //void
+    /**
+     * 负责获取 所有的填写数据的方法
+     * @param editTextViews
+     * @param classtag
+     */
+    void setEditTextViews(List<EditText> editTextViews, int classtag);
 }

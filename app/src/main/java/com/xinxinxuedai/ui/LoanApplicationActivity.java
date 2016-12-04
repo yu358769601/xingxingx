@@ -84,6 +84,10 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.loanapplication_tv:
+                v.setTag(99);
+                mLoanApplicationActivity_p.clicks(v);
+                break;
+            case R.id.loanapplication_et_1:
                 v.setTag(1);
                 mLoanApplicationActivity_p.clicks(v);
                 break;
