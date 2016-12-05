@@ -64,6 +64,7 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
             }
             myViewPger.setCurrentItem(currentBannerPos);
             mHandler.postDelayed(loopRunnable, BANNER_LOOP_TIME);
+
         }
     };
 

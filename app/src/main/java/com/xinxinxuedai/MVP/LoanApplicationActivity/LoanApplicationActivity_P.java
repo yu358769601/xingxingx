@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.view.View;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
-import com.xinxinxuedai.Utils.UtilsDialog;
 import com.xinxinxuedai.ui.ApplyForActivity;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 /**
  * Created by 35876 于萌萌
@@ -50,12 +50,45 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
                 context.startActivity(intent);
             break;
             case 1:
-                ArrayList<String> strings = new ArrayList<>();
+                ArrayList<String> strings1 = new ArrayList<>();
                 for (int i = 0; i < 20; i++) {
-                    strings.add("测试"+i);
+                    strings1.add("1111测试"+i);
                 }
-                UtilsDialog.showDialog(context,"测试",strings);
+                loanApplicationActivity_callBack.showDialog1(strings1);
+            break;
+            case 2:
+                ArrayList<String> strings2 = new ArrayList<>();
+                for (int i = 0; i < 20; i++) {
+                    strings2.add("2222测试"+i);
+                }
+                loanApplicationActivity_callBack.showDialog2(strings2);
+                break;
+            case 3:
+                ArrayList<String> strings3 = new ArrayList<>();
+                for (int i = 0; i < 20; i++) {
+                    strings3.add("3333测试"+i);
+                }
+                loanApplicationActivity_callBack.showDialog3(strings3);
+            break;
+            case 4:
+                Hashtable<String,String> hashtable= new Hashtable<>();
+                hashtable.put("1","1");
+                //发送网络请求
+                requestOperation(context, hashtable);
             break;
         }
+    }
+
+    /**
+     * 调用网络请求 把 需要的参数 传过去
+     *
+     * @param context   上下文
+     * @param hashtable 字段 内容等
+     */
+    @Override
+    public void requestOperation(Context context, Hashtable hashtable) {
+        //网络请求后
+        loanApplicationActivity_callBack.getTextInfo4(hashtable.toString());
+
     }
 }

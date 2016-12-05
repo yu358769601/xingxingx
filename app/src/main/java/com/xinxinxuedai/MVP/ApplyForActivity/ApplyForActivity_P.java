@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.ui.BankCardInfoActivity;
+import com.xinxinxuedai.ui.OrganizingDataActivity;
 import com.xinxinxuedai.ui.PersonalDetailsActivity;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 
@@ -53,7 +54,8 @@ public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> imple
                 context.startActivity(intent);
             break;
             case 4:
-
+                intent.setClass(context, OrganizingDataActivity.class);
+                context.startActivity(intent);
             break;
         }
     }

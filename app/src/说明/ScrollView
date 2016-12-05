@@ -1,0 +1,1 @@
+要让ScrollView内部元素的 fill_parent 起作用必须设置android:fillViewport="true"

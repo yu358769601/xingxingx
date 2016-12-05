@@ -83,5 +83,18 @@ public class UtilsMyText {
         }
     }
 
+    /**
+     * 获取字符串或者 textview 长度
+     * @param textView
+     * @return
+     */
+    public static int getLengh(TextView textView){
+        if (TextUtils.isEmpty(textView.toString())){
+            return 0;
+        }else{
+            return textView.getText().toString().length();
+        }
+    }
+
 
 }

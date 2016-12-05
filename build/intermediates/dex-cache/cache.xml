@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="aed28ad54e77b22bd7ac3115b8e7a12b80387624">
+        sha1="9a78f8a043fbd4ba47bcd00046d18e029cacca3a">
         <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_fb1a48b8a909e1c40fc51e2664dc5f6ac9f30437\classes.dex" />
     </item>
     <item
@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="53234a426dffe217af4572af5211eaab0c4045f4">
+        sha1="fc607e5cd37ea4f37f2a6e8282005dd90c33abee">
         <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_09007962b42640864c2c856c6c7757b9c417969a\classes.dex" />
     </item>
     <item

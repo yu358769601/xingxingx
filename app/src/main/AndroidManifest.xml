@@ -41,7 +41,9 @@
         </activity>
         <activity android:name=".ui.ApplyForActivity">
         </activity>
-        <activity android:name=".ui.BankCardInfoActivity">
+        <activity
+            android:name=".ui.BankCardInfoActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
         <activity
             android:name=".ui.PersonalDetailsActivity"
@@ -56,6 +58,8 @@
         <activity android:name=".ui.ReimbursementActivity">
         </activity>
         <activity android:name=".ui.AboutUsActivity">
+        </activity>
+        <activity android:name=".ui.OrganizingDataActivity">
         </activity>
     </application>
 

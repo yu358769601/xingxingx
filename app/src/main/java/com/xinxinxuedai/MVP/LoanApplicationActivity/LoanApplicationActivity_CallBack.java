@@ -1,5 +1,7 @@
 package com.xinxinxuedai.MVP.LoanApplicationActivity;
 
+import java.util.ArrayList;
+
 /**
  * Created by 35876 于萌萌
  * 创建日期: 16:39 . 2016年12月02日
@@ -10,5 +12,30 @@ package com.xinxinxuedai.MVP.LoanApplicationActivity;
  */
 
 public interface LoanApplicationActivity_CallBack {
+//    /**
+//     * 从另外一个接口返回的  选择的号码 和 选择号码对应的 内容
+//     * @param selectNum 选择的号码
+//     * @param selectNumInfo 对应的选择内容
+//     */
+//    void getSelectInfo1(int selectNum, String selectNumInfo);
+//    void getSelectInfo2(int selectNum, String selectNumInfo);
+//    void getSelectInfo3(int selectNum, String selectNumInfo);
 
+    void getTextInfo4(String TextInfo4);
+
+    /**
+     * 回调到主界面去show
+     * @param strings
+     */
+    void showDialog1(ArrayList<String> strings);
+    /**
+     * 回调到主界面去show
+     * @param strings
+     */
+    void showDialog2(ArrayList<String> strings);
+    /**
+     * 回调到主界面去show
+     * @param strings
+     */
+    void showDialog3(ArrayList<String> strings);
 }

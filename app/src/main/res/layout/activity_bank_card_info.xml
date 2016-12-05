@@ -8,63 +8,82 @@
     android:layout_height="match_parent"
     tools:context="com.xinxinxuedai.ui.BankCardInfoActivity">
     <!--银行卡信息xml-->
-    <RelativeLayout
-        android:id="@+id/bank_card_info_rl"
-        android:padding="@dimen/size_base480_30dp"
-        android:layout_below="@+id/relativeLayout_title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/bank_card_info_tv_title"
-            android:text="请输入有效信息以免影响使用!"
-            android:textSize="16sp"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <EditText
-            android:id="@+id/bank_card_info_tv1_bank"
+       <ScrollView
+           android:fillViewport="true"
+           android:layout_below="@+id/relativeLayout_title"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
 
-            android:layout_marginTop="@dimen/size_base480_20dp"
-            android:layout_below="@+id/bank_card_info_tv_title"
-            android:hint="选择银行卡所属银行"
-            style="@style/edtext_touming_long"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <EditText
-            android:id="@+id/bank_card_info_tv2_open_bank_name"
-            android:layout_marginTop="@dimen/size_base480_20dp"
-            android:layout_below="@+id/bank_card_info_tv1_bank"
-            android:hint="开户行名称"
-            style="@style/edtext_touming_long"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <EditText
-            android:id="@+id/bank_card_info_tv3_bank_card_num"
-            android:layout_marginTop="@dimen/size_base480_20dp"
-            android:layout_below="@+id/bank_card_info_tv2_open_bank_name"
-            android:hint="银行卡号"
-            style="@style/edtext_touming_long"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_marginTop="@dimen/size_base480_20dp"
-            android:layout_below="@+id/bank_card_info_tv3_bank_card_num"
-            android:text="亲爱的同学,开户行名称请准确到XX支行货分理处,一面影响放款!\n如果您不确定,\n 可致电所属银行客服进行查询\n\n例:黑龙江省哈尔滨市南岗区招商银行果戈理大街支行"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/bank_card_info_tv_sub"
-            android:layout_alignParentBottom="true"
-            style="@style/button_touming_long"
-            android:text="提交信息"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+           <RelativeLayout
+               android:id="@+id/bank_card_info_rl"
 
-    </RelativeLayout>
+               android:padding="@dimen/size_base480_30dp"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+               <TextView
+                   android:id="@+id/bank_card_info_tv_title"
+                   android:text="请输入有效信息以免影响使用!"
+                   android:textSize="16sp"
+                   android:layout_centerHorizontal="true"
+                   android:textColor="@color/white"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+               <TextView
+                   android:id="@+id/bank_card_info_tv1_bank"
+
+                   android:layout_marginTop="@dimen/size_base480_20dp"
+                   android:layout_below="@+id/bank_card_info_tv_title"
+                   android:hint="选择银行卡所属银行"
+                   android:textColorHint="@color/white"
+                   style="@style/radiobutton_touming_long"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"/>
+               <EditText
+                   android:id="@+id/bank_card_info_tv2_open_bank_name"
+                   android:layout_marginTop="@dimen/size_base480_20dp"
+                   android:layout_below="@+id/bank_card_info_tv1_bank"
+                   android:hint="开户行名称"
+                   style="@style/edtext_touming_long"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"/>
+               <EditText
+                   android:id="@+id/bank_card_info_tv3_bank_card_num"
+                   android:layout_marginTop="@dimen/size_base480_20dp"
+                   android:layout_below="@+id/bank_card_info_tv2_open_bank_name"
+                   android:hint="银行卡号"
+                   style="@style/edtext_touming_long"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"/>
+               <TextView
+                   android:id="@+id/bank_card_info_hit"
+                   android:textColor="@color/white"
+                   android:textSize="18sp"
+                   android:layout_marginTop="@dimen/size_base480_20dp"
+                   android:layout_below="@+id/bank_card_info_tv3_bank_card_num"
+                   android:text="亲爱的同学,开户行名称请准确到XX支行货分理处,一面影响放款!\n如果您不确定,\n 可致电所属银行客服进行查询\n\n例:黑龙江省哈尔滨市南岗区招商银行果戈理大街支行"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"/>
+
+               <View
+                   android:id="@+id/view1"
+                   android:layout_below="@+id/bank_card_info_hit"
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/size_base480_200dp">
+
+               </View>
+               <TextView
+                   android:id="@+id/bank_card_info_tv_sub"
+                   android:layout_alignParentBottom="true"
+                   style="@style/button_touming_long"
+                   android:text="提交信息"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   />
+
+           </RelativeLayout>
+       </ScrollView>
+
+
 
 
 </com.xinxinxuedai.view.initAction_Bar>
