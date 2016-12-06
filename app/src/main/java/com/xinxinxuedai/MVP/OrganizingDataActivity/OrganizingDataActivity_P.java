@@ -1,12 +1,14 @@
 package com.xinxinxuedai.MVP.OrganizingDataActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.UtilsMyText;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.ui.UploadPicturesActivity;
 
 import java.util.List;
 
@@ -45,6 +47,8 @@ static OrganizingDataActivity_P mOrganizingDataActivity_p;
      */
     @Override
     public void getTextViews(List<TextView> textViews, EditText editText) {
+        Intent intent = new Intent(context, UploadPicturesActivity.class);
+        context.startActivity(intent);
         if (textViews.size()==0||null==textViews){
             return;
         }
@@ -72,7 +76,10 @@ static OrganizingDataActivity_P mOrganizingDataActivity_p;
             UtilsToast.showToast(context, "现在住址为空");
             return;
         }
+
         UtilsToast.showToast(context, "正在发送请求~");
+
+
 
 
     }

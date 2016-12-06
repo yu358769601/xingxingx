@@ -29,5 +29,12 @@
     <string name="home_tv4">关于我们</string>
     <string name="home_tv4_small">hello</string>
 
+    <!--申请状态里面的-->
+    <string name="applicationstatus_txt1">借款计划:</string>
+    <string name="applicationstatus_txt2">借款期限:</string>
+    <string name="applicationstatus_txt3">借款金额:</string>
+    <string name="applicationstatus_txt4">申请时间:</string>
+    <string name="applicationstatus_txt5">借款状态:</string>
+
 
 </resources>

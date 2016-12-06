@@ -4,10 +4,10 @@
     <solid android:color="@color/white" />
     <!--圆角-->
     <corners
-        android:bottomLeftRadius="300dp"
-        android:bottomRightRadius="300dp"
-        android:topLeftRadius="300dp"
-        android:topRightRadius="300dp" />
+        android:bottomLeftRadius="@dimen/size_base480_50dp"
+        android:bottomRightRadius="@dimen/size_base480_50dp"
+        android:topLeftRadius="@dimen/size_base480_50dp"
+        android:topRightRadius="@dimen/size_base480_50dp" />
     <!--外边-->
     <stroke
         android:width="0.5dp"

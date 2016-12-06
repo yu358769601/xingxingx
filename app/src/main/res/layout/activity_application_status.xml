@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xinxinxuedai.view.initAction_Bar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xinxinxuedai.ui.ApplicationStatusActivity">
+    <RelativeLayout
+        android:layout_below="@+id/relativeLayout_title"
+        android:padding="@dimen/size_base480_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/applicationstatus_tv1"
+            style="@style/text_witle_padding"
+            android:text="@string/applicationstatus_txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/applicationstatus_tv2"
+            style="@style/text_witle_padding"
+            android:layout_below="@+id/applicationstatus_tv1"
+            android:text="@string/applicationstatus_txt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/applicationstatus_tv3"
+            style="@style/text_witle_padding"
+            android:layout_below="@+id/applicationstatus_tv2"
+            android:text="@string/applicationstatus_txt3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/applicationstatus_tv4"
+            style="@style/text_witle_padding"
+            android:layout_below="@+id/applicationstatus_tv3"
+            android:text="@string/applicationstatus_txt4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/applicationstatus_tv5"
+            style="@style/text_witle_padding"
+            android:layout_below="@+id/applicationstatus_tv4"
+            android:text="@string/applicationstatus_txt5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</com.xinxinxuedai.view.initAction_Bar>

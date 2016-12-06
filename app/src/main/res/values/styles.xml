@@ -95,4 +95,42 @@
         <item name="android:windowIsFloating">true</item>
     </style>
 
+
+    <style name="text_witle_padding">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">@dimen/size_base480_15dp</item>
+    </style>
+
+    <!--选择用什么获取图片-->
+    <style name="MyDialogStyleBottom" parent="android:Theme.Dialog">  
+        <!-- 边框 -->  
+        <item name="android:windowFrame">@null</item>  
+        <!-- 是否浮现在activity  false 是全的   true 是左右会留一点 -->  
+        <item name="android:windowIsFloating">true</item>  
+      <!--  &lt;!&ndash;点外面消失&ndash;&gt;
+        <item name="android:windowCloseOnTouchOutside">true</item>-->
+        <!-- 半透明 -->  
+        <item name="android:windowIsTranslucent">true</item>  
+        <!-- 无标题 -->  
+        <item name="android:windowNoTitle">true</item>  
+        <!-- 背景透明 -->  
+        <item name="android:windowBackground">@android:color/transparent</item>  
+        <!-- 模糊 -->  
+        <item name="android:backgroundDimEnabled">true</item>  
+        <!--全屏-->
+        <item name="android:windowFullscreen">false</item>
+        <!--动画-->
+        <item name="android:windowAnimationStyle">@style/AnimBottom</item>
+    </style>  
+    <!--分享里面的样式-->
+
+    <style name="AnimBottom">  
+        <item name="android:activityOpenEnterAnimation">@anim/push_bottom_in</item>
+        <!-- <item name="android:activityOpenExitAnimation">@anim/hold</item>-->
+        <item name="android:activityCloseEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/push_buttom_out</item>
+        <!--      <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>  
+             <item name="android:windowExitAnimation">@anim/push_buttom_out</item>-->  
+    </style> 
 </resources>

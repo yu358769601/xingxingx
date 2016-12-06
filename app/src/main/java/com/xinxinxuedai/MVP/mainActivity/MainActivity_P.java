@@ -17,8 +17,8 @@ import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDrawable;
-import com.xinxinxuedai.WebView.ui.WebViewActivity;
 import com.xinxinxuedai.ui.AboutUsActivity;
+import com.xinxinxuedai.ui.ApplicationStatusActivity;
 import com.xinxinxuedai.ui.LoanProductsActivity;
 import com.xinxinxuedai.ui.LoginActivity;
 import com.xinxinxuedai.ui.MainActivity;
@@ -182,7 +182,7 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
                 context.startActivity(intent);
                 break;
             case 3:
-                intent.setClass(context, WebViewActivity.class);
+                intent.setClass(context, ApplicationStatusActivity.class);
                 context.startActivity(intent);
                 break;
             case 4:

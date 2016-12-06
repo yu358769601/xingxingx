@@ -51,8 +51,8 @@ public class UtilsDialog {
         RelativeLayout relativeLayout = new RelativeLayout(context);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
        // android:background="@drawable/shape_white"
-        //relativeLayout.setBackgroundResource(R.drawable.shape_white);
-        relativeLayout.setBackground(context.getDrawable(R.drawable.shape_white));
+        relativeLayout.setBackgroundResource(R.drawable.shape_white);
+        //relativeLayout.setBackground(context.getDrawable(R.drawable.shape_white));
         relativeLayout.setLayoutParams(layoutParams);
         View inflate = View.inflate(context, R.layout.dialog_radiogroup, relativeLayout);
         final RadioGroup dialog_rg = (RadioGroup) inflate.findViewById(R.id.dialog_rg);

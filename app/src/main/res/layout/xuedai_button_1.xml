@@ -39,7 +39,12 @@
         android:layout_marginBottom="@dimen/size_base480_30dp"
         android:text="适用于短期借款随借随还借贷\n金额6000以下"
         />
-
+    <ImageView
+        android:id="@+id/xuedai_tv_iv"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
 </RelativeLayout>

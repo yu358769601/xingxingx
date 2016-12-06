@@ -54,7 +54,7 @@ public class LoanProductsActivity extends BaseActivity {
                 mLoanProductsActivity_p.onclicks(mXuedaibutton_1);
             }
         }).setTextColor(getResources().getColor(R.color.home_tv1))
-                .setStar(true)
+                .setVisbilityStar(true)
 //                .setText_info("我是注释")
                 .setText_infoColor(getResources().getColor(R.color.home_tv1))
                 .setTopDrawable(R.drawable.home_tv01)
@@ -68,7 +68,7 @@ public class LoanProductsActivity extends BaseActivity {
                 mLoanProductsActivity_p.onclicks(mXuedaibutton_2);
             }
         }).setTextColor(getResources().getColor(R.color.home_tv1))
-                .setStar(true)
+                .setVisbilityStar(true)
                 .setText_info("适用于中长期借款\n借款金额10000元以下")
                 .setText_infoColor(getResources().getColor(R.color.home_tv1))
                 .setTopDrawable(R.drawable.home_tv01)

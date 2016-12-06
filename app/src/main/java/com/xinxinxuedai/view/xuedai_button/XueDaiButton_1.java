@@ -6,11 +6,17 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.xinxinxuedai.R;
+import com.xinxinxuedai.Utils.GlideUtils.GlideCircleTransform;
+import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.Utils.UtilsMeasure;
+import com.xinxinxuedai.app.AppContext;
 
 /**
  * Created by 35876 于萌萌
@@ -29,6 +35,8 @@ public class XueDaiButton_1 extends RelativeLayout implements View.OnClickListen
     private ImageView mXuedai_1_iv_star;
     private TextView mXuedai_tv_1_button;
     private TextView mXuedai_tv_infotext;
+    private RelativeLayout.LayoutParams mParams;
+    private ImageView mXuedai_tv_iv;
 
     public XueDaiButton_1(Context context) {
         super(context);
@@ -59,7 +67,9 @@ public class XueDaiButton_1 extends RelativeLayout implements View.OnClickListen
         mView = inflater.inflate(R.layout.xuedai_button_1, this);
         //外框 就是整体
         mXuedai_button1 = (RelativeLayout) findViewById(R.id.xuedai_button);
-        mXuedai_button1.setOnClickListener(this);
+       mXuedai_button1.setOnClickListener(this);
+        //宽高啥的
+        mParams = (RelativeLayout.LayoutParams)mXuedai_button1.getLayoutParams();
 
         //右上角 小星星
         mXuedai_1_iv_star = (ImageView) mView.findViewById(R.id.xuedai_1_iv_star);
@@ -67,12 +77,13 @@ public class XueDaiButton_1 extends RelativeLayout implements View.OnClickListen
 
         //中间的字 带着 图标的
         mXuedai_tv_1_button = (TextView) findViewById(R.id.xuedai_tv_1_button);
-        mXuedai_tv_1_button.setOnClickListener(this);
+        //mXuedai_tv_1_button.setOnClickListener(this);
 
         //注释
         mXuedai_tv_infotext = (TextView) findViewById(R.id.xuedai_tv_infotext);
 
-
+        //大图片
+        mXuedai_tv_iv = (ImageView) findViewById(R.id.xuedai_tv_iv);
     }
     public XueDaiButton_1 setText(String text){
         mXuedai_tv_1_button.setText(text);
@@ -82,17 +93,69 @@ public class XueDaiButton_1 extends RelativeLayout implements View.OnClickListen
         mXuedai_tv_infotext.setText(text);
         return  this;
     }
+    public XueDaiButton_1 setRelativeLayout_Pading(int left ,int top ,int right ,int down){
+       // mParams.setMargins(left,top,right,down);//4个参数按顺序分别是左上右下
+
+        mXuedai_button1.setPadding(left,top,right,down);
+        //mXuedai_tv_1_button.setLayoutParams(mParams);
+        return  this;
+    }
+    public XueDaiButton_1 setText_buttonmargin(int left ,int top ,int right ,int down){
+        mParams.setMargins(left,top,right,down);//4个参数按顺序分别是左上右下
+        mXuedai_tv_1_button.setLayoutParams(mParams);
+        return  this;
+    }
+
+
     public XueDaiButton_1 setText_infoColor(int color){
         mXuedai_tv_infotext.setTextColor(color);
         return  this;
     }
-    public XueDaiButton_1 setStar(boolean b){
+    public XueDaiButton_1 setVisbilityInfotext(boolean b){
+        if(b){
+
+            mXuedai_tv_infotext.setVisibility(VISIBLE);
+        }else{
+            mXuedai_tv_infotext.setVisibility(GONE);
+        }
+
+        return  this;
+    }
+    public XueDaiButton_1 setVisbilityStar(boolean b){
         if(b){
             mXuedai_1_iv_star.setVisibility(VISIBLE);
         }else{
             mXuedai_1_iv_star.setVisibility(GONE);
         }
 
+        return  this;
+    }
+    public XueDaiButton_1 setImage(String image){
+        //整到这里
+        int[] measure = UtilsMeasure.measure(mXuedai_button1);
+        //layoutParams.height =measure[1];
+       RelativeLayout.LayoutParams  layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,measure[1] );
+        //RelativeLayout.LayoutParams  layoutParams =(RelativeLayout.LayoutParams) mXuedai_button1.getLayoutParams();
+        mXuedai_button1.setLayoutParams(layoutParams);
+
+
+//        load SD卡资源：load("file://"+ Environment.getExternalStorageDirectory().getPath()+"/test.jpg")
+//        load assets资源：load("file:///android_asset/f003.gif")
+        LogUtils.i("资源是"+image);
+
+        Glide
+                .with(AppContext.getApplication())
+                .load(image)
+                .transform(new GlideCircleTransform(AppContext.getApplication(),10,AppContext.getApplication().getResources().getColor(R.color.white)))
+                //.override(measure[0],measure[1])
+                .centerCrop()
+                .into(mXuedai_tv_iv);
+//
+//                ;
+        mXuedai_tv_iv.setVisibility(VISIBLE);
+        mXuedai_tv_iv.setLayoutParams(layoutParams);
+        //mXuedai_tv_iv.setBackgroundResource(R.drawable.an);
+//       UtilsMeasure.measure(mXuedai_tv_iv);
         return  this;
     }
 

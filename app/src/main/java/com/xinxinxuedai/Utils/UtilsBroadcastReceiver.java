@@ -37,6 +37,16 @@ public class UtilsBroadcastReceiver {
     public static void sendBroadcastReceiver(Context context, String IntentFilter, String boxNum , Serializable boxInfo){
         mySendBroadcast(context, IntentFilter, boxNum, boxInfo);
     }
+    /**
+     * 发送广播的方法
+     * @param context 上下文
+     * @param IntentFilter 频道
+     * @param boxNum 包裹号
+     * @param boxInfo 包裹内容
+     */
+    public static void sendBroadcastReceiver(Context context, String IntentFilter, String boxNum , int boxInfo){
+        mySendBroadcast(context, IntentFilter, boxNum, boxInfo);
+    }
 
     /**
      * 发送字符串消息
@@ -51,7 +61,7 @@ public class UtilsBroadcastReceiver {
         sendBroadcast(context,intent);
     }
     /**
-     * 发送字符串消息
+     * 发送数字消息
      * @param context
      * @param IntentFilter
      * @param boxNum
