@@ -5,6 +5,64 @@
     android:id="@+id/relativeLayout_title"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home"
     tools:context="com.xinxinxuedai.ui.UploadVideoActivity">
+    <!--上传视频xml-->
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_below="@+id/relativeLayout_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:id="@+id/uploadvideo_rl"
+
+            android:layout_width="match_parent"
+            android:padding="@dimen/size_base480_20dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/uploadvideo_title"
+                android:text="请确认身份证是本人,以免影响使用!"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:padding="@dimen/size_base480_10dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.xinxinxuedai.view.xuedai_button.XueDaiButton_1
+                android:id="@+id/uploadpictures_xd_1"
+                android:layout_below="@+id/uploadvideo_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.xinxinxuedai.view.xuedai_button.XueDaiButton_1>
+            <com.xinxinxuedai.view.VideoView.MyVideoView
+                android:id="@+id/uploadpictures_mvv"
+                android:layout_below="@+id/uploadvideo_title"
+                android:visibility="gone"
+                android:background="@drawable/an"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.xinxinxuedai.view.VideoView.MyVideoView>
+
+            <TextView
+                android:id="@+id/uploadpictures_tv_reset"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                android:layout_below="@+id/uploadpictures_xd_1"
+                android:text="重新录制"
+                android:visibility="gone"
+                style="@style/button_touming_long"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/uploadpictures_tv_sub"
+                android:layout_below="@+id/uploadpictures_tv_reset"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                android:text="下一步"
+                style="@style/button_touming_long"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+    </ScrollView>
 </com.xinxinxuedai.view.initAction_Bar>

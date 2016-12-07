@@ -160,6 +160,13 @@ public class XueDaiButton_1 extends RelativeLayout implements View.OnClickListen
     }
 
 
+    public RelativeLayout getXuedai_button1_rl(){
+        return mXuedai_button1;
+    }
+
+    public TextView getXuedai_button1_tv(){
+        return mXuedai_tv_1_button;
+    }
 
     public XueDaiButton_1 setTextColor(int color){
 
@@ -173,8 +180,14 @@ public class XueDaiButton_1 extends RelativeLayout implements View.OnClickListen
 //调用setCompoundDrawables时，必须调用Drawable.setBounds()方法,否则图片不显示
         drawableTop.setBounds(0, 0, drawableTop.getMinimumWidth(), drawableTop.getMinimumHeight());
         mXuedai_tv_1_button.setCompoundDrawables(null, drawableTop, null, null); //设置左图标
-        //mXuedai_button.setCompoundDrawablesWithIntrinsicBounds();
-       // mXuedai_button.setTextColor(color);
+        return  this;
+    }
+    public XueDaiButton_1 setTopDrawableVisibility(boolean b){
+        if(b){
+           // mXuedai_1_iv_star.setVisibility(VISIBLE);
+        }else{
+            mXuedai_tv_1_button.setCompoundDrawables(null, null, null, null); //设置左图标
+        }
         return  this;
     }
     public XueDaiButton_1 set_weight(){

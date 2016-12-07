@@ -106,6 +106,18 @@
                   android:screenOrientation="portrait"
             >
         </activity>
+
+        <activity android:name=".UpLoadVideo.SendSmallVideoActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".UpLoadVideo.VideoPlayerActivity"
+                  android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name="mabeijianxi.camera.MediaRecorderActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
