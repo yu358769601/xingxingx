@@ -1,13 +1,11 @@
 package com.xinxinxuedai.UpLoadVideo;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,7 +29,7 @@ public class SendSmallVideoActivity extends Activity implements View.OnClickList
     private ImageView iv_video_screenshot;
     private EditText et_send_content;
 
-    private AlertDialog dialog;
+  //  private AlertDialog dialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,30 +89,30 @@ public class SendSmallVideoActivity extends Activity implements View.OnClickList
     }
 
     private void hesitate() {
-        if (dialog == null) {
-          //  dialog=  new Dialog.(this)
-            dialog = new AlertDialog.Builder(this)
-                    .setTitle(R.string.hint)
-                    .setMessage(R.string.record_camera_exit_dialog_message)
-                    .setNegativeButton(
-                            R.string.record_camera_cancel_dialog_yes,
-                            new DialogInterface.OnClickListener() {
-
-                                @Override
-                                public void onClick(DialogInterface dialog,
-                                                    int which) {
-                                    finish();
-
-//                                    FileUtils.deleteDir(getIntent().getStringExtra(MediaRecorderActivity.OUTPUT_DIRECTORY));
-
-                                }
-
-                            })
-                    .setPositiveButton(R.string.record_camera_cancel_dialog_no,
-                            null).setCancelable(false).show();
-        } else {
-            dialog.show();
-        }
+//        if (dialog == null) {
+//          //  dialog=  new Dialog.(this)
+//            dialog = new AlertDialog.Builder(this)
+//                    .setTitle(R.string.hint)
+//                    .setMessage(R.string.record_camera_exit_dialog_message)
+//                    .setNegativeButton(
+//                            R.string.record_camera_cancel_dialog_yes,
+//                            new DialogInterface.OnClickListener() {
+//
+//                                @Override
+//                                public void onClick(DialogInterface dialog,
+//                                                    int which) {
+//                                    finish();
+//
+////                                    FileUtils.deleteDir(getIntent().getStringExtra(MediaRecorderActivity.OUTPUT_DIRECTORY));
+//
+//                                }
+//
+//                            })
+//                    .setPositiveButton(R.string.record_camera_cancel_dialog_no,
+//                            null).setCancelable(false).show();
+//        } else {
+//            dialog.show();
+//        }
     }
 
 }
