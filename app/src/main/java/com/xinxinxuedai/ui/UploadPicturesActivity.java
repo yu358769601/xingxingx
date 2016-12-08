@@ -161,7 +161,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
                 .setText("上传正面身份证")
                 .setTextColor(getResources().getColor(R.color.home_tv1))
                 .setTopDrawable(R.drawable.home_tv01)
-                .setRelativeLayout_Pading(0,UtilsSetSize.setPx(this, R.dimen.size_base480_20dp),0,UtilsSetSize.setPx(this, R.dimen.size_base480_20dp));
+                .setRelativeLayout_Pading(0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp),0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp));
         uploadpictures_xd_2
                 .setCallBack(new button_CallBack() {
                     @Override
@@ -176,7 +176,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
                 .setText("上传背面身份证")
                 .setTextColor(getResources().getColor(R.color.home_tv1))
                 .setTopDrawable(R.drawable.home_tv01)
-                .setRelativeLayout_Pading(0,UtilsSetSize.setPx(this, R.dimen.size_base480_20dp),0,UtilsSetSize.setPx(this, R.dimen.size_base480_20dp));
+                .setRelativeLayout_Pading(0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp),0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp));
 
         uploadpictures_xd_3
                 .setCallBack(new button_CallBack() {
@@ -192,7 +192,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
                 .setText("手持身份证")
                 .setTextColor(getResources().getColor(R.color.home_tv1))
                 .setTopDrawable(R.drawable.home_tv01)
-                .setRelativeLayout_Pading(0,UtilsSetSize.setPx(this, R.dimen.size_base480_20dp),0,UtilsSetSize.setPx(this, R.dimen.size_base480_20dp));
+                .setRelativeLayout_Pading(0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp),0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp));
 
 
     }

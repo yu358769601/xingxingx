@@ -32,6 +32,20 @@ public class UtilsBroadcastReceiver {
      * @param context 上下文
      * @param IntentFilter 频道
      * @param boxNum 包裹号
+     * @param strings 包裹内容
+     */
+    public static void sendBroadcastReceiver(Context context, String IntentFilter, String boxNum , String[]strings){
+        Intent intent = new Intent(IntentFilter);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(boxNum,strings);
+        intent.putExtras(bundle);
+        mySendBroadcast(context, IntentFilter, boxNum, strings);
+    }
+    /**
+     * 发送广播的方法
+     * @param context 上下文
+     * @param IntentFilter 频道
+     * @param boxNum 包裹号
      * @param boxInfo 包裹内容
      */
     public static void sendBroadcastReceiver(Context context, String IntentFilter, String boxNum , Serializable boxInfo){
@@ -74,7 +88,7 @@ public class UtilsBroadcastReceiver {
     }
 
     /**
-     * 发送序列化消息
+     * 发送字符串数组
      * @param context
      * @param IntentFilter
      * @param boxNum
@@ -85,7 +99,7 @@ public class UtilsBroadcastReceiver {
         Bundle bundle = new Bundle();
         bundle.putSerializable(boxNum,boxInfo);
         intent.putExtras(bundle);
-      sendBroadcast(context,intent);
+        context.sendBroadcast(intent);
     }
 
     /**

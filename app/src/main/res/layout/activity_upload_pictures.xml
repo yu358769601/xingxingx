@@ -44,21 +44,21 @@
                 android:id="@+id/uploadpictures_xd_1"
                 android:layout_below="@+id/uploadpictures_tt_title_big"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/size_base480_220dp">
             </com.xinxinxuedai.view.xuedai_button.XueDaiButton_1>
             <com.xinxinxuedai.view.xuedai_button.XueDaiButton_1
                 android:id="@+id/uploadpictures_xd_2"
                 android:layout_marginTop="@dimen/size_base480_10dp"
                 android:layout_below="@+id/uploadpictures_xd_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/size_base480_220dp">
             </com.xinxinxuedai.view.xuedai_button.XueDaiButton_1>
             <com.xinxinxuedai.view.xuedai_button.XueDaiButton_1
                 android:id="@+id/uploadpictures_xd_3"
                 android:layout_marginTop="@dimen/size_base480_10dp"
                 android:layout_below="@+id/uploadpictures_xd_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/size_base480_220dp">
             </com.xinxinxuedai.view.xuedai_button.XueDaiButton_1>
             <TextView
                 android:id="@+id/uploadpictures_tv_sub"
