@@ -25,6 +25,7 @@
             android:id="@+id/xuedai_button_2_top_up"
             android:background="@drawable/an_long"
             android:text="充值"
+            android:textColor="@drawable/text_coloer"
             android:gravity="center"
             android:padding="@dimen/size_base480_10dp"
             android:layout_weight="3"

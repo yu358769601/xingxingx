@@ -141,8 +141,9 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case 1:
-
+            case R.id.xuedai_button_1:
+            //外框被点击了
+                mButton_callBack.button_Click();
             break;
         }
     }

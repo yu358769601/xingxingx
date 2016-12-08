@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xinxinxuedai.view.initAction_Bar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+    tools:context="com.xinxinxuedai.ui.SchoolAddressActivity">
+    <!--选择地区xml-->
+    <RelativeLayout
+        android:id="@+id/schooladdress_rl"
+        android:padding="@dimen/size_base480_20dp"
+        android:layout_below="@+id/relativeLayout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/schooladdress_tv"
+            android:text="学校所在地区"
+            style="@style/button_touming_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/schooladdress_et_1"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:hint="学校名称"
+            android:layout_below="@+id/schooladdress_tv"
+            style="@style/edtext_touming_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/schooladdress_et_2"
+            android:layout_below="@+id/schooladdress_tv2"
+           android:background="@drawable/border_money_touming"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:gravity="left"
+            android:hint="请详细输入你的现住址精确到门牌号"
+            android:textColorHint="@color/white"
+            android:layout_height="@dimen/size_base480_150dp"/>
+
+        <TextView
+            android:id="@+id/schooladdress_tv2"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:text="学校所在地区"
+            style="@style/button_touming_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/schooladdress_et_1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+    </RelativeLayout>
+
+</com.xinxinxuedai.view.initAction_Bar>

@@ -135,7 +135,7 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
                 strings.add("花果山银行");
                 strings.add("花果山银行");
 
-                UtilsDialog.showDialog(this, "请选择银行卡所属银行", strings, new UtilsDialogCallBack() {
+                UtilsDialog.showDialogRadioGroup(this, "请选择银行卡所属银行", strings, new UtilsDialogCallBack() {
                     @Override
                     public void RadioGroupNum(int selectNum, String selectNumInfo) {
                         LogUtils.i("我勾选的号码是"+selectNum+"内容是"+selectNumInfo);

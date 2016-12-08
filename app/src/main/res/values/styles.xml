@@ -51,6 +51,15 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+    <!--注册登录输入框样式-->
+    <style name="edit_style_uptop">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">left</item>
+        <item name="android:padding">@dimen/size_base480_10dp</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 
 
     <!--自定义对话框dalog-->
@@ -133,4 +142,16 @@
         <!--      <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>  
              <item name="android:windowExitAnimation">@anim/push_buttom_out</item>-->  
     </style> 
+
+
+<!--    android:layout_marginTop="@dimen/size_base480_10dp"
+    android:background="@color/grey"
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"-->
+    <!--View分隔线 样式-->
+    <style name="view_lines">
+
+        <item name="android:background">@color/grey</item>
+
+    </style>
 </resources>

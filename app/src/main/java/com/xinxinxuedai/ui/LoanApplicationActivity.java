@@ -167,7 +167,7 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
      */
     @Override
     public void showDialog1(ArrayList<String> strings) {
-        CustomDialog customDialog = UtilsDialog.showDialog(this, "2测试", strings, new UtilsDialogCallBack() {
+        CustomDialog customDialog = UtilsDialog.showDialogRadioGroup(this, "2测试", strings, new UtilsDialogCallBack() {
             /**
              * 点了确定并且 已经有了选择的号码 之后产生的回调
              * @param selectNum 选择的号码
@@ -189,7 +189,7 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
      */
     @Override
     public void showDialog2(ArrayList<String> strings) {
-        CustomDialog customDialog = UtilsDialog.showDialog(this, "2测试", strings, new UtilsDialogCallBack() {
+        CustomDialog customDialog = UtilsDialog.showDialogRadioGroup(this, "2测试", strings, new UtilsDialogCallBack() {
             /**
              * 点了确定并且 已经有了选择的号码 之后产生的回调
              * @param selectNum 选择的号码
@@ -210,7 +210,7 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
      */
     @Override
     public void showDialog3(ArrayList<String> strings) {
-        CustomDialog customDialog = UtilsDialog.showDialog(this, "2测试", strings, new UtilsDialogCallBack() {
+        CustomDialog customDialog = UtilsDialog.showDialogRadioGroup(this, "2测试", strings, new UtilsDialogCallBack() {
             /**
              * 点了确定并且 已经有了选择的号码 之后产生的回调
              * @param selectNum 选择的号码

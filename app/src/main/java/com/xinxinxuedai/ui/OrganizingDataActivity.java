@@ -109,7 +109,7 @@ public class OrganizingDataActivity extends BaseActivity implements View.OnClick
                 strings1.add("1买大力");
                 strings1.add("1买小泰");
                 strings1.add("1一动不动是王八");
-                UtilsDialog.showDialog(this, "选择借款用途", strings1, new UtilsDialogCallBack() {
+                UtilsDialog.showDialogRadioGroup(this, "选择借款用途", strings1, new UtilsDialogCallBack() {
                     @Override
                     public void RadioGroupNum(int selectNum, String selectNumInfo) {
                         organizingdata_tv1.setText(selectNumInfo);
@@ -122,7 +122,7 @@ public class OrganizingDataActivity extends BaseActivity implements View.OnClick
                 strings2.add("2买大力");
                 strings2.add("2买小泰");
                 strings2.add("2一动不动是王八");
-                UtilsDialog.showDialog(this, "选择借款用途", strings2, new UtilsDialogCallBack() {
+                UtilsDialog.showDialogRadioGroup(this, "选择借款用途", strings2, new UtilsDialogCallBack() {
                     @Override
                     public void RadioGroupNum(int selectNum, String selectNumInfo) {
                         organizingdata_tv2.setText(selectNumInfo);
@@ -135,7 +135,7 @@ public class OrganizingDataActivity extends BaseActivity implements View.OnClick
                 strings3.add("3买大力");
                 strings3.add("3买小泰");
                 strings3.add("3一动不动是王八");
-                UtilsDialog.showDialog(this, "选择借款用途", strings3, new UtilsDialogCallBack() {
+                UtilsDialog.showDialogRadioGroup(this, "选择借款用途", strings3, new UtilsDialogCallBack() {
                     @Override
                     public void RadioGroupNum(int selectNum, String selectNumInfo) {
                         organizingdata_tv3.setText(selectNumInfo);
