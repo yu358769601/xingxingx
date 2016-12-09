@@ -114,16 +114,16 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
 
     // 加载完成时footer显示
     public void setLoadFull() {
-        loadIng.setVisibility(View.GONE);
+       // loadIng.setVisibility(View.GONE);
         //loadFull.setVisibility(VISIBLE);
-        progressBar.setVisibility(GONE);
+     //   progressBar.setVisibility(GONE);
         //loadFail.setVisibility(GONE);
     }
 
     // 正在加载时footer显示
     private void setloading() {
-        loadIng.setVisibility(View.VISIBLE);
-        progressBar.setVisibility(VISIBLE);
+       // loadIng.setVisibility(View.VISIBLE);
+       // progressBar.setVisibility(VISIBLE);
 //        loadIng.setVisibility(View.GONE);
 //        progressBar.setVisibility(GONE);
 

@@ -69,6 +69,7 @@
             android:gravity="center"
             android:padding="@dimen/size_base480_10dp"
             android:text="借款协议"
+            android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"/>
@@ -77,6 +78,7 @@
             android:gravity="center"
             android:text="服务协议"
             android:padding="@dimen/size_base480_10dp"
+            android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"/>

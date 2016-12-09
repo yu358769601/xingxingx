@@ -1,5 +1,7 @@
 package com.xinxinxuedai.MVP.ReimbursementActivity;
 
+import java.net.HttpURLConnection;
+
 /**
  * Created by 35876 于萌萌
  * 创建日期: 16:27 . 2016年12月07日
@@ -10,4 +12,10 @@ package com.xinxinxuedai.MVP.ReimbursementActivity;
  */
 
 public interface ReimbursementActivity_C {
+    /**
+     * 获取网络请求
+     * @param httpURLConnection
+     */
+    void getNetRequest(HttpURLConnection httpURLConnection);
+
 }

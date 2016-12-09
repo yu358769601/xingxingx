@@ -1,5 +1,7 @@
 package com.xinxinxuedai.view.xuedai_button;
 
+import android.view.View;
+
 /**
  * Created by 35876 于萌萌
  * 创建日期: 13:51 . 2016年11月30日
@@ -14,7 +16,7 @@ public interface button_CallBack {
 //    void getTextView(TextView textView);
 //    void TextViewSmallClick();
 //    void TextViewClick();
-    void button_Click();
+    void button_Click(View v);
 
 
 }

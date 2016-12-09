@@ -95,7 +95,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mTv1.setCallBack(new button_CallBack() {
 
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 LogUtils.i("tv1被点击了");
                 mTv1.setType(1);
                 mMainActivity_p.initClick(mTv1);
@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mTv2.setCallBack(new button_CallBack() {
 
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 LogUtils.i("tv2被点击了");
                 mTv2.setType(2);
                 mMainActivity_p.initClick(mTv2);
@@ -127,7 +127,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mTv3.setCallBack(new button_CallBack() {
 
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 LogUtils.i("tv3被点击了");
                 mTv3.setType(3);
                 mMainActivity_p.initClick(mTv3);
@@ -143,7 +143,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mTv4.setCallBack(new button_CallBack() {
 
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 LogUtils.i("tv4被点击了");
                 mTv4.setType(4);
                 mMainActivity_p.initClick(mTv4);

@@ -1,6 +1,7 @@
 package com.xinxinxuedai.ui;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -63,7 +64,7 @@ public class ApplyForActivity extends BaseActivity {
         mTv1.setCallBack(new button_CallBack() {
 
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 LogUtils.i("tv1被点击了");
                 mTv1.setType(1);
                 mApplyForActivity_p.initClick(mTv1);
@@ -79,7 +80,7 @@ public class ApplyForActivity extends BaseActivity {
         mTv2.setCallBack(new button_CallBack() {
 
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 LogUtils.i("tv2被点击了");
                 mTv2.setType(2);
                 mApplyForActivity_p.initClick(mTv2);
@@ -95,7 +96,7 @@ public class ApplyForActivity extends BaseActivity {
         mTv3.setCallBack(new button_CallBack() {
 
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 LogUtils.i("tv3被点击了");
                 mTv3.setType(3);
                 mApplyForActivity_p.initClick(mTv3);
@@ -111,7 +112,7 @@ public class ApplyForActivity extends BaseActivity {
         mTv4.setCallBack(new button_CallBack() {
 
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 LogUtils.i("tv4被点击了");
                 mTv4.setType(4);
                 mApplyForActivity_p.initClick(mTv4);

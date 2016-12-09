@@ -110,7 +110,7 @@ public class XueDaiButton extends RelativeLayout implements View.OnClickListener
         switch (v.getId()){
             case R.id.xuedai_button:
                 if (null!=mButton_callBack)
-                mButton_callBack.button_Click();
+                mButton_callBack.button_Click(v);
             break;
         }
     }

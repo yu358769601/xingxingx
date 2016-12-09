@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout_title"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home"
+    android:background="@drawable/shangchuanshipin"
     tools:context="com.xinxinxuedai.ui.UploadVideoActivity">
     <!--上传视频xml-->
     <ScrollView

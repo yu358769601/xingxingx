@@ -5,7 +5,9 @@
     android:id="@+id/relativeLayout_title"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/jihuajiekuan"
     tools:context="com.xinxinxuedai.ui.ApplicationStatusActivity">
+    <!--申请状态xml-->
     <RelativeLayout
         android:layout_below="@+id/relativeLayout_title"
         android:padding="@dimen/size_base480_10dp"

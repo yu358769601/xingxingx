@@ -186,7 +186,7 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
 
         uploadpictures_xd_1.setCallBack(new button_CallBack() {
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 if (null==videoUri){
                    //说明没有视频
                     UtilsToast.showToast(AppContext.getApplication(),"正在准备录制视频");

@@ -58,19 +58,32 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
         mView = inflater.inflate(R.layout.xuedai_button_2, this);
         //外框
         mXuedai_button_1 = (RelativeLayout) mView.findViewById(R.id.xuedai_button_1);
+        mXuedai_button_1.setOnClickListener(this);
+        mXuedai_button_1.setTag(1);
         //账户余额
         mXuedai_button_2_balance_of_account = (TextView) mView.findViewById(R.id.xuedai_button_2_balance_of_account);
+        mXuedai_button_2_balance_of_account.setOnClickListener(this);
+        mXuedai_button_2_balance_of_account.setTag(2);
         //充值按钮
         mXuedai_button_2_top_up = (TextView) mView.findViewById(R.id.xuedai_button_2_top_up);
+        mXuedai_button_2_top_up.setOnClickListener(this);
+        mXuedai_button_2_top_up.setTag(3);
         //借款金额
         mXuedai_button_2_borrow_money = (TextView) mView.findViewById(R.id.xuedai_button_2_borrow_money);
+        mXuedai_button_2_borrow_money.setOnClickListener(this);
+        mXuedai_button_2_borrow_money.setTag(4);
         //返还本金
         mXuedai_button_2_return_the_principal = (TextView) mView.findViewById(R.id.xuedai_button_2_return_the_principal);
+        mXuedai_button_2_return_the_principal.setOnClickListener(this);
+        mXuedai_button_2_return_the_principal.setTag(5);
         //左面条款
         mXuedai_button_2_tv1 = (TextView) mView.findViewById(R.id.xuedai_button_2_tv1);
+        mXuedai_button_2_tv1.setOnClickListener(this);
+        mXuedai_button_2_tv1.setTag(6);
         //右面条款
         mXuedai_button_2_tv2 = (TextView) mView.findViewById(R.id.xuedai_button_2_tv2);
-
+        mXuedai_button_2_tv2.setOnClickListener(this);
+        mXuedai_button_2_tv2.setTag(7);
 
     }
 
@@ -140,13 +153,8 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.xuedai_button_1:
-            //外框被点击了
-                mButton_callBack.button_Click();
-            break;
+                mButton_callBack.button_Click(v);
         }
     }
 
 
-}

@@ -3,21 +3,21 @@
 
     <item
         is-multidex="false"
-        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.1\jars\classes.jar"
+        jar="D:\android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="22.0.1"
-        sha1="3abb4b88f5a8a0584a9b01d3170d7165f12f8588">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-22.2.1_d048a7839b3ac33ada5c555025a60f8bd85ce6c4.jar" />
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1_beda813ab5e17befd13c8b85d378c2c79ba234af.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="22.0.1"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-22.2.1_56de2516b7b631248f753a3628d9d408980dd4a0.jar" />
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1_d3abd72bb9190fee2b3168999826ca6a092c55d5.jar" />
     </item>
     <item
         is-multidex="false"
@@ -30,21 +30,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="D:\android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\xinxinxuedai\library_XRefreshView\unspecified\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="22.0.1"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1_e6e8a34c2a4d04eb85bab03acb1b4266a8db0f15.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="22.0.1"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1_44ca290016304cec70f00905377a1b271c8c0556.jar" />
+        sha1="1a1af1a2d1760b4aef343fdde1c184f6b6346348">
+        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\xinxinxuedai-library_XRefreshView-unspecified_e41a2e283ba8c2c076749bbbb0d31354f614334e.jar" />
     </item>
     <item
         is-multidex="false"
@@ -54,6 +45,24 @@
         revision="22.0.1"
         sha1="b0969671903e2e10a3b783c117e04e9a38d2bde5">
         <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\xinxinxuedai-SmallVideoLib-unspecified_215640f16d5a070f38aa639c2e492b17e15d0ddb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.0.1_02c8664842c71c41e4527faf5ca8742fc8178b78.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.0.1_7f0b0e0306226a42bae90d3f8a96097f63660495.jar" />
     </item>
     <item
         is-multidex="false"

@@ -150,7 +150,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
         uploadpictures_xd_1
                 .setCallBack(new button_CallBack() {
                     @Override
-                    public void button_Click() {
+                    public void button_Click(View v) {
 
                         uploadpictures_xd_1.setTag(1);
                         mUploadPicturesActivity_p.xuedai_buttonClick(uploadpictures_xd_1);
@@ -165,7 +165,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
         uploadpictures_xd_2
                 .setCallBack(new button_CallBack() {
                     @Override
-                    public void button_Click() {
+                    public void button_Click(View v) {
 
                         uploadpictures_xd_2.setTag(2);
                         mUploadPicturesActivity_p.xuedai_buttonClick(uploadpictures_xd_2);
@@ -181,7 +181,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
         uploadpictures_xd_3
                 .setCallBack(new button_CallBack() {
                     @Override
-                    public void button_Click() {
+                    public void button_Click(View v) {
 
                         uploadpictures_xd_3.setTag(3);
                         mUploadPicturesActivity_p.xuedai_buttonClick(uploadpictures_xd_3);

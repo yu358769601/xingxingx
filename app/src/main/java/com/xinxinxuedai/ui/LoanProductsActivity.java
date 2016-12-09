@@ -1,6 +1,7 @@
 package com.xinxinxuedai.ui;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -49,7 +50,7 @@ public class LoanProductsActivity extends BaseActivity {
         mXuedaibutton_1 = (XueDaiButton_1) findViewById(R.id.xuedaibutton_1);
         mXuedaibutton_1.setCallBack(new button_CallBack() {
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 mXuedaibutton_1.setTag(1);
                 mLoanProductsActivity_p.onclicks(mXuedaibutton_1);
             }
@@ -63,7 +64,7 @@ public class LoanProductsActivity extends BaseActivity {
         mXuedaibutton_2 = (XueDaiButton_1) findViewById(R.id.xuedaibutton_2);
         mXuedaibutton_2.setCallBack(new button_CallBack() {
             @Override
-            public void button_Click() {
+            public void button_Click(View v) {
                 mXuedaibutton_2.setTag(2);
                 mLoanProductsActivity_p.onclicks(mXuedaibutton_2);
             }

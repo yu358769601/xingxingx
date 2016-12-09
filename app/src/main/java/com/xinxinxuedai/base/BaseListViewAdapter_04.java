@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.adapter.MyViewHolder_04;
 
@@ -62,15 +61,24 @@ public abstract class BaseListViewAdapter_04<T> extends BaseAdapter {
        return getViewType(mDatas.get(position),position);
 
     }
+//    //如果不是  正常 加上加载更多的话 就重写
+//    public int getViewType(T t ,int position){
+////        if (position == mDatas.size()) {
+////            LogUtils.i("已经到了最后了");
+////            return R.layout.item_listview_more_04;
+////        } else {
+//            return R.layout.item_0_12;
+//       // }
+//    }
     //如果不是  正常 加上加载更多的话 就重写
-    public int getViewType(T t ,int position){
-//        if (position == mDatas.size()) {
-//            LogUtils.i("已经到了最后了");
-//            return R.layout.item_listview_more_04;
-//        } else {
-            return R.layout.item_0_12;
-       // }
-    }
+
+    /**
+     * 基类不知道 你有什么样的布局 所以是抽象的
+     * @param t
+     * @param position
+     * @return
+     */
+    public abstract int getViewType(T t ,int position);
 
 
     @Override

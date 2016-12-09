@@ -56,15 +56,19 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
         mView = inflater.inflate(R.layout.xuedai_button_3, this);
         //外框
         mXuedai_button_3 = (RelativeLayout) mView.findViewById(R.id.xuedai_button_3);
+        mXuedai_button_3.setTag(1);
         //计划还款金额
         mXuedai_button_3_tv1_plan = (TextView) mView.findViewById(R.id.xuedai_button_3_tv1_plan);
+        mXuedai_button_3_tv1_plan.setTag(2);
         //分期
         mXuedai_button_3_tv_fenqi = (TextView) mView.findViewById(R.id.xuedai_button_3_tv_fenqi);
+        mXuedai_button_3_tv_fenqi.setTag(3);
         //计划还款日
         mXuedai_button_3_tv2_plan_day = (TextView) mView.findViewById(R.id.xuedai_button_3_tv2_plan_day);
+        mXuedai_button_3_tv2_plan_day.setTag(4);
         //逾期天数
         mXuedai_button_3_tv3_plan_day = (TextView) mView.findViewById(R.id.xuedai_button_3_tv3_plan_day);
-
+        mXuedai_button_3_tv3_plan_day.setTag(5);
 
     }
 
@@ -112,11 +116,7 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case 1:
-
-            break;
-        }
+        mButton_callBack.button_Click(v);
     }
 
 
