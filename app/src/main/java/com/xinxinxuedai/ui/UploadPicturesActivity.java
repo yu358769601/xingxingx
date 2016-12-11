@@ -44,6 +44,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
 
     private void init() {
         //注册广播接收者 接收 选择完了图片返回来的字符串
+        //接收_图片路径_广播
         IntentFilter filter = new IntentFilter("getData");
         registerReceiver(receiver, filter);
 
@@ -58,10 +59,10 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
         @Override
         public void onReceive(Context context, Intent intent) {
             //使用intent获取发送过来的数据
-
             String msg1 = intent.getStringExtra("1");
             LogUtils.i("过来的数据是1"+msg1);
             if (null!=msg1){
+
                 uploadpictures_xd_1
                         .setImage(msg1)
                         .setRelativeLayout_Pading(0,0,0,0);

@@ -18,18 +18,22 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsMeasure;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.upFile.HttpMultipartPost;
 import com.xinxinxuedai.view.VideoView.MyVideoView;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_1;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import mabeijianxi.camera.MediaRecorderActivity;
 import mabeijianxi.camera.VCamera;
@@ -240,7 +244,31 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
             //路径
             videoUri = intent.getStringExtra(MediaRecorderActivity.VIDEO_URI);
             LogUtils.i("回来的数据是"+videoUri);
-            openVideo();
+            FileInputStream soundStream = null;
+            try {
+                soundStream = new FileInputStream(videoUri);
+                String fileName = videoUri.substring(videoUri.lastIndexOf("/") + 1);
+                LogUtils.i("转换完的语音格式是"+fileName);
+                //发送请求 把语音地址发上去
+                String url = "http://192.168.4.102:8080/my/upload";
+                HttpMultipartPost post = new HttpMultipartPost(context, url, soundStream, fileName);
+                post.setCallBackMsg(new HttpMultipartPost.CallBackMsg() {
+                    @Override
+                    public void msg(JSONObject msg) {
+                        LogUtils.i("视频"+msg);
+                        openVideo();
+                    }
+                });
+                post.execute();
+                //post.execute(new HttpMultipartPost.Param("time", String.valueOf(Math.round(mTime))));
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+
         }
     }
 

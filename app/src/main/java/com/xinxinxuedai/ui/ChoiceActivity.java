@@ -13,16 +13,21 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.OtherUtils;
 import com.xinxinxuedai.Utils.UtilsBroadcastReceiver;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.Utils.imagezip.BitmapUtils;
+import com.xinxinxuedai.Utils.imagezip.ImageUtil;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.upFile.HttpMultipartPost;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -73,10 +78,32 @@ public class ChoiceActivity extends BaseActivity implements View.OnClickListener
 //            Uri parse = Uri.parse(cameraPath);
 //            String s = "file://" + cameraPath;
            // Uri parse = Uri.parse(mTmpFile);
-            String s = "file://" + mTmpFile;
+            final String s = "file://" + mTmpFile;
            // Log.e("parse", parse + "");
             LogUtils.i("返回来的照相机图片路径"+s);
-            UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getData",mClassTag+"",s);
+            String url = "http://192.168.4.102:8080/my/upload";
+            Uri parse = Uri.parse(s);
+            LogUtils.i("上传图片的过程");
+            //上传图片的过程
+            InputStream stream = ImageUtil.compressImage(BitmapUtils.getResizeBitmap(this, parse,350,true));
+            String fileName = s.substring(s.lastIndexOf("/") + 1);
+            HttpMultipartPost post = new HttpMultipartPost(this, url,stream,fileName);
+            post.setCallBack(new HttpMultipartPost.CallBack() {
+                @Override
+                public void update(Integer i) {
+                    LogUtils.i("上传图片返回来的百分比"+i);
+                }
+            });
+            post.setCallBackMsg(new HttpMultipartPost.CallBackMsg() {
+                @Override
+                public void msg(JSONObject msg) {
+                    LogUtils.i("上传图片返回来的数据"+msg);
+                    UtilsToast.showToast(ChoiceActivity.this, msg.getString("msg"));
+                    UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getData",mClassTag+"",s);
+                }
+            });
+            post.execute();
+
             finish();
           //  myuploadFile(s);
 
@@ -97,10 +124,33 @@ public class ChoiceActivity extends BaseActivity implements View.OnClickListener
                     //将光标移至开头 ，这个很重要，不小心很容易引起越界
                     cursor.moveToFirst();
                     //最后根据索引值获取图片路径
-                    String path = cursor.getString(column_index);
+                    final String path = cursor.getString(column_index);
                     //myuploadFile(path);
                     LogUtils.i("返回来的相册路径"+path);
-                    UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getData",mClassTag+"",path);
+
+                    String url = "http://192.168.4.102:8080/my/upload";
+                    Uri parse = Uri.parse(path);
+                    LogUtils.i("上传图片的过程");
+                    //上传图片的过程
+                    InputStream stream = ImageUtil.compressImage(BitmapUtils.getResizeBitmap(this, parse,350,true));
+                    String fileName = path.substring(path.lastIndexOf("/") + 1);
+                    HttpMultipartPost post = new HttpMultipartPost(this, url,stream,fileName);
+                    post.setCallBack(new HttpMultipartPost.CallBack() {
+                        @Override
+                        public void update(Integer i) {
+                            LogUtils.i("上传图片返回来的百分比"+i);
+                        }
+                    });
+                    post.setCallBackMsg(new HttpMultipartPost.CallBackMsg() {
+                        @Override
+                        public void msg(JSONObject msg) {
+                            LogUtils.i("上传图片返回来的数据"+msg);
+                            UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getData",mClassTag+"",path);
+                        }
+                    });
+                    post.execute();
+                    //发送_图片路径_广播
+
 
 
                     finish();
