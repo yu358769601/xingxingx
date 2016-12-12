@@ -15,6 +15,6 @@ import java.net.HttpURLConnection;
 
 public interface NetAesCallBack {
     void onSucceed(JSONObject jsonObject);
-    void onError(String errorString);
+    void onError(JSONObject errorString);
     void onBackHttpURLConnection(HttpURLConnection httpURLConnection);
 }

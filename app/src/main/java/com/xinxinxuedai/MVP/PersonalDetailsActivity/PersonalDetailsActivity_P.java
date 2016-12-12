@@ -3,10 +3,17 @@ package com.xinxinxuedai.MVP.PersonalDetailsActivity;
 import android.content.Context;
 import android.widget.EditText;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsMyText;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.SetInfo1;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.setInfo1_Request;
 
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -117,7 +124,7 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
                 case 5:
                     break;
                 case 6:
-                    if (UtilsMyText.getLengh(editText)<=11){
+                    if (UtilsMyText.getLengh(editText)<11){
                         UtilsToast.showToast(context, "紧急联系人电话长度小于11位");
                         return;
                     }
@@ -126,8 +133,49 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
 
 
         if (select!=-1){
-            UtilsToast.showToast(context, "网络请求中~");
+            //调用网络交互方法
+            call_setInfo1_Request(editTexts, select);
         }
+
+    }
+
+    private void call_setInfo1_Request(List<EditText> editTexts, int select) {
+        UtilsToast.showToast(context, "网络请求中~");
+
+        Hashtable<String, String> hashtable =
+                UtilsHashtable.getHashtable();
+        //身份认证
+        hashtable.put("loan_id", Share.getToken(context));
+        //性别
+        hashtable.put("loan_sex",""+select);
+        //名字
+        hashtable.put("loan_realname",editTexts.get(0).getText().toString().trim());
+        //身份证
+        hashtable.put("loan_card_id",editTexts.get(1).getText().toString().trim());
+        //微信号码
+        hashtable.put("loan_weixin",editTexts.get(2).getText().toString().trim());
+        //地址
+        hashtable.put("loan_address",editTexts.get(3).getText().toString().trim());
+        //父母名字
+        hashtable.put("loan_parent",editTexts.get(4).getText().toString().trim());
+        //父母电话
+        hashtable.put("loan_parent_mobile",editTexts.get(5).getText().toString().trim());
+
+
+        setInfo1_Request.request(context, hashtable, new NetWorkCallBack() {
+            @Override
+            public void onSucceed(JSONObject jsonObject) {
+                SetInfo1 setInfo1 = jsonObject.toJavaObject(SetInfo1.class);
+                UtilsToast.showToast(context, setInfo1.message);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+                UtilsToast.showToast(context, jsonObject);
+            }
+
+        });
+
 
     }
 }

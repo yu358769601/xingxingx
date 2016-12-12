@@ -3,6 +3,7 @@ package com.xinxinxuedai.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xinxinxuedai.MVP.LoanApplicationActivity.LoanApplicationActivity_CallBack;
@@ -28,14 +29,23 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
     private TextView mLoanapplication_et_2;
     private TextView mLoanapplication_et_3;
     private XueDaiButton_4 mLoanapplication_tv_zhou;
+    private EditText mLoanApplication_ed_1;
+    private int mClassTag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        View viewToLoad = LayoutInflater.from(this.getParent()).inflate(R.layout.activity_loan_application, null);
 //        this.setContentView(viewToLoad);
+        getBox();
         initView();
         initP();
+    }
+
+    private void getBox() {
+        Bundle extras = getIntent().getExtras();
+        mClassTag = extras.getInt("tag");
+
     }
 
     @Override
@@ -60,6 +70,9 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
 
         mLoanapplication_tv = (TextView) findViewById(R.id.loanapplication_tv);
         mLoanapplication_tv.setOnClickListener(this);
+        //描述
+        mLoanApplication_ed_1 = (EditText) findViewById(R.id.loanApplication_ed_1);
+
         //第一个
         mLoanapplication_et_1 = (TextView) findViewById(R.id.loanapplication_et_1);
         mLoanapplication_et_1.setOnClickListener(this);
@@ -91,6 +104,7 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
     public void initP() {
         mLoanApplicationActivity_p = LoanApplicationActivity_P.getLoanApplicationActivity_P(this);
         mLoanApplicationActivity_p.setCallBack(this);
+        mLoanApplicationActivity_p.setClassTag(mClassTag);
     }
 
     @Override
@@ -126,6 +140,11 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
             case R.id.loanapplication_tv_sub:
                 v.setTag(4);
                 mLoanApplicationActivity_p.clicks(v);
+                ArrayList<TextView> textViews = new ArrayList<>();
+                textViews.add(mLoanapplication_et_1);
+                textViews.add(mLoanapplication_et_2);
+                textViews.add(mLoanapplication_et_3);
+                mLoanApplicationActivity_p.request_SetLoanInfo_Request(textViews,mLoanApplication_ed_1);
                 break;
         }
     }

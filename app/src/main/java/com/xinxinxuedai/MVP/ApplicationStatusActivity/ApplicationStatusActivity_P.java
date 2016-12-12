@@ -2,14 +2,17 @@ package com.xinxinxuedai.MVP.ApplicationStatusActivity;
 
 import android.content.Context;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.bean.ApplicationStatusData;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.getLoanDetail_Request;
 
 /**
  * Created by 35876 于萌萌
  * 创建日期: 13:50 . 2016年12月06日
- * 描述:借款状态_P
+ * 描述:申请状态_P
  * <p>
  * <p>
  * 备注:
@@ -42,7 +45,23 @@ public class ApplicationStatusActivity_P extends BaseMvp<ApplicationStatusActivi
      */
     @Override
     public void getData() {
-        UtilsToast.showToast(context, "获取网络借款状态中~");
+      UtilsToast.showToast(context, "获取网络借款状态中~");
+        //测试页面
+        getLoanDetail_Request.request(context, new NetWorkCallBack() {
+            @Override
+            public void onSucceed(JSONObject jsonObject) {
+
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+
+
+
+
         //获取到了网络数据
         ApplicationStatusData applicationStatusData = new ApplicationStatusData("1", "2", "3", "4", "5");
 

@@ -54,33 +54,6 @@ public class SendNetMessage  implements Runnable {
         status = SENDORDER_CALLBACK;
     }
 
-    // msgObject.put("action", "SendNetMessage");
-    // msgObject.put("passenger_id", passenger_id); //乘客Id
-    // msgObject.put("begion_address", begion_address); //开始地址
-    // msgObject.put("end_address", end_address); //终点地址
-    // msgObject.put("begion_lat", begion_lat); //开始纬度
-    // msgObject.put("begion_lon", begion_lon); //开始经度
-    // msgObject.put("end_lat", end_lat); //终点纬度
-    // msgObject.put("end_lon", end_lon); //终点经度
-    // msgObject.put("order_number", order_number); //打车人数
-    // msgObject.put("order_type", order_type); //0、马上打车 1、预约打车
-    // msgObject.put("order_compute_mileage", order_compute_mileage); //预估里程
-    // msgObject.put("order_compute_money", order_compute_money); //预估价格
-    // msgObject.put("order_compute_time", order_compute_time); //预估时间
-
-    //            msgObject.put("action", "SendNetMessage");
-//            msgObject.put("passenger_id", "1");
-//            msgObject.put("begion_address", "共乐街道通达街262号聚贤花园");
-//            msgObject.put("end_address", "太平国际机场");
-//            msgObject.put("begion_lat", "45.746542");
-//            msgObject.put("begion_lon", "126.605064");
-//            msgObject.put("end_lat", "45.622432");
-//            msgObject.put("end_lon", "126.243605");
-//            msgObject.put("order_number", "1");
-//            msgObject.put("order_type", "1");
-//            msgObject.put("order_compute_mileage", "34.5");
-//            msgObject.put("order_compute_money", "90.28");
-//            msgObject.put("order_compute_time", "45");
     @Override
     public void run() {
         // TODO Auto-generated method stub
@@ -119,7 +92,7 @@ public class SendNetMessage  implements Runnable {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            netAesCallBack.onError("网络数据返回为空");
+                            netAesCallBack.onError(mJsonObject);
                         }
                     });
                     return;
@@ -148,10 +121,10 @@ public class SendNetMessage  implements Runnable {
                                     netAesCallBack.onSucceed(mJsonObject);
                                 }else{
 
-                                    netAesCallBack.onError(mResult +"json数据错误"+ mJsonObject.toString());
+                                    netAesCallBack.onError(mJsonObject);
                                 }
                             }catch (Exception e){
-                                netAesCallBack.onError(mResult +"json数据错误"+ mJsonObject.toString());
+                                netAesCallBack.onError(mJsonObject);
                             }
 
 
@@ -159,6 +132,7 @@ public class SendNetMessage  implements Runnable {
                     });
 
                 }else{
+                    //正式
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -169,10 +143,10 @@ public class SendNetMessage  implements Runnable {
                                     netAesCallBack.onSucceed(mJsonObject);
                                 }else{
 
-                                    netAesCallBack.onError(mResult +"json数据错误"+ mJsonObject.toString());
+                                    netAesCallBack.onError(mJsonObject);
                                 }
                             }catch (Exception e){
-                                netAesCallBack.onError(mResult +"json数据错误"+ mJsonObject.toString());
+                                netAesCallBack.onError(mJsonObject);
                             }
 
 
@@ -197,7 +171,7 @@ public class SendNetMessage  implements Runnable {
                 @Override
                 public void run() {
                     if (null!=netAesCallBack)
-                        netAesCallBack.onError("json解析数据错误");
+                        netAesCallBack.onError(mJsonObject);
                 }
             });
             e.printStackTrace();

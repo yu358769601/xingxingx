@@ -29,6 +29,11 @@ public class Constants {
 //	public static String image_url = "http://192.168.0.202/wangyueche/upload_img.php?app=ruida&passenger_id=";
 //	public static String fangwen_image_url = "http://192.168.0.202/wangyueche/upload_file/";
 
+	//学贷
+	public static String new_url = "http://192.168.0.202/qichen/loan_mobile1.php";
+	public static String image_url = "http://192.168.0.202/wangyueche/upload_img.php?app=ruida&passenger_id=";
+	public static String fangwen_image_url = "http://192.168.0.202/wangyueche/upload_file/";
+
 	//正式服务器
 //	public static String new_url = "http://59.110.11.60/ruida_passenger.php";
 //	public static String image_url = "http://59.110.11.60/upload_img.php?app=ruida&passenger_id=";
@@ -37,9 +42,12 @@ public class Constants {
 	//微信支付
 	public static String weixin_url = "http://59.110.11.60/weixin.php";
 
-	public static String key = "heilongjiang-rdk";
-	public static String iv = "kuaiche-jsycc-16";
-	
+//	public static String key = "heilongjiang-rdk";
+//	public static String iv = "kuaiche-jsycc-16";
+//
+	public static String key = "heilongjiang-qch";
+	public static String iv = "jiekuan-jsycc-16";
+
 	public static String base_url = "http://siyuan.mashangyouli.com:8005/admin/ContentType.php?company=qhdx";
 
 	//public static String zhifubaoPay = base_url+

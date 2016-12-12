@@ -13,6 +13,11 @@ public class Share {
     public static void saveToken(Context context,String token){
         save(context,"token",token);
     }
+    public static void savePhoneNum(Context context,String phoneNum){
+        save(context,"phoneNum",phoneNum);
+    }
+
+
     public static void savefirst(Context context,boolean mboolean){
         save(context,"mboolean",mboolean);
     }
@@ -26,6 +31,9 @@ public class Share {
     public static boolean checkLogin(Context context){
         return !TextUtils.isEmpty(getToken(context));
     }
+    public static boolean checkPhoneNum(Context context){
+        return !TextUtils.isEmpty(getPhoneNum(context));
+    }
     public static boolean checkLocation(Context context){
         return !TextUtils.isEmpty(getToken(context));
     }
@@ -33,6 +41,10 @@ public class Share {
     public static String getToken(Context context){
         return getString(context,"token");
     }
+    public static String getPhoneNum(Context context){
+        return getString(context,"phoneNum");
+    }
+
     public static String getLocation(Context context){
         if (TextUtils.isEmpty(getString(context,"location"))){
             return "全国";

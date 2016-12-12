@@ -1,14 +1,12 @@
 package com.xinxinxuedai.ui;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xinxinxuedai.MVP.LoginActivity.LoginActivity_C;
 import com.xinxinxuedai.MVP.LoginActivity.LoginActivity_P;
@@ -19,7 +17,7 @@ import com.xinxinxuedai.view.initAction_Bar;
 
 import java.util.ArrayList;
 
-//登录页activity
+//登陆activity
 public class LoginActivity extends BaseActivity implements View.OnClickListener ,LoginActivity_C {
 
 
@@ -105,24 +103,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     }
 
-    private void submit() {
-        // validate
-        String num = login_et_phone_num.getText().toString().trim();
-        if (TextUtils.isEmpty(num)) {
-            Toast.makeText(this, "手机号", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String passworld = login_et_passworld.getText().toString().trim();
-        if (TextUtils.isEmpty(passworld)) {
-            Toast.makeText(this, "密码", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // TODO validate success, do something
-
-
-    }
 
     @Override
     public void onClick(View v) {

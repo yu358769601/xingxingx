@@ -230,9 +230,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             //点击了验证码
             case R.id.register_cunttime:
                 if (!TextUtils.isEmpty(register_et_phonenum.getText())&&register_et_phonenum.length()==11){
-                    v.setTag(1);
+                    v.setTag(R.id.phone_num,register_et_phonenum);
                     mRegisterActivity_p.onClick(v);
                     mRegister_cunttime.setEnabled(false);
+
                 }else{
                     UtilsToast.showToast(this, "电话号码格式不正确");
                 }

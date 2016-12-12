@@ -5,15 +5,22 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.userLogin;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.userLogin_Request;
 
+import java.util.Hashtable;
 import java.util.List;
 
 /**
  * Created by 35876 于萌萌
  * 创建日期: 10:47 . 2016年12月04日
- * 描述:
+ * 描述:逻辑_登陆界面
  * <p>
  * <p>
  * 备注:
@@ -97,9 +104,12 @@ public class LoginActivity_P extends BaseMvp<LoginActivity_C> implements LoginAc
         if (editText1.length()==11){
             //密码是否大于最小位数8
             if (editText2.length()>=8){
-                // LoginRequest
+                // userRegist_Request
                 //发送登陆的请求
                 UtilsToast.showToast(context, "登陆中~");
+                //去登陆
+                call_Login(editText1, editText2);
+
             }else{
                 UtilsToast.showToast(context, "密码长度小于8位");
                 return;
@@ -112,6 +122,37 @@ public class LoginActivity_P extends BaseMvp<LoginActivity_C> implements LoginAc
 
 
 
+    }
+
+    /**
+     * 登陆请求
+     * @param editText1 手机号码
+     * @param editText2 密码
+     */
+    private void call_Login(EditText editText1, EditText editText2) {
+        Hashtable<String, String> hashtable =
+                UtilsHashtable.getHashtable();
+        //手机号码
+        hashtable.put("loan_mobile",editText1.getText().toString().trim());
+        //密码
+        hashtable.put("loan_pwd",editText2.getText().toString().trim());
+        userLogin_Request.request(context, hashtable, new NetWorkCallBack() {
+            @Override
+            public void onSucceed(JSONObject jsonObje) {
+                userLogin userLogin = jsonObje.toJavaObject(userLogin.class);
+                String message = userLogin.message;
+                UtilsToast.showToast(context, message);
+                String loan_id = userLogin.data.loan_id;
+                Share.saveToken(context, loan_id);
+                String loan_mobile = userLogin.data.loan_mobile;
+                Share.savePhoneNum(context, loan_mobile);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+                UtilsToast.showToast(context, jsonObject);
+            }
+        });
     }
 
 

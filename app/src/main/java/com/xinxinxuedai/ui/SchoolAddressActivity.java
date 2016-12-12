@@ -11,25 +11,34 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.xinxinxuedai.MVP.SchoolAddressActivity.SchoolAddressActivity_C;
+import com.xinxinxuedai.MVP.SchoolAddressActivity.SchoolAddressActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopTextView;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
-//学校地址activity
-public class SchoolAddressActivity extends BaseActivity implements View.OnClickListener {
+import java.util.ArrayList;
+
+
+//选择地区activity
+public class SchoolAddressActivity extends BaseActivity implements View.OnClickListener, SchoolAddressActivity_C {
 
     private TextView schooladdress_tv;
     private EditText schooladdress_et_1;
     private EditText schooladdress_et_2;
+    private TextView schooladdress_tv_sub;
     private TextView schooladdress_tv2;
     private RelativeLayout schooladdress_rl;
     private initAction_Bar relativeLayout_title;
     private InnerReceiver mReceiver;
+    private SchoolAddressActivity_P mP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initP();
         //接收_选中城市_广播
         initRegisterReceiver();
         initView();
@@ -65,6 +74,9 @@ public class SchoolAddressActivity extends BaseActivity implements View.OnClickL
 
         schooladdress_tv2 = (TextView) findViewById(R.id.schooladdress_tv2);
         schooladdress_tv2.setOnClickListener(this);
+
+        schooladdress_tv_sub = (TextView) findViewById(R.id.schooladdress_tv_sub);
+        schooladdress_tv_sub.setOnClickListener(this);
 
         schooladdress_rl = (RelativeLayout) findViewById(R.id.schooladdress_rl);
         schooladdress_rl.setOnClickListener(this);
@@ -115,7 +127,8 @@ public class SchoolAddressActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void initP() {
-
+        mP = SchoolAddressActivity_P.getP(this);
+        mP.setCallBack(this);
     }
 
     @Override
@@ -143,6 +156,20 @@ public class SchoolAddressActivity extends BaseActivity implements View.OnClickL
                   intent.setClass(this,SelectCityActivity.class);
                   startActivity(intent);
               break;
+              case R.id.schooladdress_tv_sub:
+                  ArrayList<TextView> array = new ArrayList<>();
+                  array.add(schooladdress_tv);
+                  array.add(schooladdress_et_1);
+                  array.add(schooladdress_tv2);
+                  array.add(schooladdress_et_2);
+                  ArrayList<TextView> views = UtilsLoopTextView.addTagList(array);
+                  final ArrayList<String> strings = new ArrayList<>();
+                  strings.add("学校所在地区为空");
+                  strings.add("学校名字为空");
+                  strings.add("学校所在地区未选择");
+                  strings.add("门牌号为空");
+                  mP.setSub(views,strings);
+                  break;
           }
     }
 }

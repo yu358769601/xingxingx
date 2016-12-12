@@ -3,10 +3,15 @@ package com.xinxinxuedai.MVP.BankCardInfoActivity;
 import android.content.Context;
 import android.widget.EditText;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsMyText;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.setInfo3_Request;
 
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -71,40 +76,24 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
 
 
         }
-//        for (int i = 0; i < editTexts.size(); i++) {
-//            EditText editText = editTexts.get(i);
-//            //String string = editText.getText().toString();
-//            int tag = (int) editText.getTag();
-//
-//            //判断长度是否够用
-//            switch (tag) {
-//                case 1:
-//                    break;
-//                case 2:
-//                    if (UtilsMyText.getLengh(editText)<=11){
-//                        UtilsToast.showToast(context, "身份证长度不正确");
-//                        return;
-//                    }
-//
-//                case 3:
-//                    break;
-//                case 4:
-//                    if (UtilsMyText.getLengh(editText)<=8){
-//                        UtilsToast.showToast(context, "家庭住址长度不正确");
-//                        return;
-//                    }
-//                case 5:
-//                    break;
-//                case 6:
-//                    if (UtilsMyText.getLengh(editText)<=11){
-//                        UtilsToast.showToast(context, "紧急联系人电话长度小于11位");
-//                        return;
-//                    }
-//            }
-//        }
 
 
             UtilsToast.showToast(context, "网络请求中~");
+        Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
+        hashtable.put("loan_bank_card","");
+        hashtable.put("loan_bank_name","");
+        hashtable.put("loan_bank_open","");
 
+        setInfo3_Request.request(context, hashtable, new NetWorkCallBack() {
+            @Override
+            public void onSucceed(JSONObject jsonObject) {
+
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
     }
 }

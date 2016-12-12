@@ -2,6 +2,7 @@ package com.xinxinxuedai.MVP.LoanProductsActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
@@ -45,10 +46,19 @@ public class LoanProductsActivity_P extends BaseMvp<LoanProductsActivity_CallBac
     @Override
     public void onclicks(View view) {
         Intent intent = new Intent();
+        Bundle bundle = new Bundle();
         switch ((int)view.getTag()){
 
                 case 1:
                     intent.setClass(context, LoanApplicationActivity.class);
+                    bundle.putInt("tag",0);
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                break;
+                case 2:
+                    intent.setClass(context, LoanApplicationActivity.class);
+                    bundle.putInt("tag",1);
+                    intent.putExtras(bundle);
                     context.startActivity(intent);
                 break;
         }

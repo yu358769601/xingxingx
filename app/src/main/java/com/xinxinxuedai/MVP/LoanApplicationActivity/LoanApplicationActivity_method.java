@@ -1,9 +1,10 @@
 package com.xinxinxuedai.MVP.LoanApplicationActivity;
 
-import android.content.Context;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-import java.util.Hashtable;
+import java.util.List;
 
 /**
  * Created by 35876 于萌萌
@@ -22,11 +23,16 @@ public interface LoanApplicationActivity_method {
      */
     void clicks(View view);
 
-    /**
-     * 调用网络请求 把 需要的参数 传过去
-     * @param context 上下文
-     * @param hashtable 字段 内容等
-     */
-    void requestOperation(Context context , Hashtable hashtable);
 
+    /**
+     * 传送结果集 上传服务器 发送请求
+     * @param textViews
+     */
+    void request_SetLoanInfo_Request(List<TextView> textViews, EditText editText);
+
+    /**
+     * 我是点了什么而 进来这个界面的
+     * @param classTag
+     */
+    void setClassTag(int classTag);
 }

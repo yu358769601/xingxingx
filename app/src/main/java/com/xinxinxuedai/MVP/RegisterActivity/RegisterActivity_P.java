@@ -4,18 +4,30 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.RegisterActivity.countTime.Register_countTime_P;
+import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.registSms;
+import com.xinxinxuedai.bean.userRegist;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.registSms_Request;
+import com.xinxinxuedai.request.userRegist_Request;
 import com.xinxinxuedai.ui.RegisterActivity;
 
+import java.net.HttpURLConnection;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
  * Created by 35876 于萌萌
  * 创建日期: 11:12 . 2016年12月01日
- * 描述:登陆界面的逻辑
+ * 描述:注册界面的逻辑
  * <p>
  * <p>as
  * 备注:
@@ -50,25 +62,53 @@ public class RegisterActivity_P implements RegisterActivity_M {
 
     @Override
     public void onClick(View view) {
-        switch ((int)view.getTag()){
-            //按下去的是倒计时
-            case 1:
+        if ((TextView) view.getTag(R.id.phone_num) instanceof TextView){
 
-                //发送验证码的请求  SendBy_Request  请求成功了 之后 才开始倒计时
+            TextView tag = (TextView) view.getTag(R.id.phone_num);
+            //发送验证码的请求  registSms_Request  请求成功了 之后 才开始倒计时
+            sendSMS(tag);
+        }else{
+            switch ((int)view.getTag()){
+                //按下去的是倒计时
+                case 1:
+                    break;
+                //按下去确定注册
+                case 2:
+                    LogUtils.i("点击了注册");
+                    break;
+                //按下去的是确认重置
+                case 3:
+                    LogUtils.i("点击了重置");
+                    break;
+            }
+        }
 
+
+
+    }
+
+    private void sendSMS(TextView tag) {
+        Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
+        hashtable.put("loan_mobile",tag.getText().toString().trim());
+        HttpURLConnection request = registSms_Request.request(context, hashtable, new NetWorkCallBack() {
+            @Override
+            public void onSucceed(JSONObject jsonObject) {
+                registSms registSms = jsonObject.toJavaObject(registSms.class);
+                String code = registSms.data.code;
+                String message = registSms.message;
+                UtilsToast.showToast(context, message);
                 LogUtils.i("点击了注册/重置验证码倒计时");
                 mRegister_countTime_p.startCountDown();
+            }
 
-            break;
-            //按下去确定注册
-            case 2:
-                LogUtils.i("点击了注册");
-            break;
-            //按下去的是确认重置
-            case 3:
-                LogUtils.i("点击了重置");
-            break;
-        }
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+
+
+
     }
 
     @Override
@@ -134,13 +174,16 @@ public class RegisterActivity_P implements RegisterActivity_M {
         if (editText1.length()==11){
             //密码是否大于最小位数8
             if (editText3.length()>=8&&s3.equals(s4)){
-                // LoginRequest
-                //发送登陆的请求
+                // userRegist_Request
+                //发送注册的请求
                 if (classtag ==RegisterActivity.REGISTERCLASS){
 
                     UtilsToast.showToast(context, "注册中~");
+                    //去注册
+                    call_Userlogin(editText1, editText3);
 
                 }else if (classtag ==RegisterActivity.AGAINCLASS){
+
                     UtilsToast.showToast(context, "重置中~");
                 }
 
@@ -158,5 +201,36 @@ public class RegisterActivity_P implements RegisterActivity_M {
         }
 
 
+    }
+
+    /**
+     * 登陆的方法
+     * @param editText1 手机号码
+     * @param editText3 密码
+     */
+    private void call_Userlogin(EditText editText1, EditText editText3) {
+        Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
+        //手机号码
+        hashtable.put("loan_mobile",editText1.getText().toString().trim());
+        //手机密码
+        hashtable.put("loan_pwd",editText3.getText().toString().trim());
+        //注册来源
+        hashtable.put("loan_from","android");
+        //推荐码
+        hashtable.put("tuijianma","");
+        userRegist_Request.request(context, hashtable, new NetWorkCallBack() {
+            @Override
+            public void onSucceed(JSONObject jsonObject) {
+                userRegist userRegist = jsonObject.toJavaObject(userRegist.class);
+                String user_id = userRegist.data.user_id;
+                Share.saveToken(context, user_id);
+                UtilsToast.showToast(context, userRegist.message);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+                UtilsToast.showToast(context, jsonObject);
+            }
+        });
     }
 }

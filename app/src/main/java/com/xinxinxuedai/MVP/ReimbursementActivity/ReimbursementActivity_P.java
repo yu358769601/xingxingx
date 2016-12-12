@@ -9,15 +9,14 @@ import com.andview.refreshview.XRefreshView;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsToast;
-import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.adapter.MyListView_04_more;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.bean.huandaiItem;
+import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.RepaymentListRequest;
 import com.xinxinxuedai.ui.TopUpActivity;
 import com.xinxinxuedai.view.MyListView;
 
-import java.net.HttpURLConnection;
 import java.util.ArrayList;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
@@ -93,21 +92,17 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
 
     @NonNull
     private ArrayList<huandaiItem> sendRepaymentListRequest() {
-        RepaymentListRequest.request(context, new NetAesCallBack() {
+        RepaymentListRequest.request(context, new NetWorkCallBack() {
             @Override
             public void onSucceed(JSONObject jsonObject) {
 
             }
 
             @Override
-            public void onError(String errorString) {
+            public void onError(String jsonObject) {
 
             }
 
-            @Override
-            public void onBackHttpURLConnection(HttpURLConnection httpURLConnection) {
-                reimbursementActivity_c.getNetRequest(httpURLConnection);
-            }
         });
 
 
@@ -121,20 +116,15 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
     }
     @NonNull
     private ArrayList<huandaiItem> sendRepaymentListRequestTo() {
-        RepaymentListRequest.requestmore(context, new NetAesCallBack() {
+        RepaymentListRequest.requestmore(context, new NetWorkCallBack() {
             @Override
             public void onSucceed(JSONObject jsonObject) {
 
             }
 
             @Override
-            public void onError(String errorString) {
+            public void onError(String jsonObject) {
 
-            }
-
-            @Override
-            public void onBackHttpURLConnection(HttpURLConnection httpURLConnection) {
-                reimbursementActivity_c.getNetRequest(httpURLConnection);
             }
         });
 
