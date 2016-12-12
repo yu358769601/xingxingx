@@ -15,7 +15,7 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogCallBack;
-import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopTextView;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
@@ -147,16 +147,16 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
             break;
             //点了提交
             case R.id.bank_card_info_tv_sub:
-                if (bank_card_info_tv1_bank.getText().toString().length()==0){
-                    UtilsToast.showToast(this, "银行卡未选择");
-                    return;
-                }
-                ArrayList<EditText> editTexts = new ArrayList<>();
-                bank_card_info_tv2_open_bank_name.setTag(2);
+                ArrayList<TextView> editTexts = new ArrayList<>();
+                editTexts.add(bank_card_info_tv1_bank);
                 editTexts.add(bank_card_info_tv2_open_bank_name);
-                bank_card_info_tv3_bank_card_num.setTag(3);
                 editTexts.add(bank_card_info_tv3_bank_card_num);
-                mBankCardInfoActivity_p.getEdtexts(editTexts);
+                ArrayList<TextView> editTexts1 = UtilsLoopTextView.addTagList(editTexts);
+                ArrayList<String> list = new ArrayList<>();
+                list.add("未选择银行卡");
+                list.add("开户行名称没有填写");
+                list.add("银行卡号没有填写");
+                mBankCardInfoActivity_p.getEdtexts(editTexts1,list);
 
                 break;
         }

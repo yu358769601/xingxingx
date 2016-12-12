@@ -1,5 +1,6 @@
 package com.xinxinxuedai.Utils.UtilsLoop;
 
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,12 +34,40 @@ public class UtilsLoopTextView {
         }
         utilsLoopCallBack.onSucceed();
     }
+    /**
+     * 能识别 传送进来的 集合是否有内容为空的
+     * 如果 有 就回调 有问题的那个 还有出现问题的 集合索引
+     * @param textViews
+     * @param utilsLoopCallBack
+     */
+    public static void startLoopedit(ArrayList<EditText> textViews ,ArrayList<String> textInfo,UtilsLoopCallBack utilsLoopCallBack){
+        for (int i = 0; i < textViews.size(); i++) {
+            EditText textView = textViews.get(i);
+            int tag = (int) textView.getTag();
+            if (textView.length()==0){
+                utilsLoopCallBack.onError(textView,i,textInfo.get(i));
+                return;
+            }
+        }
+        utilsLoopCallBack.onSucceed();
+    }
 
     /**
      * 给这个集合设置了tag
      * @param textViews
      */
     public static ArrayList<TextView>  addTagList(ArrayList<TextView> textViews){
+        for (int i = 0; i < textViews.size(); i++) {
+            TextView textView = textViews.get(i);
+            textView.setTag(i);
+        }
+        return textViews;
+    }
+    /**
+     * 给这个集合设置了tag
+     * @param textViews
+     */
+    public static ArrayList<EditText>  addTagListedit(ArrayList<EditText> textViews){
         for (int i = 0; i < textViews.size(); i++) {
             TextView textView = textViews.get(i);
             textView.setTag(i);

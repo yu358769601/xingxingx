@@ -3,84 +3,84 @@
 
     <item
         is-multidex="false"
-        jar="D:\android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="22.0.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1_beda813ab5e17befd13c8b85d378c2c79ba234af.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="22.0.1"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1_d3abd72bb9190fee2b3168999826ca6a092c55d5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.alibaba\fastjson\1.2.17\be249d63279f79d827a6bb0328b7d7938730c694\fastjson-1.2.17.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="22.0.1"
-        sha1="be249d63279f79d827a6bb0328b7d7938730c694">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\fastjson-1.2.17_00d7c8f29620068a19b9dbb5104044de57b732a4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\xinxinxuedai\library_XRefreshView\unspecified\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="22.0.1"
-        sha1="1a1af1a2d1760b4aef343fdde1c184f6b6346348">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\xinxinxuedai-library_XRefreshView-unspecified_e41a2e283ba8c2c076749bbbb0d31354f614334e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\xinxinxuedai\SmallVideoLib\unspecified\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="22.0.1"
-        sha1="b0969671903e2e10a3b783c117e04e9a38d2bde5">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\xinxinxuedai-SmallVideoLib-unspecified_215640f16d5a070f38aa639c2e492b17e15d0ddb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="22.0.1"
-        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.0.1_02c8664842c71c41e4527faf5ca8742fc8178b78.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="22.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.0.1_7f0b0e0306226a42bae90d3f8a96097f63660495.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.6.0\a7537446a030da8eb0da4c71424d16c2589f6c4a\glide-3.6.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="22.0.1"
-        sha1="a7537446a030da8eb0da4c71424d16c2589f6c4a">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\glide-3.6.0_660a6f025f5601321e88b4acb58e9f0734e3c85e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.0\c4ba5371a29ac9b2ad6129b1d39ea38750043eff\gson-2.8.0.jar"
-        jumboMode="false"
+        jar="C:\Users\35876\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.0\c4ba5371a29ac9b2ad6129b1d39ea38750043eff\gson-2.8.0.jar"
+        jumboMode="true"
         optimize="true"
         revision="22.0.1"
         sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\gson-2.8.0_eca52502deb48db964b5e6d39d16c5eaa7bb0998.jar" />
+        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\pre-dexed\debug\gson-2.8.0_a552f7d86aebee588c9f507d77ee9560ca4e18a3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\35876\Desktop\xuedai\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.0.1_84098abd88c8a78175cd86aa2f5bd8c9841f7576.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\35876\Desktop\xuedai\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="a3dc34b6103b712589b3bc9d95626779679fa901">
+        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\pre-dexed\debug\instant-run_09007962b42640864c2c856c6c7757b9c417969a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\35876\.gradle\caches\modules-2\files-2.1\com.alibaba\fastjson\1.2.17\be249d63279f79d827a6bb0328b7d7938730c694\fastjson-1.2.17.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="be249d63279f79d827a6bb0328b7d7938730c694">
+        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\pre-dexed\debug\fastjson-1.2.17_93fc900a2c4075156a7177721440832307e58260.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\35876\Desktop\xuedai\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="d6876cb32d45e4fcdbfeef537ac9a83bfdd22cc1">
+        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_fb1a48b8a909e1c40fc51e2664dc5f6ac9f30437.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\35876\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.6.0\a7537446a030da8eb0da4c71424d16c2589f6c4a\glide-3.6.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="a7537446a030da8eb0da4c71424d16c2589f6c4a">
+        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\pre-dexed\debug\glide-3.6.0_f4c411c38dbd1fec9e2b28278c1c9e155e85e23d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1_0b647dca3be3ed2a5d5a3c2616b3fb3b066ae560.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\35876\Desktop\xuedai\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.0.1_d0a341f0c59b0adcbca7017de56c14af98501c0f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\35876\Desktop\xuedai\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="C:\Users\35876\Desktop\xuedai\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1_72a74bbc9e1b0a4b9fadd5b4559da1b1ee0213a2.jar" />
     </item>
 
 </items>

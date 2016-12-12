@@ -1,18 +1,20 @@
 package com.xinxinxuedai.MVP.BankCardInfoActivity;
 
 import android.content.Context;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
-import com.xinxinxuedai.Utils.UtilsMyText;
+import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopCallBack;
+import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopTextView;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.setInfo3_Request;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 
 /**
  * Created by 35876 于萌萌
@@ -52,37 +54,33 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
      * @param editTexts
      */
     @Override
-    public void getEdtexts(List<EditText> editTexts) {
-        if (editTexts.size()==0||null == editTexts){
-            return;
-        }
-        for (int i = 0; i < editTexts.size(); i++) {
-            EditText editText = editTexts.get(i);
-            int tag = (int) editText.getTag();
-            //判断是否为空
-            if (UtilsMyText.isEmptys(editText)){
-                switch (tag) {
-                    case 1:
-                        UtilsToast.showToast(context, "未选择银行卡");
-                        return;
-                    case 2:
-                        UtilsToast.showToast(context, "开户行名称没有填写");
-                        return;
-                    case 3:
-                        UtilsToast.showToast(context, "银行卡号没有填写");
-                        return;
-                }
+    public void getEdtexts(ArrayList<TextView> editTexts, ArrayList<String> strings) {
+        UtilsLoopTextView.startLoop(editTexts, strings, new UtilsLoopCallBack() {
+            @Override
+            public void onSucceed() {
+                //访问网络
+                //UtilsToast.showToast(context, "网络请求中~");
+                //  call_setInfo3_Request(editTexts);
             }
 
+            @Override
+            public void onError(View view, int numTag, String rroreInfo) {
+                UtilsToast.showToast(context, rroreInfo);
+                return;
+            }
+        });
 
-        }
+    }
 
+    private void call_setInfo3_Request(ArrayList<TextView> editTexts) {
 
-            UtilsToast.showToast(context, "网络请求中~");
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
-        hashtable.put("loan_bank_card","");
-        hashtable.put("loan_bank_name","");
-        hashtable.put("loan_bank_open","");
+        //银行名字(选择得到)
+        hashtable.put("loan_bank_name",editTexts.get(0).getText().toString().trim());
+        //开户行 名字
+        hashtable.put("loan_bank_open",editTexts.get(1).getText().toString().trim());
+        //银行卡号
+        hashtable.put("loan_bank_card",editTexts.get(2).getText().toString().trim());
 
         setInfo3_Request.request(context, hashtable, new NetWorkCallBack() {
             @Override

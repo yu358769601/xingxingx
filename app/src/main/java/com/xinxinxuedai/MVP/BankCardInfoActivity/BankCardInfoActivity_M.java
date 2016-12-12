@@ -1,8 +1,8 @@
 package com.xinxinxuedai.MVP.BankCardInfoActivity;
 
-import android.widget.EditText;
+import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by 35876 于萌萌
@@ -18,5 +18,5 @@ public interface BankCardInfoActivity_M {
      * 获取 这个页面上所有的 editText
      * @param editTexts
      */
-    void getEdtexts(List<EditText> editTexts);
+    void getEdtexts(ArrayList<TextView> editTexts, ArrayList<String> strings);
 }

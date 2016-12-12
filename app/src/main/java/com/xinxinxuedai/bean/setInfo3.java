@@ -10,4 +10,14 @@ package com.xinxinxuedai.bean;
  */
 
 public class setInfo3 {
+//    //银行名字(选择得到)
+//    hashtable.put("loan_bank_name",editTexts.get(0).getText().toString().trim());
+//    //开户行 名字
+//    hashtable.put("loan_bank_open",editTexts.get(1).getText().toString().trim());
+//    //银行卡号
+//    hashtable.put("loan_bank_card",editTexts.get(2).getText().toString().trim());
+//    //入口
+//    hashtable.put("action", "SetInfo3");
+//    身份认证
+//    hashtable.put("loan_id", Share.getToken(context));
 }
