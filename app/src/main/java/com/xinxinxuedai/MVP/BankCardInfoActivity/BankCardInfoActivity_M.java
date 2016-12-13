@@ -19,4 +19,9 @@ public interface BankCardInfoActivity_M {
      * @param editTexts
      */
     void getEdtexts(ArrayList<TextView> editTexts, ArrayList<String> strings);
+
+    /**
+     * 获取回显信息
+     */
+    void getCallBackData();
 }

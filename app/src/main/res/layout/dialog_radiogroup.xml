@@ -4,11 +4,12 @@
               android:layout_width="match_parent"
                 android:background="@color/white"
               android:layout_height="wrap_content">
-    <RadioGroup
-        android:id="@+id/dialog_rg"
-        android:orientation="vertical"
+    <RelativeLayout
+        android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+    </RelativeLayout>
        <!-- <RadioButton
             android:text="1"
             android:textColor="@color/black"
@@ -46,5 +47,4 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>-->
 
-    </RadioGroup>
 </ScrollView>

@@ -9,9 +9,9 @@ package com.xinxinxuedai.bean;
  * 备注:
  */
 
-public class userLogin {
+public class UserLogin {
     //入口
-    //hashtable.put("action", "userLogin");
+    //hashtable.put("action", "UserLogin");
     //手机号码
 //    hashtable.put("loan_mobile",editText1.getText().toString().trim());
     //密码

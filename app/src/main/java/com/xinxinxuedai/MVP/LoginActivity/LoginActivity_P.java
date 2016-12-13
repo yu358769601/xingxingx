@@ -5,12 +5,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
-import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.Share;
-import com.xinxinxuedai.bean.userLogin;
+import com.xinxinxuedai.bean.UserLogin;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.userLogin_Request;
 
@@ -136,15 +135,15 @@ public class LoginActivity_P extends BaseMvp<LoginActivity_C> implements LoginAc
         hashtable.put("loan_mobile",editText1.getText().toString().trim());
         //密码
         hashtable.put("loan_pwd",editText2.getText().toString().trim());
-        userLogin_Request.request(context, hashtable, new NetWorkCallBack() {
+        userLogin_Request.request(context, hashtable, new NetWorkCallBack<UserLogin>() {
             @Override
-            public void onSucceed(JSONObject jsonObje) {
-                userLogin userLogin = jsonObje.toJavaObject(userLogin.class);
-                String message = userLogin.message;
+            public void onSucceed(UserLogin login) {
+
+                String message = login.message;
                 UtilsToast.showToast(context, message);
-                String loan_id = userLogin.data.loan_id;
+                String loan_id = login.data.loan_id;
                 Share.saveToken(context, loan_id);
-                String loan_mobile = userLogin.data.loan_mobile;
+                String loan_mobile = login.data.loan_mobile;
                 Share.savePhoneNum(context, loan_mobile);
             }
 

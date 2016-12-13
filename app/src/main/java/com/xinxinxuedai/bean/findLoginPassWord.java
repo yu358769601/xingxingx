@@ -9,5 +9,5 @@ package com.xinxinxuedai.bean;
  * 备注:
  */
 
-public class findLoginPassWord {
+public class FindLoginPassWord {
 }

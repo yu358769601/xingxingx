@@ -7,6 +7,7 @@ import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
+import com.xinxinxuedai.bean.UserRegist;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -24,7 +25,7 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  */
 
 public class userRegist_Request {
-    public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack netWorkCallBack) {
+    public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack<UserRegist> netWorkCallBack) {
         hashtable.put("action", "userRegist");
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
@@ -33,7 +34,8 @@ public class userRegist_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_注册"+"正常内容"+jsonObject);
-                                netWorkCallBack.onSucceed(jsonObject);
+                                UserRegist userRegist = jsonObject.toJavaObject(UserRegist.class);
+                                netWorkCallBack.onSucceed(userRegist);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

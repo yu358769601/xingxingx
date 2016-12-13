@@ -110,6 +110,7 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
                         break;
                     case 3:
                         UtilsToast.showToast(AppContext.getApplication(), "充值");
+                        mReimbursementActivity_p.topUp();
                         break;
                     case 4:
 
@@ -128,10 +129,10 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
         });
 
         //获取网络添加列表数据
-        mReimbursementActivity_p.initListViewData(mReimbursement_lv);
+        //mReimbursementActivity_p.initListViewData(mReimbursement_lv);
 
-
-        mReimbursementActivity_p.initRefurbish(xrefreshview);
+        //加载更多
+        //mReimbursementActivity_p.initRefurbish(xrefreshview);
 
 
     }
@@ -145,7 +146,7 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.reimbursement_xdb_1:
-                mReimbursementActivity_p.topUp();
+                //mReimbursementActivity_p.topUp();
                 break;
 
         }

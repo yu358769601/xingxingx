@@ -37,7 +37,8 @@ import java.util.List;
 
 public class UtilsDialog {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public static CustomDialog showDialogRadioGroup(final Context context, String setTitle, final List<String> string, final UtilsDialogCallBack callBack){
+    public static CustomDialog showDialogRadioGroup(final Context context, String setTitle, final List<String> string, final UtilsDialogCallBack callBack , final UtilsDialogSelect utilsDialogSelect){
+
         Activity activity = (Activity) context;
         CustomDialog.Builder builder = new CustomDialog.Builder(context);
         TextView textView = new TextView(context);
@@ -59,13 +60,19 @@ public class UtilsDialog {
         relativeLayout.setLayoutParams(layoutParams);
 
         View inflate = View.inflate(context, R.layout.dialog_radiogroup, relativeLayout);
-        final RadioGroup dialog_rg = (RadioGroup) inflate.findViewById(R.id.dialog_rg);
+        final RelativeLayout rl = (RelativeLayout) inflate.findViewById(R.id.rl);
+        final RadioGroup radioGroup = new RadioGroup(context);
+        //外衣
+        RadioGroup.LayoutParams layoutParams1 = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        radioGroup.setLayoutParams(layoutParams1);
+
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         for (int i = 0; i <string.size() ; i++) {
             RadioButton radioButton = new RadioButton(context);
             radioButton.setLayoutParams(params);
             radioButton.setButtonDrawable(new ColorDrawable(Color.TRANSPARENT));
-            radioButton.setPadding(30,30,30,30);
+            radioButton.setPadding(30,10,30,10);
             radioButton.setGravity(Gravity.CENTER_VERTICAL);
             radioButton.setText(string.get(i));
             radioButton.setTextColor(context.getResources().getColor(R.color.black));
@@ -75,22 +82,37 @@ public class UtilsDialog {
             nav_up.setBounds(0, 0, nav_up.getMinimumWidth(), nav_up.getMinimumHeight());
             radioButton.setCompoundDrawables(null, null, nav_up, null);
 
-            dialog_rg.addView(radioButton);
+            radioGroup.addView(radioButton);
         }
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                for (int i = 0; i < radioGroup.getChildCount(); i++) {
+                    if (radioGroup.getChildAt(i).getId()==checkedId){
+                        LogUtils.i("我点了第几个"+i);
+                        utilsDialogSelect.selectCallBack(i);
+                    }
+                }
+            }
+        });
+        rl.addView(radioGroup);
 
         //设置中间布局
         builder.setContentView(inflate);
+
+
 
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 //LogUtils.i("集合长度"+string.size()+"集合内容"+string+"选择号码 是"+which);
 
                 //如果没有被选中的条目
-                if (-1 == dialog_rg.getCheckedRadioButtonId()){
+                if (-1 == radioGroup.getCheckedRadioButtonId()){
                     UtilsToast.showToast(context,"未选择任何条目");
                 }else{
-                    for (int i = 0; i < dialog_rg.getChildCount(); i++) {
-                        RadioButton childAt = (RadioButton) dialog_rg.getChildAt(i);
+                    for (int i = 0; i < radioGroup.getChildCount(); i++) {
+                        RadioButton childAt = (RadioButton) radioGroup.getChildAt(i);
                         if (childAt.isChecked()){
                             LogUtils.i("选中的是"+i+"内容是"+string.get(i));
                             callBack.RadioGroupNum(i,string.get(i));
@@ -134,6 +156,15 @@ public class UtilsDialog {
         return alertDialog;
 
     }
+
+
+    /**
+     * 显示 银行那一块
+     * @param context
+     * @param setTitle
+     * @param string
+     * @return
+     */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public static CustomDialog showDialogLinerLayout(final Context context, String setTitle, final List<String> string){
         Activity activity = (Activity) context;
@@ -162,7 +193,7 @@ public class UtilsDialog {
         for (int i = 0; i <string.size() ; i++) {
             TextView view = new TextView(context);
             view.setLayoutParams(params);
-            view.setPadding(30,30,30,30);
+            view.setPadding(30,10,30,10);
             view.setGravity(Gravity.CENTER_HORIZONTAL);
             view.setText(string.get(i));
             view.setTextColor(context.getResources().getColor(R.color.black));

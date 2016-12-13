@@ -8,6 +8,7 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
 import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.SetInfo3;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -25,8 +26,8 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  */
 
 public class setInfo3_Request {
-    public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack netWorkCallBack) {
-        hashtable.put("action", "SetInfo3");
+    public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<SetInfo3> netWorkCallBack) {
+        hashtable.put("action", "setInfo3");
         hashtable.put("loan_id", Share.getToken(context));
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
@@ -35,7 +36,9 @@ public class setInfo3_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"添加用户银行卡3"+"正常内容"+jsonObject);
-                                netWorkCallBack.onSucceed(jsonObject);
+                                SetInfo3 setInfo3 = jsonObject.toJavaObject(SetInfo3.class);
+
+                                netWorkCallBack.onSucceed(setInfo3);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

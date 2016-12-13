@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
-import com.alibaba.fastjson.JSONObject;
 import com.andview.refreshview.XRefreshView;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.LogUtils;
@@ -93,8 +92,9 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
     @NonNull
     private ArrayList<huandaiItem> sendRepaymentListRequest() {
         RepaymentListRequest.request(context, new NetWorkCallBack() {
+
             @Override
-            public void onSucceed(JSONObject jsonObject) {
+            public void onSucceed(Object o) {
 
             }
 
@@ -117,8 +117,9 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
     @NonNull
     private ArrayList<huandaiItem> sendRepaymentListRequestTo() {
         RepaymentListRequest.requestmore(context, new NetWorkCallBack() {
+
             @Override
-            public void onSucceed(JSONObject jsonObject) {
+            public void onSucceed(Object o) {
 
             }
 

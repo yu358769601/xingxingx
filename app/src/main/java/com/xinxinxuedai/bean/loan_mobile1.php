@@ -13,7 +13,7 @@ $obj_aes = new Aes();
 $para = json_decode(urldecode($obj_aes->siyuan_aes_decode($_POST['para'])),TRUE);
 
 //注册验证码
-if($para['action'] == "registSms"){
+if($para['action'] == "RegistSms"){
     
     if($para['loan_mobile'] == ''){
         Response::json(0,'手机号码为空',"");
@@ -217,7 +217,7 @@ else if($para['action'] == "getInfoShow"){
 }
 
 //添加用户借款信息
-else if($para['action'] == "setLoanInfo"){
+else if($para['action'] == "SetLoanInfo"){
     
     $sql = "SELECT id FROM " . $GLOBALS['ecs']->table('user_loan') . " WHERE loan_userid = " . $para['loan_userid'] . " AND loan_status = 0";
     //借款人申请记录

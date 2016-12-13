@@ -1,5 +1,7 @@
 package com.xinxinxuedai.MVP.LoanApplicationActivity;
 
+import com.xinxinxuedai.bean.GetLoanDetail;
+
 import java.util.ArrayList;
 
 /**
@@ -27,15 +29,21 @@ public interface LoanApplicationActivity_CallBack {
      * 回调到主界面去show
      * @param strings
      */
-    void showDialog1(ArrayList<String> strings);
+    void showDialog1(ArrayList<String> strings,String title);
     /**
      * 回调到主界面去show
      * @param strings
      */
-    void showDialog2(ArrayList<String> strings);
+    void showDialog2(ArrayList<String> strings,String title);
     /**
      * 回调到主界面去show
      * @param strings
      */
-    void showDialog3(ArrayList<String> strings);
+    void showDialog3(ArrayList<String> strings,String title);
+
+    /**
+     * 网络数据回来了设置回显数据
+     * @param callBackData
+     */
+    void setCallBackData(GetLoanDetail callBackData);
 }

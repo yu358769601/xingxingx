@@ -7,6 +7,7 @@ import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
+import com.xinxinxuedai.bean.RegistSms;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -24,7 +25,7 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  */
 
 public class registSms_Request {
-    public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack netWorkCallBack) {
+    public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack<RegistSms> netWorkCallBack) {
         hashtable.put("action", "registSms");
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
@@ -33,7 +34,9 @@ public class registSms_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_验证码"+"正常内容"+jsonObject);
-                                netWorkCallBack.onSucceed(jsonObject);
+                               // RegistSms
+                                RegistSms RegistSms = jsonObject.toJavaObject(RegistSms.class);
+                                netWorkCallBack.onSucceed(RegistSms);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

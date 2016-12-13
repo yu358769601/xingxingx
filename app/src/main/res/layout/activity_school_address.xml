@@ -7,40 +7,28 @@
     android:layout_height="match_parent"
     android:background="@drawable/home"
     tools:context="com.xinxinxuedai.ui.SchoolAddressActivity">
-    <!--选择地区xml-->
+    <!--学校信息xml-->
     <RelativeLayout
         android:id="@+id/schooladdress_rl"
         android:padding="@dimen/size_base480_20dp"
         android:layout_below="@+id/relativeLayout_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
+        <EditText
             android:id="@+id/schooladdress_tv"
-            android:text="学校所在地区"
-            style="@style/button_touming_long"
+            android:hint="填写详细的学校名称"
+            style="@style/edtext_touming_long"
             android:textColorHint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <EditText
+        <TextView
             android:id="@+id/schooladdress_et_1"
             android:layout_marginTop="@dimen/size_base480_20dp"
-            android:hint="学校名称"
+            android:hint="入学年份"
             android:layout_below="@+id/schooladdress_tv"
             style="@style/edtext_touming_long"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/schooladdress_et_2"
-            android:layout_below="@+id/schooladdress_tv2"
-           android:background="@drawable/border_money_touming"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/size_base480_20dp"
-            android:gravity="left"
-            android:hint="请详细输入你的现住址精确到门牌号"
-            android:textColorHint="@color/white"
-            android:layout_height="@dimen/size_base480_150dp"/>
-
         <TextView
             android:id="@+id/schooladdress_tv2"
             android:layout_marginTop="@dimen/size_base480_20dp"
@@ -51,6 +39,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/schooladdress_et_1"
             />
+        <EditText
+            android:id="@+id/schooladdress_et_2"
+            android:layout_below="@+id/schooladdress_tv2"
+           android:background="@drawable/border_money_touming"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:gravity="left"
+            android:hint="请详细输入你的现住址精确到门牌号"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:layout_height="@dimen/size_base480_150dp"/>
+
+
         <TextView
             android:id="@+id/schooladdress_tv_sub"
             android:layout_marginTop="@dimen/size_base480_20dp"

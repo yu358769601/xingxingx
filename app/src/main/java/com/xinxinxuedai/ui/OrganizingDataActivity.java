@@ -12,8 +12,10 @@ import android.widget.Toast;
 import com.xinxinxuedai.MVP.OrganizingDataActivity.OrganizingDataActivity_C;
 import com.xinxinxuedai.MVP.OrganizingDataActivity.OrganizingDataActivity_P;
 import com.xinxinxuedai.R;
+import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogCallBack;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogSelect;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
@@ -105,7 +107,7 @@ public class OrganizingDataActivity extends BaseActivity implements View.OnClick
         switch (v.getId()){
             //选择借款用途
             case R.id.organizingdata_tv1:
-                ArrayList<String> strings1 = new ArrayList<>();
+                final ArrayList<String> strings1 = new ArrayList<>();
                 strings1.add("1买大力");
                 strings1.add("1买小泰");
                 strings1.add("1一动不动是王八");
@@ -114,11 +116,16 @@ public class OrganizingDataActivity extends BaseActivity implements View.OnClick
                     public void RadioGroupNum(int selectNum, String selectNumInfo) {
                         organizingdata_tv1.setText(selectNumInfo);
                     }
+                }, new UtilsDialogSelect() {
+                    @Override
+                    public void selectCallBack(int selectNum) {
+                        LogUtils.i("选择借款用途"+strings1.get(selectNum));
+                    }
                 });
             break;
             //选择申请额度
             case R.id.organizingdata_tv2:
-                ArrayList<String> strings2 = new ArrayList<>();
+                final ArrayList<String> strings2 = new ArrayList<>();
                 strings2.add("2买大力");
                 strings2.add("2买小泰");
                 strings2.add("2一动不动是王八");
@@ -127,11 +134,16 @@ public class OrganizingDataActivity extends BaseActivity implements View.OnClick
                     public void RadioGroupNum(int selectNum, String selectNumInfo) {
                         organizingdata_tv2.setText(selectNumInfo);
                     }
+                }, new UtilsDialogSelect() {
+                    @Override
+                    public void selectCallBack(int selectNum) {
+                        LogUtils.i("选择借款用途"+strings2.get(selectNum));
+                    }
                 });
             break;
             //选择申请期限
             case R.id.organizingdata_tv3:
-                ArrayList<String> strings3 = new ArrayList<>();
+                final ArrayList<String> strings3 = new ArrayList<>();
                 strings3.add("3买大力");
                 strings3.add("3买小泰");
                 strings3.add("3一动不动是王八");
@@ -139,6 +151,11 @@ public class OrganizingDataActivity extends BaseActivity implements View.OnClick
                     @Override
                     public void RadioGroupNum(int selectNum, String selectNumInfo) {
                         organizingdata_tv3.setText(selectNumInfo);
+                    }
+                }, new UtilsDialogSelect() {
+                    @Override
+                    public void selectCallBack(int selectNum) {
+                        LogUtils.i("选择借款用途"+strings3.get(selectNum));
                     }
                 });
             break;

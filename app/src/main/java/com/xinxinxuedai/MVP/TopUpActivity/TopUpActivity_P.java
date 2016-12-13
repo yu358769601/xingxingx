@@ -4,9 +4,13 @@ import android.content.Context;
 import android.widget.EditText;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsMyText;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.fuYouChongZhi_Request;
 
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -78,6 +82,27 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
         //不为空就 访问网络
         UtilsToast.showToast(context, "网络请求中~");
         //把网络获取到的参数返回给 activity
+        Hashtable<String, String> hashtable =
+                UtilsHashtable.getHashtable();
+        hashtable.put("money","");
+        hashtable.put("bank_card","");
+        hashtable.put("real_name","");
+        hashtable.put("id_card","");
+        hashtable.put("mobile","");
+        fuYouChongZhi_Request.request(context, hashtable, new NetWorkCallBack() {
+
+            @Override
+            public void onSucceed(Object o) {
+
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+
+
         topUpActivity_c.getData("正常");
 
     }

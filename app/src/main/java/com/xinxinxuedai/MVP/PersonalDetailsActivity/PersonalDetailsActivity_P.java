@@ -3,13 +3,14 @@ package com.xinxinxuedai.MVP.PersonalDetailsActivity;
 import android.content.Context;
 import android.widget.EditText;
 
-import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsMyText;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.SetInfo1;
+import com.xinxinxuedai.request.GetInfo_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.setInfo1_Request;
 
@@ -139,6 +140,24 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
 
     }
 
+    /**
+     * 访问网路 获取 回显信息
+     */
+    @Override
+    public void setCallBackData() {
+        GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
+            @Override
+            public void onSucceed(GetInfo getInfo) {
+                personalDetailsActivity_c.setCallBackData(getInfo);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+    }
+
     private void call_setInfo1_Request(List<EditText> editTexts, int select) {
         UtilsToast.showToast(context, "网络请求中~");
 
@@ -162,11 +181,10 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
         hashtable.put("loan_parent_mobile",editTexts.get(5).getText().toString().trim());
 
 
-        setInfo1_Request.request(context, hashtable, new NetWorkCallBack() {
+        setInfo1_Request.request(context, hashtable, new NetWorkCallBack<SetInfo1>() {
             @Override
-            public void onSucceed(JSONObject jsonObject) {
-                SetInfo1 setInfo1 = jsonObject.toJavaObject(SetInfo1.class);
-                UtilsToast.showToast(context, setInfo1.message);
+            public void onSucceed(SetInfo1 info1) {
+                UtilsToast.showToast(context, info1.message);
             }
 
             @Override

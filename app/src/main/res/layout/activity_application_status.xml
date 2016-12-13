@@ -16,35 +16,40 @@
         <TextView
             android:id="@+id/applicationstatus_tv1"
             style="@style/text_witle_padding"
-            android:text="@string/applicationstatus_txt1"
+            android:hint="@string/applicationstatus_txt1"
+            android:textColorHint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/applicationstatus_tv2"
             style="@style/text_witle_padding"
             android:layout_below="@+id/applicationstatus_tv1"
-            android:text="@string/applicationstatus_txt2"
+            android:hint="@string/applicationstatus_txt2"
+            android:textColorHint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/applicationstatus_tv3"
             style="@style/text_witle_padding"
             android:layout_below="@+id/applicationstatus_tv2"
-            android:text="@string/applicationstatus_txt3"
+            android:hint="@string/applicationstatus_txt3"
+            android:textColorHint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/applicationstatus_tv4"
             style="@style/text_witle_padding"
             android:layout_below="@+id/applicationstatus_tv3"
-            android:text="@string/applicationstatus_txt4"
+            android:hint="@string/applicationstatus_txt4"
+            android:textColorHint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/applicationstatus_tv5"
             style="@style/text_witle_padding"
             android:layout_below="@+id/applicationstatus_tv4"
-            android:text="@string/applicationstatus_txt5"
+            android:hint="@string/applicationstatus_txt5"
+            android:textColorHint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

@@ -5,11 +5,19 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
+import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopCallBack;
 import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopTextView;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.bean.GetInfo;
+import com.xinxinxuedai.bean.SetInfo2;
+import com.xinxinxuedai.request.GetInfo_Request;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.setInfo2_Request;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 /**
  * Created by Administrator 于萌萌
@@ -41,12 +49,53 @@ public class SchoolAddressActivity_P extends BaseMvp<SchoolAddressActivity_C> im
 
 
     @Override
-    public void setSub(ArrayList<TextView> sub , ArrayList<String> strings) {
+    public void setSub(final ArrayList<TextView> sub , final ArrayList<String> strings, final String [] array) {
 
         UtilsLoopTextView.startLoop(sub, strings,new UtilsLoopCallBack() {
             @Override
             public void onSucceed() {
-               // UtilsToast.showToast(context, "成功");
+                //访问网络
+                UtilsToast.showToast(context, "访问网络中~");
+                Hashtable<String, String> hashtable =
+                        UtilsHashtable.getHashtable();
+
+//                array.add(schooladdress_tv);
+//                array.add(schooladdress_et_1);
+//                array.add(schooladdress_tv2);
+//                array.add(schooladdress_et_2);
+//                ArrayList<TextView> views = UtilsLoopTextView.addTagList(array);
+//                final ArrayList<String> strings = new ArrayList<>();
+//                strings.add("学校名为空");
+//                strings.add("入学年份为空");
+//                strings.add("学校所在地区未选择");
+//                strings.add("门牌号为空");
+                //借款人学校
+                hashtable.put("loan_school_name",sub.get(0).getText().toString().trim());
+                //入学时间
+                hashtable.put("loan_admission_school",sub.get(1).getText().toString().trim());
+                //借款人现住址
+                hashtable.put("loan_present_address",sub.get(2).getText().toString().trim());
+                //导员姓名
+                hashtable.put("loan_tutor","");
+                //市ID
+                hashtable.put("loan_city",array[1]);
+                //省ID
+                hashtable.put("loan_province",array[0]);
+                //导员联系方式
+                hashtable.put("loan_tutor_mobile","");
+
+                setInfo2_Request.request(context, hashtable, new NetWorkCallBack<SetInfo2>() {
+                    @Override
+                    public void onSucceed(SetInfo2 info2) {
+
+                        UtilsToast.showToast(context,info2.message);
+                    }
+
+                    @Override
+                    public void onError(String jsonObject) {
+                        UtilsToast.showToast(context,jsonObject);
+                    }
+                });
             }
 
             @Override
@@ -57,9 +106,22 @@ public class SchoolAddressActivity_P extends BaseMvp<SchoolAddressActivity_C> im
 
 
         });
-        //访问网络
-        UtilsToast.showToast(context, "访问网络中~");
 
 
+    }
+
+    @Override
+    public void getCallBackData() {
+        GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
+            @Override
+            public void onSucceed(GetInfo getInfo) {
+                schoolAddressActivity_c.setCallBackData(getInfo);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
     }
 }

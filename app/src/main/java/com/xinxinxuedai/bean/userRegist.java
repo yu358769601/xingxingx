@@ -9,9 +9,9 @@ package com.xinxinxuedai.bean;
  * 备注:
  */
 
-public class userRegist {
+public class UserRegist {
     //入口
-  //  hashtable.put("action", "userRegist");
+  //  hashtable.put("action", "UserRegist");
     //电话号码
 //    hashtable.put("loan_mobile",editText1.getText().toString().trim());
     //密码
@@ -44,7 +44,7 @@ public class userRegist {
 
     @Override
     public String toString() {
-        return "userRegist{" +
+        return "UserRegist{" +
                 "result=" + result +
                 ", message='" + message + '\'' +
                 ", data=" + data +

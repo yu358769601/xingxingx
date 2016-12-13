@@ -20,4 +20,10 @@ public interface PersonalDetailsActivity_M {
      * @param select
      */
     void getEdtexts(List<EditText> editTexts,int select);
+
+    /**
+     *
+     * 访问网路 获取 回显信息
+     */
+    void setCallBackData();
 }

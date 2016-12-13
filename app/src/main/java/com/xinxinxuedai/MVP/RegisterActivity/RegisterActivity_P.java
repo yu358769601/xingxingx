@@ -6,15 +6,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.RegisterActivity.countTime.Register_countTime_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.Share;
-import com.xinxinxuedai.bean.registSms;
-import com.xinxinxuedai.bean.userRegist;
+import com.xinxinxuedai.bean.RegistSms;
+import com.xinxinxuedai.bean.UserRegist;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.registSms_Request;
 import com.xinxinxuedai.request.userRegist_Request;
@@ -90,10 +89,9 @@ public class RegisterActivity_P implements RegisterActivity_M {
     private void sendSMS(TextView tag) {
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         hashtable.put("loan_mobile",tag.getText().toString().trim());
-        HttpURLConnection request = registSms_Request.request(context, hashtable, new NetWorkCallBack() {
+        HttpURLConnection request = registSms_Request.request(context, hashtable, new NetWorkCallBack<RegistSms>() {
             @Override
-            public void onSucceed(JSONObject jsonObject) {
-                registSms registSms = jsonObject.toJavaObject(registSms.class);
+            public void onSucceed(RegistSms registSms) {
                 String code = registSms.data.code;
                 String message = registSms.message;
                 UtilsToast.showToast(context, message);
@@ -103,7 +101,7 @@ public class RegisterActivity_P implements RegisterActivity_M {
 
             @Override
             public void onError(String jsonObject) {
-
+                UtilsToast.showToast(context, jsonObject);
             }
         });
 
@@ -218,10 +216,9 @@ public class RegisterActivity_P implements RegisterActivity_M {
         hashtable.put("loan_from","android");
         //推荐码
         hashtable.put("tuijianma","");
-        userRegist_Request.request(context, hashtable, new NetWorkCallBack() {
+        userRegist_Request.request(context, hashtable, new NetWorkCallBack<UserRegist>() {
             @Override
-            public void onSucceed(JSONObject jsonObject) {
-                userRegist userRegist = jsonObject.toJavaObject(userRegist.class);
+            public void onSucceed(UserRegist userRegist) {
                 String user_id = userRegist.data.user_id;
                 Share.saveToken(context, user_id);
                 UtilsToast.showToast(context, userRegist.message);

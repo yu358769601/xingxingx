@@ -1,6 +1,6 @@
 package com.xinxinxuedai.MVP.ApplicationStatusActivity;
 
-import com.xinxinxuedai.bean.ApplicationStatusData;
+import com.xinxinxuedai.bean.GetLoanDetail;
 
 /**
  * Created by 35876 于萌萌
@@ -15,5 +15,5 @@ public interface ApplicationStatusActivity_C {
     /**
      * 给V的 数据设置
       */
-    void setData(ApplicationStatusData data);
+    void setData(GetLoanDetail data);
 }

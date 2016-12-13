@@ -9,6 +9,7 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
 import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -25,8 +26,8 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  * 备注:
  */
 
-public class getInfo_Request {
-    public static HttpURLConnection request(final Context context, final NetWorkCallBack netWorkCallBack) {
+public class GetInfo_Request {
+    public static HttpURLConnection request(final Context context, final NetWorkCallBack<GetInfo> netWorkCallBack) {
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         hashtable.put("action", "getInfo");
         hashtable.put("loan_id", Share.getToken(context));
@@ -37,7 +38,8 @@ public class getInfo_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"获取借贷人信息"+"正常内容"+jsonObject);
-                                netWorkCallBack.onSucceed(jsonObject);
+                                GetInfo data = jsonObject.getObject("data", GetInfo.class);
+                                netWorkCallBack.onSucceed(data);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

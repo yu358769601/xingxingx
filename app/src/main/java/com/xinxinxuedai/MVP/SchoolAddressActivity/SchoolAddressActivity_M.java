@@ -14,5 +14,14 @@ import java.util.ArrayList;
  */
 
 public interface SchoolAddressActivity_M {
-    void setSub(ArrayList<TextView> sub,ArrayList<String> strings);
+    /**
+     * 提交 信息
+     * @param sub
+     * @param strings
+     * @param stringarray
+     */
+    void setSub(ArrayList<TextView> sub,ArrayList<String> strings , String[] stringarray);
+
+
+    void getCallBackData();
 }

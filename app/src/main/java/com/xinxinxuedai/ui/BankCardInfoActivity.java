@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xinxinxuedai.MVP.BankCardInfoActivity.BankCardInfoActivity_C;
 import com.xinxinxuedai.MVP.BankCardInfoActivity.BankCardInfoActivity_P;
@@ -15,8 +14,10 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogCallBack;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogSelect;
 import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopTextView;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.view.initAction_Bar;
 
 import java.util.ArrayList;
@@ -37,8 +38,8 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initView();
         initP();
+        initView();
     }
 
     @Override
@@ -77,6 +78,9 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
         bank_card_info_tv_sub = (TextView) findViewById(R.id.bank_card_info_tv_sub);
         bank_card_info_tv_sub.setOnClickListener(this);
 
+
+
+        mBankCardInfoActivity_p.getCallBackData();
     }
 
     @Override
@@ -95,30 +99,6 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
 
     }
 
-    private void submit() {
-        // validate
-        String bank = bank_card_info_tv1_bank.getText().toString().trim();
-        if (TextUtils.isEmpty(bank)) {
-            Toast.makeText(this, "选择银行卡所属银行", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String name = bank_card_info_tv2_open_bank_name.getText().toString().trim();
-        if (TextUtils.isEmpty(name)) {
-            Toast.makeText(this, "开户行名称", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String num = bank_card_info_tv3_bank_card_num.getText().toString().trim();
-        if (TextUtils.isEmpty(num)) {
-            Toast.makeText(this, "银行卡号", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // TODO validate success, do something
-
-
-    }
 
     /**
      * Called when a view has been clicked.
@@ -130,7 +110,7 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
         switch (v.getId()){
             //点了选择银行
             case R.id.bank_card_info_tv1_bank:
-                ArrayList<String> strings = new ArrayList<>();
+                final ArrayList<String> strings = new ArrayList<>();
                 strings.add("水帘洞银行");
                 strings.add("花果山银行");
                 strings.add("花果山银行");
@@ -138,8 +118,13 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
                 UtilsDialog.showDialogRadioGroup(this, "请选择银行卡所属银行", strings, new UtilsDialogCallBack() {
                     @Override
                     public void RadioGroupNum(int selectNum, String selectNumInfo) {
-                        LogUtils.i("我勾选的号码是"+selectNum+"内容是"+selectNumInfo);
+                        LogUtils.i("我勾选的号码是" + selectNum + "内容是" + selectNumInfo);
                         bank_card_info_tv1_bank.setText(selectNumInfo);
+                    }
+                }, new UtilsDialogSelect() {
+                    @Override
+                    public void selectCallBack(int selectNum) {
+                        LogUtils.i("请选择银行卡所属银行"+strings.get(selectNum));
                     }
                 });
 
@@ -160,5 +145,26 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
 
                 break;
         }
+    }
+
+    /**
+     * 设置回显信息
+     *
+     * @param getInfo
+     */
+    @Override
+    public void setCallBackData(GetInfo getInfo) {
+            //银行名字
+            if (!TextUtils.isEmpty(getInfo.loan_bank_name))
+                bank_card_info_tv1_bank.setText(getInfo.loan_bank_name);
+            //开户行名称
+            if (!TextUtils.isEmpty(getInfo.loan_bank_open)){
+                bank_card_info_tv2_open_bank_name.setText(getInfo.loan_bank_open);
+                bank_card_info_tv2_open_bank_name.setSelection(getInfo.loan_bank_open.length());
+            }
+            //银行卡
+            if (!TextUtils.isEmpty(getInfo.loan_bank_card))
+                bank_card_info_tv3_bank_card_num.setText(getInfo.loan_bank_card);
+
     }
 }

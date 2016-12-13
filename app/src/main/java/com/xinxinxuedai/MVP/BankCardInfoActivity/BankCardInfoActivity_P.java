@@ -4,12 +4,14 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopCallBack;
 import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopTextView;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.bean.GetInfo;
+import com.xinxinxuedai.bean.SetInfo3;
+import com.xinxinxuedai.request.GetInfo_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.setInfo3_Request;
 
@@ -54,13 +56,13 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
      * @param editTexts
      */
     @Override
-    public void getEdtexts(ArrayList<TextView> editTexts, ArrayList<String> strings) {
+    public void getEdtexts(final ArrayList<TextView> editTexts, ArrayList<String> strings) {
         UtilsLoopTextView.startLoop(editTexts, strings, new UtilsLoopCallBack() {
             @Override
             public void onSucceed() {
                 //访问网络
-                //UtilsToast.showToast(context, "网络请求中~");
-                //  call_setInfo3_Request(editTexts);
+                UtilsToast.showToast(context, "网络请求中~");
+                  call_setInfo3_Request(editTexts);
             }
 
             @Override
@@ -72,6 +74,26 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
 
     }
 
+    /**
+     * 获取回显信息
+     */
+    @Override
+    public void getCallBackData() {
+        GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
+            @Override
+            public void onSucceed(GetInfo getInfo) {
+                bankCardInfoActivity_c.setCallBackData(getInfo);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+    }
+
+
+
     private void call_setInfo3_Request(ArrayList<TextView> editTexts) {
 
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
@@ -82,10 +104,10 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
         //银行卡号
         hashtable.put("loan_bank_card",editTexts.get(2).getText().toString().trim());
 
-        setInfo3_Request.request(context, hashtable, new NetWorkCallBack() {
+        setInfo3_Request.request(context, hashtable, new NetWorkCallBack<SetInfo3>() {
             @Override
-            public void onSucceed(JSONObject jsonObject) {
-
+            public void onSucceed(SetInfo3 info3) {
+               UtilsToast.showToast(context, info3.message);
             }
 
             @Override

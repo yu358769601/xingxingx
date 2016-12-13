@@ -35,4 +35,9 @@ public interface LoanApplicationActivity_method {
      * @param classTag
      */
     void setClassTag(int classTag);
+
+    /**
+     * 开始回显
+     */
+    void getCallBackData();
 }

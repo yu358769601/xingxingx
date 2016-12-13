@@ -23,14 +23,14 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@drawable/textcoloer_button</item>
-        <item name="android:padding">@dimen/size_base480_20dp</item>
+        <item name="android:padding">@dimen/size_base480_10dp</item>
         <item name="android:background">@drawable/an_long</item>
     </style>
     <style name="radiobutton_touming_long">
         <item name="android:gravity">center</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@drawable/text_coloer</item>
-        <item name="android:padding">@dimen/size_base480_20dp</item>
+        <item name="android:padding">@dimen/size_base480_10dp</item>
         <item name="android:background">@drawable/an_long_radiobutoon</item>
     </style>
     <style name="edtext_touming_long">
@@ -38,7 +38,7 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:padding">@dimen/size_base480_20dp</item>
+        <item name="android:padding">@dimen/size_base480_10dp</item>
         <item name="android:background">@drawable/long_button_touming</item>
     </style>
 

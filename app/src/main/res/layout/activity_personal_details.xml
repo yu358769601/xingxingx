@@ -104,7 +104,7 @@
                 android:textColorHint="@color/white"
                 android:background="@drawable/border_money_touming"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_base480_150dp"/>
+                android:layout_height="@dimen/size_base480_120dp"/>
 
             <TextView
                 android:id="@+id/personalpdetails_tv_tellname"

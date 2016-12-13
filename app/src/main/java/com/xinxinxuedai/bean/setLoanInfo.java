@@ -9,7 +9,7 @@ package com.xinxinxuedai.bean;
  * 备注:
  */
 
-public class setLoanInfo {
+public class SetLoanInfo {
 //    //id
 //    hashtable.put("loan_userid","0");
 //    //多少钱
@@ -25,7 +25,7 @@ public class setLoanInfo {
 //    //判断怎么进来的 (二选一) 0 先息后本  1 等额本息
 //    hashtable.put("loan_plan","0");
     //入口
- //   hashtable.put("action", "setLoanInfo");
+ //   hashtable.put("action", "SetLoanInfo");
     /**
      * result : 1
      * message : 借款申请提交成功
@@ -38,7 +38,7 @@ public class setLoanInfo {
 
     @Override
     public String toString() {
-        return "setLoanInfo{" +
+        return "SetLoanInfo{" +
                 "result=" + result +
                 ", message='" + message + '\'' +
                 ", data='" + data + '\'' +

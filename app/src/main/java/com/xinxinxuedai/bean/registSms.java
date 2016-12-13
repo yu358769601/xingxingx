@@ -9,9 +9,9 @@ package com.xinxinxuedai.bean;
  * 备注:
  */
 
-public class registSms {
+public class RegistSms {
 
-//    hashtable.put("action","registSms");
+//    hashtable.put("action","RegistSms");
     //电话号码
 //    hashtable.put("loan_mobile",tag.getText().toString().trim());
     /**结果
@@ -34,7 +34,7 @@ public class registSms {
 
     @Override
     public String toString() {
-        return "registSms{" +
+        return "RegistSms{" +
                 "result=" + result +
                 ", message='" + message + '\'' +
                 ", data=" + data +

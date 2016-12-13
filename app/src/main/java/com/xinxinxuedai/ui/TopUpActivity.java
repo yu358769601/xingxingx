@@ -1,14 +1,12 @@
 package com.xinxinxuedai.ui;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xinxinxuedai.MVP.TopUpActivity.TopUpActivity_C;
 import com.xinxinxuedai.MVP.TopUpActivity.TopUpActivity_P;
@@ -69,8 +67,8 @@ public class TopUpActivity extends BaseActivity implements View.OnClickListener,
         topup_tv1 = (TextView) findViewById(R.id.topup_tv1);
         topup_tv1.setOnClickListener(this);
 
-//        topup_ed1 = (EditText) findViewById(R.id.topup_ed1);
-//        topup_ed1.setOnClickListener(this);
+        topup_ed1 = (EditText) findViewById(R.id.topup_ed1);
+        //topup_ed1.setOnClickListener(this);
 
         topup_ll1 = (LinearLayout) findViewById(R.id.topup_ll1);
         topup_ll1.setOnClickListener(this);
@@ -142,36 +140,6 @@ public class TopUpActivity extends BaseActivity implements View.OnClickListener,
 
     }
 
-    private void submit() {
-        // validate
-        String ed1 = topup_ed1.getText().toString().trim();
-        if (TextUtils.isEmpty(ed1)) {
-            Toast.makeText(this, "请输入金额", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String ed2 = topup_ed2.getText().toString().trim();
-        if (TextUtils.isEmpty(ed2)) {
-            Toast.makeText(this, "请输入卡号", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String ed3 = topup_ed3.getText().toString().trim();
-        if (TextUtils.isEmpty(ed3)) {
-            Toast.makeText(this, "请输入姓名", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String ed4 = topup_ed4.getText().toString().trim();
-        if (TextUtils.isEmpty(ed4)) {
-            Toast.makeText(this, "请输入身份证", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // TODO validate success, do something
-
-
-    }
 
     /**
      * Called when a view has been clicked.

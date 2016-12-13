@@ -9,7 +9,8 @@ package com.xinxinxuedai.bean;
  * 备注:
  */
 
-public class setInfo3 {
+public class SetInfo3 {
+
 //    //银行名字(选择得到)
 //    hashtable.put("loan_bank_name",editTexts.get(0).getText().toString().trim());
 //    //开户行 名字
@@ -20,4 +21,19 @@ public class setInfo3 {
 //    hashtable.put("action", "SetInfo3");
 //    身份认证
 //    hashtable.put("loan_id", Share.getToken(context));
+    /**
+     * result : 1
+     * message : 用户信息添加成功
+     * data :
+     */
+
+    public int result;
+    public String message;
+    public String data;
+//    {
+//        "result": 1,
+//            "message": "用户信息添加成功",
+//            "data": ""
+//    }
+
 }

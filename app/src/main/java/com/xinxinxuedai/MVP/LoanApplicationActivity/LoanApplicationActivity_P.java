@@ -6,13 +6,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.Share;
-import com.xinxinxuedai.bean.setLoanInfo;
+import com.xinxinxuedai.bean.GetLoanDetail;
+import com.xinxinxuedai.bean.SetLoanInfo;
 import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.getLoanDetail_Request;
 import com.xinxinxuedai.request.setLoanInfo_Request;
 import com.xinxinxuedai.ui.ApplyForActivity;
 
@@ -63,25 +64,37 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
                 context.startActivity(intent);
             break;
             case 1:
+                //用途
                 ArrayList<String> strings1 = new ArrayList<>();
-                for (int i = 0; i < 20; i++) {
-                    strings1.add("1111测试"+i);
-                }
-                loanApplicationActivity_callBack.showDialog1(strings1);
+                    strings1.add("培训");
+                    strings1.add("图书");
+                    strings1.add("教材");
+                    strings1.add("考级");
+                    strings1.add("技能");
+                    strings1.add("发明");
+                loanApplicationActivity_callBack.showDialog1(strings1,"借款用途");
             break;
             case 2:
+                //额度
                 ArrayList<String> strings2 = new ArrayList<>();
-                for (int i = 0; i < 20; i++) {
-                    strings2.add("2222测试"+i);
-                }
-                loanApplicationActivity_callBack.showDialog2(strings2);
+                    strings2.add("500"+"元");
+                    strings2.add("800"+"元");
+                    strings2.add("1000"+"元");
+                    strings2.add("1500"+"元");
+                    strings2.add("2000"+"元");
+                    strings2.add("2500"+"元");
+                    strings2.add("3000"+"元");
+                    strings2.add("4000"+"元");
+                    strings2.add("5000"+"元");
+                loanApplicationActivity_callBack.showDialog2(strings2,"借款额度");
                 break;
             case 3:
+                //期限
                 ArrayList<String> strings3 = new ArrayList<>();
-                for (int i = 0; i < 20; i++) {
-                    strings3.add("3333测试"+i);
-                }
-                loanApplicationActivity_callBack.showDialog3(strings3);
+                    strings3.add("28"+"天");
+                    strings3.add("45"+"天");
+                    strings3.add("60"+"天");
+                loanApplicationActivity_callBack.showDialog3(strings3,"借款期限");
             break;
             case 4:
 //                Hashtable<String,String> hashtable= new Hashtable<>();
@@ -134,6 +147,8 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
         UtilsToast.showToast(context, "提交中~");
 
         final Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
+        //入口
+        hashtable.put("action", "SetLoanInfo");
         //id
         hashtable.put("loan_userid", Share.getToken(context));
         //借款描述
@@ -148,11 +163,11 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
         hashtable.put("loan_category","1");
         //判断怎么进来的 (二选一) 0 先息后本  1 等额本息
         hashtable.put("loan_plan",classTag+"");
-        setLoanInfo_Request.request(context, hashtable, new NetWorkCallBack() {
+        setLoanInfo_Request.request(context, hashtable, new NetWorkCallBack<SetLoanInfo>() {
             @Override
-            public void onSucceed(JSONObject jsonObject) {
-                setLoanInfo setLoanInfo = jsonObject.toJavaObject(setLoanInfo.class);
-                String message = setLoanInfo.message;
+            public void onSucceed(SetLoanInfo info) {
+
+                String message = info.message;
                 UtilsToast.showToast(context, message);
 
                 //网络请求后
@@ -174,5 +189,24 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
     @Override
     public void setClassTag(int classTag) {
         this.classTag = classTag;
+    }
+
+    /**
+     * 开始回显
+     */
+    @Override
+    public void getCallBackData() {
+        getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
+            @Override
+            public void onSucceed(GetLoanDetail detail) {
+                //技能
+                loanApplicationActivity_callBack.setCallBackData(detail);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
     }
 }

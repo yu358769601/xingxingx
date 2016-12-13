@@ -9,7 +9,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xinxinxuedai.MVP.PersonalDetailsActivity.PersonalDetailsActivity_C;
 import com.xinxinxuedai.MVP.PersonalDetailsActivity.PersonalDetailsActivity_P;
@@ -17,6 +16,7 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.view.initAction_Bar;
 
 import java.util.ArrayList;
@@ -43,8 +43,8 @@ public class PersonalDetailsActivity extends BaseActivity implements PersonalDet
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initView();
         initP();
+        initView();
     }
 
     @Override
@@ -103,6 +103,8 @@ public class PersonalDetailsActivity extends BaseActivity implements PersonalDet
 
         initRadioButton();
 
+
+
     }
 
     private void initRadioButton() {
@@ -113,7 +115,8 @@ public class PersonalDetailsActivity extends BaseActivity implements PersonalDet
             childAt.setTag(i);
             childAt.setText(mStrings.get(i));
         }
-
+        //获取网络数据
+        mPersonalDetailsActivity_p.setCallBackData();
     }
 
     @Override
@@ -132,48 +135,6 @@ public class PersonalDetailsActivity extends BaseActivity implements PersonalDet
 
     }
 
-    private void submit() {
-        // validate
-        String name = personalpdetails_et1_name.getText().toString().trim();
-        if (TextUtils.isEmpty(name)) {
-            Toast.makeText(this, "请输入真实姓名", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String num = personalpdetails_et2_name_num.getText().toString().trim();
-        if (TextUtils.isEmpty(num)) {
-            Toast.makeText(this, "身份证号", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String num1 = personalpdetails_et3_weixin_num.getText().toString().trim();
-        if (TextUtils.isEmpty(num1)) {
-            Toast.makeText(this, "微信号码", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String ed = cancellation_ed.getText().toString().trim();
-        if (TextUtils.isEmpty(ed)) {
-            Toast.makeText(this, "请输入您父母的现住址精确到门牌号", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String tellname = personalpdetails_et4_tellname.getText().toString().trim();
-        if (TextUtils.isEmpty(tellname)) {
-            Toast.makeText(this, "紧急联系人姓名", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String tell = personalpdetails_et5_tellname_tell.getText().toString().trim();
-        if (TextUtils.isEmpty(tell)) {
-            Toast.makeText(this, "紧急联系人电话", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // TODO validate success, do something
-
-
-    }
 
     /**
      * Called when a view has been clicked.
@@ -221,5 +182,47 @@ public class PersonalDetailsActivity extends BaseActivity implements PersonalDet
 
                 break;
             }
+    }
+
+    /**
+     * 设置 个人信息 回显
+     *
+     * @param getInfo
+     */
+    @Override
+    public void setCallBackData(GetInfo getInfo) {
+        //性别
+        if (!TextUtils.isEmpty(getInfo.loan_sex)){
+            RadioButton childAt1 = (RadioButton) personalpdetails_rg.getChildAt(0);
+            RadioButton childAt2 = (RadioButton) personalpdetails_rg.getChildAt(1);
+            if ("0".equals(getInfo.loan_sex)) {
+                childAt1.setChecked(true);
+                childAt2.setChecked(false);
+            }
+            if ("1".equals(getInfo.loan_sex)){
+                childAt1.setChecked(false);
+                childAt2.setChecked(true);
+            }
+        }
+        //姓名
+        if (!TextUtils.isEmpty(getInfo.loan_realname))
+            personalpdetails_et1_name.setText(getInfo.loan_realname);
+        //身份证
+        if (!TextUtils.isEmpty(getInfo.loan_card_id))
+            personalpdetails_et2_name_num.setText(getInfo.loan_card_id);
+        //微信号码
+        if (!TextUtils.isEmpty(getInfo.loan_weixin))
+            personalpdetails_et3_weixin_num.setText(getInfo.loan_weixin);
+        //地址
+        if (!TextUtils.isEmpty(getInfo.loan_address))
+            cancellation_ed.setText(getInfo.loan_address);
+        //紧急联系人
+        if (!TextUtils.isEmpty(getInfo.loan_parent))
+            personalpdetails_et4_tellname.setText(getInfo.loan_parent);
+        //紧急联系人电话
+        if (!TextUtils.isEmpty(getInfo.loan_parent_mobile))
+            personalpdetails_et5_tellname_tell.setText(getInfo.loan_parent_mobile);
+
+
     }
 }

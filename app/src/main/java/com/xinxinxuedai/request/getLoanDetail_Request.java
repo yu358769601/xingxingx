@@ -9,6 +9,7 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
 import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -19,14 +20,14 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
 /**
  * Created by Administrator 于萌萌
  * 创建日期: 14:38 . 2016年12月12日
- * 描述:网络请求_获取借款详情
+ * 描述:网络请求_获取借款详情(大界面左下角)
  * <p>
  * <p>
  * 备注:
  */
 
 public class getLoanDetail_Request {
-    public static HttpURLConnection request(final Context context, final NetWorkCallBack netWorkCallBack) {
+    public static HttpURLConnection request(final Context context, final NetWorkCallBack<GetLoanDetail> netWorkCallBack) {
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         //入口
         hashtable.put("action", "getLoanDetail");
@@ -38,8 +39,9 @@ public class getLoanDetail_Request {
                     public void onSucceed(JSONObject jsonObject) {
                         try {
                             if (null != jsonObject) {
-                                LogUtils.i("网络请求_"+"获取借款详情"+"正常内容"+jsonObject);
-                                netWorkCallBack.onSucceed(jsonObject);
+                                LogUtils.i("网络请求_"+"获取借款详情+零用金回显"+"正常内容"+jsonObject);
+                                GetLoanDetail data = jsonObject.getObject("data", GetLoanDetail.class);
+                                netWorkCallBack.onSucceed(data);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

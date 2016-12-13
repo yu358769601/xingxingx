@@ -7,10 +7,13 @@ import android.widget.TextView;
 import com.xinxinxuedai.MVP.ApplicationStatusActivity.ApplicationStatusActivity_C;
 import com.xinxinxuedai.MVP.ApplicationStatusActivity.ApplicationStatusActivity_P;
 import com.xinxinxuedai.R;
+import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
-import com.xinxinxuedai.bean.ApplicationStatusData;
+import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.view.initAction_Bar;
+
+import java.util.ArrayList;
 
 //申请状态activity
 public class ApplicationStatusActivity extends BaseActivity implements ApplicationStatusActivity_C {
@@ -79,24 +82,58 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
 
     }
 
+
     /**
      * 给V的 数据设置
      *
      * @param data
      */
     @Override
-    public void setData(ApplicationStatusData data) {
-        String applicationstatus_txt1 = this.getResources().getString(R.string.applicationstatus_txt1);
-        String applicationstatus_txt2 = this.getResources().getString(R.string.applicationstatus_txt2);
-        String applicationstatus_txt3 = this.getResources().getString(R.string.applicationstatus_txt3);
-        String applicationstatus_txt4 = this.getResources().getString(R.string.applicationstatus_txt4);
-        String applicationstatus_txt5 = this.getResources().getString(R.string.applicationstatus_txt5);
+    public void setData(GetLoanDetail data) {
+        LogUtils.i("获取到借款详情"+data);
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("资料未完善");
+        strings.add("借款审核中");
+        strings.add("借款审核已通过，请在24小时之内关注银行卡资金是否到账。");
+        strings.add("借款审核未通过");
+        strings.add("借款放款成功,请按照还款计划及时归还借款。");
+        strings.add("借款放款失败");
+        strings.add("借款还款已完成");
+        strings.add("借款已提前还款");
 
-        applicationstatus_tv1.setText(applicationstatus_txt1+data.s1);
-        applicationstatus_tv2.setText(applicationstatus_txt2+data.s2);
-        applicationstatus_tv3.setText(applicationstatus_txt3+data.s3);
-        applicationstatus_tv4.setText(applicationstatus_txt4+data.s4);
-        applicationstatus_tv5.setText(applicationstatus_txt5+data.s5);
+        //0 先息后本  1 等额本息
+        ArrayList<String> strings1 = new ArrayList<>();
+        strings1.add("先息后本");
+        strings1.add("等额本息");
+
+        String applicationstatus_txt1 = applicationstatus_tv1.getHint().toString().trim();
+        String applicationstatus_txt2 = applicationstatus_tv2.getHint().toString().trim();
+        String applicationstatus_txt3 = applicationstatus_tv3.getHint().toString().trim();
+        String applicationstatus_txt4 = applicationstatus_tv4.getHint().toString().trim();
+        String applicationstatus_txt5 = applicationstatus_tv5.getHint().toString().trim();
+        for (int i = 0; i <strings1.size() ; i++) {
+            String s = strings1.get(i);
+
+            if (Integer.parseInt(data.loan_plan)==i){
+                //借款计划
+                applicationstatus_tv1.setText(applicationstatus_txt1+s);
+                break;
+            }
+        }
+        //借款期限
+        applicationstatus_tv2.setText(applicationstatus_txt2+data.loan_term);
+        //借款金额
+        applicationstatus_tv3.setText(applicationstatus_txt3+data.money);
+        //申请时间
+        applicationstatus_tv4.setText(applicationstatus_txt4+data.add_time);
+        for (int i = 0; i <strings.size() ; i++) {
+            String s = strings.get(i);
+            if (data.loan_status==i){
+                //借款状态
+                applicationstatus_tv5.setText(applicationstatus_txt5+s);
+                return;
+            }
+        }
 
     }
 }
