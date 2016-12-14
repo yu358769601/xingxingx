@@ -1,5 +1,6 @@
 package com.xinxinxuedai.MVP.BankCardInfoActivity;
 
+import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
 import com.xinxinxuedai.bean.GetInfo;
 
 /**
@@ -11,7 +12,7 @@ import com.xinxinxuedai.bean.GetInfo;
  * 备注:
  */
 
-public interface BankCardInfoActivity_C {
+public interface BankCardInfoActivity_C extends BaseMVPinterFace_CallBack{
     /**
      * 设置回显信息
      */

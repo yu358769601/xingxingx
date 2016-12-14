@@ -3,11 +3,16 @@ package com.xinxinxuedai.MVP.UploadPicturesActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.GetInfo;
+import com.xinxinxuedai.request.GetInfo_Request;
+import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.ui.ChoiceActivity;
 
 /**
@@ -73,5 +78,24 @@ public class UploadPicturesActivity_P extends BaseMvp<UploadPicturesActivity_C> 
                 context.startActivity(intent);
                 break;
         }
+    }
+
+    /**
+     * 获取所有信息 主要是要大区
+     */
+    @Override
+    public void getCallBackData() {
+        GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
+            @Override
+            public void onSucceed(GetInfo getInfo) {
+                if (!TextUtils.isEmpty(getInfo.loan_area))
+                    Share.save(context,"loan_area",getInfo.loan_area );
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
     }
 }

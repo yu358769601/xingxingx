@@ -1,5 +1,6 @@
 package com.xinxinxuedai.MVP.PersonalDetailsActivity;
 
+import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
 import com.xinxinxuedai.bean.GetInfo;
 
 /**
@@ -11,7 +12,7 @@ import com.xinxinxuedai.bean.GetInfo;
  * 备注:
  */
 
-public interface PersonalDetailsActivity_C {
+public interface PersonalDetailsActivity_C extends BaseMVPinterFace_CallBack{
     /**
      * 设置 个人信息 回显
      * @param getInfo

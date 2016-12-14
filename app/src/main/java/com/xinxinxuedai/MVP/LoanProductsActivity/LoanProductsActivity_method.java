@@ -12,5 +12,11 @@ import android.view.View;
  */
 
 public interface LoanProductsActivity_method {
+
     void onclicks(View view);
+
+    /**
+     * 获取 以前的记录
+     */
+    void getCallBackData();
 }

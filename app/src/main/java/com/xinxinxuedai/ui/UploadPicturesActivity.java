@@ -37,8 +37,8 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initView();
         initP();
+        initView();
         init();
     }
 
@@ -144,6 +144,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
     public void initP() {
         mUploadPicturesActivity_p = UploadPicturesActivity_P.getmRegisterActivity_p(AppContext.getApplication());
         mUploadPicturesActivity_p.setCallBack(this);
+        mUploadPicturesActivity_p.getCallBackData();
     }
 
     @Override
@@ -194,7 +195,6 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
                 .setTextColor(getResources().getColor(R.color.home_tv1))
                 .setTopDrawable(R.drawable.home_tv01)
                 .setRelativeLayout_Pading(0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp),0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp));
-
 
     }
 

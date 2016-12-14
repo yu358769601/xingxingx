@@ -20,14 +20,20 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
 /**
  * Created by Administrator 于萌萌
  * 创建日期: 14:38 . 2016年12月12日
- * 描述:网络请求_获取借款详情(大界面左下角)
+ * 描述:网络请求_获取借款详情(大界面左下角) 借贷产品
  * <p>
  * <p>
  * 备注:
  */
 
-public class getLoanDetail_Request {
+public class getLoanDetail_Request  {
+
+    private static GetLoanDetail sData;
+
+
     public static HttpURLConnection request(final Context context, final NetWorkCallBack<GetLoanDetail> netWorkCallBack) {
+        if (null!=sData)
+        netWorkCallBack.onSucceed(sData);
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         //入口
         hashtable.put("action", "getLoanDetail");
@@ -40,8 +46,8 @@ public class getLoanDetail_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"获取借款详情+零用金回显"+"正常内容"+jsonObject);
-                                GetLoanDetail data = jsonObject.getObject("data", GetLoanDetail.class);
-                                netWorkCallBack.onSucceed(data);
+                                sData = jsonObject.getObject("data", GetLoanDetail.class);
+                                netWorkCallBack.onSucceed(sData);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

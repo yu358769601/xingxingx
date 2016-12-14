@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
+import com.xinxinxuedai.bean.GetLoanDetail;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.getLoanDetail_Request;
 import com.xinxinxuedai.ui.LoanApplicationActivity;
 
 /**
@@ -54,13 +57,34 @@ public class LoanProductsActivity_P extends BaseMvp<LoanProductsActivity_CallBac
                     bundle.putInt("tag",0);
                     intent.putExtras(bundle);
                     context.startActivity(intent);
+                    loanProductsActivity_callBack.closeActivity();
                 break;
                 case 2:
                     intent.setClass(context, LoanApplicationActivity.class);
                     bundle.putInt("tag",1);
                     intent.putExtras(bundle);
                     context.startActivity(intent);
+                    loanProductsActivity_callBack.closeActivity();
                 break;
         }
+    }
+
+    /**
+     * 获取 以前的记录
+     */
+    @Override
+    public void getCallBackData() {
+        getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
+            @Override
+            public void onSucceed(GetLoanDetail getLoanDetail) {
+                GetLoanDetail detail = getLoanDetail;
+                loanProductsActivity_callBack.setCallBackData(detail);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
     }
 }

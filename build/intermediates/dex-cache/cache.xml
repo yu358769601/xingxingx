@@ -3,6 +3,15 @@
 
     <item
         is-multidex="false"
+        jar="D:\gitbox\xinxinxuedai\app\src\main\libs\paysdkPY36.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="42653422b4327a9831a7ec092b3e343a3e245175">
+        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\paysdkPY36_ea0ebac01224bef96824aa4ffbcd92ee4b73dc25.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
         jumboMode="false"
         optimize="true"

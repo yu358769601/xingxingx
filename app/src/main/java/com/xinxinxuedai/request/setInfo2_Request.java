@@ -26,7 +26,12 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  */
 
 public class setInfo2_Request {
+
+    private static SetInfo2 sInfo2;
+
     public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<SetInfo2> netWorkCallBack) {
+        if (null!=sInfo2)
+            netWorkCallBack.onSucceed(sInfo2);
         //入口
         hashtable.put("action", "setInfo2");
         //身份认证
@@ -38,8 +43,8 @@ public class setInfo2_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"添加用户借款信息2"+"正常内容"+jsonObject);
-                                SetInfo2 setInfo2 = jsonObject.toJavaObject(SetInfo2.class);
-                                netWorkCallBack.onSucceed(setInfo2);
+                                sInfo2 = jsonObject.toJavaObject(SetInfo2.class);
+                                netWorkCallBack.onSucceed(sInfo2);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

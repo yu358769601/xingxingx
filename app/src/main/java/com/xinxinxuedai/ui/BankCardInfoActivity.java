@@ -167,4 +167,12 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
                 bank_card_info_tv3_bank_card_num.setText(getInfo.loan_bank_card);
 
     }
+
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+        finish();
+    }
 }

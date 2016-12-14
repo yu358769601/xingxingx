@@ -36,6 +36,7 @@ public class HttpMultipartPost extends AsyncTask<HttpMultipartPost.Param, Intege
 	private Context context;
 	private String encode = HTTP.UTF_8;
 
+
 	/**
 	 * 
 	 * @param url
@@ -73,10 +74,9 @@ public class HttpMultipartPost extends AsyncTask<HttpMultipartPost.Param, Intege
 			httpURLConnection.setRequestMethod("POST");
 			httpURLConnection.setConnectTimeout(12 * 1000);
 			httpURLConnection.setRequestProperty("Connection", "Keep-Alive");
-		//	httpURLConnection.setRequestProperty("Cookie", "token="+ Share.getToken(context));
 			httpURLConnection.setRequestProperty("Charset", "UTF-8");
-			httpURLConnection.setRequestProperty("Content-Type",
-					"multipart/form-data;boundary=" + boundary);
+			httpURLConnection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+
 
 			DataOutputStream dos = new DataOutputStream(httpURLConnection
 					.getOutputStream());
@@ -89,6 +89,7 @@ public class HttpMultipartPost extends AsyncTask<HttpMultipartPost.Param, Intege
 				dos.writeBytes(sbf.toString());
 			}
 			dos.writeBytes(twoHyphens + boundary + end);
+			//文件名字 重要需要限定
 			dos
 					.writeBytes("Content-Disposition: form-data; name=\"file\"; filename=\""
 							+ fileName
@@ -124,6 +125,9 @@ public class HttpMultipartPost extends AsyncTask<HttpMultipartPost.Param, Intege
 			dos.close();
 			is.close();
 			JSONObject ret = JSON.parseObject(result);
+
+
+
 			//LogUtils.i("上传网络之后反过来的"+ret.toString());
 //			Log.i("ret",ret.toString());
 //			if(ret.getIntValue("error_code")==-999){
@@ -133,6 +137,7 @@ public class HttpMultipartPost extends AsyncTask<HttpMultipartPost.Param, Intege
 //				Share.saveToken(context,"");
 //			}
 			return ret;
+			//return jsonObject;
 		}catch (Exception e) {
 			e.printStackTrace();
 			String err = "{'error_code':-1,'error_msg':'"+e.getMessage()+"'}";

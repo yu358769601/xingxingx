@@ -18,4 +18,9 @@ public interface UploadPicturesActivity_M {
      */
     void xuedai_buttonClick(View view);
 
+    /**
+     * 获取所有信息 主要是要大区
+     */
+    void getCallBackData();
+
 }

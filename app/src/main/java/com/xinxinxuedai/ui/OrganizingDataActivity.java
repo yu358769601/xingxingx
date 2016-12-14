@@ -1,13 +1,11 @@
 package com.xinxinxuedai.ui;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xinxinxuedai.MVP.OrganizingDataActivity.OrganizingDataActivity_C;
 import com.xinxinxuedai.MVP.OrganizingDataActivity.OrganizingDataActivity_P;
@@ -20,7 +18,7 @@ import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
 import java.util.ArrayList;
-//完善信息activity
+//完善资料activity
 public class OrganizingDataActivity extends BaseActivity implements View.OnClickListener, OrganizingDataActivity_C {
 
     private TextView organizingdata_tv;
@@ -171,19 +169,6 @@ public class OrganizingDataActivity extends BaseActivity implements View.OnClick
                 mOrganizingDataActivity_p.getTextViews(textViews,organizingdata_ed);
             break;
         }
-
-    }
-
-    private void submit() {
-        // validate
-        String ed = organizingdata_ed.getText().toString().trim();
-        if (TextUtils.isEmpty(ed)) {
-            Toast.makeText(this, "请输入您现住址精确到门牌号", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // TODO validate success, do something
-
 
     }
 }

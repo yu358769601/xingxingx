@@ -25,7 +25,12 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  */
 
 public class setLoanInfo_Request {
-    public static HttpURLConnection request(final Context context,Hashtable<String,String> hashtable ,final NetWorkCallBack<SetLoanInfo> netWorkCallBack) {
+
+    private static SetLoanInfo sSetLoanInfo;
+
+    public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<SetLoanInfo> netWorkCallBack) {
+        if (null!=sSetLoanInfo)
+            netWorkCallBack.onSucceed(sSetLoanInfo);
         //入口
         hashtable.put("action", "setLoanInfo");
 //        //token
@@ -37,8 +42,8 @@ public class setLoanInfo_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"添加用户借款信息"+"正常内容"+jsonObject);
-                                SetLoanInfo SetLoanInfo = jsonObject.toJavaObject(SetLoanInfo.class);
-                                netWorkCallBack.onSucceed(SetLoanInfo);
+                                sSetLoanInfo = jsonObject.toJavaObject(SetLoanInfo.class);
+                                netWorkCallBack.onSucceed(sSetLoanInfo);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

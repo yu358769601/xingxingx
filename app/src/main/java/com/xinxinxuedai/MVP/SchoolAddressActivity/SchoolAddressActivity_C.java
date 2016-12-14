@@ -1,5 +1,6 @@
 package com.xinxinxuedai.MVP.SchoolAddressActivity;
 
+import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
 import com.xinxinxuedai.bean.GetInfo;
 
 /**
@@ -11,7 +12,7 @@ import com.xinxinxuedai.bean.GetInfo;
  * 备注:
  */
 
-public interface SchoolAddressActivity_C {
+public interface SchoolAddressActivity_C extends BaseMVPinterFace_CallBack{
     /**
      * 回显结果返回给activity
      * @param getInfo

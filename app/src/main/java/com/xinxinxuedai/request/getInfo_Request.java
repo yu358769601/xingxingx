@@ -27,7 +27,13 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  */
 
 public class GetInfo_Request {
+
+    private static GetInfo sData;
+
     public static HttpURLConnection request(final Context context, final NetWorkCallBack<GetInfo> netWorkCallBack) {
+        if (null!=sData)
+        netWorkCallBack.onSucceed(sData);
+        LogUtils.i("访问网络_缓存"+sData);
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         hashtable.put("action", "getInfo");
         hashtable.put("loan_id", Share.getToken(context));
@@ -38,8 +44,9 @@ public class GetInfo_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"获取借贷人信息"+"正常内容"+jsonObject);
-                                GetInfo data = jsonObject.getObject("data", GetInfo.class);
-                                netWorkCallBack.onSucceed(data);
+                                sData = jsonObject.getObject("data", GetInfo.class);
+                                LogUtils.i("访问网络_访问网络之后"+sData);
+                                netWorkCallBack.onSucceed(sData);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

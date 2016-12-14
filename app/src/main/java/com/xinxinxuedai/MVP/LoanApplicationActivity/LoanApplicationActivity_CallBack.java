@@ -1,5 +1,6 @@
 package com.xinxinxuedai.MVP.LoanApplicationActivity;
 
+import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
 import com.xinxinxuedai.bean.GetLoanDetail;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * 备注:
  */
 
-public interface LoanApplicationActivity_CallBack {
+public interface LoanApplicationActivity_CallBack extends BaseMVPinterFace_CallBack{
 //    /**
 //     * 从另外一个接口返回的  选择的号码 和 选择号码对应的 内容
 //     * @param selectNum 选择的号码

@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
+import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopCallBack;
 import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopTextView;
@@ -82,6 +83,7 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
         GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
             @Override
             public void onSucceed(GetInfo getInfo) {
+                LogUtils.i("银行卡信息"+getInfo);
                 bankCardInfoActivity_c.setCallBackData(getInfo);
             }
 
@@ -108,6 +110,8 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
             @Override
             public void onSucceed(SetInfo3 info3) {
                UtilsToast.showToast(context, info3.message);
+                //关掉界面
+                bankCardInfoActivity_c.closeActivity();
             }
 
             @Override

@@ -181,6 +181,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         //给ViewPager 设置数据 并且画小红点 小白点
         mMainActivity_p.initViewData(mActivity_01_ll,iv_red_point);
 
+
+        mMainActivity_p.getCallBackData();
     }
 
 

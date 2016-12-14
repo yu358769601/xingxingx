@@ -14,4 +14,9 @@ import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 public interface ApplyForActivity_method {
     //按钮被点击了
     void initClick(XueDaiButton xueDaiButton);
+
+    /**
+     * 获取 info 信息
+     */
+    void getCallBackData();
 }

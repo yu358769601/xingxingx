@@ -133,6 +133,14 @@ public class SchoolAddressActivity extends BaseActivity implements View.OnClickL
         }
     }
 
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+        finish();
+    }
+
 
     //接收别的地方过来的数据 写一个内容类
     public class InnerReceiver extends BroadcastReceiver {

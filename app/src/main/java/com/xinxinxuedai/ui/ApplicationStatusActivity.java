@@ -15,7 +15,7 @@ import com.xinxinxuedai.view.initAction_Bar;
 
 import java.util.ArrayList;
 
-//申请状态activity
+//申请状态activity 借款状态
 public class ApplicationStatusActivity extends BaseActivity implements ApplicationStatusActivity_C {
 
     private initAction_Bar relativeLayout_title;
@@ -25,12 +25,20 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
     private TextView applicationstatus_tv4;
     private TextView applicationstatus_tv5;
     private ApplicationStatusActivity_P mApplicationStatusActivity_p;
+    private GetLoanDetail mHomeData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initView();
+        getBox();
         initP();
+        initView();
+    }
+
+    private void getBox() {
+        Bundle extras = getIntent().getExtras();
+        mHomeData = (GetLoanDetail) extras.getSerializable("HomeData");
+
     }
 
     @Override
@@ -61,20 +69,25 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
         applicationstatus_tv4 = (TextView) findViewById(R.id.applicationstatus_tv4);
         applicationstatus_tv5 = (TextView) findViewById(R.id.applicationstatus_tv5);
 
-
+        initData();
     }
 
     @Override
     public void initP() {
         mApplicationStatusActivity_p = ApplicationStatusActivity_P.get(AppContext.getApplication());
         mApplicationStatusActivity_p.setCallBack(this);
-        //获取网络数据
-        mApplicationStatusActivity_p.getData();
+
     }
 
     @Override
     public void initData() {
 
+        if (null!=mHomeData){
+            LogUtils.i("主页有下级页面的数据"+mHomeData);
+            setData(mHomeData);
+        }
+        //获取网络数据
+        mApplicationStatusActivity_p.getData();
     }
 
     @Override
@@ -118,12 +131,13 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
                 //借款计划
                 applicationstatus_tv1.setText(applicationstatus_txt1+s);
                 break;
+
             }
         }
         //借款期限
-        applicationstatus_tv2.setText(applicationstatus_txt2+data.loan_term);
+        applicationstatus_tv2.setText(applicationstatus_txt2+data.loan_term+"天");
         //借款金额
-        applicationstatus_tv3.setText(applicationstatus_txt3+data.money);
+        applicationstatus_tv3.setText(applicationstatus_txt3+data.money+"元");
         //申请时间
         applicationstatus_tv4.setText(applicationstatus_txt4+data.add_time);
         for (int i = 0; i <strings.size() ; i++) {

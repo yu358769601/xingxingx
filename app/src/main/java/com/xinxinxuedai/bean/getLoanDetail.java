@@ -1,5 +1,7 @@
 package com.xinxinxuedai.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator 于萌萌
  * 创建日期: 14:37 . 2016年12月12日
@@ -9,7 +11,9 @@ package com.xinxinxuedai.bean;
  * 备注:回显
  */
 
-public class GetLoanDetail {
+public class GetLoanDetail implements Serializable{
+
+
     //入口
 //    hashtable.put("action", "GetLoanDetail");
     //token

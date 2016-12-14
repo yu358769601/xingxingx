@@ -47,7 +47,7 @@ public class GetInfo {
          * loan_province :
          * 市
          * loan_city :
-         * 区域(华东)
+         * 区域(华东)大区
          * loan_area :
          * 父母地址
          * loan_present_address :

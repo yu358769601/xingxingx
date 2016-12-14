@@ -22,8 +22,10 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.Utils.imagezip.BitmapUtils;
 import com.xinxinxuedai.Utils.imagezip.ImageUtil;
 import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.upFile.HttpMultipartPost;
+import com.xinxinxuedai.util.Constants;
 
 import java.io.File;
 import java.io.IOException;
@@ -81,12 +83,19 @@ public class ChoiceActivity extends BaseActivity implements View.OnClickListener
             final String s = "file://" + mTmpFile;
            // Log.e("parse", parse + "");
             LogUtils.i("返回来的照相机图片路径"+s);
-            String url = "http://192.168.4.102:8080/my/upload";
+           // String url = "http://192.168.4.102:8080/my/upload";
+           // "http://192.168.0.102/qichen/upload_img.php?app=xingxingdai&loan_area=4&loan_id=269";
+            String token = Share.getToken(this);
+            String loan_area = Share.getString(this, "loan_area");
+            String xingxing = "xingxingdai";
+
+            String url = Constants.up_image_url+"?"+"app="+xingxing+"&loan_area="+loan_area+"&loan_id="+token;
             Uri parse = Uri.parse(s);
-            LogUtils.i("上传图片的过程");
+            LogUtils.i("上传图片的过程"+url);
             //上传图片的过程
             InputStream stream = ImageUtil.compressImage(BitmapUtils.getResizeBitmap(this, parse,350,true));
-            String fileName = s.substring(s.lastIndexOf("/") + 1);
+           // String fileName = s.substring(s.lastIndexOf("/") + 1);
+            String fileName = "xingxingdai_loan_id_"+"card_photo"+mClassTag+".jpg";
             HttpMultipartPost post = new HttpMultipartPost(this, url,stream,fileName);
             post.setCallBack(new HttpMultipartPost.CallBack() {
                 @Override
@@ -98,7 +107,7 @@ public class ChoiceActivity extends BaseActivity implements View.OnClickListener
                 @Override
                 public void msg(JSONObject msg) {
                     LogUtils.i("上传图片返回来的数据"+msg);
-                    UtilsToast.showToast(ChoiceActivity.this, msg.getString("msg"));
+                    //UtilsToast.showToast(ChoiceActivity.this, msg.getString("msg"));
                     UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getData",mClassTag+"",s);
                 }
             });
@@ -128,12 +137,19 @@ public class ChoiceActivity extends BaseActivity implements View.OnClickListener
                     //myuploadFile(path);
                     LogUtils.i("返回来的相册路径"+path);
 
-                    String url = "http://192.168.4.102:8080/my/upload";
+                    //String url = "http://192.168.4.102:8080/my/upload";
+                    String token = Share.getToken(this);
+                    String loan_area = Share.getString(this, "loan_area");
+                    String xingxing = "xingxingdai";
+
+                    String url = Constants.up_image_url+"?"+"app="+xingxing+"&loan_area="+loan_area+"&loan_id="+token;
+                    //String url = Constants.up_image_url;
                     Uri parse = Uri.parse(path);
                     LogUtils.i("上传图片的过程");
                     //上传图片的过程
                     InputStream stream = ImageUtil.compressImage(BitmapUtils.getResizeBitmap(this, parse,350,true));
-                    String fileName = path.substring(path.lastIndexOf("/") + 1);
+                    //String fileName = path.substring(path.lastIndexOf("/") + 1);
+                    String fileName = "xingxingdai_loan_id_"+"card_photo"+mClassTag+".jpg";
                     HttpMultipartPost post = new HttpMultipartPost(this, url,stream,fileName);
                     post.setCallBack(new HttpMultipartPost.CallBack() {
                         @Override

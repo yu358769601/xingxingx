@@ -169,7 +169,8 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
 
                 String message = info.message;
                 UtilsToast.showToast(context, message);
-
+                context.startActivity(new Intent(context,ApplyForActivity.class));
+                loanApplicationActivity_callBack.closeActivity();
                 //网络请求后
                 loanApplicationActivity_callBack.getTextInfo4(hashtable.toString());
             }

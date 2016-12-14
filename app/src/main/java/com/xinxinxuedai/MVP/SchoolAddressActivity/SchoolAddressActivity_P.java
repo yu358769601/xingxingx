@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
-import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopCallBack;
 import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopTextView;
@@ -89,6 +88,9 @@ public class SchoolAddressActivity_P extends BaseMvp<SchoolAddressActivity_C> im
                     public void onSucceed(SetInfo2 info2) {
 
                         UtilsToast.showToast(context,info2.message);
+
+                        //关掉界面
+                        schoolAddressActivity_c.closeActivity();
                     }
 
                     @Override

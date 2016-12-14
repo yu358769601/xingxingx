@@ -185,6 +185,8 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
             @Override
             public void onSucceed(SetInfo1 info1) {
                 UtilsToast.showToast(context, info1.message);
+                //关掉界面
+                personalDetailsActivity_c.closeActivity();
             }
 
             @Override

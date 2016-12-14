@@ -34,7 +34,7 @@ public class SendNetMessage  implements Runnable {
     public static final int SENDORDER_CALLBACK = 0;
     public static final int SENDORDER_HANDLER = 1;
     int status = 0;
-    private JSONObject mJsonObject;
+    private JSONObject mJsonObject = new JSONObject();
     private String mResult;
     int  type;
     public SendNetMessage(Context activity, String url, Hashtable<String, String> stringHashMap, int type, Handler sendPositionHandler){

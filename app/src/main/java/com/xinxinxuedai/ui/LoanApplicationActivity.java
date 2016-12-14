@@ -290,4 +290,11 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
     }
 
 
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+        finish();
+    }
 }

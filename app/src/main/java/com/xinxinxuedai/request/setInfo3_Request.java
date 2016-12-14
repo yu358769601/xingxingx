@@ -26,7 +26,12 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  */
 
 public class setInfo3_Request {
+
+    private static SetInfo3 sSetInfo3;
+
     public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<SetInfo3> netWorkCallBack) {
+        if (null!=sSetInfo3)
+            netWorkCallBack.onSucceed(sSetInfo3);
         hashtable.put("action", "setInfo3");
         hashtable.put("loan_id", Share.getToken(context));
         NetMessage.get(context)
@@ -36,9 +41,9 @@ public class setInfo3_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"添加用户银行卡3"+"正常内容"+jsonObject);
-                                SetInfo3 setInfo3 = jsonObject.toJavaObject(SetInfo3.class);
+                                sSetInfo3 = jsonObject.toJavaObject(SetInfo3.class);
 
-                                netWorkCallBack.onSucceed(setInfo3);
+                                netWorkCallBack.onSucceed(sSetInfo3);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

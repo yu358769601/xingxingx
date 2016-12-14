@@ -225,4 +225,12 @@ public class PersonalDetailsActivity extends BaseActivity implements PersonalDet
 
 
     }
+
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+        finish();
+    }
 }

@@ -18,6 +18,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
+    <!--富友权限-->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+
+
+
     <application
         android:name=".app.AppContext"
         android:allowBackup="true"
@@ -119,6 +126,13 @@
         </activity>
         <activity android:name=".ui.SelectCityActivity">
         </activity>
+        <!--富友activity-->
+        <activity
+            android:name="com.fuiou.pay.activity.FyWebActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
     </application>
 
 </manifest>

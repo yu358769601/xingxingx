@@ -24,8 +24,10 @@ import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsMeasure;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.upFile.HttpMultipartPost;
+import com.xinxinxuedai.util.Constants;
 import com.xinxinxuedai.view.VideoView.MyVideoView;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_1;
@@ -247,10 +249,18 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
             FileInputStream soundStream = null;
             try {
                 soundStream = new FileInputStream(videoUri);
-                String fileName = videoUri.substring(videoUri.lastIndexOf("/") + 1);
+                //String fileName = videoUri.substring(videoUri.lastIndexOf("/") + 1);
+                String fileName = "xingxingdai_loan_video1.mp4";
                 LogUtils.i("转换完的语音格式是"+fileName);
                 //发送请求 把语音地址发上去
-                String url = "http://192.168.4.102:8080/my/upload";
+               // String url = "http://192.168.4.102:8080/my/upload";
+                String token = Share.getToken(context);
+                String loan_area = Share.getString(context, "loan_area");
+                String xingxing = "xingxingdai";
+
+                String url = Constants.up_image_url+"?"+"app="+xingxing+"&loan_area="+loan_area+"&loan_id="+token;
+
+
                 HttpMultipartPost post = new HttpMultipartPost(context, url, soundStream, fileName);
                 post.setCallBackMsg(new HttpMultipartPost.CallBackMsg() {
                     @Override
@@ -316,7 +326,7 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
                 .doH264Compress(true)
                 .smallVideoWidth(480)
                 .smallVideoHeight(360)
-                .recordTimeMax(6 * 1000)
+                .recordTimeMax(10 * 1000)
                 .maxFrameRate(20)
                 .minFrameRate(8)
                 .captureThumbnailsTime(1)

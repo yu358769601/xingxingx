@@ -6,15 +6,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.xinxinxuedai.MVP.ApplyForActivity.ApplyForActivity_P;
+import com.xinxinxuedai.MVP.ApplyForActivity.ApplyForActivity_callback;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
 
-//申请借款activity
-public class ApplyForActivity extends BaseActivity {
+//申请借款activity 申请贷款
+public class ApplyForActivity extends BaseActivity implements ApplyForActivity_callback {
 
     private initAction_Bar mRelativeLayout_title;
     private XueDaiButton mTv1;
@@ -134,17 +136,35 @@ public class ApplyForActivity extends BaseActivity {
     @Override
     public void initP() {
         mApplyForActivity_p = ApplyForActivity_P.getApplyForActivity_P(this);
-
+        mApplyForActivity_p.setCallBack(this);
     }
 
     @Override
     public void initData() {
-
+        mApplyForActivity_p.getCallBackData();
 
     }
 
     @Override
     public void initListener() {
 
+    }
+
+    /**
+     * 用于显示
+     *
+     * @param getInfo
+     */
+    @Override
+    public void setCallBackData(GetInfo getInfo) {
+
+    }
+
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+        finish();
     }
 }

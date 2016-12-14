@@ -28,4 +28,9 @@ public interface MainActivity_method {
     //按钮被点击了
     void initClickView(View view);
 
+    /**
+     * 获取 左下角 和 个人信息所需要的信息
+     */
+    void getCallBackData();
+
 }

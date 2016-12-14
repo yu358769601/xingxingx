@@ -17,6 +17,10 @@ import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDrawable;
+import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.GetLoanDetail;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.getLoanDetail_Request;
 import com.xinxinxuedai.ui.AboutUsActivity;
 import com.xinxinxuedai.ui.ApplicationStatusActivity;
 import com.xinxinxuedai.ui.LoanProductsActivity;
@@ -67,6 +71,8 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
 
         }
     };
+    //给左下角的 还有 给 个人信息的
+    private GetLoanDetail mDetail;
 
 
     public MainActivity_P(Context context){
@@ -171,18 +177,24 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
     @Override
     public void initClick(XueDaiButton xueDaiButton) {
         Intent intent = new Intent();
+        Bundle bundle = new Bundle();
         switch (xueDaiButton.getType()){
             case 1:
                 //点了我要借款
                 intent.setClass(context, LoanProductsActivity.class);
+                bundle.putSerializable("HomeData",mDetail);
+                intent.putExtras(bundle);
                 context.startActivity(intent);
                 break;
             case 2:
                 intent.setClass(context, ReimbursementActivity.class);
+
                 context.startActivity(intent);
                 break;
             case 3:
                 intent.setClass(context, ApplicationStatusActivity.class);
+                bundle.putSerializable("HomeData",mDetail);
+                intent.putExtras(bundle);
                 context.startActivity(intent);
                 break;
             case 4:
@@ -204,6 +216,7 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
                 bundle.putInt("classtag",RegisterActivity.REGISTERCLASS);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
+
             break;
             case 2:
                 LogUtils.i("点击了进入重置activity");
@@ -218,6 +231,27 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
                 context.startActivity(intent);
             break;
         }
+    }
+
+    /**
+     * 获取 左下角 和 个人信息所需要的信息
+     */
+    @Override
+    public void getCallBackData() {
+        if (null==Share.getToken(context)){
+            return;
+        }
+        getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
+            @Override
+            public void onSucceed(GetLoanDetail getLoanDetail) {
+                mDetail = getLoanDetail;
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
     }
 
 
