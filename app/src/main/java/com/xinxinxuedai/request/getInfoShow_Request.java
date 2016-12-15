@@ -37,7 +37,7 @@ public class getInfoShow_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"判断借款人信息是否为空"+"正常内容"+jsonObject);
-                                netWorkCallBack.onSucceed(jsonObject);
+                                netWorkCallBack.onSucceed(jsonObject,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

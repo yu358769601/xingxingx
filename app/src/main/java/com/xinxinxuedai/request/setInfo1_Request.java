@@ -30,7 +30,7 @@ public class setInfo1_Request {
 
     public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<SetInfo1> netWorkCallBack) {
         if (null!=sInfo1)
-            netWorkCallBack.onSucceed(sInfo1);
+            netWorkCallBack.onSucceed(sInfo1,NetWorkCallBack.CACHEDATA);
         hashtable.put("action", "setInfo1");
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
@@ -40,7 +40,7 @@ public class setInfo1_Request {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"添加用户借款信息1"+"正常内容"+jsonObject);
                                 sInfo1 = jsonObject.toJavaObject(SetInfo1.class);
-                                netWorkCallBack.onSucceed(sInfo1);
+                                netWorkCallBack.onSucceed(sInfo1,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

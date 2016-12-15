@@ -76,7 +76,7 @@ public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> imple
     public void getCallBackData() {
         GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
             @Override
-            public void onSucceed(GetInfo getInfo) {
+            public void onSucceed(GetInfo getInfo,int dataMode) {
                 applyForActivity_callback.setCallBackData(getInfo);
             }
 

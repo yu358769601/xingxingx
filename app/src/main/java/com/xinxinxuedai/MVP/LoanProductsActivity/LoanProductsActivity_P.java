@@ -76,7 +76,7 @@ public class LoanProductsActivity_P extends BaseMvp<LoanProductsActivity_CallBac
     public void getCallBackData() {
         getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
             @Override
-            public void onSucceed(GetLoanDetail getLoanDetail) {
+            public void onSucceed(GetLoanDetail getLoanDetail,int dataMode) {
                 GetLoanDetail detail = getLoanDetail;
                 loanProductsActivity_callBack.setCallBackData(detail);
             }

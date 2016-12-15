@@ -35,7 +35,7 @@ public class fuYouChongZhi_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_借款人充值"+"正常内容"+jsonObject);
-                                netWorkCallBack.onSucceed(jsonObject);
+                                netWorkCallBack.onSucceed(jsonObject,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

@@ -1,1 +1,2 @@
 include ':app', ':SmallVideoLib', ':library_XRefreshView'
+include ':androidmobilePY36'

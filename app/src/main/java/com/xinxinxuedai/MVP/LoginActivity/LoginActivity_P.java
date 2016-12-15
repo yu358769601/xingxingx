@@ -137,7 +137,7 @@ public class LoginActivity_P extends BaseMvp<LoginActivity_C> implements LoginAc
         hashtable.put("loan_pwd",editText2.getText().toString().trim());
         userLogin_Request.request(context, hashtable, new NetWorkCallBack<UserLogin>() {
             @Override
-            public void onSucceed(UserLogin login) {
+            public void onSucceed(UserLogin login,int dataMode) {
 
                 String message = login.message;
                 UtilsToast.showToast(context, message);

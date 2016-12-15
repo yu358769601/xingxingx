@@ -31,7 +31,7 @@ public class setInfo2_Request {
 
     public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<SetInfo2> netWorkCallBack) {
         if (null!=sInfo2)
-            netWorkCallBack.onSucceed(sInfo2);
+            netWorkCallBack.onSucceed(sInfo2,NetWorkCallBack.CACHEDATA);
         //入口
         hashtable.put("action", "setInfo2");
         //身份认证
@@ -44,7 +44,7 @@ public class setInfo2_Request {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"添加用户借款信息2"+"正常内容"+jsonObject);
                                 sInfo2 = jsonObject.toJavaObject(SetInfo2.class);
-                                netWorkCallBack.onSucceed(sInfo2);
+                                netWorkCallBack.onSucceed(sInfo2,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

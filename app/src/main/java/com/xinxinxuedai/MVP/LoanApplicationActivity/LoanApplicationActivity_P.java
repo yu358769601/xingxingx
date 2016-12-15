@@ -57,11 +57,11 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
 
     @Override
     public void clicks(View view) {
-        Intent intent = new Intent();
+       // Intent intent = new Intent();
         switch ((int)view.getTag()){
             case 99:
-                intent.setClass(context, ApplyForActivity.class);
-                context.startActivity(intent);
+//                intent.setClass(context, ApplyForActivity.class);
+//                context.startActivity(intent);
             break;
             case 1:
                 //用途
@@ -165,15 +165,17 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
         hashtable.put("loan_plan",classTag+"");
         setLoanInfo_Request.request(context, hashtable, new NetWorkCallBack<SetLoanInfo>() {
             @Override
-            public void onSucceed(SetLoanInfo info) {
-
+            public void onSucceed(SetLoanInfo info, int dataMode) {
                 String message = info.message;
                 UtilsToast.showToast(context, message);
-                context.startActivity(new Intent(context,ApplyForActivity.class));
-                loanApplicationActivity_callBack.closeActivity();
-                //网络请求后
                 loanApplicationActivity_callBack.getTextInfo4(hashtable.toString());
+                loanApplicationActivity_callBack.closeActivity();
+                if (dataMode ==NetWorkCallBack.NETDATA) {
+                    context.startActivity(new Intent(context,ApplyForActivity.class));
+                }
+                //网络请求后
             }
+
 
             @Override
             public void onError(String jsonObject) {
@@ -199,7 +201,7 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
     public void getCallBackData() {
         getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
             @Override
-            public void onSucceed(GetLoanDetail detail) {
+            public void onSucceed(GetLoanDetail detail,int dataMode) {
                 //技能
                 loanApplicationActivity_callBack.setCallBackData(detail);
             }

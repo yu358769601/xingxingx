@@ -243,7 +243,7 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
         }
         getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
             @Override
-            public void onSucceed(GetLoanDetail getLoanDetail) {
+            public void onSucceed(GetLoanDetail getLoanDetail,int dataMode) {
                 mDetail = getLoanDetail;
             }
 

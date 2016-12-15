@@ -91,7 +91,7 @@ public class RegisterActivity_P implements RegisterActivity_M {
         hashtable.put("loan_mobile",tag.getText().toString().trim());
         HttpURLConnection request = registSms_Request.request(context, hashtable, new NetWorkCallBack<RegistSms>() {
             @Override
-            public void onSucceed(RegistSms registSms) {
+            public void onSucceed(RegistSms registSms,int dataMode) {
                 String code = registSms.data.code;
                 String message = registSms.message;
                 UtilsToast.showToast(context, message);
@@ -218,7 +218,7 @@ public class RegisterActivity_P implements RegisterActivity_M {
         hashtable.put("tuijianma","");
         userRegist_Request.request(context, hashtable, new NetWorkCallBack<UserRegist>() {
             @Override
-            public void onSucceed(UserRegist userRegist) {
+            public void onSucceed(UserRegist userRegist,int dataMode) {
                 String user_id = userRegist.data.user_id;
                 Share.saveToken(context, user_id);
                 UtilsToast.showToast(context, userRegist.message);

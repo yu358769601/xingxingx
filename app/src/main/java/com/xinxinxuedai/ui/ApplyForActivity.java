@@ -28,6 +28,7 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtils.i("我是申请贷款我打开了");
         initP();
         initView();
     }
@@ -132,6 +133,13 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (null!=mApplyForActivity_p){
+            mApplyForActivity_p.getCallBackData();
+        }
+    }
 
     @Override
     public void initP() {

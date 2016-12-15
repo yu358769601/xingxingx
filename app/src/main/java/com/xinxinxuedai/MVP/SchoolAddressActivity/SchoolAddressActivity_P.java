@@ -73,7 +73,8 @@ public class SchoolAddressActivity_P extends BaseMvp<SchoolAddressActivity_C> im
                 //入学时间
                 hashtable.put("loan_admission_school",sub.get(1).getText().toString().trim());
                 //借款人现住址
-                hashtable.put("loan_present_address",sub.get(2).getText().toString().trim());
+                hashtable.put("loan_present_address",sub.get(3).getText().toString().trim());
+
                 //导员姓名
                 hashtable.put("loan_tutor","");
                 //市ID
@@ -85,7 +86,7 @@ public class SchoolAddressActivity_P extends BaseMvp<SchoolAddressActivity_C> im
 
                 setInfo2_Request.request(context, hashtable, new NetWorkCallBack<SetInfo2>() {
                     @Override
-                    public void onSucceed(SetInfo2 info2) {
+                    public void onSucceed(SetInfo2 info2,int dataMode) {
 
                         UtilsToast.showToast(context,info2.message);
 
@@ -116,7 +117,7 @@ public class SchoolAddressActivity_P extends BaseMvp<SchoolAddressActivity_C> im
     public void getCallBackData() {
         GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
             @Override
-            public void onSucceed(GetInfo getInfo) {
+            public void onSucceed(GetInfo getInfo,int dataMode) {
                 schoolAddressActivity_c.setCallBackData(getInfo);
             }
 

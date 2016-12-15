@@ -131,6 +131,8 @@ public class SchoolAddressActivity extends BaseActivity implements View.OnClickL
                 mCityDatas[1] = getInfo.loan_city;
             }
         }
+        if (!TextUtils.isEmpty(getInfo.loan_present_address))
+            schooladdress_et_2.setText(getInfo.loan_present_address);
     }
 
     /**

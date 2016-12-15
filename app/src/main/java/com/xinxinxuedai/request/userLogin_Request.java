@@ -35,7 +35,7 @@ public class userLogin_Request {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_登陆"+"正常内容"+jsonObject);
                                 UserLogin userLogin = jsonObject.toJavaObject(UserLogin.class);
-                                netWorkCallBack.onSucceed(userLogin);
+                                netWorkCallBack.onSucceed(userLogin,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

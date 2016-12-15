@@ -94,7 +94,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         RepaymentListRequest.request(context, new NetWorkCallBack() {
 
             @Override
-            public void onSucceed(Object o) {
+            public void onSucceed(Object o,int dataMode) {
 
             }
 
@@ -119,7 +119,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         RepaymentListRequest.requestmore(context, new NetWorkCallBack() {
 
             @Override
-            public void onSucceed(Object o) {
+            public void onSucceed(Object o,int dataMode) {
 
             }
 

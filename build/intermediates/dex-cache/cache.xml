@@ -3,12 +3,30 @@
 
     <item
         is-multidex="false"
-        jar="D:\gitbox\xinxinxuedai\app\src\main\libs\paysdkPY36.jar"
+        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\xinxinxuedai\androidmobilePY36\unspecified\jars\libs\paysdkPY36.jar"
         jumboMode="false"
         optimize="true"
         revision="22.0.1"
-        sha1="42653422b4327a9831a7ec092b3e343a3e245175">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\paysdkPY36_ea0ebac01224bef96824aa4ffbcd92ee4b73dc25.jar" />
+        sha1="8bfbecf9afeea5a3e9a470246da036c7939d808f">
+        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\paysdkPY36_c66b7078e045f46b3cfe7271794638928377e717.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\xinxinxuedai\androidmobilePY36\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="f76b30a4c50b94333dc80f8e9aed89350a1b6543">
+        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\xinxinxuedai-androidmobilePY36-unspecified_38989158e1e8e6783233c5858f9d04f400977195.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.alibaba\fastjson\1.2.17\be249d63279f79d827a6bb0328b7d7938730c694\fastjson-1.2.17.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="be249d63279f79d827a6bb0328b7d7938730c694">
+        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\fastjson-1.2.17_00d7c8f29620068a19b9dbb5104044de57b732a4.jar" />
     </item>
     <item
         is-multidex="false"
@@ -27,15 +45,6 @@
         revision="22.0.1"
         sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
         <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1_d3abd72bb9190fee2b3168999826ca6a092c55d5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.alibaba\fastjson\1.2.17\be249d63279f79d827a6bb0328b7d7938730c694\fastjson-1.2.17.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="22.0.1"
-        sha1="be249d63279f79d827a6bb0328b7d7938730c694">
-        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\fastjson-1.2.17_00d7c8f29620068a19b9dbb5104044de57b732a4.jar" />
     </item>
     <item
         is-multidex="false"
@@ -81,6 +90,15 @@
         revision="22.0.1"
         sha1="a7537446a030da8eb0da4c71424d16c2589f6c4a">
         <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\glide-3.6.0_660a6f025f5601321e88b4acb58e9f0734e3c85e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\gitbox\xinxinxuedai\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
+        <dex dex="D:\gitbox\xinxinxuedai\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-19.1.0_324c2dda5a7160171feb6467ceba1a29242f339e.jar" />
     </item>
     <item
         is-multidex="false"

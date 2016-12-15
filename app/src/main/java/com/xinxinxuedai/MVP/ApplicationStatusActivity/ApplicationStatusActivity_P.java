@@ -48,7 +48,7 @@ public class ApplicationStatusActivity_P extends BaseMvp<ApplicationStatusActivi
         //测试页面
         getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
             @Override
-            public void onSucceed(GetLoanDetail detail) {
+            public void onSucceed(GetLoanDetail detail,int dataMode) {
                 applicationStatusActivity_c.setData(detail);
             }
 

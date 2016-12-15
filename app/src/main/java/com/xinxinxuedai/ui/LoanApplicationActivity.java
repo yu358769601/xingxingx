@@ -74,6 +74,7 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
 
         mLoanapplication_tv = (TextView) findViewById(R.id.loanapplication_tv);
         mLoanapplication_tv.setOnClickListener(this);
+        mLoanapplication_tv.setVisibility(View.GONE);
         //描述
         mLoanApplication_ed_1 = (EditText) findViewById(R.id.loanApplication_ed_1);
 

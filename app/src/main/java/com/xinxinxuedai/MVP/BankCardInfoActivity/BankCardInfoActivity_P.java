@@ -82,7 +82,7 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
     public void getCallBackData() {
         GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
             @Override
-            public void onSucceed(GetInfo getInfo) {
+            public void onSucceed(GetInfo getInfo,int dataMode) {
                 LogUtils.i("银行卡信息"+getInfo);
                 bankCardInfoActivity_c.setCallBackData(getInfo);
             }
@@ -108,7 +108,7 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
 
         setInfo3_Request.request(context, hashtable, new NetWorkCallBack<SetInfo3>() {
             @Override
-            public void onSucceed(SetInfo3 info3) {
+            public void onSucceed(SetInfo3 info3,int dataMode) {
                UtilsToast.showToast(context, info3.message);
                 //关掉界面
                 bankCardInfoActivity_c.closeActivity();

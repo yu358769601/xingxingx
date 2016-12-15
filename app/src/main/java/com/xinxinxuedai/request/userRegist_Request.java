@@ -35,7 +35,7 @@ public class userRegist_Request {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_注册"+"正常内容"+jsonObject);
                                 UserRegist userRegist = jsonObject.toJavaObject(UserRegist.class);
-                                netWorkCallBack.onSucceed(userRegist);
+                                netWorkCallBack.onSucceed(userRegist,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

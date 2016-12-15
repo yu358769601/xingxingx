@@ -30,7 +30,7 @@ public class setLoanInfo_Request {
 
     public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<SetLoanInfo> netWorkCallBack) {
         if (null!=sSetLoanInfo)
-            netWorkCallBack.onSucceed(sSetLoanInfo);
+            netWorkCallBack.onSucceed(sSetLoanInfo,NetWorkCallBack.CACHEDATA);
         //入口
         hashtable.put("action", "setLoanInfo");
 //        //token
@@ -43,7 +43,7 @@ public class setLoanInfo_Request {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"添加用户借款信息"+"正常内容"+jsonObject);
                                 sSetLoanInfo = jsonObject.toJavaObject(SetLoanInfo.class);
-                                netWorkCallBack.onSucceed(sSetLoanInfo);
+                                netWorkCallBack.onSucceed(sSetLoanInfo,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

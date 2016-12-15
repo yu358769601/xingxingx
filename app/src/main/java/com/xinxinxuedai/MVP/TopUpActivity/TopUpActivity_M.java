@@ -2,6 +2,8 @@ package com.xinxinxuedai.MVP.TopUpActivity;
 
 import android.widget.EditText;
 
+import com.xinxinxuedai.ui.TopUpActivity;
+
 import java.util.List;
 
 /**
@@ -20,4 +22,8 @@ public interface TopUpActivity_M {
      */
     void setEditTextViews(List<EditText> editTextViews);
 
+    /**
+     * 需要有activity
+     */
+    void serActivity(TopUpActivity activity);
 }

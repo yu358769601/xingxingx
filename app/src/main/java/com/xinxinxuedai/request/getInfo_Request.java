@@ -32,7 +32,7 @@ public class GetInfo_Request {
 
     public static HttpURLConnection request(final Context context, final NetWorkCallBack<GetInfo> netWorkCallBack) {
         if (null!=sData)
-        netWorkCallBack.onSucceed(sData);
+        netWorkCallBack.onSucceed(sData,NetWorkCallBack.CACHEDATA);
         LogUtils.i("访问网络_缓存"+sData);
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         hashtable.put("action", "getInfo");
@@ -46,7 +46,7 @@ public class GetInfo_Request {
                                 LogUtils.i("网络请求_"+"获取借贷人信息"+"正常内容"+jsonObject);
                                 sData = jsonObject.getObject("data", GetInfo.class);
                                 LogUtils.i("访问网络_访问网络之后"+sData);
-                                netWorkCallBack.onSucceed(sData);
+                                netWorkCallBack.onSucceed(sData,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

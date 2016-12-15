@@ -10,6 +10,8 @@ package com.xinxinxuedai.request;
  */
 
 public interface NetWorkCallBack<T> {
-    void onSucceed(T t);
+    int NETDATA  = 0;
+    int CACHEDATA  = 1;
+    void onSucceed(T t ,int dataMode);
     void onError(String jsonObject);
 }

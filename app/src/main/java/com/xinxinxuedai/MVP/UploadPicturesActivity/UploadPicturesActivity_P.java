@@ -87,7 +87,7 @@ public class UploadPicturesActivity_P extends BaseMvp<UploadPicturesActivity_C> 
     public void getCallBackData() {
         GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
             @Override
-            public void onSucceed(GetInfo getInfo) {
+            public void onSucceed(GetInfo getInfo,int dataMode) {
                 if (!TextUtils.isEmpty(getInfo.loan_area))
                     Share.save(context,"loan_area",getInfo.loan_area );
             }

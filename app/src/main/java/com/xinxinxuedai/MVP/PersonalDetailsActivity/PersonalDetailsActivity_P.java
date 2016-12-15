@@ -147,7 +147,7 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
     public void setCallBackData() {
         GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
             @Override
-            public void onSucceed(GetInfo getInfo) {
+            public void onSucceed(GetInfo getInfo,int dataMode) {
                 personalDetailsActivity_c.setCallBackData(getInfo);
             }
 
@@ -183,7 +183,7 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
 
         setInfo1_Request.request(context, hashtable, new NetWorkCallBack<SetInfo1>() {
             @Override
-            public void onSucceed(SetInfo1 info1) {
+            public void onSucceed(SetInfo1 info1,int dataMode) {
                 UtilsToast.showToast(context, info1.message);
                 //关掉界面
                 personalDetailsActivity_c.closeActivity();

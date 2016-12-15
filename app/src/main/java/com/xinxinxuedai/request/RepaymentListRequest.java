@@ -45,7 +45,7 @@ public class RepaymentListRequest {
                                 //Carbean carbean = JSONArray.toJavaObject(jsonObject, Carbean.class);
                                 if (null != jsonObject) {
                                     //addMarkerData(carbean);
-                                    netWorkCallBack.onSucceed(jsonObject);
+                                    netWorkCallBack.onSucceed(jsonObject,NetWorkCallBack.NETDATA);
                                 }
                             } catch (Exception e) {
                                 UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());
@@ -88,7 +88,7 @@ public class RepaymentListRequest {
                                 //Carbean carbean = JSONArray.toJavaObject(jsonObject, Carbean.class);
                                 if (null != jsonObject) {
                                     //addMarkerData(carbean);
-                                    netWorkCallBack.onSucceed(jsonObject);
+                                    netWorkCallBack.onSucceed(jsonObject,NetWorkCallBack.NETDATA);
                                 }
                             } catch (Exception e) {
                                 UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

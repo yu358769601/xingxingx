@@ -30,7 +30,7 @@ public class registSms_Request {
 
     public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack<RegistSms> netWorkCallBack) {
         if (null!=sRegistSms)
-            netWorkCallBack.onSucceed(sRegistSms);
+            netWorkCallBack.onSucceed(sRegistSms,NetWorkCallBack.CACHEDATA);
         hashtable.put("action", "registSms");
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
@@ -41,7 +41,7 @@ public class registSms_Request {
                                 LogUtils.i("网络请求_验证码"+"正常内容"+jsonObject);
                                // RegistSms
                                 sRegistSms = jsonObject.toJavaObject(RegistSms.class);
-                                netWorkCallBack.onSucceed(sRegistSms);
+                                netWorkCallBack.onSucceed(sRegistSms,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());
