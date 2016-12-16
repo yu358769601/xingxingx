@@ -3,7 +3,6 @@ package com.xinxinxuedai.app;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.DisplayMetrics;
 
 /**
  * Created by 35876 于萌萌
@@ -37,7 +36,6 @@ public class AppContext extends Application {
         this.mMainThread = Thread.currentThread();
         this.mMainThreadId = android.os.Process.myTid();
         this.mMainThreadLooper = getMainLooper();
-
 
     }
 

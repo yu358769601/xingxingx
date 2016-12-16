@@ -10,4 +10,37 @@ package com.xinxinxuedai.bean;
  */
 
 public class FindSms {
+    //手机号
+    //hashtable.put("loan_mobile",tag.getText().toString().trim());
+    /**
+     * message : 验证码发送成功
+     * result : 1
+     * data : {"code":"248370"}
+     */
+
+    public String message;
+    public int result;
+    public DataBean data;
+
+    public static class DataBean {
+        /**
+         * code : 248370
+         */
+
+        public String code;
+    }
+
+    @Override
+    public String toString() {
+        return "FindSms{" +
+                "message='" + message + '\'' +
+                ", result=" + result +
+                ", data=" + data +
+                '}';
+    }
+    //    {
+//        "message": "验证码发送成功",
+//            "result": 1,
+//            "data": {"code": "248370"}
+//    }
 }

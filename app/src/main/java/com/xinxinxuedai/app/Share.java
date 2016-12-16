@@ -119,12 +119,18 @@ public class Share {
     public static void save(Context context,String key,String value){
         getEditor(context).putString(key,value).commit();
     }
+    public static void saveInt(Context context,String key,int value){
+        getEditor(context).putInt(key,value).commit();
+    }
     public static void save(Context context,String key ,boolean b){
         getEditor(context).putBoolean(key,b).commit();
     }
 
     public static String getString(Context context,String key){
         return  getShare(context).getString(key,null);
+    }
+    public static int getInt(Context context,String key){
+        return  getShare(context).getInt(key,0);
     }
     public static boolean getBoolean(Context context,String key){
         return  getShare(context).getBoolean(key,false);

@@ -1,5 +1,7 @@
 package com.xinxinxuedai.MVP.ReimbursementActivity;
 
+import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
+
 import java.net.HttpURLConnection;
 
 /**
@@ -11,7 +13,7 @@ import java.net.HttpURLConnection;
  * 备注:
  */
 
-public interface ReimbursementActivity_C {
+public interface ReimbursementActivity_C extends BaseMVPinterFace_CallBack{
     /**
      * 获取网络请求
      * @param httpURLConnection

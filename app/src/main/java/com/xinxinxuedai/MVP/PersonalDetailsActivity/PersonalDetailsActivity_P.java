@@ -12,7 +12,7 @@ import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.SetInfo1;
 import com.xinxinxuedai.request.GetInfo_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
-import com.xinxinxuedai.request.setInfo1_Request;
+import com.xinxinxuedai.request.SetInfo1_Request;
 
 import java.util.Hashtable;
 import java.util.List;
@@ -181,7 +181,7 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
         hashtable.put("loan_parent_mobile",editTexts.get(5).getText().toString().trim());
 
 
-        setInfo1_Request.request(context, hashtable, new NetWorkCallBack<SetInfo1>() {
+        SetInfo1_Request.request(context, hashtable, new NetWorkCallBack<SetInfo1>() {
             @Override
             public void onSucceed(SetInfo1 info1,int dataMode) {
                 UtilsToast.showToast(context, info1.message);

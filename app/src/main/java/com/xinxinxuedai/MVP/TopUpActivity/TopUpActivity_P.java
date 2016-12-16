@@ -12,6 +12,7 @@ import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsMyText;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.ui.TopUpActivity;
 
 import java.util.List;
@@ -92,7 +93,7 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
 //        hashtable.put("real_name","");
 //        hashtable.put("id_card","");
 //        hashtable.put("mobile","");
-//        fuYouChongZhi_Request.request(context, hashtable, new NetWorkCallBack() {
+//        FuYouChongZhi_Request.request(context, hashtable, new NetWorkCallBack() {
 //
 //            @Override
 //            public void onSucceed(Object o) {
@@ -105,7 +106,7 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
 //            }
 //        });
         pay(editTextViews,true);
-        topUpActivity_c.getData("正常");
+
 
     }
 
@@ -124,14 +125,14 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
      * @param editTextViews
      * @param b
      */
-    private void pay(List<EditText> editTextViews,boolean b) {
+    private void pay(final List<EditText> editTextViews, boolean b) {
         //设定环境 trun 正式 false 测试
         FyPay.setDev(b);
         FyPay.init(activity);
         EditText AmtE = editTextViews.get(0);
-        EditText BankCardE = editTextViews.get(1);
-        EditText NameE = editTextViews.get(2);
-        EditText IdNoE = editTextViews.get(3);
+        final EditText BankCardE = editTextViews.get(1);
+        final EditText NameE = editTextViews.get(2);
+        final EditText IdNoE = editTextViews.get(3);
         //商户号
         //String MchNtCd = "0002900F0096235";
         String MchNtCd = "0002610F0315943";
@@ -191,7 +192,15 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
             @Override
             public void onPayComplete(String rspCode, String rspDesc, Bundle extraData) {
                 LogUtils.i("富友支付完成"+rspCode+"\t"+rspDesc+"\t"+extraData.toString());
+//                EditText BankCardE = editTextViews.get(1);
+//                EditText NameE = editTextViews.get(2);
+//                EditText IdNoE = editTextViews.get(3);
+                Share.save(context, "BankCardE",UtilsMyText.getTextView(BankCardE));
+                Share.save(context, "NameE",UtilsMyText.getTextView(NameE));
+                Share.save(context, "IdNoE",UtilsMyText.getTextView(IdNoE));
 
+                topUpActivity_c.getData(rspDesc);
+                topUpActivity_c.closeActivity();
             }
 
             @Override

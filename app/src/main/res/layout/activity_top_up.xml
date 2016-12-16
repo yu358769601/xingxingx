@@ -57,7 +57,7 @@
                 android:id="@+id/topup_ed1"
                 style="@style/edit_style_uptop"
                 android:hint="请输入金额"
-                android:text="1"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -88,7 +88,7 @@
                 android:id="@+id/topup_ed2"
                 android:hint="请输入卡号"
                 style="@style/edit_style_uptop"
-                android:text="4563517501013883117"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -119,7 +119,7 @@
                 android:id="@+id/topup_ed3"
                 android:hint="请输入姓名"
                 style="@style/edit_style_uptop"
-                android:text="小明"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -150,7 +150,7 @@
                 android:id="@+id/topup_ed4"
                 android:hint="请输入身份证"
                 style="@style/edit_style_uptop"
-                android:text="430221199108282411"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

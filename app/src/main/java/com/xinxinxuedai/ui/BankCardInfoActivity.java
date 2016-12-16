@@ -175,4 +175,24 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
     public void closeActivity() {
         finish();
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dump();
+    }
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+          mRelativeLayout_title = null;
+          mBankCardInfoActivity_p= null;
+          bank_card_info_tv_title= null;
+          bank_card_info_tv1_bank= null;
+          bank_card_info_tv2_open_bank_name= null;
+          bank_card_info_tv3_bank_card_num= null;
+          bank_card_info_tv_sub= null;
+          bank_card_info_rl= null;
+          relativeLayout_title= null;
+    }
 }

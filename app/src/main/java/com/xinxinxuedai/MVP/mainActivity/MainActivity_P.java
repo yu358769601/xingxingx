@@ -17,10 +17,13 @@ import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDrawable;
+import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.GetInfoShow;
 import com.xinxinxuedai.bean.GetLoanDetail;
+import com.xinxinxuedai.request.GetInfoShow_Request;
+import com.xinxinxuedai.request.GetLoanDetail_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
-import com.xinxinxuedai.request.getLoanDetail_Request;
 import com.xinxinxuedai.ui.AboutUsActivity;
 import com.xinxinxuedai.ui.ApplicationStatusActivity;
 import com.xinxinxuedai.ui.LoanProductsActivity;
@@ -79,8 +82,6 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
         this.context = context;
         mMainActivity = (MainActivity) context;
     }
-
-
     @Override
     public void initGetWindow() {
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -174,12 +175,22 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
 
     }
 
+    /**
+     * 主界面四个 按钮
+     * @param xueDaiButton
+     */
     @Override
     public void initClick(XueDaiButton xueDaiButton) {
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
+        int status = Share.getInt(context, "status");
         switch (xueDaiButton.getType()){
             case 1:
+
+                if (status == 1||status ==2 ||status ==4){
+                    UtilsToast.showToast(context, "请耐心等待审核结果");
+                    return;
+                }
                 //点了我要借款
                 intent.setClass(context, LoanProductsActivity.class);
                 bundle.putSerializable("HomeData",mDetail);
@@ -187,6 +198,10 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
                 context.startActivity(intent);
                 break;
             case 2:
+//                if (status !=4){
+//                    UtilsToast.showToast(context, "当前状态不需要还款");
+//                    return;
+//                }
                 intent.setClass(context, ReimbursementActivity.class);
 
                 context.startActivity(intent);
@@ -238,10 +253,11 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
      */
     @Override
     public void getCallBackData() {
+        //如果没有登录 就 跳出
         if (null==Share.getToken(context)){
             return;
         }
-        getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
+        GetLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
             @Override
             public void onSucceed(GetLoanDetail getLoanDetail,int dataMode) {
                 mDetail = getLoanDetail;
@@ -252,6 +268,20 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
 
             }
         });
+        GetInfoShow_Request.request(context, new NetWorkCallBack<GetInfoShow>() {
+            @Override
+            public void onSucceed(GetInfoShow getInfoShow, int dataMode) {
+
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+
+
+
     }
 
 

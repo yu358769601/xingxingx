@@ -90,4 +90,31 @@ public class SelectCityActivity extends BaseActivity implements View.OnClickList
         UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"cityInfo","cityData",new String[]{sheng,shi});
         finish();
     }
+
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dump();
+    }
+
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+          selectcity_rg =null;
+          selectcity_rl=null;
+          relativeLayout_title=null;
+          mSelectCityActivity_p=null;
+          selectcity_rg1=null;
+          selectcity_rg2=null;
+    }
 }

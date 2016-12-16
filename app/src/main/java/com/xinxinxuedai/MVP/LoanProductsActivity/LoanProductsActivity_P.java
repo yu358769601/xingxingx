@@ -8,7 +8,7 @@ import android.view.View;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.request.NetWorkCallBack;
-import com.xinxinxuedai.request.getLoanDetail_Request;
+import com.xinxinxuedai.request.GetLoanDetail_Request;
 import com.xinxinxuedai.ui.LoanApplicationActivity;
 
 /**
@@ -74,7 +74,7 @@ public class LoanProductsActivity_P extends BaseMvp<LoanProductsActivity_CallBac
      */
     @Override
     public void getCallBackData() {
-        getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
+        GetLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
             @Override
             public void onSucceed(GetLoanDetail getLoanDetail,int dataMode) {
                 GetLoanDetail detail = getLoanDetail;

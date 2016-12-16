@@ -5,6 +5,8 @@ import android.content.Intent;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.bean.GetInfo;
+import com.xinxinxuedai.bean.GetInfoShow;
+import com.xinxinxuedai.request.GetInfoShow_Request;
 import com.xinxinxuedai.request.GetInfo_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.ui.BankCardInfoActivity;
@@ -78,6 +80,18 @@ public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> imple
             @Override
             public void onSucceed(GetInfo getInfo,int dataMode) {
                 applyForActivity_callback.setCallBackData(getInfo);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+
+        GetInfoShow_Request.request(context, new NetWorkCallBack<GetInfoShow>() {
+            @Override
+            public void onSucceed(GetInfoShow getInfoShow, int dataMode) {
+                applyForActivity_callback.setCallBackData(getInfoShow);
             }
 
             @Override

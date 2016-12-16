@@ -13,7 +13,6 @@ import com.xinxinxuedai.util.Constants;
 import java.net.HttpURLConnection;
 import java.util.Hashtable;
 
-import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
 
 /**
  * Created by Administrator 于萌萌
@@ -24,9 +23,10 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  * 备注:
  */
 
-public class setInfo1_Request {
+public class SetInfo1_Request {
 
     private static SetInfo1 sInfo1;
+    private static HttpURLConnection mHttpURLConnection;
 
     public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<SetInfo1> netWorkCallBack) {
         if (null!=sInfo1)

@@ -15,6 +15,7 @@ import com.xinxinxuedai.MVP.UploadPicturesActivity.UploadPicturesActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsSetSize;
+import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
@@ -33,7 +34,9 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
     private RelativeLayout uploadpictures_rl;
     private initAction_Bar relativeLayout_title;
     private UploadPicturesActivity_P mUploadPicturesActivity_p;
-
+    boolean tag1 = false;
+    boolean tag2 = false;
+    boolean tag3 = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +56,29 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
     //在成员变量的位置 创建一个  广播接收类 接收 选择完了图片返回来的字符串
     private InnerReceiver receiver = new InnerReceiver();
 
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+
+    }
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+          uploadpictures_tt_title =null;
+          uploadpictures_tt_title_big =null;
+          uploadpictures_xd_1 =null;
+          uploadpictures_xd_2 =null;
+          uploadpictures_xd_3 =null;
+          uploadpictures_tv_sub =null;
+          uploadpictures_rl =null;
+          relativeLayout_title =null;
+          mUploadPicturesActivity_p =null;
+    }
+
     //接收别的地方过来的数据 写一个内容类
     public class InnerReceiver extends BroadcastReceiver {
 
@@ -66,6 +92,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
                 uploadpictures_xd_1
                         .setImage(msg1)
                         .setRelativeLayout_Pading(0,0,0,0);
+                tag1 = true;
                 return;
             }
 
@@ -75,7 +102,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
                 uploadpictures_xd_2
                         .setImage(msg2)
                         .setRelativeLayout_Pading(0,0,0,0);
-                ;
+                tag2 = true;
                 return;
             }
 
@@ -85,6 +112,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
                 uploadpictures_xd_3
                         .setImage(msg3)
                         .setRelativeLayout_Pading(0,0,0,0);
+                tag3 = true;
                 return;
             }
         }
@@ -95,6 +123,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
+        dump();
     }
 
     @Override
@@ -211,6 +240,10 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
         Intent intent = new Intent();
         switch (v.getId()) {
             case R.id.uploadpictures_tv_sub:
+                if (!tag1||!tag2||!tag3){
+                    UtilsToast.showToast(AppContext.getApplication(),"有图片选择项没有上传");
+                    return;
+                }
                 //打开上传视频
                 intent.setClass(AppContext.getApplication(),UploadVideoActivity.class);
                 startActivity(intent);

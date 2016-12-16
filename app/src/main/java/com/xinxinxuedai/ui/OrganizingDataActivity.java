@@ -171,4 +171,35 @@ public class OrganizingDataActivity extends BaseActivity implements View.OnClick
         }
 
     }
+
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dump();
+    }
+
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+          organizingdata_tv =null;
+          organizingdata_tv1=null;
+          organizingdata_rl=null;
+          relativeLayout_title=null;
+          organizingdata_tv2=null;
+          organizingdata_tv3=null;
+          organizingdata_hint_ad=null;
+          organizingdata_ed=null;
+          organizingdata_tv_sub=null;
+          mOrganizingDataActivity_p=null;
+    }
 }

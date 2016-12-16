@@ -13,8 +13,6 @@ import com.xinxinxuedai.util.Constants;
 import java.net.HttpURLConnection;
 import java.util.Hashtable;
 
-import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
-
 /**
  * Created by 35876 于萌萌
  * 创建日期: 13:01 . 2016年12月04日
@@ -24,13 +22,12 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  * 备注:
  */
 
-public class registSms_Request {
+public class RegistSms_Request {
 
     private static RegistSms sRegistSms;
+    private static HttpURLConnection mHttpURLConnection;
 
     public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack<RegistSms> netWorkCallBack) {
-        if (null!=sRegistSms)
-            netWorkCallBack.onSucceed(sRegistSms,NetWorkCallBack.CACHEDATA);
         hashtable.put("action", "registSms");
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
@@ -39,7 +36,7 @@ public class registSms_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_验证码"+"正常内容"+jsonObject);
-                               // RegistSms
+                                // RegistSms
                                 sRegistSms = jsonObject.toJavaObject(RegistSms.class);
                                 netWorkCallBack.onSucceed(sRegistSms,NetWorkCallBack.NETDATA);
                             }

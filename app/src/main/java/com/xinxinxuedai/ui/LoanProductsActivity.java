@@ -107,6 +107,11 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dump();
+    }
 
     /**
      * 回调到 设置二选一的 图
@@ -133,5 +138,16 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
     @Override
     public void closeActivity() {
         finish();
+    }
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+        mRelativeLayout_title = null;
+         mLoanProductsActivity_p= null;
+         mXuedaibutton_1= null;
+         mXuedaibutton_2= null;
+         mHomeData= null;
     }
 }

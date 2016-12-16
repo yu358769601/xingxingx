@@ -7,16 +7,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xinxinxuedai.MVP.RegisterActivity.countTime.Register_countTime_P;
+import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.FindLoginPassWord;
+import com.xinxinxuedai.bean.FindSms;
 import com.xinxinxuedai.bean.RegistSms;
 import com.xinxinxuedai.bean.UserRegist;
+import com.xinxinxuedai.request.FindLoginPassWord_Request;
+import com.xinxinxuedai.request.FindSms_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
-import com.xinxinxuedai.request.registSms_Request;
-import com.xinxinxuedai.request.userRegist_Request;
+import com.xinxinxuedai.request.RegistSms_Request;
+import com.xinxinxuedai.request.UserRegist_Request;
 import com.xinxinxuedai.ui.RegisterActivity;
 
 import java.net.HttpURLConnection;
@@ -32,15 +37,19 @@ import java.util.List;
  * 备注:
  */
 
-public class RegisterActivity_P implements RegisterActivity_M {
+public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements RegisterActivity_M {
     static RegisterActivity_P mRegisterActivity_p;
     Context context;
     private Register_countTime_P mRegister_countTime_p;
+    private String mFindSms_code;
+    private String mSendSMS_code;
 
     public RegisterActivity_P(Context context){
         this.context = context;
         initcountTime_P();
     }
+    int classTag;
+
     public static RegisterActivity_P getLoginActivity_P(Context context){
         if (null== mRegisterActivity_p){
             return mRegisterActivity_p = new RegisterActivity_P(context);
@@ -64,12 +73,19 @@ public class RegisterActivity_P implements RegisterActivity_M {
         if ((TextView) view.getTag(R.id.phone_num) instanceof TextView){
 
             TextView tag = (TextView) view.getTag(R.id.phone_num);
-            //发送验证码的请求  registSms_Request  请求成功了 之后 才开始倒计时
-            sendSMS(tag);
+            //发送验证码的请求  RegistSms_Request  请求成功了 之后 才开始倒计时
+
+
+            if (classTag == RegisterActivity.AGAINCLASS){
+                FindSms(tag);
+            }else if (classTag == RegisterActivity.REGISTERCLASS){
+                sendSMS(tag);
+            }
         }else{
             switch ((int)view.getTag()){
                 //按下去的是倒计时
                 case 1:
+
                     break;
                 //按下去确定注册
                 case 2:
@@ -86,16 +102,36 @@ public class RegisterActivity_P implements RegisterActivity_M {
 
     }
 
+    private void FindSms(TextView tag) {
+        Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
+        hashtable.put("loan_mobile",tag.getText().toString().trim());
+        HttpURLConnection request = FindSms_Request.request(context, hashtable, new NetWorkCallBack<FindSms>() {
+            @Override
+            public void onSucceed(FindSms registSms,int dataMode) {
+                mFindSms_code = registSms.data.code;
+                String message = registSms.message;
+                UtilsToast.showToast(context, message);
+                LogUtils.i("点击了重置验证码倒计时");
+                mRegister_countTime_p.startCountDown();
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+                UtilsToast.showToast(context, jsonObject);
+            }
+        });
+    }
+
     private void sendSMS(TextView tag) {
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         hashtable.put("loan_mobile",tag.getText().toString().trim());
-        HttpURLConnection request = registSms_Request.request(context, hashtable, new NetWorkCallBack<RegistSms>() {
+        HttpURLConnection request = RegistSms_Request.request(context, hashtable, new NetWorkCallBack<RegistSms>() {
             @Override
             public void onSucceed(RegistSms registSms,int dataMode) {
-                String code = registSms.data.code;
+                mSendSMS_code = registSms.data.code;
                 String message = registSms.message;
                 UtilsToast.showToast(context, message);
-                LogUtils.i("点击了注册/重置验证码倒计时");
+                LogUtils.i("点击了注册验证码倒计时");
                 mRegister_countTime_p.startCountDown();
             }
 
@@ -165,6 +201,7 @@ public class RegisterActivity_P implements RegisterActivity_M {
             }
 
         }
+        String s2 = editText2.getText().toString();
         String s3 = editText3.getText().toString();
         String s4 = editText4.getText().toString();
         //2在判断是否够长
@@ -172,17 +209,25 @@ public class RegisterActivity_P implements RegisterActivity_M {
         if (editText1.length()==11){
             //密码是否大于最小位数8
             if (editText3.length()>=8&&s3.equals(s4)){
-                // userRegist_Request
+                // UserRegist_Request
                 //发送注册的请求
                 if (classtag ==RegisterActivity.REGISTERCLASS){
-
+                    if (!mSendSMS_code.equals(s2)){
+                        UtilsToast.showToast(context, "验证码不正确");
+                        return;
+                    }
                     UtilsToast.showToast(context, "注册中~");
                     //去注册
                     call_Userlogin(editText1, editText3);
 
                 }else if (classtag ==RegisterActivity.AGAINCLASS){
-
+                    if (!mFindSms_code.equals(s2)){
+                        UtilsToast.showToast(context, "验证码不正确");
+                        return;
+                    }
                     UtilsToast.showToast(context, "重置中~");
+                    //去重置
+                    call_ResetTing (editText1, editText3);
                 }
 
             }else if (!s3.equals(s4)){
@@ -202,6 +247,41 @@ public class RegisterActivity_P implements RegisterActivity_M {
     }
 
     /**
+     * 重置密码
+     * @param editText1
+     * @param editText3
+     */
+    private void call_ResetTing(EditText editText1, EditText editText3) {
+        Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
+        //手机号码
+        hashtable.put("loan_mobile",editText1.getText().toString().trim());
+        //手机密码
+        hashtable.put("loan_pwd",editText3.getText().toString().trim());
+        FindLoginPassWord_Request.request(context, hashtable, new NetWorkCallBack<FindLoginPassWord>() {
+            @Override
+            public void onSucceed(FindLoginPassWord userRegist,int dataMode) {
+                UtilsToast.showToast(context, userRegist.message);
+                registerActivity_c.closeActivity();
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+                UtilsToast.showToast(context, jsonObject);
+            }
+        });
+    }
+
+    /**
+     * 当前的 类的状态是 注册还是重置
+     *
+     * @param classTag
+     */
+    @Override
+    public void setStuaus(int classTag) {
+        this.classTag = classTag;
+    }
+
+    /**
      * 登陆的方法
      * @param editText1 手机号码
      * @param editText3 密码
@@ -216,12 +296,13 @@ public class RegisterActivity_P implements RegisterActivity_M {
         hashtable.put("loan_from","android");
         //推荐码
         hashtable.put("tuijianma","");
-        userRegist_Request.request(context, hashtable, new NetWorkCallBack<UserRegist>() {
+        UserRegist_Request.request(context, hashtable, new NetWorkCallBack<UserRegist>() {
             @Override
             public void onSucceed(UserRegist userRegist,int dataMode) {
                 String user_id = userRegist.data.user_id;
                 Share.saveToken(context, user_id);
                 UtilsToast.showToast(context, userRegist.message);
+                registerActivity_c.closeActivity();
             }
 
             @Override
@@ -229,5 +310,10 @@ public class RegisterActivity_P implements RegisterActivity_M {
                 UtilsToast.showToast(context, jsonObject);
             }
         });
+    }
+    RegisterActivity_C registerActivity_c;
+    @Override
+    public void setCallBack(RegisterActivity_C registerActivity_c) {
+        this.registerActivity_c = registerActivity_c;
     }
 }

@@ -21,11 +21,15 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.Utils.UtilsBroadcastReceiver;
 import com.xinxinxuedai.Utils.UtilsMeasure;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.bean.SetLoanStatus;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.SetLoanStatus_Request;
 import com.xinxinxuedai.upFile.HttpMultipartPost;
 import com.xinxinxuedai.util.Constants;
 import com.xinxinxuedai.view.VideoView.MyVideoView;
@@ -313,10 +317,19 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
         }
 
         unregisterReceiver(mUrlBroadcastReceiver);
+        dump();
         super.onDestroy();
     }
 
-
+    public  void dump(){
+          relativeLayout_title = null;
+          uploadvideo_title = null;
+          uploadpictures_xd_1 = null;
+          uploadpictures_tv_reset = null;
+          uploadpictures_tv_sub = null;
+          uploadvideo_rl = null;
+          mUploadpictures_mvv = null;
+    }
 
     /**
      * 开始录制
@@ -420,6 +433,24 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
             case R.id.uploadpictures_tv_reset:
                 go();
             break;
+            //申请借款
+            case R.id.uploadpictures_tv_sub:
+                SetLoanStatus_Request.request(AppContext.getApplication(), new NetWorkCallBack<SetLoanStatus>() {
+                    @Override
+                    public void onSucceed(SetLoanStatus setLoanStatus, int dataMode) {
+                        finish();
+                        //发送_关闭activity_广播
+                        UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"uploadpictures_","close","close");
+                    }
+
+                    @Override
+                    public void onError(String jsonObject) {
+
+                    }
+                });
+                break;
+
+
         }
     }
 

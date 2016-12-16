@@ -11,7 +11,7 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.bean.UserLogin;
 import com.xinxinxuedai.request.NetWorkCallBack;
-import com.xinxinxuedai.request.userLogin_Request;
+import com.xinxinxuedai.request.UserLogin_Request;
 
 import java.util.Hashtable;
 import java.util.List;
@@ -52,14 +52,14 @@ public class LoginActivity_P extends BaseMvp<LoginActivity_C> implements LoginAc
     public void Clicks(View view) {
         if (null!=loginActivity_c)
         loginActivity_c.callBackButton(view);
-        switch ((int)view.getTag()){
-            case 1:
-
-            break;
-            case 2:
-
-            break;
-        }
+//        switch ((int)view.getTag()){
+//            case 1:
+//
+//            break;
+//            case 2:
+//
+//            break;
+//        }
     }
 
     /**
@@ -103,7 +103,7 @@ public class LoginActivity_P extends BaseMvp<LoginActivity_C> implements LoginAc
         if (editText1.length()==11){
             //密码是否大于最小位数8
             if (editText2.length()>=8){
-                // userRegist_Request
+                // UserRegist_Request
                 //发送登陆的请求
                 UtilsToast.showToast(context, "登陆中~");
                 //去登陆
@@ -135,7 +135,7 @@ public class LoginActivity_P extends BaseMvp<LoginActivity_C> implements LoginAc
         hashtable.put("loan_mobile",editText1.getText().toString().trim());
         //密码
         hashtable.put("loan_pwd",editText2.getText().toString().trim());
-        userLogin_Request.request(context, hashtable, new NetWorkCallBack<UserLogin>() {
+        UserLogin_Request.request(context, hashtable, new NetWorkCallBack<UserLogin>() {
             @Override
             public void onSucceed(UserLogin login,int dataMode) {
 
@@ -145,6 +145,8 @@ public class LoginActivity_P extends BaseMvp<LoginActivity_C> implements LoginAc
                 Share.saveToken(context, loan_id);
                 String loan_mobile = login.data.loan_mobile;
                 Share.savePhoneNum(context, loan_mobile);
+
+                loginActivity_c.closeActivity();
             }
 
             @Override

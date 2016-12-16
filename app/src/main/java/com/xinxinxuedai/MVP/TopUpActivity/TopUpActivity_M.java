@@ -2,6 +2,7 @@ package com.xinxinxuedai.MVP.TopUpActivity;
 
 import android.widget.EditText;
 
+import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
 import com.xinxinxuedai.ui.TopUpActivity;
 
 import java.util.List;

@@ -14,4 +14,9 @@ public interface BaseMVPinterFace_CallBack {
      * 关掉界面
      */
     void closeActivity();
+
+    /**
+     * 清除的方法
+     */
+    void dump();
 }

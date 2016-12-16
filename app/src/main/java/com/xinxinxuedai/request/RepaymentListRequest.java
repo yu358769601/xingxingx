@@ -4,10 +4,11 @@ import android.content.Context;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xinxinxuedai.Utils.LogUtils;
-import com.xinxinxuedai.Utils.SQUtils;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
+import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.RePayMent;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -26,26 +27,30 @@ import java.util.Hashtable;
 public class RepaymentListRequest {
     static HttpURLConnection mHttpURLConnection;
     public static int pn = 1;
+    private static RePayMent sPayMent;
+
     //第一次请求
-    public static HttpURLConnection request(final Context context, final NetWorkCallBack netWorkCallBack) {
-            pn = 1;
+    public static HttpURLConnection request(final Context context, final NetWorkCallBack<RePayMent> netWorkCallBack) {
+//        if (null!=sPayMent)
+//            netWorkCallBack.onSucceed(sPayMent,NetWorkCallBack.CACHEDATA);
+        // pn = 1;
             Hashtable<String, String> hashtable = new Hashtable<String, String>();
-            hashtable.put("action", "getPassengerOverOrder");
-            LogUtils.i("人员ID"+ SQUtils.getId(context)+"");
-            hashtable.put("passenger_id", SQUtils.getId(context));
-            hashtable.put("pageNo", pn+"");
+            hashtable.put("action","getLoanPlanList");
+            LogUtils.i("人员ID"+Share.getToken(context));
+            hashtable.put("loan_id", Share.getToken(context));
+
+        //hashtable.put("pageNo", pn+"");
 
 
             NetMessage.get(context)
-                    .sendMessage(Constants.urlList, null, Constants.TEST, new NetAesCallBack() {
+                    .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
                         @Override
                         public void onSucceed(JSONObject jsonObject) {
                             try {
-                                LogUtils.i("获取网络数据" + jsonObject);
-                                //Carbean carbean = JSONArray.toJavaObject(jsonObject, Carbean.class);
+                                LogUtils.i("网络请求_还款记录"+"正常内容" + jsonObject);
                                 if (null != jsonObject) {
-                                    //addMarkerData(carbean);
-                                    netWorkCallBack.onSucceed(jsonObject,NetWorkCallBack.NETDATA);
+                                    sPayMent = jsonObject.toJavaObject(RePayMent.class);
+                                    netWorkCallBack.onSucceed(sPayMent,NetWorkCallBack.NETDATA);
                                 }
                             } catch (Exception e) {
                                 UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());
@@ -56,7 +61,7 @@ public class RepaymentListRequest {
 
                         @Override
                         public void onError(JSONObject errorString) {
-                            LogUtils.i("获取订单列表的网络请求json数据是啥" + errorString);
+                            LogUtils.i("网络请求_还款记录"+"失败" + errorString);
                             netWorkCallBack.onError(errorString.getString("message"));
                         }
 
@@ -70,13 +75,13 @@ public class RepaymentListRequest {
         }
     //加载更多请求
     public static HttpURLConnection requestmore(final Context context, final NetWorkCallBack netWorkCallBack) {
-            pn ++;
+           // pn ++;
 
             Hashtable<String, String> hashtable = new Hashtable<String, String>();
-            hashtable.put("action", "getPassengerOverOrder");
-            hashtable.put("passenger_id", SQUtils.getId(context));
-            LogUtils.i("pn是多少"+pn);
-            hashtable.put("pageNo", pn+"");
+         //   hashtable.put("action", "getPassengerOverOrder");
+           // hashtable.put("passenger_id", SQUtils.getId(context));
+            //LogUtils.i("pn是多少"+pn);
+           // hashtable.put("pageNo", pn+"");
 
 
             NetMessage.get(context)

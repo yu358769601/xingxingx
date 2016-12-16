@@ -298,4 +298,24 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
     public void closeActivity() {
         finish();
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dump();
+    }
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+          mRelativeLayout_title = null;
+          mLoanapplication_tv = null;
+          mLoanApplicationActivity_p = null;
+          mLoanapplication_et_1 = null;
+          mLoanapplication_tv_sub = null;
+          mLoanapplication_et_2 = null;
+          mLoanapplication_et_3 = null;
+          mLoanapplication_tv_zhou = null;
+          mLoanApplication_ed_1 = null;
+    }
 }

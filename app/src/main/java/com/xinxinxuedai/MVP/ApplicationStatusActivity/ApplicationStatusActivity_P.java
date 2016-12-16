@@ -3,10 +3,9 @@ package com.xinxinxuedai.MVP.ApplicationStatusActivity;
 import android.content.Context;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
-import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.bean.GetLoanDetail;
+import com.xinxinxuedai.request.GetLoanDetail_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
-import com.xinxinxuedai.request.getLoanDetail_Request;
 
 /**
  * Created by 35876 于萌萌
@@ -44,9 +43,9 @@ public class ApplicationStatusActivity_P extends BaseMvp<ApplicationStatusActivi
      */
     @Override
     public void getData() {
-      UtilsToast.showToast(context, "获取网络借款状态中~");
+     // UtilsToast.showToast(context, "获取网络借款状态中~");
         //测试页面
-        getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
+        GetLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
             @Override
             public void onSucceed(GetLoanDetail detail,int dataMode) {
                 applicationStatusActivity_c.setData(detail);

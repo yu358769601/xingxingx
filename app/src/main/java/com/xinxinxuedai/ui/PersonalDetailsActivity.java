@@ -233,4 +233,33 @@ public class PersonalDetailsActivity extends BaseActivity implements PersonalDet
     public void closeActivity() {
         finish();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dump();
+    }
+
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+        mStrings = null;
+          mRelativeLayout_title= null;
+          mPersonalDetailsActivity_p= null;
+          personalpdetails_title= null;
+          personalpdetails_rg= null;
+          personalpdetails_et1_name= null;
+          personalpdetails_et2_name_num= null;
+          personalpdetails_et3_weixin_num= null;
+          personalpdetails_tv_address= null;
+          cancellation_ed= null;
+          personalpdetails_tv_tellname= null;
+          personalpdetails_et4_tellname= null;
+          personalpdetails_et5_tellname_tell= null;
+          personalpdetails_tv_sub= null;
+          personalpdetails_rl= null;
+          relativeLayout_title= null;
+    }
 }

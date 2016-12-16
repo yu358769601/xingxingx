@@ -13,8 +13,6 @@ import com.xinxinxuedai.util.Constants;
 import java.net.HttpURLConnection;
 import java.util.Hashtable;
 
-import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
-
 /**
  * Created by Administrator 于萌萌
  * 创建日期: 8:42 . 2016年12月13日
@@ -24,7 +22,10 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  * 备注:
  */
 
-public class fuYouChongZhi_Request {
+public class FuYouChongZhi_Request {
+
+    private static HttpURLConnection mHttpURLConnection;
+
     public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack netWorkCallBack) {
         hashtable.put("action", "FuYouChongZhi");
         hashtable.put("loan_id", Share.getToken(context));

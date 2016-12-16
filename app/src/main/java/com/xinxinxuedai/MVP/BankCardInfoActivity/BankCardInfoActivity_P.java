@@ -14,7 +14,7 @@ import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.SetInfo3;
 import com.xinxinxuedai.request.GetInfo_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
-import com.xinxinxuedai.request.setInfo3_Request;
+import com.xinxinxuedai.request.SetInfo3_Request;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -106,7 +106,7 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
         //银行卡号
         hashtable.put("loan_bank_card",editTexts.get(2).getText().toString().trim());
 
-        setInfo3_Request.request(context, hashtable, new NetWorkCallBack<SetInfo3>() {
+        SetInfo3_Request.request(context, hashtable, new NetWorkCallBack<SetInfo3>() {
             @Override
             public void onSucceed(SetInfo3 info3,int dataMode) {
                UtilsToast.showToast(context, info3.message);

@@ -1,5 +1,9 @@
 package com.xinxinxuedai.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +15,7 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.bean.GetInfo;
+import com.xinxinxuedai.bean.GetInfoShow;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
@@ -31,8 +36,23 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
         LogUtils.i("我是申请贷款我打开了");
         initP();
         initView();
+        //接收_关闭activity_广播
+        IntentFilter filter = new IntentFilter("uploadpictures_");
+        registerReceiver(receiver, filter);
     }
+    private InnerReceiver receiver = new InnerReceiver();
+    //接收别的地方过来的数据 写一个内容类
+    public class InnerReceiver extends BroadcastReceiver {
 
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //使用intent获取发送过来的数据
+            String close = intent.getStringExtra("close");
+            LogUtils.i("在上传视频过来的数据是"+close);
+            if ("close".equals(close))
+            finish();
+        }
+    }
     @Override
     public int getlayouXML() {
         return R.layout.activity_apply_for;
@@ -159,7 +179,7 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
     }
 
     /**
-     * 用于显示
+     * 用于获取到 下一级页面的数据
      *
      * @param getInfo
      */
@@ -169,10 +189,44 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
     }
 
     /**
+     * 用于获取到 本页面的星星
+     *
+     * @param getInfoShow
+     */
+    @Override
+    public void setCallBackData(GetInfoShow getInfoShow) {
+        if (1==getInfoShow.info1)
+            mTv1.setStarStuaus(true);
+        if (1==getInfoShow.info2)
+            mTv2.setStarStuaus(true);
+        if (1==getInfoShow.info3)
+            mTv3.setStarStuaus(true);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receiver);
+        dump();
+    }
+    /**
      * 关掉界面
      */
     @Override
     public void closeActivity() {
         finish();
+    }
+
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+          mRelativeLayout_title = null;
+          mTv1 = null;
+          mTv2 = null;
+          mTv3 = null;
+          mTv4 = null;
+          mApplyForActivity_p = null;
+        receiver = null;
     }
 }

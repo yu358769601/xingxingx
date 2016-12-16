@@ -1,5 +1,6 @@
 package com.xinxinxuedai.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,13 +12,14 @@ import android.widget.TextView;
 import com.xinxinxuedai.MVP.LoginActivity.LoginActivity_C;
 import com.xinxinxuedai.MVP.LoginActivity.LoginActivity_P;
 import com.xinxinxuedai.R;
+import com.xinxinxuedai.Utils.UtilsMyText;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
 import java.util.ArrayList;
 
-//登陆activity
+//登录activity
 public class LoginActivity extends BaseActivity implements View.OnClickListener ,LoginActivity_C {
 
 
@@ -59,7 +61,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             @Override
             public void getAction_barView_title(TextView textView) {
-                textView.setText("登陆");
+                textView.setText("登录");
             }
         });
 
@@ -136,6 +138,50 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 editTexts.add(login_et_passworld);
                 mLoginActivity_p.setEditTextViews(editTexts);
             break;
+            case 2:
+
+                Intent intent = new Intent();
+                intent.setClass(AppContext.getApplication(),RegisterActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("phoneNum",UtilsMyText.getTextView(login_et_phone_num));
+                bundle.putInt("classtag",RegisterActivity.AGAINCLASS);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                closeActivity();
+                break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dump();
+    }
+
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+        finish();
+    }
+
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+        mLoginActivity_p = null;
+         mRelativeLayout_title= null;
+         register_iv= null;
+         login_et_phone_num= null;
+         view_1= null;
+         login_et_passworld= null;
+         login_tv_login= null;
+        login_tv_forget_the_password= null;
+         login_tv_register= null;
+         login_rl= null;
+          relativeLayout_title= null;
+          mLoginActivity_p= null;
     }
 }

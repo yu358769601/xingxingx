@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.xinxinxuedai.MVP.mainActivity.MainActivity_CallBack;
 import com.xinxinxuedai.MVP.mainActivity.MainActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
@@ -16,8 +17,8 @@ import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
 import com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger;
 
-//首页activity
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+//首页activity 主页
+public class MainActivity extends BaseActivity implements View.OnClickListener, MainActivity_CallBack {
 
     private initAction_Bar mActivity_title;
     private XueDaiButton mTv1;
@@ -164,7 +165,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void initP() {
         mMainActivity_p = new MainActivity_P(this);
-
+        mMainActivity_p.setCallBack(this);
     }
 
 
@@ -181,7 +182,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         //给ViewPager 设置数据 并且画小红点 小白点
         mMainActivity_p.initViewData(mActivity_01_ll,iv_red_point);
 
-
         mMainActivity_p.getCallBackData();
     }
 
@@ -193,6 +193,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        mTv2.setOnClickListener(this);
 //        mTv3.setOnClickListener(this);
 //        mTv4.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dump();
     }
 
     @Override
@@ -215,5 +221,34 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             break;
 
         }
+    }
+
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+
+    }
+
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+        mMainActivity_p = null;
+      mActivity_title= null;
+        mTv1 = null;
+        mTv2= null;
+        mTv3= null;
+        mTv4= null;
+        mMain_vp= null;
+       iv_red_point= null;
+        mMainActivity_p= null;
+        mActivity_01_ll= null;
+        mMain_iv= null;
+        mMain_tv_name= null;
+        mMain_tv_money= null;
+
     }
 }

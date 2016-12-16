@@ -1,5 +1,6 @@
 package com.xinxinxuedai.MVP.LoanProductsActivity;
 
+import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
 import com.xinxinxuedai.bean.GetLoanDetail;
 
 /**
@@ -11,14 +12,10 @@ import com.xinxinxuedai.bean.GetLoanDetail;
  * 备注:
  */
 
-public interface LoanProductsActivity_CallBack {
+public interface LoanProductsActivity_CallBack extends BaseMVPinterFace_CallBack{
     /**
      * 回调到 设置二选一的 图
      */
    void setCallBackData(GetLoanDetail callBackData);
 
-    /**
-     * 关掉当前 activity
-     */
-    void closeActivity();
 }

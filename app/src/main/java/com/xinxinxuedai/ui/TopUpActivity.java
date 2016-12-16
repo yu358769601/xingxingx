@@ -14,6 +14,7 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
@@ -122,6 +123,8 @@ public class TopUpActivity extends BaseActivity implements View.OnClickListener,
                 textView.setText("账户充值");
             }
         });
+
+        initData();
     }
 
     @Override
@@ -133,6 +136,12 @@ public class TopUpActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void initData() {
+        String bankCardE = Share.getString(AppContext.getApplication(), "BankCardE");
+        String nameE = Share.getString(AppContext.getApplication(), "NameE");
+        String idNoE = Share.getString(AppContext.getApplication(), "IdNoE");
+        topup_ed2.setText(bankCardE);
+        topup_ed3.setText(nameE);
+        topup_ed4.setText(idNoE);
 
     }
 
@@ -198,5 +207,48 @@ public class TopUpActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void getData(String s) {
         UtilsToast.showToast(AppContext.getApplication(),s);
+    }
+
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dump();
+    }
+
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+          topup_title =null;
+          View1 =null;
+          topup_tv1 =null;
+          topup_ed1 =null;
+          topup_ll1 =null;
+          View2 =null;
+          topup_tv2 =null;
+          topup_ed2 =null;
+          topup_ll2 =null;
+          View3 =null;
+          topup_tv3 =null;
+          topup_ed3 =null;
+          topup_ll3 =null;
+          View4 =null;
+          topup_tv4 =null;
+          topup_ed4 =null;
+          topup_ll4 =null;
+          topup_rl =null;
+          topup_tv_sub =null;
+          topup_tv_info =null;
+          relativeLayout_title =null;
+          mTopUpActivity_p =null;
     }
 }

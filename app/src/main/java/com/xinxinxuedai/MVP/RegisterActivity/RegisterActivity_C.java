@@ -1,5 +1,7 @@
 package com.xinxinxuedai.MVP.RegisterActivity;
 
+import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
+
 /**
  * Created by 35876 于萌萌
  * 创建日期: 11:15 . 2016年12月01日
@@ -9,6 +11,6 @@ package com.xinxinxuedai.MVP.RegisterActivity;
  * 备注:
  */
 
-public interface RegisterActivity_C {
+public interface RegisterActivity_C extends BaseMVPinterFace_CallBack{
 
 }

@@ -15,8 +15,6 @@ import com.xinxinxuedai.util.Constants;
 import java.net.HttpURLConnection;
 import java.util.Hashtable;
 
-import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
-
 /**
  * Created by Administrator 于萌萌
  * 创建日期: 14:38 . 2016年12月12日
@@ -26,9 +24,10 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  * 备注:
  */
 
-public class getLoanDetail_Request  {
+public class GetLoanDetail_Request {
 
     private static GetLoanDetail sData;
+    private static HttpURLConnection mHttpURLConnection;
 
 
     public static HttpURLConnection request(final Context context, final NetWorkCallBack<GetLoanDetail> netWorkCallBack) {
@@ -47,6 +46,7 @@ public class getLoanDetail_Request  {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"获取借款详情+零用金回显"+"正常内容"+jsonObject);
                                 sData = jsonObject.getObject("data", GetLoanDetail.class);
+                                Share.saveInt(context, "status",sData.loan_status);
                                 netWorkCallBack.onSucceed(sData,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {

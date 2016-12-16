@@ -18,7 +18,6 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.OtherUtils;
 import com.xinxinxuedai.Utils.UtilsBroadcastReceiver;
-import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.Utils.imagezip.BitmapUtils;
 import com.xinxinxuedai.Utils.imagezip.ImageUtil;
 import com.xinxinxuedai.app.AppContext;
@@ -254,11 +253,11 @@ public class ChoiceActivity extends BaseActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.choice_tv1:
-                UtilsToast.showToast(AppContext.getApplication(), "点击了拍照");
+                //UtilsToast.showToast(AppContext.getApplication(), "点击了拍照");
                 camera();
                 break;
             case R.id.choice_tv2:
-                UtilsToast.showToast(AppContext.getApplication(), "点击了从相册选取");
+               // UtilsToast.showToast(AppContext.getApplication(), "点击了从相册选取");
                 image();
                 break;
 

@@ -13,7 +13,7 @@ import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.SetInfo2;
 import com.xinxinxuedai.request.GetInfo_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
-import com.xinxinxuedai.request.setInfo2_Request;
+import com.xinxinxuedai.request.SetInfo2_Request;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -84,7 +84,7 @@ public class SchoolAddressActivity_P extends BaseMvp<SchoolAddressActivity_C> im
                 //导员联系方式
                 hashtable.put("loan_tutor_mobile","");
 
-                setInfo2_Request.request(context, hashtable, new NetWorkCallBack<SetInfo2>() {
+                SetInfo2_Request.request(context, hashtable, new NetWorkCallBack<SetInfo2>() {
                     @Override
                     public void onSucceed(SetInfo2 info2,int dataMode) {
 

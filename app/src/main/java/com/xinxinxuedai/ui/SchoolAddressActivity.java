@@ -143,6 +143,23 @@ public class SchoolAddressActivity extends BaseActivity implements View.OnClickL
         finish();
     }
 
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+          schooladdress_tv = null;
+          schooladdress_et_1= null;
+          schooladdress_et_2= null;
+          schooladdress_tv_sub= null;
+          schooladdress_tv2= null;
+          schooladdress_rl= null;
+          relativeLayout_title= null;
+          mReceiver= null;
+          mP= null;
+          mCityDatas = null;
+    }
+
 
     //接收别的地方过来的数据 写一个内容类
     public class InnerReceiver extends BroadcastReceiver {
@@ -174,6 +191,7 @@ public class SchoolAddressActivity extends BaseActivity implements View.OnClickL
         super.onDestroy();
         //取消广播
         unregisterReceiver(mReceiver);
+        dump();
     }
 
 

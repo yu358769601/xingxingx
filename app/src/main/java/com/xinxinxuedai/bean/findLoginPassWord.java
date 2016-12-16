@@ -10,4 +10,24 @@ package com.xinxinxuedai.bean;
  */
 
 public class FindLoginPassWord {
+   // hashtable.put("action", "findLoginPassWord");
+//    //手机号码
+//    hashtable.put("loan_mobile",editText1.getText().toString().trim());
+//    //手机密码
+//    hashtable.put("loan_pwd",editText3.getText().toString().trim());
+    /**
+     * message : 用户修改密码成功
+     * result : 1
+     * data :
+     */
+
+    public String message;
+    public int result;
+    public String data;
+
+//    {
+//        "message": "用户修改密码成功",
+//            "result": 1,
+//            "data": ""
+//    }
 }

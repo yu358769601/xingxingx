@@ -10,6 +10,7 @@ import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.adapter.MyListView_04_more;
 import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.bean.RePayMent;
 import com.xinxinxuedai.bean.huandaiItem;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.RepaymentListRequest;
@@ -17,6 +18,7 @@ import com.xinxinxuedai.ui.TopUpActivity;
 import com.xinxinxuedai.view.MyListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
@@ -72,15 +74,15 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         this.reimbursement_lv = reimbursement_lv;
         UtilsToast.showToast(context, "获取网络数据中~");
         //网络获取数据
-        ArrayList<huandaiItem> items = sendRepaymentListRequest();
+        ArrayList<RePayMent.DataBean> dataBeen = (ArrayList)sendRepaymentListRequest();
         //获取之后设置数据
-        initData(reimbursement_lv, items);
+        initData(reimbursement_lv, dataBeen);
 
 
 
     }
 
-    private void initData(MyListView reimbursement_lv, ArrayList<huandaiItem> items) {
+    private void initData(MyListView reimbursement_lv, ArrayList<RePayMent.DataBean> items) {
         if (items==null||items.size()==0){
             return;
         }
@@ -88,13 +90,16 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         reimbursement_lv.setAdapter(mMyListView_04_more);
         UtilsToast.showToast(context, "网络加载完成~");
     }
-
+    List<RePayMent.DataBean> data;
     @NonNull
-    private ArrayList<huandaiItem> sendRepaymentListRequest() {
-        RepaymentListRequest.request(context, new NetWorkCallBack() {
+    private List<RePayMent.DataBean> sendRepaymentListRequest() {
+
+        RepaymentListRequest.request(context, new NetWorkCallBack<RePayMent>() {
+
 
             @Override
-            public void onSucceed(Object o,int dataMode) {
+            public void onSucceed(RePayMent payMent,int dataMode) {
+                data =  payMent.data;
 
             }
 
@@ -106,13 +111,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         });
 
 
-        ArrayList<huandaiItem> items = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-
-            items.add(new huandaiItem("20"+i,"666"+i,"2018年2月38日"+i,"200天"+i));
-        }
-
-        return items;
+        return data;
     }
     @NonNull
     private ArrayList<huandaiItem> sendRepaymentListRequestTo() {
@@ -149,7 +148,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
             @Override
             public void onRefresh() {
                 LogUtils.i("刷新_下拉刷新");
-                mMyListView_04_more.setData(sendRepaymentListRequest());
+                //mMyListView_04_more.setData(sendRepaymentListRequest());
                 xRefreshView.stopRefresh();
             }
             //上拉加载更多
@@ -157,7 +156,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
             public void onLoadMore(boolean isSilence) {
                 LogUtils.i("调用加载更多");
                 //加载更多
-                mMyListView_04_more.addData(sendRepaymentListRequestTo());
+              //  mMyListView_04_more.addData(sendRepaymentListRequestTo());
                 xRefreshView.stopLoadMore();
             }
         });

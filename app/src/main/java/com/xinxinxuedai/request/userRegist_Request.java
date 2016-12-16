@@ -13,8 +13,6 @@ import com.xinxinxuedai.util.Constants;
 import java.net.HttpURLConnection;
 import java.util.Hashtable;
 
-import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
-
 /**
  * Created by 35876 于萌萌
  * 创建日期: 12:20 . 2016年12月04日
@@ -24,7 +22,10 @@ import static com.xinxinxuedai.request.RepaymentListRequest.mHttpURLConnection;
  * 备注:
  */
 
-public class userRegist_Request {
+public class UserRegist_Request {
+
+    private static HttpURLConnection mHttpURLConnection;
+
     public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack<UserRegist> netWorkCallBack) {
         hashtable.put("action", "userRegist");
         NetMessage.get(context)

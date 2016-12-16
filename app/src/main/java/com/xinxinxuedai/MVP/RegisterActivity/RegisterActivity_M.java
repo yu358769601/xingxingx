@@ -25,4 +25,10 @@ public interface RegisterActivity_M {
      * @param classtag
      */
     void setEditTextViews(List<EditText> editTextViews, int classtag);
+
+    /**
+     * 当前的 类的状态是 注册还是重置
+     * @param classTag
+     */
+    void setStuaus(int classTag);
 }

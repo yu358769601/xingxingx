@@ -93,6 +93,7 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
     public void initP() {
         mReimbursementActivity_p = ReimbursementActivity_P.getReimbursementActivity_p(AppContext.getApplication());
         mReimbursementActivity_p.setCallBack(this);
+
     }
 
     @Override
@@ -129,7 +130,7 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
         });
 
         //获取网络添加列表数据
-        //mReimbursementActivity_p.initListViewData(mReimbursement_lv);
+        mReimbursementActivity_p.initListViewData(mReimbursement_lv);
 
         //加载更多
         //mReimbursementActivity_p.initRefurbish(xrefreshview);
@@ -159,6 +160,7 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
             //断开连接
             httpURLConnection.disconnect();
         }
+        dump();
     }
 
     /**
@@ -169,5 +171,32 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
     @Override
     public void getNetRequest(HttpURLConnection httpURLConnection) {
         this.httpURLConnection = httpURLConnection;
+    }
+
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+
+    }
+
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+         httpURLConnection = null;
+          mRelativeLayout_title= null;
+          reimbursement_tv_hint= null;
+          reimbursement_tv_logo= null;
+          reimbursement_xdb_1= null;
+          reimbursement_xdb_2= null;
+          reimbursement_xdb_3= null;
+          reimbursement_rl= null;
+          relativeLayout_title= null;
+          mReimbursementActivity_p= null;
+          mReimbursement_lv= null;
+          xrefreshview= null;
     }
 }

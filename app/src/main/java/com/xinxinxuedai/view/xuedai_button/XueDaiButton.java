@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,6 +28,8 @@ public class XueDaiButton extends RelativeLayout implements View.OnClickListener
     private TextView mXuedai_button;
     private RelativeLayout mXuedai_button1;
     int num;
+    private ImageView mXuedai_image;
+
     public XueDaiButton(Context context) {
         super(context);
         initView(context);
@@ -59,6 +62,9 @@ public class XueDaiButton extends RelativeLayout implements View.OnClickListener
 
         mXuedai_button_small = (TextView) mView.findViewById(R.id.xuedai_tv_button_small);
         mXuedai_button = (TextView) mView.findViewById(R.id.xuedai_tv_button);
+        //右上角星星
+        mXuedai_image = (ImageView) mView.findViewById(R.id.xuedai_image);
+        mXuedai_image.setVisibility(View.INVISIBLE);
 //        mXuedai_button_small.setOnClickListener(this);
 //        mXuedai_button.setOnClickListener(this);
         mXuedai_button1.setOnClickListener(this);
@@ -87,6 +93,14 @@ public class XueDaiButton extends RelativeLayout implements View.OnClickListener
     public XueDaiButton setTextColor(int color){
 
         mXuedai_button.setTextColor(color);
+        return  this;
+    }
+    public XueDaiButton setStarStuaus(boolean b){
+        if (b){
+            mXuedai_image.setVisibility(View.VISIBLE);
+        }else{
+            mXuedai_image.setVisibility(View.INVISIBLE);
+        }
         return  this;
     }
     public XueDaiButton setTopDrawable(int Drawable_Id){

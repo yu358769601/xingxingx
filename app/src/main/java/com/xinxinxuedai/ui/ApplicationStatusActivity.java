@@ -106,12 +106,12 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
         LogUtils.i("获取到借款详情"+data);
         ArrayList<String> strings = new ArrayList<>();
         strings.add("资料未完善");
-        strings.add("借款审核中");
-        strings.add("借款审核已通过，请在24小时之内关注银行卡资金是否到账。");
+        strings.add("借款审核中");// 不能进
+        strings.add("借款审核已通过，请在24小时之内关注银行卡资金是否到账。"); //不能进
         strings.add("借款审核未通过");
-        strings.add("借款放款成功,请按照还款计划及时归还借款。");
+        strings.add("借款放款成功,请按照还款计划及时归还借款。");//不能    //能进我要还款
         strings.add("借款放款失败");
-        strings.add("借款还款已完成");
+        strings.add("借款还款已完成");//能进
         strings.add("借款已提前还款");
 
         //0 先息后本  1 等额本息
@@ -149,5 +149,34 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
             }
         }
 
+    }
+
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dump();
+    }
+
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+          relativeLayout_title =null;
+          applicationstatus_tv1=null;
+          applicationstatus_tv2=null;
+          applicationstatus_tv3=null;
+          applicationstatus_tv4=null;
+          applicationstatus_tv5=null;
+          mApplicationStatusActivity_p=null;
+          mHomeData=null;
     }
 }

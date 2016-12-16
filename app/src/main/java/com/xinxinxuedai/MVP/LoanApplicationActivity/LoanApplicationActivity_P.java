@@ -13,8 +13,8 @@ import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.bean.SetLoanInfo;
 import com.xinxinxuedai.request.NetWorkCallBack;
-import com.xinxinxuedai.request.getLoanDetail_Request;
-import com.xinxinxuedai.request.setLoanInfo_Request;
+import com.xinxinxuedai.request.GetLoanDetail_Request;
+import com.xinxinxuedai.request.SetLoanInfo_Request;
 import com.xinxinxuedai.ui.ApplyForActivity;
 
 import java.util.ArrayList;
@@ -163,15 +163,16 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
         hashtable.put("loan_category","1");
         //判断怎么进来的 (二选一) 0 先息后本  1 等额本息
         hashtable.put("loan_plan",classTag+"");
-        setLoanInfo_Request.request(context, hashtable, new NetWorkCallBack<SetLoanInfo>() {
+        SetLoanInfo_Request.request(context, hashtable, new NetWorkCallBack<SetLoanInfo>() {
             @Override
             public void onSucceed(SetLoanInfo info, int dataMode) {
                 String message = info.message;
                 UtilsToast.showToast(context, message);
                 loanApplicationActivity_callBack.getTextInfo4(hashtable.toString());
-                loanApplicationActivity_callBack.closeActivity();
+
                 if (dataMode ==NetWorkCallBack.NETDATA) {
                     context.startActivity(new Intent(context,ApplyForActivity.class));
+                    loanApplicationActivity_callBack.closeActivity();
                 }
                 //网络请求后
             }
@@ -199,7 +200,7 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
      */
     @Override
     public void getCallBackData() {
-        getLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
+        GetLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
             @Override
             public void onSucceed(GetLoanDetail detail,int dataMode) {
                 //技能

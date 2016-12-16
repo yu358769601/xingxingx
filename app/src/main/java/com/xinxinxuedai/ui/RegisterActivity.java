@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.xinxinxuedai.MVP.RegisterActivity.RegisterActivity_C;
 import com.xinxinxuedai.MVP.RegisterActivity.RegisterActivity_P;
 import com.xinxinxuedai.MVP.RegisterActivity.countTime.Register_countTime_P;
 import com.xinxinxuedai.MVP.RegisterActivity.countTime.Register_countTime_P_CallBack;
@@ -23,11 +23,9 @@ import com.xinxinxuedai.view.initAction_Bar;
 
 import java.util.ArrayList;
 
-import static com.xinxinxuedai.R.id.register_cunttime;
-
 
 //注册activity  重置密码activity
-public class RegisterActivity extends BaseActivity implements View.OnClickListener, Register_countTime_P_CallBack {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener, Register_countTime_P_CallBack, RegisterActivity_C {
     //注册
     public static final int REGISTERCLASS = 100;
     //重置
@@ -45,28 +43,29 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private EditText mRegister_et_passwrold_ok;
     private EditText register_et_phonenum;
     private EditText register_et_cunttime;
+    private String mPhoneNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initReceiver();
         getbox();
-        initView();
         initP();
+        initView();
     }
 
 
     private void getbox() {
         Bundle extras = getIntent().getExtras();
         mClasstag = extras.getInt("classtag");
-
+        mPhoneNum = extras.getString("phoneNum");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(mReceiver1);
-
+        dump();
     }
 
     private void initReceiver() {
@@ -76,24 +75,32 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         registerReceiver(mReceiver1, filter);
     }
 
-    private void submit() {
-        // validate
-        String phonenum = register_et_phonenum.getText().toString().trim();
-        if (TextUtils.isEmpty(phonenum)) {
-            Toast.makeText(this, "手机号", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String cunttime = register_et_cunttime.getText().toString().trim();
-        if (TextUtils.isEmpty(cunttime)) {
-            Toast.makeText(this, "验证码", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // TODO validate success, do something
-
-
+    /**
+     * 关掉界面
+     */
+    @Override
+    public void closeActivity() {
+        finish();
     }
+
+    /**
+     * 清除的方法
+     */
+    @Override
+    public void dump() {
+          mRegister_cunttime = null;
+          mRegisterActivity_p= null;
+          mRelativeLayout_title= null;
+          mReceiver1= null;
+          mRegister_ok_= null;
+          mRegister_ok_again= null;
+          mRegister_et_passwrold= null;
+          mRegister_et_passwrold_ok= null;
+          register_et_phonenum= null;
+          register_et_cunttime= null;
+          mPhoneNum= null;
+    }
+
 
     public class InnerReceiver1 extends BroadcastReceiver {
 
@@ -133,7 +140,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void initView() {
-        mRegister_cunttime = (TextView) findViewById(register_cunttime);
+        mRegister_cunttime = (TextView) findViewById(R.id.register_cunttime);
         mRegister_cunttime.setOnClickListener(this);
         if (Register_countTime_P.status == Register_countTime_P.RUNING) {
             mRegister_cunttime.setText(Register_countTime_P.numCount + "");
@@ -177,14 +184,26 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         //验证码
         register_et_cunttime = (EditText) findViewById(R.id.register_et_cunttime);
         register_et_cunttime.setOnClickListener(this);
+
+        initData();
     }
 
     @Override
     public void initP() {
         mRegisterActivity_p = RegisterActivity_P.getLoginActivity_P(this);
         Register_countTime_P login_countTime_p = Register_countTime_P.getLogin_countTime_P(this);
+        mRegisterActivity_p.setStuaus(mClasstag);
+        mRegisterActivity_p.setCallBack(this);
         login_countTime_p.setCallBack(this);
-        LogUtils.i("注册页面的对象" + login_countTime_p);
+
+
+    }
+
+    @Override
+    public void initData() {
+        register_et_phonenum.setText(mPhoneNum);
+        register_et_phonenum.setSelection(mPhoneNum.length());
+
         //如果是 注册页面
         if (mClasstag == REGISTERCLASS) {
             mRegister_ok_.setVisibility(View.VISIBLE);
@@ -202,12 +221,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 mRegister_et_passwrold.setHint("新密码");
                 mRegister_et_passwrold_ok.setHint("确认新密码");
             }
-
-    }
-
-    @Override
-    public void initData() {
-
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.xinxinxuedai.MVP.ApplicationStatusActivity;
 
+import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
 import com.xinxinxuedai.bean.GetLoanDetail;
 
 /**
@@ -11,7 +12,7 @@ import com.xinxinxuedai.bean.GetLoanDetail;
  * 备注:
  */
 
-public interface ApplicationStatusActivity_C {
+public interface ApplicationStatusActivity_C extends BaseMVPinterFace_CallBack{
     /**
      * 给V的 数据设置
       */
