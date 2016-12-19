@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:drawableTop="@mipmap/ic_launcher"
         android:layout_marginRight="@dimen/size_base480_5dp"
+        android:padding="@dimen/size_base480_20dp"
         android:text="我要借款"
         />
     <ImageView

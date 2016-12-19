@@ -1,0 +1,1 @@
+String.format("预估费用%.2f元，距离%.1fkm，用时%d分 \n其中起车费%.1f元 ， 服务费%.1f元/分钟", (sun[0]*msgs), distance, duration,sun[1],sun[2])

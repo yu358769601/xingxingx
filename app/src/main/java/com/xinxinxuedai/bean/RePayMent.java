@@ -29,18 +29,43 @@ public class RePayMent {
 
     public static class DataBean {
         /**
+         *
          * id : 4177
+         *
+         * 借款id
          * user_loan_id : 11440
+         *
+         * 还款本金
          * money : 0.00
+         *
+         * 还款服务费
          * interest_money : 82.50
+         *
+         *还款利息
          * service_fee : 0.00
+         *
+         *违约金
          * weiyue_money : 0.00
+         *
+         *计划还款时间
          * plan_date : 2016-11-25   16:00:00
+         *
+         *真实还款时间
          * real_data : 1479877897
+         *
+         *还款期数
          * current_flag : 1
+         *
+         *还款状态 0 待还款  1 已还款 2 逾期 3提前还款 4坏账5减免
          * repay_status : 1
+         *
+         * 真实还款金额
          * real_money : 82.50
+         *
+         *具备再分期条件0 不具备 1 具备
          * again_flag : 0
+         *
+         *再分期id
          * again_id : 0
          */
 
@@ -53,9 +78,9 @@ public class RePayMent {
         public String plan_date;
         public String real_data;
         public String current_flag;
-        public String repay_status;
+        public int repay_status;
         public String real_money;
-        public String again_flag;
+        public int again_flag;
         public String again_id;
     }
 

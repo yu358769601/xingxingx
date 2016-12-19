@@ -8,6 +8,7 @@ import com.andview.refreshview.XRefreshView;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.adapter.ListViewCallBack;
 import com.xinxinxuedai.adapter.MyListView_04_more;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.bean.RePayMent;
@@ -74,19 +75,30 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         this.reimbursement_lv = reimbursement_lv;
         UtilsToast.showToast(context, "获取网络数据中~");
         //网络获取数据
-        ArrayList<RePayMent.DataBean> dataBeen = (ArrayList)sendRepaymentListRequest();
-        //获取之后设置数据
-        initData(reimbursement_lv, dataBeen);
+       sendRepaymentListRequest();
+
 
 
 
     }
 
-    private void initData(MyListView reimbursement_lv, ArrayList<RePayMent.DataBean> items) {
+    private void initData(MyListView reimbursement_lv, List<RePayMent.DataBean> items) {
         if (items==null||items.size()==0){
             return;
         }
-        mMyListView_04_more = new MyListView_04_more(AppContext.getApplication(), 0, items);
+        mMyListView_04_more = new MyListView_04_more(AppContext.getApplication(), 0, items, new ListViewCallBack() {
+            @Override
+            public void getRepayment(int positon) {
+                LogUtils.i("我点了还款位置是"+positon);
+                reimbursementActivity_c.getShowDialog1(positon);
+            }
+
+            @Override
+            public void getZaifenqi(int positon) {
+                LogUtils.i("我点了再分期位置是"+positon);
+                reimbursementActivity_c.getShowDialog2(positon);
+            }
+        });
         reimbursement_lv.setAdapter(mMyListView_04_more);
         UtilsToast.showToast(context, "网络加载完成~");
     }
@@ -100,7 +112,8 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
             @Override
             public void onSucceed(RePayMent payMent,int dataMode) {
                 data =  payMent.data;
-
+                //获取之后设置数据
+                initData(reimbursement_lv, data);
             }
 
             @Override
@@ -175,7 +188,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
 //        textView.setText("没有数据，点击刷新");
 //        textView.setGravity(Gravity.CENTER);
 //        xRefreshView.setEmptyView(textView);
-        //xRefreshView.setEmptyView(R.layout.layout_emptyview);
+//        xRefreshView.setEmptyView(R.layout.layout_emptyview);
         xRefreshView.setXRefreshViewListener(listener);
     }
 

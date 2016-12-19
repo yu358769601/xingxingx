@@ -1,0 +1,220 @@
+TASK com.xinxinxuedai id=27679
+  ACTIVITY com.xinxinxuedai/.ui.PersonalDetailsActivity 28880176 pid=7845
+    Local FragmentActivity 1bbca9bb State:
+      mCreated=truemResumed=true mStopped=false mReallyStopped=false
+      mLoadersStarted=true
+    FragmentManager misc state:
+      mHost=android.support.v4.app.FragmentActivity$HostCallbacks@cad6ed8
+      mContainer=android.support.v4.app.FragmentActivity$HostCallbacks@cad6ed8
+      mCurState=5 mStateSaved=false mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.impl.PhoneWindow$DecorView{2b39bb00 V.E..... ... 0,0-1080,1836}
+        android.widget.LinearLayout{2be76d83 V.E..... ... 0,0-1080,1836}
+          android.view.ViewStub{10ae3231 G.E..... ... 0,0-0,0 #1020372}
+          android.widget.FrameLayout{208ecf39 V.E..... ... 0,75-1080,1836 #1020002 android:id/content}
+            com.xinxinxuedai.view.initAction_Bar{1f07c97e V.E..... ... 0,0-1080,1761 #7f080004 app:id/relativeLayout_title}
+              android.widget.RelativeLayout{2b295edf V.E..... ... 0,0-1080,132 #7f080004 app:id/relativeLayout_title}
+                android.widget.TextView{3aff872c V.ED..C. ... 448,35-632,97 #7f080075 app:id/relativeLayout_title_titleview}
+                android.widget.Button{320425f5 VFED..C. ... 1050,0-1050,132 #7f080076 app:id/relativeLayout_title_rightbutton}
+                android.widget.Button{1fd2ff8a VFED..C. ... 0,0-132,132 #7f080077 app:id/relativeLayout_title_leftbutton}
+              android.widget.ScrollView{56f09fb VFED.V.. ... 0,132-1080,1761}
+                android.widget.RelativeLayout{1873ea18 V.E...C. ... 0,0-1080,1876 #7f080050 app:id/personalpdetails_rl}
+                  android.widget.TextView{213e2c71 V.ED..C. ... 265,69-814,118 #7f080051 app:id/personalpdetails_title}
+                  android.widget.RadioGroup{29698a56 V.E..... ... 45,163-1035,273 #7f080052 app:id/personalpdetails_rg}
+                    android.widget.RadioButton{1e9a4ad7 VFED..C. ... 0,0-483,110 #3}
+                    android.widget.RadioButton{3c98fc4 VFED..C. ... 507,0-990,110 #4}
+                  android.widget.EditText{2b607915 VFED..CL ... 45,318-1035,428 #7f080053 app:id/personalpdetails_et1_name}
+                  android.widget.EditText{1836242a VFED..CL ... 45,473-1035,583 #7f080054 app:id/personalpdetails_et2_name_num}
+                  android.widget.EditText{308e621b VFED..CL ... 45,628-1035,738 #7f080055 app:id/personalpdetails_et3_weixin_num}
+                  android.widget.TextView{3c381ead V.ED..C. ... 387,783-693,851 #7f080056 app:id/personalpdetails_tv_address}
+                  android.widget.EditText{a662fb8 VFED..CL F.. 45,896-1035,1166 #7f080057 app:id/cancellation_ed}
+                  android.widget.TextView{240bf5e2 V.ED..C. ... 106,1211-973,1279 #7f080058 app:id/personalpdetails_tv_tellname}
+                  android.widget.EditText{305c9191 VFED..CL ... 45,1369-1035,1479 #7f080059 app:id/personalpdetails_et4_tellname}
+                  android.widget.EditText{32ea58f6 VFED..CL ... 45,1524-1035,1634 #7f08005a app:id/personalpdetails_et5_tellname_tell}
+                  android.widget.TextView{ccebd73 V.ED..C. ... 45,1679-1035,1831 #7f08005b app:id/personalpdetails_tv_sub}
+
+  ACTIVITY com.xinxinxuedai/.ui.ApplyForActivity 376dee5c pid=7845
+    Local FragmentActivity 112e2bd1 State:
+      mCreated=truemResumed=false mStopped=true mReallyStopped=true
+      mLoadersStarted=true
+    FragmentManager misc state:
+      mHost=android.support.v4.app.FragmentActivity$HostCallbacks@305c7d16
+      mContainer=android.support.v4.app.FragmentActivity$HostCallbacks@305c7d16
+      mCurState=2 mStateSaved=true mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.impl.PhoneWindow$DecorView{132fd357 I.E..... ... 0,0-1080,1836}
+        android.widget.LinearLayout{1135e4d6 V.E..... ... 0,0-1080,1836}
+          android.view.ViewStub{1a822697 G.E..... ... 0,0-0,0 #1020372}
+          android.widget.FrameLayout{a0bae44 V.E..... ... 0,75-1080,1836 #1020002 android:id/content}
+            com.xinxinxuedai.view.initAction_Bar{22aa1b2d V.E..... ... 0,0-1080,1761 #7f080004 app:id/relativeLayout_title}
+              android.widget.RelativeLayout{8837862 V.E..... ... 0,0-1080,132 #7f080004 app:id/relativeLayout_title}
+                android.widget.TextView{2c744df3 V.ED..C. ... 448,35-632,97 #7f080075 app:id/relativeLayout_title_titleview}
+                android.widget.Button{1a376ab0 VFED..C. ... 1050,0-1050,132 #7f080076 app:id/relativeLayout_title_rightbutton}
+                android.widget.Button{3a3d29 VFED..C. ... 0,0-132,132 #7f080077 app:id/relativeLayout_title_leftbutton}
+              android.widget.RelativeLayout{e24b8ae V.E..... ... 0,132-1080,1761}
+                android.widget.TextView{3a7bd64f V.ED.... ... 66,111-1014,221 #7f08000f app:id/apply_for_tv1}
+                android.widget.TextView{322081dc V.ED.... ... 190,221-889,322 #7f080010 app:id/apply_for_tv2}
+                android.widget.LinearLayout{b9082e5 V.E..... ... 66,367-1014,1073}
+                  android.widget.LinearLayout{1687b1ba V.E..... ... 0,0-948,352}
+                    com.xinxinxuedai.view.xuedai_button.XueDaiButton{1fc9886b V.E..... ... 12,12-462,340 #7f080011 app:id/tv1}
+                      android.widget.RelativeLayout{1e21dfc8 V.E...C. ... 0,0-450,328 #7f0800d3 app:id/xuedai_button}
+                        android.widget.TextView{34b6861 V.ED.... ... 0,0-68,97 #7f0800d4 app:id/xuedai_tv_button_small}
+                        android.widget.TextView{3cef2f86 V.ED.... ... 0,0-438,328 #7f0800d5 app:id/xuedai_tv_button}
+                    com.xinxinxuedai.view.xuedai_button.XueDaiButton{19f64047 V.E..... ... 474,12-924,340 #7f080012 app:id/tv2}
+                      android.widget.RelativeLayout{13593074 V.E...C. ... 0,0-450,328 #7f0800d3 app:id/xuedai_button}
+                        android.widget.TextView{1775299d V.ED.... ... 0,0-68,97 #7f0800d4 app:id/xuedai_tv_button_small}
+                        android.widget.TextView{3bfebe12 V.ED.... ... 0,0-438,328 #7f0800d5 app:id/xuedai_tv_button}
+                  android.widget.LinearLayout{3d4c99e3 V.E..... ... 0,352-948,706}
+                    com.xinxinxuedai.view.xuedai_button.XueDaiButton{1912dfe0 V.E..... ... 12,12-462,342 #7f080013 app:id/tv3}
+                      android.widget.RelativeLayout{347fc299 V.E...C. ... 0,0-450,330 #7f0800d3 app:id/xuedai_button}
+                        android.widget.TextView{2306a95e V.ED.... ... 0,0-67,97 #7f0800d4 app:id/xuedai_tv_button_small}
+                        android.widget.TextView{e24f13f V.ED.... ... 0,0-438,330 #7f0800d5 app:id/xuedai_tv_button}
+                    com.xinxinxuedai.view.xuedai_button.XueDaiButton{1cf61a0c V.E..... ... 474,12-924,342 #7f080014 app:id/tv4}
+                      android.widget.RelativeLayout{200ef55 V.E...C. ... 0,0-450,330 #7f0800d3 app:id/xuedai_button}
+                        android.widget.TextView{140ffd6a V.ED.... ... 0,0-68,97 #7f0800d4 app:id/xuedai_tv_button_small}
+                        android.widget.TextView{1401625b V.ED.... ... 0,0-438,330 #7f0800d5 app:id/xuedai_tv_button}
+                android.widget.TextView{1df0caf8 V.ED.... ... 66,1355-1014,1518 #7f080015 app:id/apply_for_sub}
+
+  ACTIVITY com.xinxinxuedai/.ui.LoanApplicationActivity 38ae95b0 pid=7845
+    Local FragmentActivity 2e4fde03 State:
+      mCreated=truemResumed=false mStopped=true mReallyStopped=true
+      mLoadersStarted=true
+    FragmentManager misc state:
+      mHost=android.support.v4.app.FragmentActivity$HostCallbacks@20f6a084
+      mContainer=android.support.v4.app.FragmentActivity$HostCallbacks@20f6a084
+      mCurState=2 mStateSaved=true mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.impl.PhoneWindow$DecorView{390e00af I.E..... ... 0,0-1080,1836}
+        android.widget.LinearLayout{a15908e V.E..... ... 0,0-1080,1836}
+          android.view.ViewStub{1802c06d G.E..... ... 0,0-0,0 #1020372}
+          android.widget.FrameLayout{585ccbc V.E..... ... 0,75-1080,1836 #1020002 android:id/content}
+            com.xinxinxuedai.view.initAction_Bar{33c1a445 V.E..... ... 0,0-1080,1761 #7f080004 app:id/relativeLayout_title}
+              android.widget.RelativeLayout{1bde279a V.E..... ... 0,0-1080,132 #7f080004 app:id/relativeLayout_title}
+                android.widget.TextView{8c3f8cb V.ED..C. ... 379,35-701,97 #7f080075 app:id/relativeLayout_title_titleview}
+                android.widget.Button{2940f8a8 VFED..C. ... 1050,0-1050,132 #7f080076 app:id/relativeLayout_title_rightbutton}
+                android.widget.Button{165d3fc1 VFED..C. ... 0,0-132,132 #7f080077 app:id/relativeLayout_title_leftbutton}
+              android.widget.ScrollView{3f672366 VFED.V.. ... 0,132-1080,1761}
+                android.widget.RelativeLayout{329756a7 V.E..... ... 0,0-1080,2014}
+                  android.widget.TextView{1300f754 V.ED..C. ... 45,45-417,142 #7f080020 app:id/loanapplication_tv}
+                  android.widget.EditText{1263c2a3 VFED..CL F.. 45,142-1035,478 #7f080021 app:id/loanApplication_ed_1}
+                  android.widget.TextView{1bd16fd V.ED..C. ... 45,523-1035,633 #7f080022 app:id/loanapplication_et_1}
+                  android.widget.TextView{1f320ff2 V.ED..C. ... 45,678-1035,788 #7f080023 app:id/loanapplication_et_2}
+                  android.widget.TextView{1058b643 V.ED..C. ... 45,988-1035,1098 #7f080024 app:id/loanapplication_tv_sub}
+                  com.xinxinxuedai.view.xuedai_button.XueDaiButton_4{382034c0 V.E..... ... 45,1143-1035,1519 #7f080026 app:id/loanapplication_tv_zhou}
+                    android.widget.RelativeLayout{24925f9 V.E..... ... 0,0-990,376 #7f0800e8 app:id/xuedai_button_4}
+                      android.widget.LinearLayout{1a4d393e V.E..... ... 24,24-966,352 #7f0800e3 app:id/xuedai_button_3_ll}
+                        android.widget.TextView{3e46739f V.ED.... ... 24,36-918,85 #7f0800e9 app:id/xuedai_button_4_tv1}
+                        android.widget.TextView{733dcec V.ED.... ... 24,109-918,158 #7f0800ea app:id/xuedai_button_4_tv2}
+                        android.widget.TextView{28ed28b5 V.ED.... ... 24,182-918,231 #7f0800eb app:id/xuedai_button_4_tv3}
+                        android.widget.TextView{205fab4a V.ED.... ... 24,255-918,304 #7f0800ec app:id/xuedai_button_4_tv4}
+                  android.view.View{3428aabb V.ED.... ... 45,1519-1035,1969}
+                  android.widget.TextView{20f7dbd8 V.ED..C. ... 45,833-1035,943 #7f080025 app:id/loanapplication_et_3}
+
+  ACTIVITY com.xinxinxuedai/.ui.LoanProductsActivity 3185fe5f pid=7845
+    Local FragmentActivity 13285d07 State:
+      mCreated=truemResumed=false mStopped=true mReallyStopped=true
+      mLoadersStarted=true
+    FragmentManager misc state:
+      mHost=android.support.v4.app.FragmentActivity$HostCallbacks@111b54a2
+      mContainer=android.support.v4.app.FragmentActivity$HostCallbacks@111b54a2
+      mCurState=2 mStateSaved=true mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.impl.PhoneWindow$DecorView{21232b6c I.E..... ... 0,0-1080,1836}
+        android.widget.LinearLayout{213fec1f V.E..... ... 0,0-1080,1836}
+          android.view.ViewStub{33b89533 G.E..... ... 0,0-0,0 #1020372}
+          android.widget.FrameLayout{14bc9535 V.E..... ... 0,75-1080,1836 #1020002 android:id/content}
+            com.xinxinxuedai.view.initAction_Bar{25bfddca V.E..... ... 0,0-1080,1761 #7f080004 app:id/relativeLayout_title}
+              android.widget.RelativeLayout{1c812b3b V.E..... ... 0,0-1080,132 #7f080004 app:id/relativeLayout_title}
+                android.widget.TextView{28cd9258 V.ED..C. ... 448,35-632,97 #7f080075 app:id/relativeLayout_title_titleview}
+                android.widget.Button{a2e4fb1 VFED..C. ... 1050,0-1050,132 #7f080076 app:id/relativeLayout_title_rightbutton}
+                android.widget.Button{5e60c96 VFED..C. ... 0,0-132,132 #7f080077 app:id/relativeLayout_title_leftbutton}
+              android.widget.ScrollView{2ccd4017 VFED.V.. ... 0,132-1080,1761}
+                android.widget.RelativeLayout{5b57c04 V.E..... ... 0,0-1080,2174 #7f080027 app:id/loanproducts_rl}
+                  android.widget.TextView{292735ed V.ED.... ... 142,90-938,139 #7f080028 app:id/loanproducts_tv_title}
+                  android.widget.TextView{1a6e5c22 V.ED.... ... 463,184-616,252 #7f080029 app:id/loanproducts_tv_title_A}
+                  com.xinxinxuedai.view.xuedai_button.XueDaiButton_1{55bc6b3 V.E..... ... 45,297-1035,909 #7f08002a app:id/xuedaibutton_1}
+                    android.widget.RelativeLayout{20105470 V.E...C. ... 0,0-990,612 #7f0800d3 app:id/xuedai_button}
+                      android.widget.ImageView{1f4e43e9 V.ED.... ... 846,0-990,144 #7f0800d6 app:id/xuedai_1_iv_star}
+                      android.widget.TextView{1c3a186e V.ED.... ... 422,197-568,414 #7f0800d7 app:id/xuedai_tv_1_button}
+                      android.widget.TextView{b421b0f V.ED.... ... 224,442-766,546 #7f0800d8 app:id/xuedai_tv_infotext}
+                      android.widget.ImageView{1b7f40f0 G.ED.... ... 0,0-0,0 #7f0800d9 app:id/xuedai_tv_iv}
+                  android.widget.TextView{2bfe479c V.ED.... ... 463,954-616,1022 #7f08002b app:id/loanproducts_tv_title_B}
+                  com.xinxinxuedai.view.xuedai_button.XueDaiButton_1{33be35a5 V.E..... ... 45,1067-1035,1679 #7f08002c app:id/xuedaibutton_2}
+                    android.widget.RelativeLayout{1ef34d7a V.E...C. ... 0,0-990,612 #7f0800d3 app:id/xuedai_button}
+                      android.widget.ImageView{358f592b V.ED.... ... 846,0-990,144 #7f0800d6 app:id/xuedai_1_iv_star}
+                      android.widget.TextView{1d764188 V.ED.... ... 422,197-568,414 #7f0800d7 app:id/xuedai_tv_1_button}
+                      android.widget.TextView{a818721 V.ED.... ... 294,442-696,546 #7f0800d8 app:id/xuedai_tv_infotext}
+                      android.widget.ImageView{2497f669 G.ED.... ... 0,0-0,0 #7f0800d9 app:id/xuedai_tv_iv}
+                  android.view.View{14d8c746 V.ED.... ... 45,1679-1035,2129}
+
+  ACTIVITY com.xinxinxuedai/.ui.MainActivity a09c902 pid=7845
+    Local FragmentActivity 1ecb7d62 State:
+      mCreated=truemResumed=false mStopped=true mReallyStopped=true
+      mLoadersStarted=true
+    Active Fragments in 4d9b1af:
+      #0: SupportRequestManagerFragment{1ffe18ee #0 com.bumptech.glide.manager}
+        mFragmentId=#0 mContainerId=#0 mTag=com.bumptech.glide.manager
+        mState=2 mIndex=0 mWho=android:fragment:0 mBackStackNesting=0
+        mAdded=true mRemoving=false mResumed=false mFromLayout=false mInLayout=false
+        mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+        mRetainInstance=false mRetaining=false mUserVisibleHint=true
+        mFragmentManager=FragmentManager{4d9b1af in HostCallbacks{dd518f}}
+        mHost=android.support.v4.app.FragmentActivity$HostCallbacks@dd518f
+        Child FragmentManager{30af7c1c in SupportRequestManagerFragment{1ffe18ee}}:
+          FragmentManager misc state:
+            mHost=android.support.v4.app.FragmentActivity$HostCallbacks@dd518f
+            mContainer=android.support.v4.app.Fragment$1@c309025
+            mParent=SupportRequestManagerFragment{1ffe18ee #0 com.bumptech.glide.manager}
+            mCurState=2 mStateSaved=true mDestroyed=false
+    Added Fragments:
+      #0: SupportRequestManagerFragment{1ffe18ee #0 com.bumptech.glide.manager}
+    FragmentManager misc state:
+      mHost=android.support.v4.app.FragmentActivity$HostCallbacks@dd518f
+      mContainer=android.support.v4.app.FragmentActivity$HostCallbacks@dd518f
+      mCurState=2 mStateSaved=true mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.impl.PhoneWindow$DecorView{2b79361c I.E..... ... 0,0-1080,1836}
+        android.widget.LinearLayout{a31b38f V.E..... ... 0,0-1080,1836}
+          android.view.ViewStub{1e36d5fa G.E..... ... 0,0-0,0 #1020372}
+          android.widget.FrameLayout{163ec2ee V.E..... ... 0,75-1080,1836 #1020002 android:id/content}
+            com.xinxinxuedai.view.initAction_Bar{2290869 V.E..... ... 0,0-1080,1761 #7f080004 app:id/relativeLayout_title}
+              android.widget.RelativeLayout{26c0c225 V.E..... ... 0,0-1080,132 #7f080004 app:id/relativeLayout_title}
+                android.widget.TextView{8d81ffa V.ED..C. ... 494,35-586,97 #7f080075 app:id/relativeLayout_title_titleview}
+                android.widget.Button{131ff9ab VFED..C. ... 1050,0-1050,132 #7f080076 app:id/relativeLayout_title_rightbutton}
+                android.widget.Button{27f19808 VFED..C. ... 0,0-132,132 #7f080077 app:id/relativeLayout_title_leftbutton}
+              android.widget.RelativeLayout{33415af0 V.E..... ... 0,132-1080,591 #7f080034 app:id/main_re}
+                com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger{b2ad733 VFED.... ... 0,0-1080,459 #7f080035 app:id/main_vp}
+                  android.widget.ImageView{be777ab V.ED..C. ... 0,0-0,0}
+                  android.widget.ImageView{11463e08 V.ED..C. ... 0,0-0,0}
+                  android.widget.ImageView{3ff09a1 V.ED..C. ... 0,0-0,0}
+                android.widget.RelativeLayout{c628587 V.E..... ... 435,405-645,435}
+                  android.widget.LinearLayout{180c2cb4 V.E..... ... 0,0-210,30 #7f080036 app:id/activity_01_ll}
+                    android.widget.ImageView{3a0610dd V.ED.... ... 0,0-30,30}
+                    android.widget.ImageView{35a6b452 V.ED.... ... 45,0-75,30}
+                    android.widget.ImageView{2c57f323 V.ED.... ... 90,0-120,30}
+                    android.widget.ImageView{1d996020 V.ED.... ... 135,0-165,30}
+                    android.widget.ImageView{e57ddd9 V.ED.... ... 180,0-210,30}
+                  android.widget.ImageView{fd7c39e V.ED.... ... 180,0-210,30 #7f080037 app:id/activity_01_point_red}
+              android.widget.RelativeLayout{26ac9e7f V.E..... ... 0,591-1080,837 #7f080038 app:id/main_rl}
+                android.widget.TextView{25045e4c V.ED..C. ... 225,45-402,118 #7f080039 app:id/main_tv_name}
+                android.widget.TextView{125f7e95 V.ED..C. ... 225,118-502,191 #7f08003b app:id/main_tv_money}
+                android.widget.ImageView{27787baa V.ED..C. ... 45,45-201,201 #7f08003a app:id/main_iv}
+              android.widget.LinearLayout{1376a39b V.E..... ... 0,837-1080,1543}
+                android.widget.LinearLayout{143f1338 V.E..... ... 45,0-1035,352}
+                  com.xinxinxuedai.view.xuedai_button.XueDaiButton{2c066f11 V.E..... ... 12,12-483,340 #7f080011 app:id/tv1}
+                    android.widget.RelativeLayout{2cbaa876 V.E...C. ... 0,0-471,328 #7f0800d3 app:id/xuedai_button}
+                      android.widget.TextView{2c11de77 V.ED.... ... 0,0-68,97 #7f0800d4 app:id/xuedai_tv_button_small}
+                      android.widget.TextView{3c6e2ae4 V.ED.... ... 0,0-459,328 #7f0800d5 app:id/xuedai_tv_button}
+                  com.xinxinxuedai.view.xuedai_button.XueDaiButton{1c51eb4d V.E..... ... 495,12-966,340 #7f080012 app:id/tv2}
+                    android.widget.RelativeLayout{f20d602 V.E...C. ... 0,0-471,328 #7f0800d3 app:id/xuedai_button}
+                      android.widget.TextView{39bbeb13 V.ED.... ... 0,0-68,97 #7f0800d4 app:id/xuedai_tv_button_small}
+                      android.widget.TextView{3a551150 V.ED.... ... 0,0-459,328 #7f0800d5 app:id/xuedai_tv_button}
+                android.widget.LinearLayout{355eef49 V.E..... ... 45,352-1035,706}
+                  com.xinxinxuedai.view.xuedai_button.XueDaiButton{1ca504e V.E..... ... 12,12-483,342 #7f080013 app:id/tv3}
+                    android.widget.RelativeLayout{11f0256f V.E...C. ... 0,0-471,330 #7f0800d3 app:id/xuedai_button}
+                      android.widget.TextView{3181f27c V.ED.... ... 0,0-67,97 #7f0800d4 app:id/xuedai_tv_button_small}
+                      android.widget.TextView{341e3705 V.ED.... ... 0,0-459,330 #7f0800d5 app:id/xuedai_tv_button}
+                  com.xinxinxuedai.view.xuedai_button.XueDaiButton{387f235a V.E..... ... 495,12-966,342 #7f080014 app:id/tv4}
+                    android.widget.RelativeLayout{3c83a98b V.E...C. ... 0,0-471,330 #7f0800d3 app:id/xuedai_button}
+                      android.widget.TextView{e39ba68 V.ED.... ... 0,0-68,97 #7f0800d4 app:id/xuedai_tv_button_small}
+                      android.widget.TextView{39d03e81 V.ED.... ... 0,0-459,330 #7f0800d5 app:id/xuedai_tv_button}

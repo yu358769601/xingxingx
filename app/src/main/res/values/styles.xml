@@ -15,7 +15,7 @@
     
     <style name="button_touming">
         <item name="android:gravity">center</item>
-        <item name="android:padding">@dimen/size_base480_20dp</item>
+        <item name="android:padding">@dimen/size_base480_10dp</item>
         <item name="android:background">@drawable/an</item>
         <item name="android:drawablePadding">@dimen/size_base480_20dp</item>
     </style>
@@ -42,6 +42,10 @@
         <item name="android:background">@drawable/long_button_touming</item>
     </style>
 
+    <!--出来不暗色的dialog-->
+    <style name="DialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground"> @android:color/transparent </item>
+        <item name="android:backgroundDimEnabled">false</item>    </style>
 
     <!--注册登录输入框样式-->
     <style name="edit_style">
@@ -102,6 +106,8 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
+        <!-- 背景是否黑色-->  
+        <item name="android:backgroundDimEnabled">false</item>  
     </style>
 
 

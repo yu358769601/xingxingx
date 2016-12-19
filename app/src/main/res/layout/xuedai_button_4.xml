@@ -13,50 +13,6 @@
         android:padding="@dimen/size_base480_10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/xuedai_button_4_tv1"
-                android:text="第一周服务费:"
-                android:layout_marginTop="@dimen/size_base480_5dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_horizontal"
-                android:textColor="@color/white"
-                android:drawablePadding="@dimen/size_base480_10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                />
-            <TextView
-                android:id="@+id/xuedai_button_4_tv2"
-                android:text="第二周服务费:"
-                android:layout_marginTop="@dimen/size_base480_10dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_horizontal"
-                android:textColor="@color/white"
-                android:drawablePadding="@dimen/size_base480_10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                />
-            <TextView
-                android:id="@+id/xuedai_button_4_tv3"
-                android:text="第三周服务费:"
-                android:layout_marginTop="@dimen/size_base480_10dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_horizontal"
-                android:textColor="@color/white"
-                android:drawablePadding="@dimen/size_base480_10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                />
-            <TextView
-                android:id="@+id/xuedai_button_4_tv4"
-                android:text="第四周服务费:"
-                android:layout_marginTop="@dimen/size_base480_10dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_horizontal"
-                android:textColor="@color/white"
-                android:drawablePadding="@dimen/size_base480_10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                />
 
     </LinearLayout>
 

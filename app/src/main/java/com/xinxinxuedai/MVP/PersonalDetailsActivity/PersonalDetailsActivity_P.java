@@ -165,8 +165,9 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
                 UtilsHashtable.getHashtable();
         //身份认证
         hashtable.put("loan_id", Share.getToken(context));
+        String sex = select==0?"男":"女";
         //性别
-        hashtable.put("loan_sex",""+select);
+        hashtable.put("loan_sex",sex);
         //名字
         hashtable.put("loan_realname",editTexts.get(0).getText().toString().trim());
         //身份证

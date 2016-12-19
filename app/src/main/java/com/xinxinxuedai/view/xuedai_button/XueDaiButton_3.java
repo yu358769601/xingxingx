@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,10 +24,17 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
 
     private View mView;
     private RelativeLayout mXuedai_button_3;
-    private TextView mXuedai_button_3_tv1_plan;
-    private TextView mXuedai_button_3_tv_fenqi;
     private TextView mXuedai_button_3_tv2_plan_day;
     private TextView mXuedai_button_3_tv3_plan_day;
+    private ImageView mXuedai_button3_iv;
+    private TextView mXuedai_button3_tv1;
+    private TextView mXuedai_button3_tv2;
+    private TextView mXuedai_button3_tv3;
+    private TextView mXuedai_button3_tv4;
+    private TextView mXuedai_button3_tv5;
+    private TextView mXuedai_button3_tv6;
+    private TextView mXuedai_button3_tv7;
+    private LinearLayout ll2;
 
     public XueDaiButton_3(Context context) {
         super(context);
@@ -57,61 +66,95 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
         //外框
         mXuedai_button_3 = (RelativeLayout) mView.findViewById(R.id.xuedai_button_3);
         mXuedai_button_3.setTag(1);
-        //计划还款金额
-        mXuedai_button_3_tv1_plan = (TextView) mView.findViewById(R.id.xuedai_button_3_tv1_plan);
-        mXuedai_button_3_tv1_plan.setTag(2);
-        //分期
-        mXuedai_button_3_tv_fenqi = (TextView) mView.findViewById(R.id.xuedai_button_3_tv_fenqi);
-        mXuedai_button_3_tv_fenqi.setTag(3);
+        //状态星星
+        mXuedai_button3_iv = (ImageView) mView.findViewById(R.id.xuedai_button3_iv);
+        mXuedai_button3_iv.setTag(2);
+        //应还金额
+        mXuedai_button3_tv1 = (TextView) mView.findViewById(R.id.xuedai_button3_tv1);
+        mXuedai_button3_tv1.setTag(3);
+        //已还金额
+        mXuedai_button3_tv2 = (TextView) mView.findViewById(R.id.xuedai_button3_tv2);
+        mXuedai_button3_tv2.setTag(4);
+        //12/12
+        mXuedai_button3_tv3 = (TextView) mView.findViewById(R.id.xuedai_button3_tv3);
+        mXuedai_button3_tv3.setTag(5);
         //计划还款日
-        mXuedai_button_3_tv2_plan_day = (TextView) mView.findViewById(R.id.xuedai_button_3_tv2_plan_day);
-        mXuedai_button_3_tv2_plan_day.setTag(4);
-        //逾期天数
-        mXuedai_button_3_tv3_plan_day = (TextView) mView.findViewById(R.id.xuedai_button_3_tv3_plan_day);
-        mXuedai_button_3_tv3_plan_day.setTag(5);
+        mXuedai_button3_tv4 = (TextView) mView.findViewById(R.id.xuedai_button3_tv4);
+        mXuedai_button3_tv4.setTag(6);
+        //还款按钮
+        mXuedai_button3_tv5 = (TextView) mView.findViewById(R.id.xuedai_button3_tv5);
+        mXuedai_button3_tv5.setTag(7);
+        //再分期提示
+        mXuedai_button3_tv6 = (TextView) mView.findViewById(R.id.xuedai_button3_tv6);
+        mXuedai_button3_tv6.setTag(8);
+        //再分期按钮
+        mXuedai_button3_tv7 = (TextView) mView.findViewById(R.id.xuedai_button3_tv7);
+        mXuedai_button3_tv7.setTag(9);
+        //是否显示
+        ll2 = (LinearLayout) mView.findViewById(R.id.ll2);
+        ll2.setTag(10);
+
+
 
     }
 
     /**
-     * 设置 计划还款金额
-     * @param text
+     * 设置应还金额
+     * @param s
      * @return
      */
-    public XueDaiButton_3 setText_plan(String text){
-        mXuedai_button_3_tv1_plan.setText(text);
-        return  this;
+    public XueDaiButton_3 setTv1(String s){
+        mXuedai_button3_tv1.setText(mXuedai_button3_tv1.getHint()+s);
+        return this;
     }
-
     /**
-     * 分期
-     * @param text
+     * 设置已还金额
+     * @param s
      * @return
      */
-    public XueDaiButton_3 setText_tv_fenqi(String text){
-        mXuedai_button_3_tv_fenqi.setText(text);
-        return  this;
+    public XueDaiButton_3 setTv2(String s){
+        mXuedai_button3_tv2.setText(mXuedai_button3_tv2.getHint()+s);
+        return this;
     }
-
     /**
-     *计划还款日
-     * @param text
+     * 设置12/12
+     * @param s
      * @return
      */
-    public XueDaiButton_3 setText_button_tv3_plan_day(String text){
-        mXuedai_button_3_tv2_plan_day.setText(text);
-        return  this;
+    public XueDaiButton_3 setTv3(String s){
+        mXuedai_button3_tv3.setText(s);
+        return this;
     }
-
-
     /**
-     * 逾期天数
-     * @param text
+     * 计划还款日
+     * @param s
      * @return
      */
-    public XueDaiButton_3 setText_tv3_plan_day(String text){
-
-        mXuedai_button_3_tv3_plan_day.setText(text);
-        return  this;
+    public XueDaiButton_3 setTv4(String s){
+        mXuedai_button3_tv4.setText(mXuedai_button3_tv4.getHint()+s);
+        return this;
+    }
+    /**
+     * 还款按钮
+     * @param s
+     * @return
+     */
+    public XueDaiButton_3 setTv5(String s){
+        mXuedai_button3_tv5.setText(mXuedai_button3_tv5.getHint()+s);
+        return this;
+    }
+    /**
+     * 是否显示
+     * @param
+     * @return
+     */
+    public XueDaiButton_3 setll_Show(boolean b){
+        if (b){
+            ll2.setVisibility(VISIBLE);
+        }else{
+            ll2.setVisibility(GONE);
+        }
+        return this;
     }
 
     @Override

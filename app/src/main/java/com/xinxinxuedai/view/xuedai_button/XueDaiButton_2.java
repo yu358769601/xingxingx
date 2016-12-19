@@ -28,6 +28,9 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
     private TextView mXuedai_button_2_return_the_principal;
     private TextView mXuedai_button_2_tv1;
     private TextView mXuedai_button_2_tv2;
+    private TextView mXuedai_button_2_rightbutton_fenqi;
+    private TextView xuedai_button_2_info;
+    private TextView xuedai_button_2_tiqian;
 
     public XueDaiButton_2(Context context) {
         super(context);
@@ -72,7 +75,7 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
         mXuedai_button_2_borrow_money = (TextView) mView.findViewById(R.id.xuedai_button_2_borrow_money);
         mXuedai_button_2_borrow_money.setOnClickListener(this);
         mXuedai_button_2_borrow_money.setTag(4);
-        //返还本金
+        //借款方式
         mXuedai_button_2_return_the_principal = (TextView) mView.findViewById(R.id.xuedai_button_2_return_the_principal);
         mXuedai_button_2_return_the_principal.setOnClickListener(this);
         mXuedai_button_2_return_the_principal.setTag(5);
@@ -85,8 +88,51 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
         mXuedai_button_2_tv2.setOnClickListener(this);
         mXuedai_button_2_tv2.setTag(7);
 
-    }
+        //月分期
+        mXuedai_button_2_rightbutton_fenqi = (TextView) mView.findViewById(R.id.xuedai_button_2_rightbutton_fenqi);
+        mXuedai_button_2_rightbutton_fenqi.setOnClickListener(this);
+        mXuedai_button_2_rightbutton_fenqi.setTag(8);
 
+        //还款提示
+        xuedai_button_2_info = (TextView) mView.findViewById(R.id.xuedai_button_2_info);
+        xuedai_button_2_info.setOnClickListener(this);
+        xuedai_button_2_info.setTag(9);
+
+        //提前结清
+        xuedai_button_2_tiqian = (TextView) mView.findViewById(R.id.xuedai_button_2_tiqian);
+        xuedai_button_2_tiqian.setOnClickListener(this);
+        xuedai_button_2_tiqian.setTag(10);
+
+
+
+    }
+    /**
+     * 设置 提前结清按钮文字
+     * @param text
+     * @return
+     */
+    public XueDaiButton_2 setText_tiqian(String text){
+        xuedai_button_2_tiqian.setText(text);
+        return  this;
+    }
+    /**
+     * 设置 分期提示文字
+     * @param text
+     * @return
+     */
+    public XueDaiButton_2 setText_info(String text){
+        xuedai_button_2_info.setText(text);
+        return  this;
+    }
+    /**
+     * 设置 月分期按钮  月分期84天
+     * @param text
+     * @return
+     */
+    public XueDaiButton_2 setText_rightbutton_fenqi(String text){
+        mXuedai_button_2_rightbutton_fenqi.setText(text);
+        return  this;
+    }
     /**
      * 设置 账户余额
      * @param text
@@ -118,7 +164,7 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
     }
 
     /**
-     * 返还本金
+     * 借款方式
      * @param
      * @return
      */

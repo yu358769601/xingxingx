@@ -77,23 +77,24 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
             case 2:
                 //额度
                 ArrayList<String> strings2 = new ArrayList<>();
-                    strings2.add("500"+"元");
-                    strings2.add("800"+"元");
-                    strings2.add("1000"+"元");
-                    strings2.add("1500"+"元");
-                    strings2.add("2000"+"元");
-                    strings2.add("2500"+"元");
-                    strings2.add("3000"+"元");
-                    strings2.add("4000"+"元");
-                    strings2.add("5000"+"元");
+                    strings2.add("500");
+                    strings2.add("800");
+                    strings2.add("1000");
+                    strings2.add("1500");
+                    strings2.add("2000");
+                    strings2.add("2500");
+                    strings2.add("3000");
+                    strings2.add("4000");
+                    strings2.add("5000");
                 loanApplicationActivity_callBack.showDialog2(strings2,"借款额度");
                 break;
             case 3:
                 //期限
                 ArrayList<String> strings3 = new ArrayList<>();
-                    strings3.add("28"+"天");
-                    strings3.add("45"+"天");
-                    strings3.add("60"+"天");
+                    strings3.add("28");
+                    strings3.add("56");
+                    strings3.add("84");
+                    strings3.add("112");
                 loanApplicationActivity_callBack.showDialog3(strings3,"借款期限");
             break;
             case 4:

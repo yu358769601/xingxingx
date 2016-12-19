@@ -195,11 +195,11 @@ public class PersonalDetailsActivity extends BaseActivity implements PersonalDet
         if (!TextUtils.isEmpty(getInfo.loan_sex)){
             RadioButton childAt1 = (RadioButton) personalpdetails_rg.getChildAt(0);
             RadioButton childAt2 = (RadioButton) personalpdetails_rg.getChildAt(1);
-            if ("0".equals(getInfo.loan_sex)) {
+            if ("男".equals(getInfo.loan_sex)) {
                 childAt1.setChecked(true);
                 childAt2.setChecked(false);
             }
-            if ("1".equals(getInfo.loan_sex)){
+            if ("女".equals(getInfo.loan_sex)){
                 childAt1.setChecked(false);
                 childAt2.setChecked(true);
             }

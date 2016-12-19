@@ -20,4 +20,7 @@ public interface ReimbursementActivity_C extends BaseMVPinterFace_CallBack{
      */
     void getNetRequest(HttpURLConnection httpURLConnection);
 
+
+    void getShowDialog1(int positon);
+    void getShowDialog2(int positon);
 }

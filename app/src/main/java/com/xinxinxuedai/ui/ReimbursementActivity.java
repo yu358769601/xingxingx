@@ -10,10 +10,13 @@ import com.andview.refreshview.XRefreshView;
 import com.xinxinxuedai.MVP.ReimbursementActivity.ReimbursementActivity_C;
 import com.xinxinxuedai.MVP.ReimbursementActivity.ReimbursementActivity_P;
 import com.xinxinxuedai.R;
+import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.MyListView;
+import com.xinxinxuedai.view.dialog.DialogCallBack;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_2;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_3;
@@ -132,8 +135,8 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
         //获取网络添加列表数据
         mReimbursementActivity_p.initListViewData(mReimbursement_lv);
 
-        //加载更多
-        //mReimbursementActivity_p.initRefurbish(xrefreshview);
+        //初始化 下拉刷新
+       mReimbursementActivity_p.initRefurbish(xrefreshview);
 
 
     }
@@ -171,6 +174,27 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
     @Override
     public void getNetRequest(HttpURLConnection httpURLConnection) {
         this.httpURLConnection = httpURLConnection;
+    }
+
+    @Override
+    public void getShowDialog1(final int positon) {
+        UtilsDialog.showDialog_Text(this, "还款", "是否还款", new DialogCallBack() {
+            @Override
+            public void confirm() {
+                LogUtils.i("我点了还款号码是"+positon);
+            }
+
+            @Override
+            public void cancel() {
+                LogUtils.i("取消还款");
+            }
+        });
+
+    }
+
+    @Override
+    public void getShowDialog2(int positon) {
+
     }
 
     /**

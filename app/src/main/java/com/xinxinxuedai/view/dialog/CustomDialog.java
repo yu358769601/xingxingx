@@ -43,6 +43,7 @@ public class CustomDialog extends Dialog {
         private View contentView;
         private OnClickListener positiveButtonClickListener;
         private OnClickListener negativeButtonClickListener;
+        private Button mNegativeButton;
 
         public Builder(Context context) {
             this.context = context;
@@ -112,6 +113,14 @@ public class CustomDialog extends Dialog {
             this.positiveButtonClickListener = listener;
             return this;
         }
+        public Builder setCanl(boolean b){
+            if (b){
+                mNegativeButton.setVisibility(View.VISIBLE);
+            }else{
+                mNegativeButton.setVisibility(View.GONE);
+            }
+            return this;
+        }
 
         public Builder setNegativeButton(int negativeButtonText,
                                          OnClickListener listener) {
@@ -134,6 +143,9 @@ public class CustomDialog extends Dialog {
             // instantiate the dialog with the custom Theme
             final CustomDialog dialog = new CustomDialog(context, R.style.Dialog);
             View layout = inflater.inflate(R.layout.dialog_normal_layout, null);
+
+            mNegativeButton = (Button) layout.findViewById(R.id.negativeButton);
+
 
             dialog.addContentView(layout, new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));

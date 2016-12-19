@@ -3,6 +3,7 @@ package com.xinxinxuedai.ui;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogCallBack;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogSelect;
+import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.view.dialog.CustomDialog;
@@ -34,8 +36,12 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
     private TextView mLoanapplication_et_3;
     private XueDaiButton_4 mLoanapplication_tv_zhou;
     private EditText mLoanApplication_ed_1;
+    //0 先息后本  1 等额本息
     private int mClassTag;
-
+    //当前选择的钱数
+    public int mSelectNumMoney;
+    //当前选择的天数
+    public int mSelectNumDay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +124,7 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
 
     }
 
+
     @Override
     public void initListener() {
 
@@ -181,10 +188,10 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void getTextInfo4(String TextInfo4) {
-        mLoanapplication_tv_zhou.setText_tv1(TextInfo4);
-        mLoanapplication_tv_zhou.setText_tv2(TextInfo4);
-        mLoanapplication_tv_zhou.setText_tv3(TextInfo4);
-        mLoanapplication_tv_zhou.setText_tv4(TextInfo4);
+//        mLoanapplication_tv_zhou.setText_tv1(TextInfo4);
+//        mLoanapplication_tv_zhou.setText_tv2(TextInfo4);
+//        mLoanapplication_tv_zhou.setText_tv3(TextInfo4);
+//        mLoanapplication_tv_zhou.setText_tv4(TextInfo4);
 
     }
 
@@ -195,6 +202,7 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
      */
     @Override
     public void showDialog1(final ArrayList<String> strings, String title) {
+
         CustomDialog customDialog = UtilsDialog.showDialogRadioGroup(this, title, strings, new UtilsDialogCallBack() {
             /**
              * 点了确定并且 已经有了选择的号码 之后产生的回调
@@ -211,11 +219,26 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
             @Override
             public void selectCallBack(int selectNum) {
                 LogUtils.i("title"+strings.get(selectNum));
+
             }
         });
+        setScreenBgLight();
 
     }
-
+    // 设置屏幕背景变暗
+    private void setScreenBgDarken() {
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = 0.5f;
+        lp.dimAmount = 0.5f;
+        getWindow().setAttributes(lp);
+    }
+    // 设置屏幕背景变亮
+    private void setScreenBgLight() {
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = 1.0f;
+        lp.dimAmount = 1.0f;
+        getWindow().setAttributes(lp);
+    }
     /**
      * 回调到主界面去show
      *
@@ -223,7 +246,8 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
      */
     @Override
     public void showDialog2(final ArrayList<String> strings, String title) {
-        CustomDialog customDialog = UtilsDialog.showDialogRadioGroup(this, title, strings, new UtilsDialogCallBack() {
+
+        CustomDialog customDialog =   UtilsDialog.showDialogRadioGroup(this, title, strings, new UtilsDialogCallBack() {
             /**
              * 点了确定并且 已经有了选择的号码 之后产生的回调
              *
@@ -233,14 +257,32 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
             @Override
             public void RadioGroupNum(int selectNum, String selectNumInfo) {
                 //loanApplicationActivity_callBack.getSelectInfo2(selectNum, selectNumInfo);
-                mLoanapplication_et_2.setText(selectNumInfo);
+                mLoanapplication_et_2.setText(selectNumInfo+"元");
             }
         }, new UtilsDialogSelect() {
+
+
             @Override
             public void selectCallBack(int selectNum) {
                 LogUtils.i("title"+strings.get(selectNum));
+                mSelectNumMoney = Integer.parseInt(strings.get(selectNum));
+                setText_Info();
             }
         });
+        setScreenBgLight();
+    }
+
+    /**
+     * 动态改变 显示提示计算  服务费什么的
+     */
+    private void setText_Info() {
+        if (0==mSelectNumMoney || 0==mSelectNumDay){
+            return;
+        }
+
+        mLoanapplication_tv_zhou.setData(mSelectNumDay,mSelectNumMoney, AppContext.getApplication(),mClassTag);
+
+
     }
 
     /**
@@ -250,6 +292,7 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
      */
     @Override
     public void showDialog3(final ArrayList<String> strings, String title) {
+
         CustomDialog customDialog = UtilsDialog.showDialogRadioGroup(this, title, strings, new UtilsDialogCallBack() {
             /**
              * 点了确定并且 已经有了选择的号码 之后产生的回调
@@ -260,14 +303,17 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
             @Override
             public void RadioGroupNum(int selectNum, String selectNumInfo) {
                 //loanApplicationActivity_callBack.getSelectInfo2(selectNum, selectNumInfo);
-                mLoanapplication_et_3.setText(selectNumInfo);
+                mLoanapplication_et_3.setText(selectNumInfo+"天");
             }
         }, new UtilsDialogSelect() {
             @Override
             public void selectCallBack(int selectNum) {
                 LogUtils.i("title"+strings.get(selectNum));
+                mSelectNumDay = Integer.parseInt(strings.get(selectNum));
+                setText_Info();
             }
         });
+        setScreenBgLight();
     }
 
     /**
@@ -283,10 +329,18 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
             mLoanApplication_ed_1.setText(callBackData.loan_describe);
         if (!TextUtils.isEmpty(callBackData.loan_small_describe))
         mLoanapplication_et_1.setText(callBackData.loan_small_describe);
-        if (!TextUtils.isEmpty(callBackData.money))
-        mLoanapplication_et_2.setText((int) Double.parseDouble(callBackData.money)+"元");
-        if (!TextUtils.isEmpty(callBackData.loan_term))
-        mLoanapplication_et_3.setText(callBackData.loan_term+"天");
+        if (!TextUtils.isEmpty(callBackData.money)){
+            mLoanapplication_et_2.setText((int) Double.parseDouble(callBackData.money)+"元");
+            //当前选择的钱数
+           mSelectNumMoney = (int) Double.parseDouble(callBackData.money);
+            setText_Info();
+        }
+        if (!TextUtils.isEmpty(callBackData.loan_term)){
+            mLoanapplication_et_3.setText(Integer.parseInt(callBackData.loan_term)+"天");
+            //当前选择的天数
+             mSelectNumDay = Integer.parseInt(callBackData.loan_term);
+            setText_Info();
+        }
 
     }
 

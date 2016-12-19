@@ -1,6 +1,7 @@
 package com.xinxinxuedai.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 
 
@@ -74,12 +76,38 @@ public class MyViewHolder_04 {
     public TextView initText(int viewId, String text)
     {
         TextView view = getView(viewId);
-        view.setText(text);
+        if (!TextUtils.isEmpty(text)){
+
+            view.setText(text);
+        }
+        return view;
+    }
+    /**
+     * 为TextView设置字符串
+     *
+     * @param viewId
+     * @param text
+     * @return
+     */
+    public TextView initText_hint(int viewId, String text)
+    {
+        TextView view = getView(viewId);
+        String s = view.getHint() + text;
+        view.setText(s);
         return view;
     }
 
-    public LinearLayout initLinearLayout(Context context, int viewId){
+    public LinearLayout initLinearLayout(int viewId){
         LinearLayout view = getView(viewId);
+        return view;
+    }
+    public LinearLayout initLinearLayout_Show(int viewId,int b){
+        LinearLayout view = getView(viewId);
+        if (b==0){
+            view.setVisibility(View.VISIBLE);
+        }else{
+            view.setVisibility(View.GONE);
+        }
         return view;
     }
 
@@ -114,6 +142,41 @@ public class MyViewHolder_04 {
     public ImageView initImage(Context context, int viewId){
         ImageView view = getView(viewId);
             return view;
+
+        //view.initText(text);
+    }
+    /**
+     *
+     * @param viewId
+     * @param
+     * @return
+     */
+    public ImageView initImage_status(int viewId,int status){
+       //0 待还款  1 已还款 2 逾期 3提前还款 4坏账5减免
+
+        ImageView view = getView(viewId);
+      switch (status){
+              case 0:
+                  view.setBackgroundResource(R.drawable.home_tv01);
+              break;
+              case 1:
+                  view.setBackgroundResource(R.drawable.home_tv02);
+              break;
+              case 2:
+                  view.setBackgroundResource(R.drawable.home_tv03);
+              break;
+              case 3:
+                  view.setBackgroundResource(R.drawable.home_tv04);
+              break;
+              case 4:
+                  view.setBackgroundResource(R.drawable.home_tv01);
+              break;
+              case 5:
+                  view.setBackgroundResource(R.drawable.home_tv02);
+              break;
+      }
+
+        return view;
 
         //view.initText(text);
     }

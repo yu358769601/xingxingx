@@ -23,6 +23,7 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.view.dialog.CustomDialog;
+import com.xinxinxuedai.view.dialog.DialogCallBack;
 
 import java.util.List;
 
@@ -72,7 +73,7 @@ public class UtilsDialog {
             RadioButton radioButton = new RadioButton(context);
             radioButton.setLayoutParams(params);
             radioButton.setButtonDrawable(new ColorDrawable(Color.TRANSPARENT));
-            radioButton.setPadding(30,10,30,10);
+            radioButton.setPadding(20,10,20,10);
             radioButton.setGravity(Gravity.CENTER_VERTICAL);
             radioButton.setText(string.get(i));
             radioButton.setTextColor(context.getResources().getColor(R.color.black));
@@ -148,16 +149,75 @@ public class UtilsDialog {
         int displayHeight = displayMetrics.heightPixels;
 
         //定义宽度
-        lp.width=(int) (displayWidth* 0.90f + 0.5f);
+        lp.width=(int) (displayWidth* 0.60f + 0.5f);
         //定义高度
-        lp.height=(int) (displayHeight* 0.70f + 0.5f);
-        //alertDialog.getWindow().setAttributes(lp);
+        lp.height=(int) (displayHeight* 0.45f + 0.5f);
+        alertDialog.getWindow().setAttributes(lp);
 
         return alertDialog;
 
     }
 
+    /**
+     * 只为显示文字
+     * @param context
+     * @param setTitle
+     * @param callBack
+     * @return
+     */
+    public static CustomDialog showDialog_Text(final Context context, String setTitle,String message,final DialogCallBack callBack ){
 
+        Activity activity = (Activity) context;
+        CustomDialog.Builder builder = new CustomDialog.Builder(context);
+        TextView textView = new TextView(context);
+        textView.setText(setTitle);
+        textView.setTextColor(context.getResources().getColor(R.color.black));
+        builder.setTitle(setTitle); //设置标题
+        TextView textViewfu = new TextView(context);
+        textViewfu.setText(message);
+        textViewfu.setTextColor(context.getResources().getColor(R.color.black));
+        String s = textViewfu.getText().toString();
+        builder.setMessage(s); //设置内容
+
+
+
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                    //LogUtils.i("被选中的是"+which+"号"+"内容是"+string.get(which));
+                callBack.confirm();
+                dialog.dismiss();
+            }
+
+        });
+
+
+        builder.setNegativeButton("取消",
+                new android.content.DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        callBack.cancel();
+                        dialog.dismiss();
+                    }
+                });
+        // builder.create().show();
+        //设置窗口的大小
+        CustomDialog alertDialog = builder.create();
+        builder.setCanl(true);
+        alertDialog.show();
+        WindowManager.LayoutParams  lp= alertDialog.getWindow().getAttributes();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int displayWidth = displayMetrics.widthPixels;
+        int displayHeight = displayMetrics.heightPixels;
+
+        //定义宽度
+        lp.width=(int) (displayWidth* 0.60f + 0.5f);
+        //定义高度
+        lp.height=(int) (displayHeight* 0.45f + 0.5f);
+        alertDialog.getWindow().setAttributes(lp);
+
+        return alertDialog;
+
+    }
     /**
      * 显示 银行那一块
      * @param context
