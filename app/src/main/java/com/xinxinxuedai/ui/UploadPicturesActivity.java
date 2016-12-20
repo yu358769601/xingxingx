@@ -51,7 +51,26 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
         IntentFilter filter = new IntentFilter("getData");
         registerReceiver(receiver, filter);
 
+        //接收_关闭activity_广播
+        IntentFilter filter1 = new IntentFilter("uploadpictures_");
+        registerReceiver(receiver1, filter1);
+
     }
+
+    private InnerReceiver1 receiver1 = new InnerReceiver1();
+    //接收别的地方过来的数据 写一个内容类
+    public class InnerReceiver1 extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //使用intent获取发送过来的数据
+            String close = intent.getStringExtra("close");
+            LogUtils.i("在上传视频过来的数据是"+close);
+                finish();
+            }
+
+        }
+
 
     //在成员变量的位置 创建一个  广播接收类 接收 选择完了图片返回来的字符串
     private InnerReceiver receiver = new InnerReceiver();
@@ -123,6 +142,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
+        unregisterReceiver(receiver1);
         dump();
     }
 

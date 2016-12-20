@@ -18,6 +18,7 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.OtherUtils;
 import com.xinxinxuedai.Utils.UtilsBroadcastReceiver;
+import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.Utils.imagezip.BitmapUtils;
 import com.xinxinxuedai.Utils.imagezip.ImageUtil;
 import com.xinxinxuedai.app.AppContext;
@@ -160,7 +161,13 @@ public class ChoiceActivity extends BaseActivity implements View.OnClickListener
                         @Override
                         public void msg(JSONObject msg) {
                             LogUtils.i("上传图片返回来的数据"+msg);
-                            UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getData",mClassTag+"",path);
+                            if (1==msg.getIntValue("result")){
+                                UtilsToast.showToast(AppContext.getApplication(), msg.getString("message"));
+                                UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getData",mClassTag+"",path);
+                            }else{
+                                UtilsToast.showToast(AppContext.getApplication(), msg.getString("message"));
+                            }
+
                         }
                     });
                     post.execute();

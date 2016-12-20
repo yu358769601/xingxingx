@@ -4,11 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
+import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.GetInfoShow;
+import com.xinxinxuedai.bean.SetLoanStatus;
 import com.xinxinxuedai.request.GetInfoShow_Request;
 import com.xinxinxuedai.request.GetInfo_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.SetLoanStatus_Request;
 import com.xinxinxuedai.ui.BankCardInfoActivity;
 import com.xinxinxuedai.ui.PersonalDetailsActivity;
 import com.xinxinxuedai.ui.SchoolAddressActivity;
@@ -92,6 +96,29 @@ public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> imple
             @Override
             public void onSucceed(GetInfoShow getInfoShow, int dataMode) {
                 applyForActivity_callback.setCallBackData(getInfoShow);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+
+
+
+
+    }
+
+    /**
+     * 提交申请
+     */
+    @Override
+    public void setSub() {
+        //提交那一块
+        SetLoanStatus_Request.request(AppContext.getApplication(), new NetWorkCallBack<SetLoanStatus>() {
+            @Override
+            public void onSucceed(SetLoanStatus setLoanStatus, int dataMode) {
+                UtilsToast.showToast(context, setLoanStatus.message);
             }
 
             @Override

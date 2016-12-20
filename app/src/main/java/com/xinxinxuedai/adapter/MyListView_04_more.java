@@ -25,10 +25,13 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RePayMent.DataBea
     ListViewLoadMore mListViewLoadMore;
     int type;
     ListViewCallBack mListViewCallBack;
-    public MyListView_04_more(Context context, int type, List datas,ListViewCallBack mListViewCallBack) {
+    //期限 最大值
+    int loan_term;
+    public MyListView_04_more(Context context, int type, List datas, int loan_term, ListViewCallBack mListViewCallBack) {
         super(context, type, datas);
         this.type = type;
         this.mListViewCallBack = mListViewCallBack;
+        this.loan_term = loan_term;
     }
 
     public void setListViewLoadMore(ListViewLoadMore mListViewLoadMore) {
@@ -76,7 +79,7 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RePayMent.DataBea
 //            item.plan_date;
 //            //真实还款时间
 //            item.real_data;
-//            //真实还款金额
+//            //真实还款金额 已还
 //            item.real_money;
 //            //还款状态 0 待还款  1 已还款 2 逾期 3提前还款 4坏账5减免
 //            item.repay_status;
@@ -86,12 +89,15 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RePayMent.DataBea
 //            item.user_loan_id;
             //图
             helper.initImage_status(R.id.xuedai_button3_iv,item.repay_status);
-            //应还金额
-            helper.initText_hint(R.id.xuedai_button3_tv1,item.real_money);
+
+            //String.format("%.2f元", (moneny * 0.0275) + (moneny * 0.01)+moneny);
+            String format = String.format("%.2f元", (item.money + item.service_fee + item.interest_money + item.weiyue_money) - item.real_money);
+            //应还金额 (本金+利息+服务费+违约金)-真实还款金额
+            helper.initText_hint(R.id.xuedai_button3_tv1,format);
             //已还金额
-            helper.initText_hint(R.id.xuedai_button3_tv2,item.money);
+            helper.initText_hint(R.id.xuedai_button3_tv2,item.real_money+"元");
             //分期
-            helper.initText_hint(R.id.xuedai_button3_tv3,item.current_flag);
+            helper.initText_hint(R.id.xuedai_button3_tv3,item.current_flag+"/"+(loan_term/7)+"期");
             //还款按钮
             TextView textView1 = helper.initText(R.id.xuedai_button3_tv5, "");
             textView1.setOnClickListener(new View.OnClickListener() {

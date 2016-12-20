@@ -38,6 +38,7 @@ public class GetLoanDetail_Request {
         hashtable.put("action", "getLoanDetail");
         //token
         hashtable.put("loan_id", Share.getToken(context));
+        LogUtils.i("我传过去的id"+Share.getToken(context));
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
                     @Override

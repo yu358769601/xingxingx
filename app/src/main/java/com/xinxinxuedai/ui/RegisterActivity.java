@@ -202,7 +202,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void initData() {
         register_et_phonenum.setText(mPhoneNum);
-        register_et_phonenum.setSelection(mPhoneNum.length());
+        if (null!=mPhoneNum){
+            register_et_phonenum.setSelection(mPhoneNum.length());
+        }
 
         //如果是 注册页面
         if (mClasstag == REGISTERCLASS) {

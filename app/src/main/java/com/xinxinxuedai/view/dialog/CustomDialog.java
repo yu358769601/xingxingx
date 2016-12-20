@@ -44,6 +44,8 @@ public class CustomDialog extends Dialog {
         private OnClickListener positiveButtonClickListener;
         private OnClickListener negativeButtonClickListener;
         private Button mNegativeButton;
+        private Button mPositiveButton;
+        private TextView mMessage;
 
         public Builder(Context context) {
             this.context = context;
@@ -73,6 +75,10 @@ public class CustomDialog extends Dialog {
          */
         public Builder setTitle(int title) {
             this.title = (String) context.getText(title);
+            return this;
+        }
+        public Builder setConfirmStyle(int id) {
+            mPositiveButton.setBackgroundResource(id);
             return this;
         }
 
@@ -143,8 +149,12 @@ public class CustomDialog extends Dialog {
             // instantiate the dialog with the custom Theme
             final CustomDialog dialog = new CustomDialog(context, R.style.Dialog);
             View layout = inflater.inflate(R.layout.dialog_normal_layout, null);
-
+            //取消键
             mNegativeButton = (Button) layout.findViewById(R.id.negativeButton);
+            //确认按键
+            mPositiveButton = (Button) layout.findViewById(R.id.positiveButton);
+            //文字提示
+            mMessage = (TextView) layout.findViewById(R.id.message);
 
 
             dialog.addContentView(layout, new LinearLayout.LayoutParams(
@@ -153,10 +163,9 @@ public class CustomDialog extends Dialog {
             ((TextView) layout.findViewById(R.id.title)).setText(title);
             // set the confirm button
             if (positiveButtonText != null) {
-                ((Button) layout.findViewById(R.id.positiveButton))
-                        .setText(positiveButtonText);
+                mPositiveButton.setText(positiveButtonText);
                 if (positiveButtonClickListener != null) {
-                    ((Button) layout.findViewById(R.id.positiveButton))
+                    mPositiveButton
                             .setOnClickListener(new View.OnClickListener() {
                                 public void onClick(View v) {
                                     positiveButtonClickListener.onClick(dialog,
@@ -166,15 +175,15 @@ public class CustomDialog extends Dialog {
                 }
             } else {
                 // if no confirm button just set the visibility to GONE
-                layout.findViewById(R.id.positiveButton).setVisibility(
+                mPositiveButton.setVisibility(
                         View.GONE);
             }
             // set the cancel button
             if (negativeButtonText != null) {
-                ((Button) layout.findViewById(R.id.negativeButton))
+                mNegativeButton
                         .setText(negativeButtonText);
                 if (negativeButtonClickListener != null) {
-                    ((Button) layout.findViewById(R.id.negativeButton))
+                    mNegativeButton
                             .setOnClickListener(new View.OnClickListener() {
                                 public void onClick(View v) {
                                     negativeButtonClickListener.onClick(dialog,
@@ -184,12 +193,13 @@ public class CustomDialog extends Dialog {
                 }
             } else {
                 // if no confirm button just set the visibility to GONE
-                layout.findViewById(R.id.negativeButton).setVisibility(
+                mNegativeButton.setVisibility(
                         View.GONE);
             }
             // set the content message
-            if (message != null) {
-                ((TextView) layout.findViewById(R.id.message)).setText(message);
+            if (this.message != null) {
+                mMessage.setText(this.message);
+                mMessage.setVisibility(View.VISIBLE);
             } else if (contentView != null) {
                 // if no message set
                 // add the contentView to the dialog body
@@ -199,6 +209,9 @@ public class CustomDialog extends Dialog {
                         //原本是 添加的  由于 子类 已经添加了
                         //.addView(contentView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
                         .addView(contentView);
+            }
+            if (this.message == null){
+                mMessage.setVisibility(View.GONE);
             }
             dialog.setContentView(layout);
             return dialog;

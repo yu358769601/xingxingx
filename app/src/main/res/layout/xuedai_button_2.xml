@@ -4,6 +4,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size_base480_20dp"
+                android:layout_marginTop="@dimen/size_base480_10dp"
                 android:background="@drawable/border_money_touming"
         >
    <LinearLayout
@@ -26,7 +27,6 @@
             android:id="@+id/xuedai_button_2_top_up"
             android:text="充值"
             style="@style/button_touming"
-            android:textColor="@drawable/text_coloer"
             android:gravity="center"
             android:layout_weight="2"
             android:layout_width="0dp"
@@ -42,49 +42,6 @@
         android:layout_height="0.5dp">
 
     </View>
-    <LinearLayout
-        android:id="@+id/ll"
-        android:layout_below="@+id/view1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_weight="4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/xuedai_button_2_borrow_money"
-                android:hint="借款金额:"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"
-                android:layout_marginTop="@dimen/size_base480_5dp"
-                android:layout_marginBottom="@dimen/size_base480_20dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/xuedai_button_2_return_the_principal"
-                android:hint="借款方式:"
-                android:textColorHint="@color/white"
-                android:layout_marginBottom="@dimen/size_base480_20dp"
-                android:textColor="@color/white"
-                android:layout_below="@+id/xuedai_button_2_borrow_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-
-        </RelativeLayout>
-        <TextView
-            android:id="@+id/xuedai_button_2_rightbutton_fenqi"
-            android:hint="月分期"
-            android:textColorHint="@color/white"
-            style="@style/button_touming"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
-    </LinearLayout>
-
 
 
     <LinearLayout
@@ -136,11 +93,55 @@
         <TextView
             android:id="@+id/xuedai_button_2_tiqian"
             style="@style/button_touming"
-            android:textColor="@color/white"
             android:text="提前结清"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <RelativeLayout
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/xuedai_button_2_borrow_money"
+                android:hint="借款金额:"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/size_base480_5dp"
+                android:layout_marginBottom="@dimen/size_base480_20dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/xuedai_button_2_return_the_principal"
+                android:hint="借款方式:"
+                android:textColorHint="@color/white"
+                android:layout_marginBottom="@dimen/size_base480_20dp"
+                android:textColor="@color/white"
+                android:layout_below="@+id/xuedai_button_2_borrow_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/xuedai_button_2_rightbutton_fenqi"
+            android:hint="月分期\n"
+            android:textColorHint="@color/white"
+            style="@style/button_touming"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
     </LinearLayout>
 
 </RelativeLayout>

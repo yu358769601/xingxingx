@@ -301,7 +301,9 @@ public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements Re
             public void onSucceed(UserRegist userRegist,int dataMode) {
                 String user_id = userRegist.data.user_id;
                 Share.saveToken(context, user_id);
+                Share.saveInt(context, "status",0);
                 UtilsToast.showToast(context, userRegist.message);
+
                 registerActivity_c.closeActivity();
             }
 

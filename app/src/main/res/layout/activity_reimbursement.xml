@@ -39,7 +39,7 @@
                 android:background="@color/blue_half"
                 android:layout_height="wrap_content"/>
 
-                <com.xinxinxuedai.view.xuedai_button.XueDaiButton_2
+               <!-- <com.xinxinxuedai.view.xuedai_button.XueDaiButton_2
                     android:id="@+id/reimbursement_xdb_1"
                     android:layout_below="@+id/reimbursement_tv_logo"
                     android:layout_marginTop="@dimen/size_base480_20dp"
@@ -47,24 +47,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                </com.xinxinxuedai.view.xuedai_button.XueDaiButton_2>
+                </com.xinxinxuedai.view.xuedai_button.XueDaiButton_2>-->
 
-            <com.andview.refreshview.XRefreshView
+          <!--  <com.andview.refreshview.XRefreshView
                 android:id="@+id/xrefreshview"
                 android:layout_below="@id/reimbursement_xdb_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="@dimen/size_base480_20dp"
                 android:background="@android:color/transparent"
-                >
+                >-->
                 <com.xinxinxuedai.view.MyListView
                     android:id="@+id/reimbursement_lv"
                     android:cacheColorHint="#00000000"
+                    android:divider="#00000000"
+                    android:dividerHeight="18dp"
+                    android:padding="@dimen/size_base480_10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                 </com.xinxinxuedai.view.MyListView>
-            </com.andview.refreshview.XRefreshView>
+         <!--   </com.andview.refreshview.XRefreshView>-->
 
 
                 <!--<com.xinxinxuedai.view.xuedai_button.XueDaiButton_3

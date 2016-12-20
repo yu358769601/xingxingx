@@ -21,7 +21,7 @@ import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
 
 //申请借款activity 申请贷款
-public class ApplyForActivity extends BaseActivity implements ApplyForActivity_callback {
+public class ApplyForActivity extends BaseActivity implements ApplyForActivity_callback, View.OnClickListener {
 
     private initAction_Bar mRelativeLayout_title;
     private XueDaiButton mTv1;
@@ -29,6 +29,7 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
     private XueDaiButton mTv3;
     private XueDaiButton mTv4;
     private ApplyForActivity_P mApplyForActivity_p;
+    private TextView mApply_for_sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,22 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
         registerReceiver(receiver, filter);
     }
     private InnerReceiver receiver = new InnerReceiver();
+
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            //点了提交
+            case R.id.apply_for_sub:
+                mApplyForActivity_p.setSub();
+            break;
+        }
+    }
+
     //接收别的地方过来的数据 写一个内容类
     public class InnerReceiver extends BroadcastReceiver {
 
@@ -49,10 +66,16 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
             //使用intent获取发送过来的数据
             String close = intent.getStringExtra("close");
             LogUtils.i("在上传视频过来的数据是"+close);
-            if ("close".equals(close))
-            finish();
+            if ("close".equals(close)){
+                mTv4.setStarStuaus(true);
+                mApply_for_sub.setVisibility(View.VISIBLE);
+
+            }
+            //finish();
         }
     }
+
+
     @Override
     public int getlayouXML() {
         return R.layout.activity_apply_for;
@@ -78,6 +101,9 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
         mTv3 = (XueDaiButton) findViewById(R.id.tv3);
         mTv4 = (XueDaiButton) findViewById(R.id.tv4);
 
+        mApply_for_sub = (TextView) findViewById(R.id.apply_for_sub);
+        mApply_for_sub.setVisibility(View.GONE);
+        mApply_for_sub.setOnClickListener(this);
         initText();
         initData();
 
@@ -206,6 +232,7 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
+
         dump();
     }
     /**

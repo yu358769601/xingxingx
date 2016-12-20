@@ -186,9 +186,31 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
         int status = Share.getInt(context, "status");
         switch (xueDaiButton.getType()){
             case 1:
-
+//                    if (status==0){
+//                        return;
+//                    }
                 if (status == 1||status ==2 ||status ==4){
-                    UtilsToast.showToast(context, "请耐心等待审核结果");
+//                    0strings.add("资料未完善");
+//                    1strings.add("借款审核中");// 不能进
+//                    2strings.add("借款审核已通过，请在24小时之内关注银行卡资金是否到账。"); //不能进
+//                    3strings.add("借款审核未通过");
+//                    4strings.add("借款放款成功,请按照还款计划及时归还借款。");//不能    //能进我要还款
+//                    5strings.add("借款放款失败");
+//                    6strings.add("借款还款已完成");//能进
+//                    7strings.add("借款已提前还款");
+                    switch (status){
+                        case 1:
+                            UtilsToast.showToast(context, "请耐心等待审核结果");
+                        break;
+                        case 2:
+                            UtilsToast.showToast(context, "借款审核已通过，请在24小时之内关注银行卡资金是否到账。");
+                        break;
+                        case 4:
+                            UtilsToast.showToast(context, "借款放款成功,请按照还款计划及时归还借款。");
+                        break;
+                    }
+
+
                     return;
                 }
                 //点了我要借款

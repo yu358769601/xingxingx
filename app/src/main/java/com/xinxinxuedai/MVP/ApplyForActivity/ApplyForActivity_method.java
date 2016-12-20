@@ -19,4 +19,9 @@ public interface ApplyForActivity_method {
      * 获取 info 信息
      */
     void getCallBackData();
+
+    /**
+     * 提交申请
+     */
+    void setSub();
 }

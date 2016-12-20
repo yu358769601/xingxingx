@@ -12,7 +12,6 @@ import com.xinxinxuedai.MVP.ReimbursementActivity.ReimbursementActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
-import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.MyListView;
@@ -20,7 +19,6 @@ import com.xinxinxuedai.view.dialog.DialogCallBack;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_2;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_3;
-import com.xinxinxuedai.view.xuedai_button.button_CallBack;
 
 import java.net.HttpURLConnection;
 
@@ -73,7 +71,7 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
         reimbursement_tv_logo = (TextView) findViewById(R.id.reimbursement_tv_logo);
         reimbursement_tv_logo.setOnClickListener(this);
 
-        reimbursement_xdb_1 = (XueDaiButton_2) findViewById(R.id.reimbursement_xdb_1);
+       // reimbursement_xdb_1 = (XueDaiButton_2) findViewById(R.id.reimbursement_xdb_1);
 
         //reimbursement_xdb_1.setOnClickListener(this);
 
@@ -87,7 +85,7 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
         reimbursement_rl.setOnClickListener(this);
         //listView
         mReimbursement_lv = (MyListView) findViewById(R.id.reimbursement_lv);
-        xrefreshview = (XRefreshView) findViewById(R.id.xrefreshview);
+        //xrefreshview = (XRefreshView) findViewById(R.id.xrefreshview);
 
         initData();
     }
@@ -101,42 +99,13 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void initData() {
-        reimbursement_xdb_1.setCallBack(new button_CallBack() {
-            @Override
-            public void button_Click(View v) {
-                // UtilsToast.showToast(AppContext.getApplication(),"充值");
-                switch ((int) v.getTag()) {
-                    case 1:
 
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-                        UtilsToast.showToast(AppContext.getApplication(), "充值");
-                        mReimbursementActivity_p.topUp();
-                        break;
-                    case 4:
-
-                        break;
-                    case 5:
-
-                        break;
-                    case 6:
-                        UtilsToast.showToast(AppContext.getApplication(), "点到了左面");
-                        break;
-                    case 7:
-                        UtilsToast.showToast(AppContext.getApplication(), "点到了右面");
-                        break;
-                }
-            }
-        });
 
         //获取网络添加列表数据
         mReimbursementActivity_p.initListViewData(mReimbursement_lv);
 
         //初始化 下拉刷新
-       mReimbursementActivity_p.initRefurbish(xrefreshview);
+       //mReimbursementActivity_p.initRefurbish(xrefreshview);
 
 
     }
@@ -149,9 +118,9 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.reimbursement_xdb_1:
-                //mReimbursementActivity_p.topUp();
-                break;
+//            case R.id.reimbursement_xdb_1:
+//                //mReimbursementActivity_p.topUp();
+//                break;
 
         }
     }

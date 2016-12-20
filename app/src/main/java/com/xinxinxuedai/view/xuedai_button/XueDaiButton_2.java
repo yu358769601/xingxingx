@@ -130,7 +130,7 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
      * @return
      */
     public XueDaiButton_2 setText_rightbutton_fenqi(String text){
-        mXuedai_button_2_rightbutton_fenqi.setText(text);
+        mXuedai_button_2_rightbutton_fenqi.setText(mXuedai_button_2_rightbutton_fenqi.getHint()+text);
         return  this;
     }
     /**
@@ -139,7 +139,7 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
      * @return
      */
     public XueDaiButton_2 setText_balance_of_account(String text){
-        mXuedai_button_2_balance_of_account.setText(text);
+        mXuedai_button_2_balance_of_account.setText(mXuedai_button_2_balance_of_account.getHint()+text);
         return  this;
     }
 
@@ -159,7 +159,7 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
      * @return
      */
     public XueDaiButton_2 setText_borrow_money(String text){
-        mXuedai_button_2_borrow_money.setText(text);
+        mXuedai_button_2_borrow_money.setText(mXuedai_button_2_borrow_money.getHint()+text);
         return  this;
     }
 
@@ -169,7 +169,7 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
      * @return
      */
     public XueDaiButton_2 setText_return_the_principal(String text){
-        mXuedai_button_2_return_the_principal.setText(text);
+        mXuedai_button_2_return_the_principal.setText(mXuedai_button_2_return_the_principal.getHint()+text);
         return  this;
     }
 

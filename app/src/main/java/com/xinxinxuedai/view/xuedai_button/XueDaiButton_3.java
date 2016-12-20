@@ -65,6 +65,7 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
         mView = inflater.inflate(R.layout.xuedai_button_3, this);
         //外框
         mXuedai_button_3 = (RelativeLayout) mView.findViewById(R.id.xuedai_button_3);
+        mXuedai_button_3.setOnClickListener(this);
         mXuedai_button_3.setTag(1);
         //状态星星
         mXuedai_button3_iv = (ImageView) mView.findViewById(R.id.xuedai_button3_iv);

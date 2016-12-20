@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:clickable="true"
              android:background="@drawable/shape_white"
     android:orientation="vertical"
-
-    android:padding="@dimen/size_base480_10dp" >
+             android:paddingTop="@dimen/size_base480_10dp"
+             android:paddingLeft="@dimen/size_base480_10dp"
+             android:paddingRight="@dimen/size_base480_10dp"
+    >
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/shape_white"
@@ -18,7 +20,7 @@
         <TextView
             android:id="@+id/title"
             style="@style/text_18_ffffff"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/size_base480_30dp"
             android:gravity="center"
             android:text="标题"
@@ -26,34 +28,35 @@
 
         <LinearLayout
             android:id="@+id/content"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/size_base480_250dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_base480_160dp"
             android:gravity="center" >
 
 
             <TextView
                 android:id="@+id/message"
                 style="@style/text_16_666666"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="left|center"
+                android:textColor="@color/black"
                 android:lineSpacingMultiplier="1.5"
-                android:minHeight="@dimen/size_base480_200dp"
                 android:paddingBottom="@dimen/size_base480_15dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:paddingLeft="@dimen/size_base480_20dp"
                 android:paddingRight="@dimen/size_base480_20dp"
                 android:paddingTop="@dimen/size_base480_15dp" />
         </LinearLayout>
 
         <View
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="1.0px"
-            android:background="#ffd0d0d0" />
+            android:background="#ffd0d0d0"
+            />
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/size_base480_60dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/white"
             android:gravity="center"
@@ -64,20 +67,31 @@
                 style="@style/text_15_ffffff_sdw"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="@dimen/size_base480_40dp"
-                android:background="@drawable/button_orange"
+                android:padding="@dimen/size_base480_10dp"
+                android:textColor="@color/blue"
+                android:background="@android:color/transparent"
+                android:layout_height="@dimen/size_base480_50dp"
                 android:gravity="center"
-                android:text="确定" />
 
+                android:layout_marginRight="@dimen/size_base480_10dp"
+                android:text="确定" />
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="#ffd0d0d0"
+                />
             <Button
                 android:id="@+id/negativeButton"
-                style="@style/text_15_666666_sdw"
-                android:layout_width="@dimen/size_base480_114dp"
-                android:layout_height="@dimen/size_base480_40dp"
-                android:layout_marginLeft="@dimen/size_base480_20dp"
-                android:background="@color/red"
+                style="@style/text_15_ffffff_sdw"
+                android:layout_width="0dp"
+                android:padding="@dimen/size_base480_10dp"
+                android:layout_weight="1"
+                android:textColor="@color/blue"
+                android:background="@android:color/transparent"
+                android:layout_height="@dimen/size_base480_50dp"
                 android:gravity="center"
-                android:visibility="gone"
+
+                android:layout_marginRight="@dimen/size_base480_10dp"
                 android:text="取消" />
         </LinearLayout>
     </LinearLayout>

@@ -15,7 +15,7 @@ public class GetLoanDetail implements Serializable{
 
 
     //入口
-//    hashtable.put("action", "GetLoanDetail");
+//    hashtable.put("action", "getLoanDetail");
     //token
 //    hashtable.put("loan_id", Share.getToken(context));
         /** 有拆分Data
@@ -105,7 +105,7 @@ public class GetLoanDetail implements Serializable{
         public String money;
         public String loan_service;
         public String loan_interest;
-        public String loan_term;
+        public int loan_term;
         public String loan_category;
         public String loan_describe;
         public String loan_small_describe;

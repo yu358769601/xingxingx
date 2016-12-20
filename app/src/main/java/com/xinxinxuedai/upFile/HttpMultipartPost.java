@@ -140,7 +140,7 @@ public class HttpMultipartPost extends AsyncTask<HttpMultipartPost.Param, Intege
 			//return jsonObject;
 		}catch (Exception e) {
 			e.printStackTrace();
-			String err = "{'error_code':-1,'error_msg':'"+e.getMessage()+"'}";
+			String err = "{'data':'','message':'上传失败','result':0}";
 			return JSON.parseObject(err);
 		}
 	}

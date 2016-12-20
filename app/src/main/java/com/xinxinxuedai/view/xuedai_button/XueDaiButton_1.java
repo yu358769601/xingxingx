@@ -73,7 +73,7 @@ public class XueDaiButton_1 extends RelativeLayout implements View.OnClickListen
 
         //右上角 小星星
         mXuedai_1_iv_star = (ImageView) mView.findViewById(R.id.xuedai_1_iv_star);
-
+        mXuedai_1_iv_star.setVisibility(View.GONE);
 
         //中间的字 带着 图标的
         mXuedai_tv_1_button = (TextView) findViewById(R.id.xuedai_tv_1_button);

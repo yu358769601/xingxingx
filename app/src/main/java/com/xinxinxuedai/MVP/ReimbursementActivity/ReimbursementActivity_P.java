@@ -3,6 +3,7 @@ package com.xinxinxuedai.MVP.ReimbursementActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.andview.refreshview.XRefreshView;
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
@@ -11,12 +12,16 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.adapter.ListViewCallBack;
 import com.xinxinxuedai.adapter.MyListView_04_more;
 import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.bean.RePayMent;
 import com.xinxinxuedai.bean.huandaiItem;
+import com.xinxinxuedai.request.GetLoanDetail_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.RepaymentListRequest;
 import com.xinxinxuedai.ui.TopUpActivity;
 import com.xinxinxuedai.view.MyListView;
+import com.xinxinxuedai.view.xuedai_button.XueDaiButton_2;
+import com.xinxinxuedai.view.xuedai_button.button_CallBack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,19 +79,48 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
     public void initListViewData(MyListView reimbursement_lv) {
         this.reimbursement_lv = reimbursement_lv;
         UtilsToast.showToast(context, "获取网络数据中~");
-        //网络获取数据
-       sendRepaymentListRequest();
+        //获取上面的 那个数据
+        getTopData();
 
 
 
 
     }
 
-    private void initData(MyListView reimbursement_lv, List<RePayMent.DataBean> items) {
+    private void getTopData() {
+        GetLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
+            @Override
+            public void onSucceed(GetLoanDetail getLoanDetail, int dataMode) {
+                if (dataMode==NetWorkCallBack.NETDATA){
+                    XueDaiButton_2 xueDaiButton_2 = new XueDaiButton_2(context);
+                    //0先息后本  1等额本息
+                    //String status = getLoanDetail.loan_plan=="0"?"先息后本":"等额本息";
+                    xueDaiButton_2
+                            .setText_balance_of_account(getLoanDetail.money+"元")
+                            .setText_borrow_money(getLoanDetail.money+"元")
+                            .setText_return_the_principal(getLoanDetail.loan_plan=="0"?"先息后本":"等额本息")
+                            .setText_rightbutton_fenqi(getLoanDetail.loan_term+"天");
+                    //  loan_term
+                    initListOnclic(xueDaiButton_2);
+                    reimbursement_lv.addHeaderView(xueDaiButton_2);
+
+                    //网络获取数据
+                    sendRepaymentListRequest(getLoanDetail.loan_term);
+                }
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+    }
+
+    private void initData(MyListView reimbursement_lv, List<RePayMent.DataBean> items, int loan_term) {
         if (items==null||items.size()==0){
             return;
         }
-        mMyListView_04_more = new MyListView_04_more(AppContext.getApplication(), 0, items, new ListViewCallBack() {
+        mMyListView_04_more = new MyListView_04_more(AppContext.getApplication(), 0, items,loan_term ,new ListViewCallBack() {
             @Override
             public void getRepayment(int positon) {
                 LogUtils.i("我点了还款位置是"+positon);
@@ -99,12 +133,47 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
                 reimbursementActivity_c.getShowDialog2(positon);
             }
         });
+
         reimbursement_lv.setAdapter(mMyListView_04_more);
         UtilsToast.showToast(context, "网络加载完成~");
     }
+
+    private void initListOnclic(XueDaiButton_2 xueDaiButton_2) {
+        xueDaiButton_2.setCallBack(new button_CallBack() {
+            @Override
+            public void button_Click(View v) {
+                // UtilsToast.showToast(AppContext.getApplication(),"充值");
+                switch ((int) v.getTag()) {
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+                        UtilsToast.showToast(AppContext.getApplication(), "充值");
+                        mReimbursementActivity_p.topUp();
+                        break;
+                    case 4:
+
+                        break;
+                    case 5:
+
+                        break;
+                    case 6:
+                        UtilsToast.showToast(AppContext.getApplication(), "点到了左面");
+                        break;
+                    case 7:
+                        UtilsToast.showToast(AppContext.getApplication(), "点到了右面");
+                        break;
+                }
+            }
+        });
+    }
+
     List<RePayMent.DataBean> data;
     @NonNull
-    private List<RePayMent.DataBean> sendRepaymentListRequest() {
+    private List<RePayMent.DataBean> sendRepaymentListRequest(final int loan_term) {
 
         RepaymentListRequest.request(context, new NetWorkCallBack<RePayMent>() {
 
@@ -113,7 +182,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
             public void onSucceed(RePayMent payMent,int dataMode) {
                 data =  payMent.data;
                 //获取之后设置数据
-                initData(reimbursement_lv, data);
+                initData(reimbursement_lv, data,loan_term);
             }
 
             @Override

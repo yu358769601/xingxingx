@@ -151,7 +151,7 @@ public class UtilsDialog {
         //定义宽度
         lp.width=(int) (displayWidth* 0.60f + 0.5f);
         //定义高度
-        lp.height=(int) (displayHeight* 0.45f + 0.5f);
+        //lp.height=(int) (displayHeight* 0.45f + 0.5f);
         alertDialog.getWindow().setAttributes(lp);
 
         return alertDialog;
@@ -173,11 +173,11 @@ public class UtilsDialog {
         textView.setText(setTitle);
         textView.setTextColor(context.getResources().getColor(R.color.black));
         builder.setTitle(setTitle); //设置标题
-        TextView textViewfu = new TextView(context);
-        textViewfu.setText(message);
-        textViewfu.setTextColor(context.getResources().getColor(R.color.black));
-        String s = textViewfu.getText().toString();
-        builder.setMessage(s); //设置内容
+//        TextView textViewfu = new TextView(context);
+//        textViewfu.setText(message);
+//        textViewfu.setTextColor(context.getResources().getColor(R.color.black));
+//        String s = textViewfu.getText().toString();
+        builder.setMessage(message); //设置内容
 
 
 
@@ -202,6 +202,7 @@ public class UtilsDialog {
         //设置窗口的大小
         CustomDialog alertDialog = builder.create();
         builder.setCanl(true);
+
         alertDialog.show();
         WindowManager.LayoutParams  lp= alertDialog.getWindow().getAttributes();
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -210,9 +211,9 @@ public class UtilsDialog {
         int displayHeight = displayMetrics.heightPixels;
 
         //定义宽度
-        lp.width=(int) (displayWidth* 0.60f + 0.5f);
+        lp.width=(int) (displayWidth* 0.75f + 0.5f);
         //定义高度
-        lp.height=(int) (displayHeight* 0.45f + 0.5f);
+        //lp.height=(int) (displayHeight* 0.50f + 0.5f);
         alertDialog.getWindow().setAttributes(lp);
 
         return alertDialog;

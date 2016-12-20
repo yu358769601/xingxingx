@@ -71,15 +71,15 @@ public class RePayMent {
 
         public String id;
         public String user_loan_id;
-        public String money;
-        public String interest_money;
-        public String service_fee;
-        public String weiyue_money;
+        public double money;
+        public double interest_money;
+        public double service_fee;
+        public double weiyue_money;
         public String plan_date;
         public String real_data;
         public String current_flag;
         public int repay_status;
-        public String real_money;
+        public double real_money;
         public int again_flag;
         public String again_id;
     }

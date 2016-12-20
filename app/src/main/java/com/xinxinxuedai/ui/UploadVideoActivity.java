@@ -27,9 +27,6 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
-import com.xinxinxuedai.bean.SetLoanStatus;
-import com.xinxinxuedai.request.NetWorkCallBack;
-import com.xinxinxuedai.request.SetLoanStatus_Request;
 import com.xinxinxuedai.upFile.HttpMultipartPost;
 import com.xinxinxuedai.util.Constants;
 import com.xinxinxuedai.view.VideoView.MyVideoView;
@@ -64,8 +61,8 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
 
 
     private SurfaceVideoView mVideoview;
-
-
+        //是否上传成功
+    boolean Tag;
     /**
      * 是否需要回复播放
      */
@@ -145,7 +142,7 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
     public void  openVideo(){
         //如果是有视频
         if (null!=videoUri){
-
+            Tag = true;
             LogUtils.i("路径是"+videoUri);
            // RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) uploadpictures_xd_1.getLayoutParams();
 
@@ -246,7 +243,7 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
     class UrlBroadcastReceiver extends BroadcastReceiver {
 
         @Override
-        public void onReceive(Context context, Intent intent) {
+        public void onReceive(final Context context, Intent intent) {
             //路径
             videoUri = intent.getStringExtra(MediaRecorderActivity.VIDEO_URI);
             LogUtils.i("回来的数据是"+videoUri);
@@ -269,8 +266,18 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
                 post.setCallBackMsg(new HttpMultipartPost.CallBackMsg() {
                     @Override
                     public void msg(JSONObject msg) {
-                        LogUtils.i("视频"+msg);
-                        openVideo();
+                        if (null!=msg){
+                            if (0==msg.getIntValue("result")){
+                                UtilsToast.showToast(context, msg.getString("message"));
+                                Tag = false;
+                                return;
+                            }else{
+                                UtilsToast.showToast(context, "上传成功");
+                            }
+                            LogUtils.i("视频"+msg);
+                            openVideo();
+                        }
+
                     }
                 });
                 post.execute();
@@ -435,19 +442,14 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
             break;
             //申请借款
             case R.id.uploadpictures_tv_sub:
-                SetLoanStatus_Request.request(AppContext.getApplication(), new NetWorkCallBack<SetLoanStatus>() {
-                    @Override
-                    public void onSucceed(SetLoanStatus setLoanStatus, int dataMode) {
-                        finish();
-                        //发送_关闭activity_广播
-                        UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"uploadpictures_","close","close");
-                    }
+                if (!Tag){
+                    UtilsToast.showToast(AppContext.getApplication(),"视频未上传");
+                    return;
+                }
+                //发送_关闭activity_广播
+                UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"uploadpictures_","close","close");
+                finish();
 
-                    @Override
-                    public void onError(String jsonObject) {
-
-                    }
-                });
                 break;
 
 

@@ -335,10 +335,10 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
            mSelectNumMoney = (int) Double.parseDouble(callBackData.money);
             setText_Info();
         }
-        if (!TextUtils.isEmpty(callBackData.loan_term)){
-            mLoanapplication_et_3.setText(Integer.parseInt(callBackData.loan_term)+"天");
+        if (0!=callBackData.loan_term){
+            mLoanapplication_et_3.setText(callBackData.loan_term+"天");
             //当前选择的天数
-             mSelectNumDay = Integer.parseInt(callBackData.loan_term);
+             mSelectNumDay = callBackData.loan_term;
             setText_Info();
         }
 

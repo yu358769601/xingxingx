@@ -4,6 +4,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size_base480_20dp"
+                android:layout_marginRight="@dimen/size_base480_10dp"
+                android:layout_marginLeft="@dimen/size_base480_10dp"
                 android:layout_marginTop="@dimen/size_base480_10dp"
                 android:background="@drawable/border_money_touming"
         >
@@ -65,8 +67,7 @@
             <TextView
                 android:id="@+id/xuedai_button3_tv5"
                 android:text="还款"
-                android:textColor="@color/white"
-                android:padding="@dimen/size_base480_20dp"
+                android:padding="@dimen/size_base480_15dp"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/xuedai_button3_tv3"
                 style="@style/button_touming"
@@ -114,9 +115,8 @@
             android:id="@+id/xuedai_button3_tv7"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:padding="@dimen/size_base480_20dp"
+            android:padding="@dimen/size_base480_15dp"
             android:text="再分期"
-            android:textColor="@color/white"
             style="@style/button_touming"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
