@@ -8,6 +8,7 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
 import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.FuYouChongZhi;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -26,8 +27,8 @@ public class FuYouChongZhi_Request {
 
     private static HttpURLConnection mHttpURLConnection;
 
-    public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack netWorkCallBack) {
-        hashtable.put("action", "FuYouChongZhi");
+    public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack<FuYouChongZhi> netWorkCallBack) {
+        hashtable.put("action", "fuYouChongZhi");
         hashtable.put("loan_id", Share.getToken(context));
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
@@ -36,7 +37,8 @@ public class FuYouChongZhi_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_借款人充值"+"正常内容"+jsonObject);
-                                netWorkCallBack.onSucceed(jsonObject,NetWorkCallBack.NETDATA);
+                                FuYouChongZhi fuYouChongZhi = jsonObject.toJavaObject(FuYouChongZhi.class);
+                                netWorkCallBack.onSucceed(fuYouChongZhi,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

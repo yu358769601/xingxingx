@@ -27,6 +27,9 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.bean.SetLoanStatus;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.SetLoanStatus_Request;
 import com.xinxinxuedai.upFile.HttpMultipartPost;
 import com.xinxinxuedai.util.Constants;
 import com.xinxinxuedai.view.VideoView.MyVideoView;
@@ -223,6 +226,8 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
         xuedai_button1.setLayoutParams(mParams);
         TextView xuedai_button1_tv = uploadpictures_xd_1.getXuedai_button1_tv();
         xuedai_button1_tv.setGravity(RelativeLayout.CENTER_IN_PARENT);
+//        //模拟点击事件
+//        uploadpictures_xd_1.onClick(uploadpictures_xd_1);
     }
 
     @Override
@@ -448,14 +453,33 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
                 }
                 //发送_关闭activity_广播
                 UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"uploadpictures_","close","close");
-                finish();
+                setSub();
+
 
                 break;
 
 
         }
     }
+    /**
+     * 提交申请
+     */
+    public void setSub() {
+        //提交那一块
+        SetLoanStatus_Request.request(AppContext.getApplication(), new NetWorkCallBack<SetLoanStatus>() {
+            @Override
+            public void onSucceed(SetLoanStatus setLoanStatus, int dataMode) {
+                UtilsToast.showToast(AppContext.getApplication(), setLoanStatus.message);
+                startActivity(new Intent(AppContext.getApplication(),ShowInfoActivity.class));
+                finish();
+            }
 
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+    }
     @Override
     public void onCompletion(MediaPlayer mp) {
         if (!isFinishing())

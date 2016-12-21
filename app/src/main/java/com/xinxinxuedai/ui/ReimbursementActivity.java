@@ -167,6 +167,27 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
     }
 
     /**
+     *  提前还款的显示
+     * @param positon
+     */
+    @Override
+    public void getShowDialog3(int positon) {
+        int money = positon;
+        String msg = money+"";
+        UtilsDialog.showDialog_Text(this, "提前还款", msg, new DialogCallBack() {
+            @Override
+            public void confirm() {
+                mReimbursementActivity_p.subTiQianHuanKuan();
+            }
+
+            @Override
+            public void cancel() {
+                LogUtils.i("取消还款");
+            }
+        });
+    }
+
+    /**
      * 关掉界面
      */
     @Override

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_show_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+    tools:context="com.xinxinxuedai.ui.ShowInfoActivity">
+    <TextView
+        android:id="@+id/showinfo_tv"
+        android:layout_width="wrap_content"
+        android:text="恭喜您!星星学贷已接收到您的申请，请耐心等待公司电话核实，确认成功借款后请您按时还款，如造成逾期，会产生相应高额的违约金，如发现是恶意不还，将按照公司流程，最终对您提起诉讼；为了您的信用安全，请按时还款。\n友情提示：对于起诉产生的包括律师费、送达费、公告费（缺席审判）、案件受理费等相关一切费用都将由借款人承担；对于欠款人法院将加入失信人名单给予网络公布。失信人员将无法贷款，购买机票、船票、车票；影响就业、买房、买车等。"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/showinfo_sub"
+        android:text="我知道了"
+        android:background="@drawable/an_long"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_marginBottom="@dimen/size_base480_20dp"
+        android:padding="@dimen/size_base480_20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

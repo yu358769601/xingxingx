@@ -67,9 +67,9 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
             String close = intent.getStringExtra("close");
             LogUtils.i("在上传视频过来的数据是"+close);
             if ("close".equals(close)){
-                mTv4.setStarStuaus(true);
-                mApply_for_sub.setVisibility(View.VISIBLE);
-
+//                mTv4.setStarStuaus(true);
+//                mApply_for_sub.setVisibility(View.VISIBLE);
+                finish();
             }
             //finish();
         }
