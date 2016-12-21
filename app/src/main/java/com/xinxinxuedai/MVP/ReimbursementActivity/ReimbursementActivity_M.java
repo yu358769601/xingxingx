@@ -28,4 +28,9 @@ public interface ReimbursementActivity_M {
      * 初始化刷新
      */
     void initRefurbish(XRefreshView xRefreshView);
+
+    /**
+     * 提前还款访问网络
+     */
+    void subTiQianHuanKuan();
 }

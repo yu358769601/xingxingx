@@ -14,16 +14,20 @@ import com.xinxinxuedai.adapter.MyListView_04_more;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.bean.RePayMent;
+import com.xinxinxuedai.bean.UserLoanAdvanceMoney;
 import com.xinxinxuedai.bean.huandaiItem;
 import com.xinxinxuedai.request.GetLoanDetail_Request;
+import com.xinxinxuedai.request.LoanAdvanceMoney_Request_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.RepaymentListRequest;
+import com.xinxinxuedai.request.UserLoanAdvanceMoney_Request_Request;
 import com.xinxinxuedai.ui.TopUpActivity;
 import com.xinxinxuedai.view.MyListView;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_2;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
@@ -166,7 +170,33 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
                     case 7:
                         UtilsToast.showToast(AppContext.getApplication(), "点到了右面");
                         break;
+                    case 10:
+                        UtilsToast.showToast(AppContext.getApplication(), "点了提前结清");
+
+                        getShowInfo();
+
+
+                        break;
                 }
+            }
+        });
+    }
+
+    /**
+     * 获取一次性结清的 钱数
+     */
+    private void getShowInfo() {
+        Hashtable<String, String> hashtable = new Hashtable<String, String>();
+        LoanAdvanceMoney_Request_Request.request(context, hashtable, new NetWorkCallBack<UserLoanAdvanceMoney>() {
+            @Override
+            public void onSucceed(UserLoanAdvanceMoney money, int dataMode) {
+                int moneyNum = 100;
+                reimbursementActivity_c.getShowDialog3(moneyNum);
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
             }
         });
     }
@@ -243,6 +273,32 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
             }
         });
 
+    }
+
+    /**
+     * 提前还款访问网络
+     */
+    @Override
+    public void subTiQianHuanKuan() {
+        Hashtable<String, String> hashtable = new Hashtable<String, String>();
+        if (null==data||data.size()==0){
+            return;
+        }
+        RePayMent.DataBean dataBean = data.get(0);
+        //借款id
+        hashtable.put("user_id",dataBean.user_loan_id);
+        LogUtils.i("id"+dataBean.user_loan_id);
+        UserLoanAdvanceMoney_Request_Request.request(context, hashtable, new NetWorkCallBack<UserLoanAdvanceMoney>() {
+            @Override
+            public void onSucceed(UserLoanAdvanceMoney money, int dataMode) {
+
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
     }
 
 

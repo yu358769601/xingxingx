@@ -23,4 +23,7 @@ public interface ReimbursementActivity_C extends BaseMVPinterFace_CallBack{
 
     void getShowDialog1(int positon);
     void getShowDialog2(int positon);
+    void getShowDialog3(int positon);
+
+
 }
