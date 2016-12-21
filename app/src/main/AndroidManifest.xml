@@ -33,7 +33,9 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar"
-        tools:replace="android:icon">
+        tools:replace="android:icon, android:label, android:theme,android:name"
+
+        >
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait">

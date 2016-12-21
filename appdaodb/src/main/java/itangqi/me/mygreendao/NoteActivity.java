@@ -58,16 +58,16 @@ public class NoteActivity extends ListActivity {
      * @param view
      */
     public void onMyButtonClick(View view) {
-        switch (view.getId()) {
-            case R.id.buttonAdd:
-                addNote();
-                break;
-            case R.id.buttonQuery:
-                search();
-                break;
-            default:
-                ToastUtils.show(getApplicationContext(), "What's wrong ?");
-                break;
+        int i = view.getId();
+        if (i == R.id.buttonAdd) {
+            addNote();
+
+        } else if (i == R.id.buttonQuery) {
+            search();
+
+        } else {
+            ToastUtils.show(getApplicationContext(), "What's wrong ?");
+
         }
     }
 
