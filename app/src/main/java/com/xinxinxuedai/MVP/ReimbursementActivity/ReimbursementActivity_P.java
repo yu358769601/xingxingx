@@ -16,7 +16,7 @@ import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.bean.LoanAdvanceMoney;
-import com.xinxinxuedai.bean.RePayMent1;
+import com.xinxinxuedai.bean.RePayMentend;
 import com.xinxinxuedai.bean.RepaymentList;
 import com.xinxinxuedai.bean.UserLoanAdvanceMoney;
 import com.xinxinxuedai.bean.huandaiItem;
@@ -376,9 +376,9 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         hashtable.put("id",id);
         hashtable.put("loan_id",user_loan_id);
 
-        Repayment_Request.request(context, hashtable, new NetWorkCallBack<RePayMent1>() {
+        Repayment_Request.request(context, hashtable, new NetWorkCallBack<RePayMentend>() {
             @Override
-            public void onSucceed(RePayMent1 rePayMent1, int dataMode) {
+            public void onSucceed(RePayMentend rePayMent1, int dataMode) {
                 UtilsToast.showToast(context, rePayMent1.message);
                 LogUtils.i("还款网络成功回来的数据"+ rePayMent1.message);
                 //reimbursement_lv.removeAllViews();
