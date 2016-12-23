@@ -10,6 +10,9 @@ import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.bean.GetInfo;
+import com.xinxinxuedai.db.DAO.MyDbDAO;
+import com.xinxinxuedai.db.DAO.dbCallBackHelper;
+import com.xinxinxuedai.db.Table;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -20,20 +23,54 @@ import java.util.Hashtable;
  * Created by Administrator 于萌萌
  * 创建日期: 11:40 . 2016年12月12日
  * 描述:网络请求_获取借贷人信息
- * <p>sss
+ * <p>_回显
  * <p>
  * 备注:
  */
 
 public class GetInfo_Request {
 
-    private static GetInfo sData;
     private static HttpURLConnection mHttpURLConnection;
 
     public static HttpURLConnection request(final Context context, final NetWorkCallBack<GetInfo> netWorkCallBack) {
-        if (null!=sData)
-        netWorkCallBack.onSucceed(sData,NetWorkCallBack.CACHEDATA);
-        LogUtils.i("访问网络_缓存"+sData);
+        new MyDbDAO(context, GetInfo.class).find(Table.MyJson,"GetInfo",new dbCallBackHelper<GetInfo>(){
+            /**
+             * 获取数据库信息成功
+             *
+             * @param getInfo
+             */
+            @Override
+            public void getDataSuccess(GetInfo getInfo) {
+                LogUtils.i("我拿到数据了"+getInfo);
+                netWorkCallBack.onSucceed(getInfo,NetWorkCallBack.CACHEDATA);
+            }
+
+            /**
+             * 获取数据库信息失败
+             *
+             * @param error
+             */
+            @Override
+            public void getDataError(String error) {
+                LogUtils.i("我拿到数据了"+error);
+            }
+   });
+
+//new MyDbDAO(context,JsonAll.class).findAll(Table.MyJson,new dbCallBackHelper<JsonAll>(){
+//    /**
+//     * 获取所有的信息成功
+//     *
+//     * @param arrayList
+//     */
+//    @Override
+//    public void getAllDataSuccess(ArrayList<JsonAll> arrayList) {
+//
+//        LogUtils.i("数据库所有文件"+arrayList.toString());
+//    }
+//});
+
+
+
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         hashtable.put("action", "getInfo");
         hashtable.put("loan_id", Share.getToken(context));
@@ -44,9 +81,10 @@ public class GetInfo_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"获取借贷人信息"+"正常内容"+jsonObject);
-                                sData = jsonObject.getObject("data", GetInfo.class);
-                                LogUtils.i("访问网络_访问网络之后"+sData);
-                                netWorkCallBack.onSucceed(sData,NetWorkCallBack.NETDATA);
+                                GetInfo data = jsonObject.getObject("data", GetInfo.class);
+                                new MyDbDAO(context, GetInfo.class).add(Table.MyJson,"GetInfo",data);
+                                LogUtils.i("访问网络_访问网络之后"+data);
+                                netWorkCallBack.onSucceed(data,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

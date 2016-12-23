@@ -45,10 +45,12 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
         init();
     }
 
+
+
     private void init() {
         //注册广播接收者 接收 选择完了图片返回来的字符串
         //接收_图片路径_广播
-        IntentFilter filter = new IntentFilter("getData");
+        IntentFilter filter = new IntentFilter("getDataSuccess");
         registerReceiver(receiver, filter);
 
         //接收_关闭activity_广播

@@ -29,8 +29,7 @@ public class SetInfo1_Request {
     private static HttpURLConnection mHttpURLConnection;
 
     public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<SetInfo1> netWorkCallBack) {
-        if (null!=sInfo1)
-            netWorkCallBack.onSucceed(sInfo1,NetWorkCallBack.CACHEDATA);
+
         hashtable.put("action", "setInfo1");
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {

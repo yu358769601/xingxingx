@@ -2,6 +2,7 @@ package com.xinxinxuedai.MVP.RegisterActivity;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -31,4 +32,10 @@ public interface RegisterActivity_M {
      * @param classTag
      */
     void setStuaus(int classTag);
+
+    /**
+     * 给 P 设置 按钮对象
+     * @param button
+     */
+    void setButton(TextView button);
 }

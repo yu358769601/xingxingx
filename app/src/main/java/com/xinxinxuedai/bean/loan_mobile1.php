@@ -444,7 +444,7 @@ else if($para['action'] == "fuYouChongZhiHuiZhi"){
 }
 
 //星星学贷还款
-else if($para['action'] == "repayment"){
+else if($para['action'] == "rePayMent"){
     /* $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('loan_plan') . " WHERE id = " . $para['id'];
     $plan = $GLOBALS['db']->getRow($sql);
     

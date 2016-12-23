@@ -61,7 +61,7 @@ public class sendOrder extends Thread implements Runnable {
 		@Override
 		public void handleMessage(Message msg) {
 			try {
-				String str = AES.decrypt(Constants.key, Constants.iv, msg.getData().getString("sendPosition"));
+				String str = AES.decrypt(Constants.key, Constants.iv, msg.getDataSuccess().getString("sendPosition"));
 				JSONObject obj = new JSONObject(str);
 				Log.i("str", str);
 				// 有数据

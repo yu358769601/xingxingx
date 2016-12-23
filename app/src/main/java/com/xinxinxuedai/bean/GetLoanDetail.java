@@ -83,6 +83,14 @@ public class GetLoanDetail implements Serializable{
          *
          * loan_small_describe : 简单描述  技能那些
          *
+         *    0   strings.add("资料未完善");
+              1   strings.add("借款审核中");// 不能进
+              2   strings.add("借款审核已通过，请在24小时之内关注银行卡资金是否到账。"); //不能进
+              3   strings.add("借款审核未通过");
+              4   strings.add("借款放款成功,请按照还款计划及时归还借款。");//不能    //能进我要还款
+              5   strings.add("借款放款失败");
+              6   strings.add("借款还款已完成");//能进
+              7   strings.add("借款已提前还款");
          * loan_status : 借款状态
          *
          * loan_result :审核结果

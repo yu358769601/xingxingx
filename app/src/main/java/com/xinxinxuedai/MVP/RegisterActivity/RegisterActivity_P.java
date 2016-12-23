@@ -118,6 +118,7 @@ public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements Re
             @Override
             public void onError(String jsonObject) {
                 UtilsToast.showToast(context, jsonObject);
+                button.setEnabled(true);
             }
         });
     }
@@ -138,6 +139,7 @@ public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements Re
             @Override
             public void onError(String jsonObject) {
                 UtilsToast.showToast(context, jsonObject);
+                button.setEnabled(true);
             }
         });
 
@@ -279,6 +281,16 @@ public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements Re
     @Override
     public void setStuaus(int classTag) {
         this.classTag = classTag;
+    }
+    TextView button;
+    /**
+     * 给 P 设置 按钮对象
+     *
+     * @param button
+     */
+    @Override
+    public void setButton(TextView button) {
+        this.button =button;
     }
 
     /**

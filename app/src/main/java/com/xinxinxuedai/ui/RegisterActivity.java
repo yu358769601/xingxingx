@@ -185,6 +185,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         register_et_cunttime = (EditText) findViewById(R.id.register_et_cunttime);
         register_et_cunttime.setOnClickListener(this);
 
+        mRegisterActivity_p.setButton(mRegister_cunttime);
+
         initData();
     }
 
@@ -251,6 +253,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                 }else{
                     UtilsToast.showToast(this, "电话号码格式不正确");
+                    mRegister_cunttime.setEnabled(true);
                 }
 
                 break;

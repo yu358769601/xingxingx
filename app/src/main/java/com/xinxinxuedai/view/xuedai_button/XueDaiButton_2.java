@@ -104,7 +104,7 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
         xuedai_button_2_tiqian = (TextView) mView.findViewById(R.id.xuedai_button_2_tiqian);
         xuedai_button_2_tiqian.setOnClickListener(this);
         xuedai_button_2_tiqian.setTag(10);
-        //是否结清的外框
+        //是否结清的外框 是否可以提前还款
         mLl3 = (LinearLayout) mView.findViewById(R.id.ll3);
         mLl3.setVisibility(INVISIBLE);
     }

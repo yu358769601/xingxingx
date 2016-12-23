@@ -16,7 +16,7 @@ import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.bean.LoanAdvanceMoney;
-import com.xinxinxuedai.bean.Repayment;
+import com.xinxinxuedai.bean.RePayMent;
 import com.xinxinxuedai.bean.RepaymentList;
 import com.xinxinxuedai.bean.UserLoanAdvanceMoney;
 import com.xinxinxuedai.bean.huandaiItem;
@@ -170,9 +170,11 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
 
         if (tag){
             //说明有不合适的数据
+            LogUtils.i("有逾期可以不能显示提前结清");
             xueDaiButton_2.setText_tiqian_status(false);
         }else{
             LogUtils.i("没有逾期可以显示 提前结清");
+            xueDaiButton_2.setText_tiqian_status(true);
         }
         if (count==items.size()){
             LogUtils.i("全都结款完毕");
@@ -374,11 +376,11 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         hashtable.put("id",id);
         hashtable.put("loan_id",user_loan_id);
 
-        Repayment_Request.request(context, hashtable, new NetWorkCallBack<Repayment>() {
+        Repayment_Request.request(context, hashtable, new NetWorkCallBack<RePayMent>() {
             @Override
-            public void onSucceed(Repayment repayment, int dataMode) {
-                UtilsToast.showToast(context, repayment.message);
-                LogUtils.i("还款网络成功回来的数据"+repayment.message);
+            public void onSucceed(RePayMent rePayMent, int dataMode) {
+                UtilsToast.showToast(context, rePayMent.message);
+                LogUtils.i("还款网络成功回来的数据"+ rePayMent.message);
                 //reimbursement_lv.removeAllViews();
                 data.clear();
                 reimbursement_lv.removeHeaderView(mXueDaiButton_2);

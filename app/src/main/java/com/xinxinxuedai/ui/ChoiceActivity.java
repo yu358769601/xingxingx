@@ -108,7 +108,7 @@ public class ChoiceActivity extends BaseActivity implements View.OnClickListener
                 public void msg(JSONObject msg) {
                     LogUtils.i("上传图片返回来的数据"+msg);
                     //UtilsToast.showToast(ChoiceActivity.this, msg.getString("msg"));
-                    UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getData",mClassTag+"",s);
+                    UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getDataSuccess",mClassTag+"",s);
                 }
             });
             post.execute();
@@ -163,7 +163,7 @@ public class ChoiceActivity extends BaseActivity implements View.OnClickListener
                             LogUtils.i("上传图片返回来的数据"+msg);
                             if (1==msg.getIntValue("result")){
                                 UtilsToast.showToast(AppContext.getApplication(), msg.getString("message"));
-                                UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getData",mClassTag+"",path);
+                                UtilsBroadcastReceiver.sendBroadcastReceiver(AppContext.getApplication(),"getDataSuccess",mClassTag+"",path);
                             }else{
                                 UtilsToast.showToast(AppContext.getApplication(), msg.getString("message"));
                             }

@@ -175,20 +175,20 @@ public class MyViewHolder_04 {
      */
     public ImageView initImage_status(int viewId,int status){
        //0 待还款  1 已还款 2 逾期 3提前还款 4坏账5减免
-
+        //我要还款里面的小星星 五颜六色的
         ImageView view = getView(viewId);
       switch (status){
               case 0:
-                  view.setBackgroundResource(R.drawable.home_tv01);
+                  view.setBackgroundResource(R.drawable.loan_status1);
               break;
               case 1:
-                  view.setBackgroundResource(R.drawable.home_tv02);
+                  view.setBackgroundResource(R.drawable.loan_status2);
               break;
               case 2:
-                  view.setBackgroundResource(R.drawable.home_tv03);
+                  view.setBackgroundResource(R.drawable.loan_status3);
               break;
               case 3:
-                  view.setBackgroundResource(R.drawable.home_tv04);
+                  view.setBackgroundResource(R.drawable.ti);
               break;
               case 4:
                   view.setBackgroundResource(R.drawable.home_tv01);

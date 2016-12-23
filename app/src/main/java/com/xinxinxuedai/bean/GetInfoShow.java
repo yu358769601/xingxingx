@@ -23,6 +23,15 @@ public class GetInfoShow {
         public int info1;
         public int info3;
         public int info2;
+
+        @Override
+        public String toString() {
+                return "GetInfoShow{" +
+                        "info1=" + info1 +
+                        ", info3=" + info3 +
+                        ", info2=" + info2 +
+                        '}';
+        }
 }
 
 //{

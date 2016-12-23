@@ -8,7 +8,7 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
 import com.xinxinxuedai.app.Share;
-import com.xinxinxuedai.bean.Repayment;
+import com.xinxinxuedai.bean.RePayMent;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -27,7 +27,7 @@ public class Repayment_Request {
 
     private static HttpURLConnection mHttpURLConnection;
 
-    public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<Repayment> netWorkCallBack) {
+    public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<RePayMent> netWorkCallBack) {
         //入口
         hashtable.put("action", "repayment");
         //身份认证
@@ -41,8 +41,8 @@ public class Repayment_Request {
                         try {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"还款"+"正常内容"+jsonObject);
-                                Repayment repayment = jsonObject.toJavaObject(Repayment.class);
-                                netWorkCallBack.onSucceed(repayment,NetWorkCallBack.NETDATA);
+                                RePayMent rePayMent = jsonObject.toJavaObject(RePayMent.class);
+                                netWorkCallBack.onSucceed(rePayMent,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());

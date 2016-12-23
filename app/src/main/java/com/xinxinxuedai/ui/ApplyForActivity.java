@@ -109,6 +109,17 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
 
     }
 
+    /**
+     * 再次看到这个页面
+     */
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (null!=mApplyForActivity_p){
+            mApplyForActivity_p.reStart();
+        }
+    }
+
     private void initText() {
         mTv1.setCallBack(new button_CallBack() {
 

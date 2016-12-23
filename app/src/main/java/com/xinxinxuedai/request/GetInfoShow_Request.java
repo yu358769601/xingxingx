@@ -10,6 +10,9 @@ import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.bean.GetInfoShow;
+import com.xinxinxuedai.db.DAO.MyDbDAO;
+import com.xinxinxuedai.db.DAO.dbCallBackHelper;
+import com.xinxinxuedai.db.Table;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -30,8 +33,24 @@ public class GetInfoShow_Request {
     private static HttpURLConnection mHttpURLConnection;
 
     public static HttpURLConnection request(final Context context, final NetWorkCallBack<GetInfoShow> netWorkCallBack) {
-        if (null!=sData)
-            netWorkCallBack.onSucceed(sData,NetWorkCallBack.CACHEDATA);
+       new MyDbDAO(context,GetInfoShow.class).find(Table.MyJson ,"GetInfoShow", new dbCallBackHelper<GetInfoShow>() {
+           @Override
+           public void getDataSuccess(GetInfoShow getInfoShow) {
+               LogUtils.i("取出来的数据是"+getInfoShow);
+                   netWorkCallBack.onSucceed(getInfoShow,NetWorkCallBack.CACHEDATA);
+           }
+
+           @Override
+           public void getDataError(String error) {
+
+           }
+
+
+       });
+
+
+
+
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         hashtable.put("action", "getInfoShow");
         hashtable.put("loan_id", Share.getToken(context));
@@ -43,6 +62,8 @@ public class GetInfoShow_Request {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"判断借款人信息是否为空"+"正常内容"+jsonObject);
                                 sData = jsonObject.getObject("data", GetInfoShow.class);
+                                new MyDbDAO(context,GetInfoShow.class)
+                                        .add(Table.MyJson,"GetInfoShow",sData);
                                 netWorkCallBack.onSucceed(sData,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {

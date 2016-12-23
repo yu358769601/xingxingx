@@ -8,9 +8,11 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.GetInfoShow;
+import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.bean.SetLoanStatus;
 import com.xinxinxuedai.request.GetInfoShow_Request;
 import com.xinxinxuedai.request.GetInfo_Request;
+import com.xinxinxuedai.request.GetLoanDetail_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.SetLoanStatus_Request;
 import com.xinxinxuedai.ui.BankCardInfoActivity;
@@ -86,6 +88,8 @@ public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> imple
         }
     }
 
+
+
     /**
      * 获取 info 信息
      */
@@ -140,5 +144,22 @@ public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> imple
         });
     }
 
+    /**
+     * 在此看到这个界面 访问网络界面
+     */
+    public void reStart() {
+        GetLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
+            @Override
+            public void onSucceed(GetLoanDetail getLoanDetail, int dataMode) {
+                    if (0!=getLoanDetail.loan_status){
+                        applyForActivity_callback.closeActivity();
+                    }
+            }
 
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+    }
 }
