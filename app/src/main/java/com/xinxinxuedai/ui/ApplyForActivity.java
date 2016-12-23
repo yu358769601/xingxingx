@@ -191,7 +191,7 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         if (null!=mApplyForActivity_p){
             mApplyForActivity_p.getCallBackData();

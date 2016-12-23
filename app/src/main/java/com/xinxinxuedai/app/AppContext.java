@@ -4,6 +4,8 @@ import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.umeng.analytics.MobclickAgent;
+
 /**
  * Created by 35876 于萌萌
  * 创建日期: 13:27 . 2016年11月09日
@@ -36,6 +38,8 @@ public class AppContext extends Application {
         this.mMainThread = Thread.currentThread();
         this.mMainThreadId = android.os.Process.myTid();
         this.mMainThreadLooper = getMainLooper();
+
+        MobclickAgent.setDebugMode(true);
 
     }
 

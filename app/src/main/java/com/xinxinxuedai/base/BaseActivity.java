@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.umeng.analytics.MobclickAgent;
+
 /**
  * Created by 35876 于萌萌
  * 创建日期: 22:22 . 2016年10月02日
@@ -36,6 +38,18 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onDestroy();
 
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
+
+
 
     public abstract int getlayouXML();
 
