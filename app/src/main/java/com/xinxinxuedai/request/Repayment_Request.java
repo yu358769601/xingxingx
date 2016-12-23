@@ -8,7 +8,7 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
 import com.xinxinxuedai.app.Share;
-import com.xinxinxuedai.bean.LoanAdvanceMoney;
+import com.xinxinxuedai.bean.Repayment;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -16,34 +16,33 @@ import java.util.Hashtable;
 
 /**
  * Created by Administrator 于萌萌
- * 创建日期: 8:42 . 2016年12月13日
- * 描述:提前还款_查询_网络请求
- * <p>
+ * 创建日期: 14:50 . 2016年12月12日
+ * 描述:网络请求_还款
+ * <p>s
  * <p>
  * 备注:
  */
 
-public class LoanAdvanceMoney_Request_Request {
+public class Repayment_Request {
 
     private static HttpURLConnection mHttpURLConnection;
 
-    public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack<LoanAdvanceMoney> netWorkCallBack) {
-        hashtable.put("action", "loanAdvanceMoney");
-        hashtable.put("loan_id", Share.getToken(context));
+    public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<Repayment> netWorkCallBack) {
+        //入口
+        hashtable.put("action", "repayment");
+        //身份认证
+        hashtable.put("user_id", Share.getToken(context));
+
+        LogUtils.i("还款发出去的数据"+hashtable);
         NetMessage.get(context)
-                .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
+                .sendMessage(Constants.new_url, hashtable, Constants.NORMAL,  new NetAesCallBack() {
                     @Override
                     public void onSucceed(JSONObject jsonObject) {
                         try {
                             if (null != jsonObject) {
-                                LogUtils.i("网络请求_提前还款_查询"+"正常内容"+jsonObject);
-                                LoanAdvanceMoney loanAdvanceMoney = jsonObject.toJavaObject(LoanAdvanceMoney.class);
-                                if (loanAdvanceMoney.result ==1){
-                                    netWorkCallBack.onSucceed(loanAdvanceMoney,NetWorkCallBack.NETDATA);
-                                }else{
-                                    netWorkCallBack.onError(loanAdvanceMoney.message);
-                                }
-
+                                LogUtils.i("网络请求_"+"还款"+"正常内容"+jsonObject);
+                                Repayment repayment = jsonObject.toJavaObject(Repayment.class);
+                                netWorkCallBack.onSucceed(repayment,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
                             UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());
@@ -54,7 +53,7 @@ public class LoanAdvanceMoney_Request_Request {
 
                     @Override
                     public void onError(JSONObject errorString) {
-                        LogUtils.i("网络请求_提前还款_查询"+"失败内容"+errorString);
+                        LogUtils.i("网络请求_"+"还款"+"失败内容"+errorString);
                         netWorkCallBack.onError(errorString.getString("message"));
                     }
 

@@ -11,4 +11,19 @@ package com.xinxinxuedai.bean;
 
 public class LoanAdvanceMoney {
 
+    /**
+     * data : 1067.5
+     * message : 查询成功
+     * result : 1
+     */
+
+    public double data;
+    public String message;
+    public int result;
 }
+//
+//{
+//        "data": 1067.5,
+//        "message": "查询成功",
+//        "result": 1
+//        }

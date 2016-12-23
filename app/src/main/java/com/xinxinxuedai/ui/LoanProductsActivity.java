@@ -15,7 +15,7 @@ import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_1;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
 
-//借贷产品activity(二选一)
+//借贷产品activity(二选一)activity
 public class LoanProductsActivity extends BaseActivity implements LoanProductsActivity_CallBack {
 
     private initAction_Bar mRelativeLayout_title;
@@ -63,11 +63,11 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
                 mXuedaibutton_1.setTag(1);
                 mLoanProductsActivity_p.onclicks(mXuedaibutton_1);
             }
-        }).setTextColor(getResources().getColor(R.color.home_tv1))
+        }).setTextColor(getResources().getColor(R.color.white))
                 .setVisbilityStar(true)
 //                .setText_info("我是注释")
-                .setText_infoColor(getResources().getColor(R.color.home_tv1))
-                .setTopDrawable(R.drawable.home_tv01)
+                .setText_infoColor(getResources().getColor(R.color.white))
+                .setTopDrawable(R.drawable.jiekuan01)
                 .setText("先本后息");
         //B计划
         mXuedaibutton_2 = (XueDaiButton_1) findViewById(R.id.xuedaibutton_2);
@@ -77,11 +77,11 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
                 mXuedaibutton_2.setTag(2);
                 mLoanProductsActivity_p.onclicks(mXuedaibutton_2);
             }
-        }).setTextColor(getResources().getColor(R.color.home_tv1))
+        }).setTextColor(getResources().getColor(R.color.white))
                 .setVisbilityStar(true)
                 .setText_info("适用于中长期借款\n借款金额10000元以下")
-                .setText_infoColor(getResources().getColor(R.color.home_tv1))
-                .setTopDrawable(R.drawable.home_tv01)
+                .setText_infoColor(getResources().getColor(R.color.white))
+                .setTopDrawable(R.drawable.jiekuan02)
                 .setText("等额本息");
 
         initData();

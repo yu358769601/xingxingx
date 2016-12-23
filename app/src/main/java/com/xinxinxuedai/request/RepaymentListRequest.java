@@ -8,7 +8,7 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
 import com.xinxinxuedai.app.Share;
-import com.xinxinxuedai.bean.RePayMent;
+import com.xinxinxuedai.bean.RepaymentList;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -27,10 +27,10 @@ import java.util.Hashtable;
 public class RepaymentListRequest {
     static HttpURLConnection mHttpURLConnection;
     public static int pn = 1;
-    private static RePayMent sPayMent;
+    private static RepaymentList sPayMent;
 
     //第一次请求
-    public static HttpURLConnection request(final Context context, final NetWorkCallBack<RePayMent> netWorkCallBack) {
+    public static HttpURLConnection request(final Context context, final NetWorkCallBack<RepaymentList> netWorkCallBack) {
 //        if (null!=sPayMent)
 //            netWorkCallBack.onSucceed(sPayMent,NetWorkCallBack.CACHEDATA);
         // pn = 1;
@@ -49,7 +49,7 @@ public class RepaymentListRequest {
                             try {
                                 LogUtils.i("网络请求_还款记录"+"正常内容" + jsonObject);
                                 if (null != jsonObject) {
-                                    sPayMent = jsonObject.toJavaObject(RePayMent.class);
+                                    sPayMent = jsonObject.toJavaObject(RepaymentList.class);
                                     netWorkCallBack.onSucceed(sPayMent,NetWorkCallBack.NETDATA);
                                 }
                             } catch (Exception e) {

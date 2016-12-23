@@ -29,7 +29,8 @@ public class UserLoanAdvanceMoney_Request_Request {
 
     public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack<UserLoanAdvanceMoney> netWorkCallBack) {
         hashtable.put("action", "userLoanAdvanceMoney");
-        hashtable.put("loan_id", Share.getToken(context));
+        //这个地方必须是这个 之前接口问题
+        hashtable.put("user_id", Share.getToken(context));
         LogUtils.i("提前还款id"+Share.getToken(context));
 
         LogUtils.i("传过去的数据有"+hashtable.toString());

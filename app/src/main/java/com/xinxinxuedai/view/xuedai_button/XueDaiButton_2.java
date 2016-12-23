@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
     private TextView mXuedai_button_2_rightbutton_fenqi;
     private TextView xuedai_button_2_info;
     private TextView xuedai_button_2_tiqian;
+    private LinearLayout mLl3;
 
     public XueDaiButton_2(Context context) {
         super(context);
@@ -102,9 +104,9 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
         xuedai_button_2_tiqian = (TextView) mView.findViewById(R.id.xuedai_button_2_tiqian);
         xuedai_button_2_tiqian.setOnClickListener(this);
         xuedai_button_2_tiqian.setTag(10);
-
-
-
+        //是否结清的外框
+        mLl3 = (LinearLayout) mView.findViewById(R.id.ll3);
+        mLl3.setVisibility(INVISIBLE);
     }
     /**
      * 设置 提前结清按钮文字
@@ -113,6 +115,19 @@ public class XueDaiButton_2 extends RelativeLayout implements View.OnClickListen
      */
     public XueDaiButton_2 setText_tiqian(String text){
         xuedai_button_2_tiqian.setText(text);
+        return  this;
+    }
+    /**
+     * 设置 提前结清按钮文字 是否显示提前结清
+     * @param
+     * @return
+     */
+    public XueDaiButton_2 setText_tiqian_status(boolean b){
+        if (b){
+            mLl3.setVisibility(VISIBLE);
+        }else{
+            mLl3.setVisibility(INVISIBLE);
+        }
         return  this;
     }
     /**

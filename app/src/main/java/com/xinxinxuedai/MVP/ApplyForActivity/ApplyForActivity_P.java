@@ -33,6 +33,8 @@ public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> imple
     ApplyForActivity_callback applyForActivity_callback;
 
     static Context context;
+    private GetInfoShow mGetInfoShow;
+
     public ApplyForActivity_P(Context context){
         this.context = context;
     }
@@ -69,8 +71,17 @@ public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> imple
             break;
             case 4:
                 //上传照片啥的
-                intent.setClass(context, UploadPicturesActivity.class);
-                context.startActivity(intent);
+                if (null!=mGetInfoShow){
+                    if (mGetInfoShow.info1!=1
+                            ||mGetInfoShow.info2!=1
+                            ||mGetInfoShow.info3!=1){
+                        UtilsToast.showToast(context, "请完善信息");
+                        return;
+                    }
+                    intent.setClass(context, UploadPicturesActivity.class);
+                    context.startActivity(intent);
+                }
+
             break;
         }
     }
@@ -95,6 +106,7 @@ public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> imple
         GetInfoShow_Request.request(context, new NetWorkCallBack<GetInfoShow>() {
             @Override
             public void onSucceed(GetInfoShow getInfoShow, int dataMode) {
+                mGetInfoShow = getInfoShow;
                 applyForActivity_callback.setCallBackData(getInfoShow);
             }
 

@@ -3,7 +3,7 @@ package com.xinxinxuedai.bean;
 /**
  * Created by Administrator 于萌萌
  * 创建日期: 11:40 . 2016年12月12日
- * 描述:bean_获取借贷人信息 个人信息 学校信息
+ * 描述:bean_获取借贷人信息 个人信息 学校信息 账户余额是在这个bean 里面的
  * <p>
  * <p>
  * 备注:回显
@@ -23,7 +23,7 @@ public class GetInfo {
          * loan_add_time : 1481510402
          * 来源
          * loan_from : 12345678
-         * 借款钱数
+         * 账户余额
          * loan_money : 0.00
          * 性别
          * loan_sex :

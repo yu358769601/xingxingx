@@ -22,7 +22,9 @@
         />
     <ImageView
         android:id="@+id/xuedai_image"
-        android:background="@drawable/ic_launcher"
+        android:padding="@dimen/size_base480_5dp"
+        android:layout_margin="@dimen/size_base480_10dp"
+        android:background="@drawable/xing_0"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

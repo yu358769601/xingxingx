@@ -10,5 +10,25 @@ package com.xinxinxuedai.bean;
  */
 
 public class UserLoanAdvanceMoney {
+//    hashtable.put("action", "userLoanAdvanceMoney");
+//    //这个地方必须是这个 之前接口问题
+    //身份认证
+//    hashtable.put("user_id", Share.getToken(context));
+    //借款id
+//    hashtable.put("loan_id",dataBean.user_loan_id);
+    /**
+     * data :
+     * message : 账户资金不足
+     * result : 0
+     */
 
+    public String data;
+    public String message;
+    public int result;
 }
+
+//{
+//        "data": "",
+//        "message": "账户资金不足",
+//        "result": 0
+//        }

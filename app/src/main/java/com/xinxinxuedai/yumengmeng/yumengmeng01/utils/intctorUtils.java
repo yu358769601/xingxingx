@@ -85,8 +85,8 @@ public class intctorUtils {
             public void onPageScrolled(int position, float positionOffset,
                                        int positionOffsetPixels) {
                 // 当页面滑动过程中的回调
-                System.out.println("当前位置:" + position + ";移动偏移百分比:"
-                        + positionOffset);
+               // System.out.println("当前位置:" + position + ";移动偏移百分比:"
+                //        + positionOffset);
                 // 更新小红点距离
                 int leftMargin = (int) (mPointDis * positionOffset) + position
                         * mPointDis;// 计算小红点当前的左边距

@@ -82,6 +82,28 @@ public class MyViewHolder_04 {
         }
         return view;
     }
+
+    /**
+     *  还款按钮 如果是某些数字 就让它显示按钮
+     * @param viewId
+     * @param text
+     * @param tag //还款状态 0 待还款  1 已还款 2 逾期 3提前还款 4坏账5减免
+     * @return
+     */
+    public TextView initText_huankuan(int viewId, String text,int tag){
+        TextView view = getView(viewId);
+        switch (tag){
+            case 0:
+
+                view.setVisibility(View.VISIBLE);
+            break;
+            default:
+                view.setVisibility(View.INVISIBLE);
+                break;
+        }
+        return view;
+    }
+
     /**
      * 为TextView设置字符串
      *
@@ -104,9 +126,9 @@ public class MyViewHolder_04 {
     public LinearLayout initLinearLayout_Show(int viewId,int b){
         LinearLayout view = getView(viewId);
         if (b==0){
-            view.setVisibility(View.VISIBLE);
-        }else{
             view.setVisibility(View.GONE);
+        }else{
+            view.setVisibility(View.VISIBLE);
         }
         return view;
     }

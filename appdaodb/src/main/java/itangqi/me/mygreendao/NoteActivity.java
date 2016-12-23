@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -30,16 +29,16 @@ public class NoteActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
-        String textColumn = NoteDao.Properties.Text.columnName;
-        String orderBy = textColumn + " COLLATE LOCALIZED ASC";
-        cursor = getDb().query(getNoteDao().getTablename(), getNoteDao().getAllColumns(), null, null, null, null, orderBy);
-        String[] from = {textColumn, NoteDao.Properties.Comment.columnName};
-        int[] to = {android.R.id.text1, android.R.id.text2};
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, from,
-                to);
-        setListAdapter(adapter);
-
-        editText = (EditText) findViewById(R.id.editTextNote);
+//        String textColumn = NoteDao.Properties.Text.columnName;
+//        String orderBy = textColumn + " COLLATE LOCALIZED ASC";
+//        cursor = getDb().query(getNoteDao().getTablename(), getNoteDao().getAllColumns(), null, null, null, null, orderBy);
+//        String[] from = {textColumn, NoteDao.Properties.Comment.columnName};
+//        int[] to = {android.R.id.text1, android.R.id.text2};
+//        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, from,
+//                to);
+//        setListAdapter(adapter);
+//
+//        editText = (EditText) findViewById(R.id.editTextNote);
     }
 
     private NoteDao getNoteDao() {

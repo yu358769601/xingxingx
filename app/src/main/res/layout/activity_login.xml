@@ -25,9 +25,11 @@
         android:layout_height="wrap_content">
         <EditText
             android:id="@+id/login_et_phone_num"
-            android:drawableLeft="@mipmap/ic_launcher"
+            android:drawableLeft="@drawable/phone"
             android:hint="手机号"
-
+            android:drawablePadding="@dimen/size_base480_10dp"
+            android:layout_height="@dimen/size_base480_50dp"
+            android:gravity="center|left"
             style="@style/edit_style"
             android:layout_width="match_parent"
 
@@ -43,8 +45,11 @@
         </View>
         <EditText
             android:id="@+id/login_et_passworld"
+            android:drawablePadding="@dimen/size_base480_10dp"
+            android:gravity="center|left"
             android:layout_below="@+id/view_1"
-            android:drawableLeft="@mipmap/ic_launcher"
+            android:layout_height="@dimen/size_base480_50dp"
+            android:drawableLeft="@drawable/lock"
             android:hint="密码"
 
             style="@style/edit_style"

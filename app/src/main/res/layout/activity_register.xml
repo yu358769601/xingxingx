@@ -29,14 +29,19 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/register_et_phonenum"
                 android:layout_width="0dp"
                 style="@style/edit_style"
                 android:hint="手机号"
+                android:layout_height="@dimen/size_base480_40dp"
                 android:layout_weight="3"
-                android:drawableLeft="@mipmap/ic_launcher"
+                android:gravity="center|left"
+                android:drawablePadding="@dimen/size_base480_10dp"
+                android:drawableLeft="@drawable/phone"
                 />
+
             <TextView
                 android:id="@+id/register_cunttime"
                 android:layout_below="@+id/relativeLayout_title"
@@ -61,7 +66,10 @@
             android:layout_below="@+id/view_1"
             style="@style/edit_style"
             android:hint="验证码"
-            android:drawableLeft="@mipmap/ic_launcher"
+            android:gravity="center|left"
+            android:drawablePadding="@dimen/size_base480_10dp"
+            android:drawableLeft="@drawable/phone"
+            android:layout_height="@dimen/size_base480_50dp"
             android:layout_width="match_parent"
             />
         <View
@@ -71,14 +79,7 @@
             android:layout_height="0.5dp"
             android:background="@color/white"
             ></View>
-        <EditText
-            android:id="@+id/register_et_passwrold"
-            android:layout_below="@+id/view_2"
-            style="@style/edit_style"
-            android:hint="密码"
-            android:drawableLeft="@mipmap/ic_launcher"
-            android:layout_width="match_parent"
-            />
+
         <View
             android:id="@+id/view_3"
             android:layout_below="@+id/register_et_passwrold"
@@ -86,14 +87,7 @@
             android:layout_height="0.5dp"
             android:background="@color/white"
             ></View>
-        <EditText
-            android:id="@+id/register_et_passwrold_ok"
-            style="@style/edit_style"
-            android:layout_below="@+id/view_3"
-            android:hint="确认密码"
-            android:drawableLeft="@mipmap/ic_launcher"
-            android:layout_width="match_parent"
-            />
+
         <TextView
             android:id="@+id/register_ok_"
             android:text="确认注册"
@@ -116,6 +110,33 @@
             android:background="@drawable/an_long"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/register_et_passwrold_ok"
+            style="@style/edit_style"
+            android:hint="确认密码"
+            android:gravity="center|left"
+            android:layout_height="@dimen/size_base480_50dp"
+            android:drawablePadding="@dimen/size_base480_13dp"
+            android:drawableLeft="@drawable/lock"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/register_et_passwrold"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <EditText
+            android:id="@+id/register_et_passwrold"
+            style="@style/edit_style"
+            android:hint="密码"
+            android:gravity="center|left"
+            android:layout_height="@dimen/size_base480_50dp"
+            android:drawablePadding="@dimen/size_base480_13dp"
+            android:drawableLeft="@drawable/lock"
+            android:layout_width="match_parent"
+
+            android:layout_below="@+id/register_et_cunttime"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
     </RelativeLayout>
 
 

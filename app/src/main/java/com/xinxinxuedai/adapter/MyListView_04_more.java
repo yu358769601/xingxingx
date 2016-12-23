@@ -5,10 +5,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xinxinxuedai.R;
+import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.base.BaseListViewAdapter_04;
-import com.xinxinxuedai.bean.RePayMent;
+import com.xinxinxuedai.bean.RepaymentList;
 import com.xinxinxuedai.view.MyListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,18 +22,36 @@ import java.util.List;
  * <p>
  * 备注:
  */ //我的行程adapter
-public class MyListView_04_more extends BaseListViewAdapter_04<RePayMent.DataBean> implements MyListView.OnLoadListener {
+public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.DataBean> implements MyListView.OnLoadListener {
     //public String net = "http://app.beta.9ac.com.cn/";
     ListViewLoadMore mListViewLoadMore;
     int type;
     ListViewCallBack mListViewCallBack;
     //期限 最大值
     int loan_term;
+
+    // 是否显示还款按钮
+    boolean tag = true;
+
+    int frist = -1;
     public MyListView_04_more(Context context, int type, List datas, int loan_term, ListViewCallBack mListViewCallBack) {
         super(context, type, datas);
         this.type = type;
         this.mListViewCallBack = mListViewCallBack;
         this.loan_term = loan_term;
+        getFristsub(datas);
+    }
+
+    private void getFristsub(List datas) {
+        ArrayList<RepaymentList.DataBean> data =(ArrayList<RepaymentList.DataBean>)datas;
+        for (int i = 0; i < data.size(); i++) {
+            RepaymentList.DataBean dataBean = data.get(i);
+            int repay_status = dataBean.repay_status;
+            if (repay_status==0){
+                frist = i;
+                return;
+            }
+        }
     }
 
     public void setListViewLoadMore(ListViewLoadMore mListViewLoadMore) {
@@ -52,13 +72,13 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RePayMent.DataBea
      * @return
      */
     @Override
-    public int getViewType(RePayMent.DataBean item, int position) {
+    public int getViewType(RepaymentList.DataBean item, int position) {
 
         return R.layout.xuedai_button_3;
     }
 
     @Override
-    public void convert(MyViewHolder_04 helper, RePayMent.DataBean item, final int position) {
+    public void convert(MyViewHolder_04 helper, RepaymentList.DataBean item, final int position) {
         //int i = Integer.parseInt(item.delay);
         int i1 = getViewType(item, position);
         if (i1 == R.layout.xuedai_button_3) {
@@ -91,18 +111,29 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RePayMent.DataBea
             helper.initImage_status(R.id.xuedai_button3_iv,item.repay_status);
 
             //String.format("%.2f元", (moneny * 0.0275) + (moneny * 0.01)+moneny);
-            String format = String.format("%.2f元", (item.money + item.service_fee + item.interest_money + item.weiyue_money) - item.real_money);
-            //应还金额 (本金+利息+服务费+违约金)-真实还款金额
+            String format = String.format("%.2f元", (item.money + item.service_fee + item.interest_money + item.weiyue_money));
+            //应还金额 (本金+利息+服务费+违约金)
             helper.initText_hint(R.id.xuedai_button3_tv1,format);
             //已还金额
             helper.initText_hint(R.id.xuedai_button3_tv2,item.real_money+"元");
             //分期
             helper.initText_hint(R.id.xuedai_button3_tv3,item.current_flag+"/"+(loan_term/7)+"期");
             //还款按钮
-            TextView textView1 = helper.initText(R.id.xuedai_button3_tv5, "");
+            //TextView textView1 = helper.initText(R.id.xuedai_button3_tv5, "");
+            TextView textView1= helper.initText_huankuan(R.id.xuedai_button3_tv5,"",item.repay_status);
+            if (frist ==position){
+                textView1.setVisibility(View.VISIBLE);
+                LogUtils.i("我显示有按钮"+position);
+                //tag = false;
+            }else{
+                textView1.setVisibility(View.INVISIBLE);
+                LogUtils.i("我显示没按钮"+position);
+            }
+
             textView1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //点击还款
                     mListViewCallBack.getRepayment(position);
                 }
             });

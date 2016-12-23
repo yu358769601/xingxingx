@@ -33,4 +33,9 @@ public interface ReimbursementActivity_M {
      * 提前还款访问网络
      */
     void subTiQianHuanKuan();
+
+    /**
+     *
+     */
+    void subHuanKuan(int postion);
 }

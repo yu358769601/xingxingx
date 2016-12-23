@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xinxinxuedai.MVP.mainActivity.MainActivity_CallBack;
 import com.xinxinxuedai.MVP.mainActivity.MainActivity_P;
@@ -90,6 +91,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         initData();
         initListener();
         initText();
+    }
+
+    private long firstPressTime = 0;
+    @Override
+    public void onBackPressed() {
+        long now = System.currentTimeMillis();
+        if((now - firstPressTime) > 2000)
+        {
+            Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            firstPressTime = now;
+        }else
+        {
+            finish();
+            System.exit(0);
+        }
     }
 
     private void initText() {

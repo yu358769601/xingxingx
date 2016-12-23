@@ -151,6 +151,7 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
             @Override
             public void confirm() {
                 LogUtils.i("我点了还款号码是"+positon);
+                mReimbursementActivity_p.subHuanKuan(positon);
             }
 
             @Override
@@ -171,8 +172,8 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
      * @param positon
      */
     @Override
-    public void getShowDialog3(int positon) {
-        int money = positon;
+    public void getShowDialog3(double positon) {
+        double money = positon;
         String msg = money+"";
         UtilsDialog.showDialog_Text(this, "提前还款", msg, new DialogCallBack() {
             @Override
