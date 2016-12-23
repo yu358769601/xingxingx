@@ -46,4 +46,6 @@ dependencies {
     /*数据库*/
     compile files('src/main/libs/xpp3_min-1.1.4c.jar')
     compile files('src/main/libs/xstream-1.4.7.jar')
+    /*友盟统计*/
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

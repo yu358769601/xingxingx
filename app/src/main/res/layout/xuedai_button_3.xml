@@ -15,6 +15,7 @@
         android:background="@drawable/ic_launcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
     <LinearLayout
         android:id="@+id/ll1"
         android:layout_toRightOf="@+id/xuedai_button3_iv"

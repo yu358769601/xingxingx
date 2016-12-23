@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           package="com.xinxinxuedai">
-
+    <uses-sdk android:minSdkVersion="4"></uses-sdk>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -17,6 +17,7 @@
     <!-- 可选 ，如果添加这个权限 apk下载在sdcard中的Android/data/包名/cache目录下 否则下载到 内存中的 /data/data/包名/cache中 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
 
     <!-- 富友权限 -->
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
@@ -140,6 +141,10 @@
         </activity>
         <activity android:name=".ui.ShowInfoActivity">
         </activity>
+
+    <!--友盟统计-->
+        <meta-data android:value="585ce3c9ae1bf87e17001d41" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>
     </application>
 
 </manifest>
