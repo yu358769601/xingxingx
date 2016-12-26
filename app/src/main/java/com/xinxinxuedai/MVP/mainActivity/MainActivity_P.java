@@ -278,7 +278,7 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
     @Override
     public void getCallBackData() {
         //如果没有登录 就 跳出
-        if (null==Share.getToken(context)){
+        if (!Share.checkLogin(context)){
             return;
         }
         GetLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {

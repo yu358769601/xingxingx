@@ -67,6 +67,7 @@
 
     <RelativeLayout
         android:id="@+id/camera_layout"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/record_progress">
@@ -77,14 +78,14 @@
             android:id="@+id/record_preview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
         <ImageView
             android:id="@+id/record_preview_iv"
             android:layout_width="match_parent"
-            android:src="@drawable/lk2"
-            android:alpha="0.3"
-            android:layout_height="wrap_content"
+            android:alpha="0.9"
+            android:layout_height="340dp"
+            android:background="@drawable/renxiang"
             />
+
     </RelativeLayout>
 
     <!-- camera_bottom_bg -->
@@ -105,15 +106,23 @@
             android:background="@drawable/record_delete_selector"
             android:button="@null"
             android:visibility="gone" />
+        <TextView
+            android:id="@+id/hint"
+            android:textColor="@color/bai"
+            android:text="请朗读以下内容:本人XXX自愿遵守因签订星星学贷所生成的各项服务条款及协议，并承担相关责任。"
+            android:layout_width="match_parent"
+            android:textSize="16sp"
 
+            android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/record_controller"
+            android:layout_below="@+id/hint"
             android:textColor="@color/camera_progress_three"
             android:gravity="center"
             android:text="按住拍"
             android:textSize="16sp"
-            android:layout_width="108dp"
-            android:layout_height="108dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:background="@drawable/small_video_shoot" />
     </RelativeLayout>

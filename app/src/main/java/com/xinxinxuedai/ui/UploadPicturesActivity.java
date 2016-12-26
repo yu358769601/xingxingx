@@ -112,7 +112,9 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
 
                 uploadpictures_xd_1
                         .setImage(msg1)
-                        .setRelativeLayout_Pading(0,0,0,0);
+                        .setRelativeLayout_Pading(0,0,0,0)
+                        .setText("")
+                        .setTopDrawableVisibility(false);
                 tag1 = true;
                 return;
             }
@@ -122,7 +124,9 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
             if (null!=msg2){
                 uploadpictures_xd_2
                         .setImage(msg2)
-                        .setRelativeLayout_Pading(0,0,0,0);
+                        .setRelativeLayout_Pading(0,0,0,0)
+                        .setText("")
+                        .setTopDrawableVisibility(false);
                 tag2 = true;
                 return;
             }
@@ -132,7 +136,9 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
             if (null!=msg3){
                 uploadpictures_xd_3
                         .setImage(msg3)
-                        .setRelativeLayout_Pading(0,0,0,0);
+                        .setRelativeLayout_Pading(0,0,0,0)
+                        .setText("")
+                        .setTopDrawableVisibility(false);
                 tag3 = true;
                 return;
             }
@@ -212,8 +218,8 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
                 .setVisbilityInfotext(false)
                 .setVisbilityStar(false)
                 .setText("上传正面身份证")
-                .setTextColor(getResources().getColor(R.color.home_tv1))
-                .setTopDrawable(R.drawable.home_tv01)
+                .setTopDrawable(R.drawable.tutu_zheng)
+                .setTextColor(getResources().getColor(R.color.white))
                 .setRelativeLayout_Pading(0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp),0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp));
         uploadpictures_xd_2
                 .setCallBack(new button_CallBack() {
@@ -227,8 +233,8 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
                 .setVisbilityInfotext(false)
                 .setVisbilityStar(false)
                 .setText("上传背面身份证")
-                .setTextColor(getResources().getColor(R.color.home_tv1))
-                .setTopDrawable(R.drawable.home_tv01)
+                .setTopDrawable(R.drawable.tutu_bei)
+                .setTextColor(getResources().getColor(R.color.white))
                 .setRelativeLayout_Pading(0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp),0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp));
 
         uploadpictures_xd_3
@@ -243,8 +249,8 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
                 .setVisbilityInfotext(false)
                 .setVisbilityStar(false)
                 .setText("手持身份证")
-                .setTextColor(getResources().getColor(R.color.home_tv1))
-                .setTopDrawable(R.drawable.home_tv01)
+                .setTopDrawable(R.drawable.tutu_shouchi)
+                .setTextColor(getResources().getColor(R.color.white))
                 .setRelativeLayout_Pading(0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp),0,UtilsSetSize.setPx(this, R.dimen.size_base480_50dp));
 
     }

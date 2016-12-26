@@ -14,6 +14,7 @@ import com.xinxinxuedai.MVP.mainActivity.MainActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.view.initAction_Bar;
@@ -206,6 +207,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mMainActivity_p.initViewData(mActivity_01_ll,iv_red_point);
 
         mMainActivity_p.getCallBackData();
+
+        if (!Share.checkLogin(AppContext.getApplication())){
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        }
     }
 
 
@@ -222,6 +229,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     protected void onDestroy() {
         super.onDestroy();
         dump();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //如果是登录状态 我就查询钱数
+        if (Share.checkLogin(AppContext.getApplication())){
+            mMainActivity_p.getCallBackData();
+        }
     }
 
     @Override

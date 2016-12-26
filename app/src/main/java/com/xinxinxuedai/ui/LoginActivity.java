@@ -53,6 +53,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void initView() {
         mRelativeLayout_title = (initAction_Bar) findViewById(R.id.relativeLayout_title);
+        mRelativeLayout_title.setBack(false);
         mRelativeLayout_title.setCallBack(new initAction_Bar.Action_bar_call_back() {
             @Override
             public void getAction_barView_backbutton(Button button) {
@@ -81,9 +82,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 //        login_tv_register.setOnClickListener(this);
         login_rl = (RelativeLayout) findViewById(R.id.login_rl);
         login_rl.setOnClickListener(this);
-
-
-
+        //点了注册
+        login_tv_register = (TextView) findViewById(R.id.login_tv_register);
+        login_tv_register.setOnClickListener(this);
 
         initListener();
     }
@@ -93,7 +94,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mLoginActivity_p = LoginActivity_P.getLoginActivity_p(AppContext.getApplication());
         mLoginActivity_p.setCallBack(this);
     }
-
+    @Override
+    public void onBackPressed() {
+        //按不了返回键
+    }
 
     @Override
     public void initData() {
@@ -119,6 +123,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 v.setTag(2);
                 mLoginActivity_p.Clicks(v);
             break;
+            //点了注册
+            case R.id.login_tv_register:
+                Intent intent = new Intent(AppContext.getApplication(), RegisterActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("classtag",RegisterActivity.REGISTERCLASS);
+                bundle.putString("phoneNum",UtilsMyText.getTextView(login_et_phone_num));
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
         }
     }
 

@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout_title"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home"
+    android:background="@drawable/login"
     tools:context="com.xinxinxuedai.ui.LoginActivity">
     <!--登陆xml-->
     <ImageView
@@ -14,6 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/size_base480_20dp"
         android:padding="@dimen/size_base480_20dp"
+        android:visibility="invisible"
         android:background="@mipmap/ic_launcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -34,20 +35,32 @@
             android:layout_width="match_parent"
 
             />
-        <View
-            android:id="@+id/view_1"
+        <LinearLayout
+            android:id="@+id/login_ll"
             android:layout_below="@+id/login_et_phone_num"
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/white"
-            >
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="@dimen/size_base480_40dp"
+                android:layout_height="0.5dp"
 
-        </View>
+                ></View>
+            <View
+                android:id="@+id/view_1"
+              android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:background="@color/white"
+                >
+
+            </View>
+        </LinearLayout>
+
         <EditText
             android:id="@+id/login_et_passworld"
             android:drawablePadding="@dimen/size_base480_10dp"
             android:gravity="center|left"
-            android:layout_below="@+id/view_1"
+            android:layout_below="@+id/login_ll"
             android:layout_height="@dimen/size_base480_50dp"
             android:drawableLeft="@drawable/lock"
             android:hint="密码"
@@ -87,7 +100,17 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>-->
-
+        <TextView
+            android:id="@+id/login_tv_register"
+            android:layout_marginTop="@dimen/size_base480_20dp"
+            android:text="注册"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:padding="@dimen/size_base480_25dp"
+            android:background="@drawable/an_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </RelativeLayout>
 
 
