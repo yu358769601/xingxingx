@@ -63,7 +63,7 @@ public class GetInfoShow_Request {
                                 LogUtils.i("网络请求_"+"判断借款人信息是否为空"+"正常内容"+jsonObject);
                                 sData = jsonObject.getObject("data", GetInfoShow.class);
                                 new MyDbDAO(context,GetInfoShow.class)
-                                        .add(Table.MyJson,"GetInfoShow",sData);
+                                        .add_or_upData(Table.MyJson,"GetInfoShow",sData);
                                 netWorkCallBack.onSucceed(sData,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {

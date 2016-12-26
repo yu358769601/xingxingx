@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           package="com.xinxinxuedai">
-    <uses-sdk android:minSdkVersion="4"></uses-sdk>
+
+    <uses-sdk android:minSdkVersion="4"/>
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -17,7 +19,6 @@
     <!-- 可选 ，如果添加这个权限 apk下载在sdcard中的Android/data/包名/cache目录下 否则下载到 内存中的 /data/data/包名/cache中 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
 
     <!-- 富友权限 -->
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
@@ -34,9 +35,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar"
-        tools:replace="android:icon, android:label, android:theme,android:name"
-
-        >
+        tools:replace="android:icon, android:label, android:theme,android:name">
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait">
@@ -142,9 +141,21 @@
         <activity android:name=".ui.ShowInfoActivity">
         </activity>
 
-    <!--友盟统计-->
-        <meta-data android:value="585ce3c9ae1bf87e17001d41" android:name="UMENG_APPKEY"/>
-        <meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>
+        <!-- 友盟统计 -->
+        <!--自己的-->
+       <!-- <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="585ce3c9ae1bf87e17001d41"/>-->
+        <!--公司的-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="58608ab57f2c74322e000bcb"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Channel ID"/>
+
+        <activity android:name=".ui.TestActivity">
+        </activity>
     </application>
 
 </manifest>

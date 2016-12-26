@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     android:background="@drawable/home"
     tools:context="com.xinxinxuedai.ui.MainActivity">
+    <TextView
+        android:id="@+id/tv_test"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/size_base480_20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <!--主界面xml-->
     <RelativeLayout
         android:id="@+id/main_re"
@@ -86,7 +92,8 @@
             android:layout_below="@+id/main_tv_name"
             android:layout_toRightOf="@+id/main_iv"
             android:textColor="@color/white"
-            android:text="账户余额:99999"
+            android:hint="账户余额:"
+            android:textColorHint="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

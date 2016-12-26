@@ -18,9 +18,11 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDrawable;
 import com.xinxinxuedai.app.Share;
+import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.GetInfoShow;
 import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.request.GetInfoShow_Request;
+import com.xinxinxuedai.request.GetInfo_Request;
 import com.xinxinxuedai.request.GetLoanDetail_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.ui.AboutUsActivity;
@@ -283,6 +285,7 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
             @Override
             public void onSucceed(GetLoanDetail getLoanDetail,int dataMode) {
                 mDetail = getLoanDetail;
+
             }
 
             @Override
@@ -301,7 +304,17 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
 
             }
         });
+        GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
+            @Override
+            public void onSucceed(GetInfo getInfo, int dataMode) {
+                mainActivity_callBack.setDataMoney(getInfo);
+            }
 
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
 
 
     }

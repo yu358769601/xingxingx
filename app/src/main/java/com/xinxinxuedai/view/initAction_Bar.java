@@ -129,6 +129,16 @@ public class initAction_Bar extends RelativeLayout implements View.OnClickListen
         this.mode = mode;
         return this;
     }
+
+    public initAction_Bar setBack(boolean b){
+        if (b){
+            mAction_bar_tv_back.setVisibility(VISIBLE);
+        }else{
+            mAction_bar_tv_back.setVisibility(GONE);
+        }
+        return this;
+    }
+
     @Override
     public void onClick(View view) {
         int i = view.getId();

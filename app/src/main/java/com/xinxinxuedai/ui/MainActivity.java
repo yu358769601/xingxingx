@@ -1,5 +1,6 @@
 package com.xinxinxuedai.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,9 @@ import com.xinxinxuedai.MVP.mainActivity.MainActivity_CallBack;
 import com.xinxinxuedai.MVP.mainActivity.MainActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
@@ -52,6 +55,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void initView() {
         mActivity_title = (initAction_Bar) findViewById(R.id.relativeLayout_title);
+        mActivity_title.setBack(false);
         mActivity_title.setCallBack(new initAction_Bar.Action_bar_call_back() {
             @Override
             public void getAction_barView_backbutton(Button button) {
@@ -72,6 +76,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mTv3 = (XueDaiButton) findViewById(R.id.tv3);
         mTv4 = (XueDaiButton) findViewById(R.id.tv4);
 
+
+        TextView test = (TextView) findViewById(R.id.tv_test);
+        test.setOnClickListener(this);
 
         mMain_iv = (ImageView) findViewById(R.id.main_iv);
         mMain_iv.setOnClickListener(this);
@@ -235,6 +242,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 v.setTag(3);
                 mMainActivity_p.initClickView(v);
             break;
+            case R.id.tv_test:
+             startActivity(new Intent(AppContext.getApplication(),TestActivity.class));
+
+            break;
 
         }
     }
@@ -266,5 +277,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mMain_tv_name= null;
         mMain_tv_money= null;
 
+    }
+
+    /**
+     * 左下角数据
+     *
+     * @param dataMoney
+     */
+    @Override
+    public void setDataMoney(GetInfo dataMoney) {
+        mMain_tv_money.setText(mMain_tv_money.getHint()+dataMoney.loan_money+"元");
     }
 }

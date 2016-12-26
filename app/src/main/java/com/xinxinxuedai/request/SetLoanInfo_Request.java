@@ -24,12 +24,11 @@ import java.util.Hashtable;
 
 public class SetLoanInfo_Request {
 
-    private static SetLoanInfo sSetLoanInfo;
     private static HttpURLConnection mHttpURLConnection;
+    private static SetLoanInfo sSetLoanInfo;
 
     public static HttpURLConnection request(final Context context, Hashtable<String,String> hashtable , final NetWorkCallBack<SetLoanInfo> netWorkCallBack) {
-        if (null!=sSetLoanInfo)
-            netWorkCallBack.onSucceed(sSetLoanInfo,NetWorkCallBack.CACHEDATA);
+
         //入口
         hashtable.put("action", "setLoanInfo");
 //        //token

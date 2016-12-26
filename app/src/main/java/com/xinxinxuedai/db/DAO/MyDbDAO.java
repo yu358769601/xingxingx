@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.db.bean.JsonAll;
 import com.xinxinxuedai.db.initDb.MyDB;
 
@@ -45,11 +46,7 @@ public class MyDbDAO<T> {
         ContentValues values =new ContentValues();
 
         String s = JSONArray.toJSONString(msg);
-//        if (name==null){
-//            values.put("name", msg.getClass().getSimpleName());
-//        }else{
             values.put("name", name);
-//        }
         values.put("msg", s);
         long result = db.insert(tableName, null, values); //组拼sql语句实 现的.带返回值
         db.close();//释放资源
@@ -61,22 +58,26 @@ public class MyDbDAO<T> {
      * @param msg 性别,male female
      * @return result 添加到数据库的那一行, -1添加失败
      */
-//    public long add(String tableName,String name,T msg){
-//        SQLiteDatabase  db = mJson.getWritableDatabase();
-//        //db.execSQL("insert into student (name,sex) values (?,?)", new Object[]{name,sex});
-//        ContentValues values =new ContentValues();
-//
-//        String s = JSONArray.toJSONString(msg);
-//        if (name==null){
-//            values.put("name", msg.getClass().getName());
-//        }else{
-//            values.put("name", name);
-//        }
-//        values.put("msg", s);
-//        long result = db.insert(tableName, null, values); //组拼sql语句实 现的.带返回值
-//        db.close();//释放资源
-//        return result;
-//    }
+    public long add_or_upData(String tableName,String name,T msg){
+        int update = update(tableName, name, msg);
+        LogUtils.i("添加之前的更新返回来的数值是"+update);
+        long result=0;
+        //说明以前没有
+        if (update==0){
+            SQLiteDatabase  db = mJson.getWritableDatabase();
+            //db.execSQL("insert into student (name,sex) values (?,?)", new Object[]{name,sex});
+            ContentValues values =new ContentValues();
+            String s = JSONArray.toJSONString(msg);
+            values.put("name", name);
+            values.put("msg", s);
+            result = db.insert(tableName, null, values); //组拼sql语句实 现的.带返回值
+            db.close();//释放资源
+        }else{
+            //说明以前有就直接更新了
+        }
+
+        return result;
+    }
 
     /**
      * 删除一个学生
@@ -120,12 +121,7 @@ public class MyDbDAO<T> {
         //结果集 游标
         //Cursor cursor = db.rawQuery("select sex from student where name=?", new String[]{name});
         String names = "";
-//        if (null==name){
-//            names =t.getClass().getSimpleName();
-//            LogUtils.i("类名是"+names);
-//        }else{
             names =name;
-//        }
         Cursor cursor = db.query(tableName, new String[]{"msg"}, "name=?", new String[]{names}, null, null, null);
         boolean result = cursor.moveToNext();
         if(result){
@@ -167,7 +163,10 @@ public class MyDbDAO<T> {
         db.close();
         back.getAllDataSuccess(arrayList);
     }
-
+    public void rmoveAll(String table){
+        SQLiteDatabase  db = mJson.getWritableDatabase();
+        db.delete(table,null,null);
+    }
 
 
 }

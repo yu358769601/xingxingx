@@ -56,21 +56,6 @@ public class GetInfo_Request {
             }
    });
 
-//new MyDbDAO(context,JsonAll.class).findAll(Table.MyJson,new dbCallBackHelper<JsonAll>(){
-//    /**
-//     * 获取所有的信息成功
-//     *
-//     * @param arrayList
-//     */
-//    @Override
-//    public void getAllDataSuccess(ArrayList<JsonAll> arrayList) {
-//
-//        LogUtils.i("数据库所有文件"+arrayList.toString());
-//    }
-//});
-
-
-
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         hashtable.put("action", "getInfo");
         hashtable.put("loan_id", Share.getToken(context));
@@ -82,7 +67,7 @@ public class GetInfo_Request {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"获取借贷人信息"+"正常内容"+jsonObject);
                                 GetInfo data = jsonObject.getObject("data", GetInfo.class);
-                                new MyDbDAO(context, GetInfo.class).add(Table.MyJson,"GetInfo",data);
+                                new MyDbDAO(context, GetInfo.class).add_or_upData(Table.MyJson,"GetInfo",data);
                                 LogUtils.i("访问网络_访问网络之后"+data);
                                 netWorkCallBack.onSucceed(data,NetWorkCallBack.NETDATA);
                             }

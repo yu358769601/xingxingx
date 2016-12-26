@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xinxinxuedai.ui.TestActivity">
+    <RelativeLayout
+        android:id="@+id/activity_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/test_getdata"
+            android:text="获取所有消息"
+            android:padding="@dimen/size_base480_10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/test_romev_data"
+            android:text="删除所有的消息"
+            android:layout_below="@+id/test_getdata"
+            android:padding="@dimen/size_base480_10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/test_data"
+            android:layout_below="@+id/test_romev_data"
+            android:textColor="@color/white"
+            android:text="所有消息将会在这里显示"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</ScrollView>

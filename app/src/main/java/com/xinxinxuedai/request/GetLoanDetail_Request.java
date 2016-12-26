@@ -10,6 +10,9 @@ import com.xinxinxuedai.UtilsNet.NetAesCallBack;
 import com.xinxinxuedai.UtilsNet.NetMessage;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.bean.GetLoanDetail;
+import com.xinxinxuedai.db.DAO.MyDbDAO;
+import com.xinxinxuedai.db.DAO.dbCallBackHelper;
+import com.xinxinxuedai.db.Table;
 import com.xinxinxuedai.util.Constants;
 
 import java.net.HttpURLConnection;
@@ -31,8 +34,22 @@ public class GetLoanDetail_Request {
 
 
     public static HttpURLConnection request(final Context context, final NetWorkCallBack<GetLoanDetail> netWorkCallBack) {
-        if (null!=sData)
-        netWorkCallBack.onSucceed(sData,NetWorkCallBack.CACHEDATA);
+        if (null!=sData){
+            new MyDbDAO(context, GetLoanDetail.class).find(Table.MyJson,"GetLoanDetail",new dbCallBackHelper<GetLoanDetail>(){
+                /**
+                 * 获取数据库信息成功
+                 *
+                 * @param getLoanDetail
+                 */
+                @Override
+                public void getDataSuccess(GetLoanDetail getLoanDetail) {
+                    netWorkCallBack.onSucceed(getLoanDetail,NetWorkCallBack.CACHEDATA);
+                }
+            });
+
+
+            netWorkCallBack.onSucceed(sData,NetWorkCallBack.CACHEDATA);
+        }
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         //入口
         hashtable.put("action", "getLoanDetail");
@@ -47,6 +64,7 @@ public class GetLoanDetail_Request {
                             if (null != jsonObject) {
                                 LogUtils.i("网络请求_"+"获取借款详情+零用金回显"+"正常内容"+jsonObject);
                                 sData = jsonObject.getObject("data", GetLoanDetail.class);
+                                new MyDbDAO(context,GetLoanDetail.class).add_or_upData(Table.MyJson,sData.getClass().getSimpleName(),sData);
                                 Share.saveInt(context, "status",sData.loan_status);
                                 netWorkCallBack.onSucceed(sData,NetWorkCallBack.NETDATA);
                             }
