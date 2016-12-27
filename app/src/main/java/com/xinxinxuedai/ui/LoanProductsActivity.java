@@ -88,7 +88,7 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
     }
     @Override
     public void initP() {
-        mLoanProductsActivity_p = LoanProductsActivity_P.getLoanProductsActivity_P(this);
+        mLoanProductsActivity_p =new  LoanProductsActivity_P(this);
         mLoanProductsActivity_p.setCallBack(this);
 
     }

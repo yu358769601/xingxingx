@@ -65,7 +65,7 @@ public class SelectCityActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void initP() {
-        mSelectCityActivity_p = SelectCityActivity_P.getSelectCityActivity_p(AppContext.getApplication());
+        mSelectCityActivity_p =new  SelectCityActivity_P(AppContext.getApplication());
         mSelectCityActivity_p.setCallBack(this);
     }
 

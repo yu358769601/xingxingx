@@ -5,138 +5,199 @@
     android:id="@+id/relativeLayout_title"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home"
 
     tools:context="com.xinxinxuedai.ui.RegisterActivity">
     <!--注册xml-->
-    <ImageView
-        android:id="@+id/register_iv"
-        android:layout_below="@+id/relativeLayout_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/size_base480_20dp"
-        android:padding="@dimen/size_base480_20dp"
-        android:background="@mipmap/ic_launcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
     <RelativeLayout
-        android:layout_below="@+id/register_iv"
-        android:padding="@dimen/size_base480_20dp"
+        android:layout_below="@+id/relativeLayout_title"
+        android:background="@drawable/login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:id="@+id/register_ll"
-            android:orientation="horizontal"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/register_iv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_base480_60dp"
+            android:padding="@dimen/size_base480_20dp"
+            android:visibility="invisible"
+            android:background="@mipmap/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:layout_below="@+id/register_iv"
+            android:padding="@dimen/size_base480_20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/register_ll"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/register_et_phonenum"
+                    android:layout_width="0dp"
+                    style="@style/edit_style"
+                    android:hint="手机号"
+                    android:maxLength="11"
+                    android:inputType="number"
+                    android:layout_height="@dimen/size_base480_40dp"
+                    android:layout_weight="3"
+                    android:gravity="center|left"
+                    android:drawablePadding="@dimen/size_base480_10dp"
+                    android:drawableLeft="@drawable/phone"
+                    />
+
+                <TextView
+                    android:id="@+id/register_cunttime"
+                    android:layout_below="@+id/relativeLayout_title"
+                    android:background="@drawable/an_long"
+                    android:text="验证码"
+
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:padding="@dimen/size_base480_10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.4"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:orientation="horizontal"
+                android:layout_below="@+id/register_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:id="@+id/view_1"
+
+                    android:layout_width="@dimen/size_base480_40dp"
+                    android:layout_height="0.5dp"
+                    ></View>
+                <View
+                    android:id="@+id/view_1_1"
+
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"
+                    ></View>
+            </LinearLayout>
+
 
             <EditText
-                android:id="@+id/register_et_phonenum"
-                android:layout_width="0dp"
+                android:id="@+id/register_et_cunttime"
+                android:layout_below="@+id/ll1"
                 style="@style/edit_style"
-                android:hint="手机号"
-                android:layout_height="@dimen/size_base480_40dp"
-                android:layout_weight="3"
+                android:hint="验证码"
+                android:maxLength="6"
+                android:inputType="number"
                 android:gravity="center|left"
                 android:drawablePadding="@dimen/size_base480_10dp"
                 android:drawableLeft="@drawable/phone"
+                android:layout_height="@dimen/size_base480_50dp"
+                android:layout_width="match_parent"
                 />
+            <LinearLayout
+                android:id="@+id/ll2"
+                android:orientation="horizontal"
+                android:layout_below="@+id/register_et_cunttime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:id="@+id/view_2"
+
+                    android:layout_width="@dimen/size_base480_40dp"
+                    android:layout_height="0.5dp"
+                    ></View>
+                <View
+                    android:id="@+id/view_2_1"
+
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"
+                    ></View>
+            </LinearLayout>
+
 
             <TextView
-                android:id="@+id/register_cunttime"
-                android:layout_below="@+id/relativeLayout_title"
-                android:background="@drawable/an_long"
-                android:text="验证码"
-                android:textColor="@color/white"
+                android:id="@+id/register_ok_"
+                android:text="确认注册"
+                android:layout_marginTop="@dimen/size_base480_10dp"
+                android:layout_below="@+id/register_et_passwrold_ok"
+                android:padding="@dimen/size_base480_15dp"
                 android:gravity="center"
-                android:padding="@dimen/size_base480_20dp"
-                android:layout_width="0dp"
-                android:layout_weight="2"
+                android:textColor="@color/white"
+                android:background="@drawable/an_long"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <View
-            android:id="@+id/view_1"
-            android:layout_below="@+id/register_ll"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/white"
-            ></View>
-        <EditText
-            android:id="@+id/register_et_cunttime"
-            android:layout_below="@+id/view_1"
-            style="@style/edit_style"
-            android:hint="验证码"
-            android:gravity="center|left"
-            android:drawablePadding="@dimen/size_base480_10dp"
-            android:drawableLeft="@drawable/phone"
-            android:layout_height="@dimen/size_base480_50dp"
-            android:layout_width="match_parent"
-            />
-        <View
-            android:id="@+id/view_2"
-            android:layout_below="@+id/register_et_cunttime"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/white"
-            ></View>
 
-        <View
-            android:id="@+id/view_3"
-            android:layout_below="@+id/register_et_passwrold"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/white"
-            ></View>
+            <EditText
+                android:id="@+id/register_et_passwrold_ok"
+                style="@style/edit_style"
+                android:hint="确认密码"
+                android:maxLength="11"
+                android:inputType="textPassword"
+                android:gravity="center|left"
+                android:layout_height="@dimen/size_base480_50dp"
+                android:drawablePadding="@dimen/size_base480_13dp"
+                android:drawableLeft="@drawable/lock"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/register_et_passwrold"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        <!--    android:digis="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
+            <EditText
+                android:id="@+id/register_et_passwrold"
+                style="@style/edit_style"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:maxLength="11"
+                android:gravity="center|left"
+                android:layout_height="@dimen/size_base480_50dp"
+                android:drawablePadding="@dimen/size_base480_13dp"
+                android:drawableLeft="@drawable/lock"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/register_et_cunttime"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+            <LinearLayout
+                android:id="@+id/ll3"
+                android:orientation="horizontal"
+                android:layout_below="@+id/register_et_passwrold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:id="@+id/view_3"
 
-        <TextView
-            android:id="@+id/register_ok_"
-            android:text="确认注册"
-            android:layout_marginTop="@dimen/size_base480_10dp"
-            android:layout_below="@+id/register_et_passwrold_ok"
-            android:padding="@dimen/size_base480_20dp"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:background="@drawable/an_long"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                    android:layout_width="@dimen/size_base480_40dp"
+                    android:layout_height="0.5dp"
+                    ></View>
+                <View
+                    android:id="@+id/view_3_1"
 
-        <TextView
-            android:id="@+id/register_ok_again"
-            android:text="确认重置"
-            android:padding="@dimen/size_base480_20dp"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:textColor="@color/white"
-            android:background="@drawable/an_long"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="0.5dp"
+                    android:background="@color/white"
+                    ></View>
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/register_et_passwrold_ok"
-            style="@style/edit_style"
-            android:hint="确认密码"
-            android:gravity="center|left"
-            android:layout_height="@dimen/size_base480_50dp"
-            android:drawablePadding="@dimen/size_base480_13dp"
-            android:drawableLeft="@drawable/lock"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/register_et_passwrold"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/register_ok_again"
+                android:text="确认重置"
+                android:padding="@dimen/size_base480_15dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="@drawable/an_long"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        </RelativeLayout>
 
-        <EditText
-            android:id="@+id/register_et_passwrold"
-            style="@style/edit_style"
-            android:hint="密码"
-            android:gravity="center|left"
-            android:layout_height="@dimen/size_base480_50dp"
-            android:drawablePadding="@dimen/size_base480_13dp"
-            android:drawableLeft="@drawable/lock"
-            android:layout_width="match_parent"
-
-            android:layout_below="@+id/register_et_cunttime"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
     </RelativeLayout>
 
 

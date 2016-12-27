@@ -22,7 +22,6 @@ import java.util.List;
  */
 
 public class OrganizingDataActivity_P extends BaseMvp<OrganizingDataActivity_C> implements OrganizingDataActivity_M{
-static OrganizingDataActivity_P mOrganizingDataActivity_p;
     Context context;
     public OrganizingDataActivity_P(Context context) {
         this.context = context;
@@ -31,12 +30,6 @@ static OrganizingDataActivity_P mOrganizingDataActivity_p;
     @Override
     public void setCallBack(OrganizingDataActivity_C organizingDataActivity_c) {
 
-    }
-    public static OrganizingDataActivity_P getmOrganizingDataActivity_p(Context context){
-        if (null == mOrganizingDataActivity_p){
-            return mOrganizingDataActivity_p = new OrganizingDataActivity_P(context);
-        }
-        return mOrganizingDataActivity_p;
     }
 
 

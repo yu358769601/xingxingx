@@ -17,18 +17,10 @@ import com.xinxinxuedai.request.NetWorkCallBack;
  */
 
 public class ApplicationStatusActivity_P extends BaseMvp<ApplicationStatusActivity_C> implements ApplicationStatusActivity_M{
-    static ApplicationStatusActivity_P mApplicationStatusActivity_p;
 
     static Context context;
     public ApplicationStatusActivity_P(Context context){
         this.context = context;
-    }
-    public static ApplicationStatusActivity_P get(Context context){
-        if (null == mApplicationStatusActivity_p){
-            return mApplicationStatusActivity_p = new ApplicationStatusActivity_P(context);
-        }
-
-        return mApplicationStatusActivity_p;
     }
 
     ApplicationStatusActivity_C applicationStatusActivity_c;

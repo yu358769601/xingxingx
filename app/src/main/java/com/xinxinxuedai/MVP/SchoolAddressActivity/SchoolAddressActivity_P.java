@@ -28,17 +28,11 @@ import java.util.Hashtable;
  */
 
 public class SchoolAddressActivity_P extends BaseMvp<SchoolAddressActivity_C> implements SchoolAddressActivity_M{
-    static SchoolAddressActivity_P sSchoolAddressActivity_p;
     Context context;
     public SchoolAddressActivity_P(Context context) {
         this.context = context;
     }
 
-    public static SchoolAddressActivity_P getP(Context context){
-        if (sSchoolAddressActivity_p==null)
-            sSchoolAddressActivity_p = new SchoolAddressActivity_P(context);
-        return sSchoolAddressActivity_p;
-    }
 
     SchoolAddressActivity_C schoolAddressActivity_c;
     @Override
@@ -54,7 +48,7 @@ public class SchoolAddressActivity_P extends BaseMvp<SchoolAddressActivity_C> im
             @Override
             public void onSucceed() {
                 //访问网络
-                UtilsToast.showToast(context, "访问网络中~");
+               // UtilsToast.showToast(context, "访问网络中~");
                 Hashtable<String, String> hashtable =
                         UtilsHashtable.getHashtable();
 

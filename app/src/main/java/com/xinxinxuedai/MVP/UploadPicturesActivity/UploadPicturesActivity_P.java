@@ -7,8 +7,6 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
-import com.xinxinxuedai.Utils.UtilsToast;
-import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.request.GetInfo_Request;
@@ -25,19 +23,10 @@ import com.xinxinxuedai.ui.ChoiceActivity;
  */
 
 public class UploadPicturesActivity_P extends BaseMvp<UploadPicturesActivity_C> implements UploadPicturesActivity_M {
-    static UploadPicturesActivity_P mUploadPicturesActivity_p;
     Context context;
 
     public UploadPicturesActivity_P(Context context){
         this.context = context;
-    }
-    public static UploadPicturesActivity_P getmRegisterActivity_p(Context context){
-        if (null== mUploadPicturesActivity_p){
-            return mUploadPicturesActivity_p = new UploadPicturesActivity_P(context);
-        }
-
-            return mUploadPicturesActivity_p;
-
     }
     UploadPicturesActivity_C uploadPicturesActivity_c;
     @Override
@@ -60,19 +49,19 @@ public class UploadPicturesActivity_P extends BaseMvp<UploadPicturesActivity_C> 
         int tag = (int) view.getTag();
         switch (tag){
             case 1:
-            UtilsToast.showToast(AppContext.getApplication(), "点了上传身份证正面");
+          //  UtilsToast.showToast(AppContext.getApplication(), "点了上传身份证正面");
                 bundle.putInt("classTag",1);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             break;
             case 2:
-            UtilsToast.showToast(AppContext.getApplication(), "点了上传身份证背面");
+          //  UtilsToast.showToast(AppContext.getApplication(), "点了上传身份证背面");
                 bundle.putInt("classTag",2);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
                 break;
             case 3:
-            UtilsToast.showToast(AppContext.getApplication(), "点了手持身份证");
+         //   UtilsToast.showToast(AppContext.getApplication(), "点了手持身份证");
                 bundle.putInt("classTag",3);
                 intent.putExtras(bundle);
                 context.startActivity(intent);

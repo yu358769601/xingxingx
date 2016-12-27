@@ -129,7 +129,7 @@ public class TopUpActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void initP() {
-        mTopUpActivity_p = TopUpActivity_P.getTopUpActivity_p(AppContext.getApplication());
+        mTopUpActivity_p =new TopUpActivity_P(AppContext.getApplication());
         mTopUpActivity_p.setCallBack(this);
         mTopUpActivity_p.serActivity(this);
     }

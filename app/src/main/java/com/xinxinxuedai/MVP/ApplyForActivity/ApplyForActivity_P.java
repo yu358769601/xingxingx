@@ -31,7 +31,6 @@ import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
  */
 
 public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> implements ApplyForActivity_method{
-    static ApplyForActivity_P mApplyForActivity_p;
     ApplyForActivity_callback applyForActivity_callback;
 
     static Context context;
@@ -39,13 +38,6 @@ public class ApplyForActivity_P extends BaseMvp<ApplyForActivity_callback> imple
 
     public ApplyForActivity_P(Context context){
         this.context = context;
-    }
-    public static ApplyForActivity_P getApplyForActivity_P(Context context){
-        if (null == mApplyForActivity_p){
-            return mApplyForActivity_p = new ApplyForActivity_P(context);
-        }
-
-        return mApplyForActivity_p;
     }
     @Override
     public void setCallBack(ApplyForActivity_callback applyForActivity_callback) {

@@ -31,18 +31,11 @@ import java.util.Hashtable;
 public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> implements BankCardInfoActivity_M{
 
     Context context;
-    static BankCardInfoActivity_P mBankCardInfoActivity_p;
 
     public BankCardInfoActivity_P(Context context) {
         this.context = context;
     }
 
-    public  static BankCardInfoActivity_P getmBankCardInfoActivity_p(Context context){
-        if (null ==mBankCardInfoActivity_p){
-            return mBankCardInfoActivity_p = new BankCardInfoActivity_P(context);
-        }
-        return mBankCardInfoActivity_p;
-    }
     BankCardInfoActivity_C bankCardInfoActivity_c;
 
     @Override
@@ -62,7 +55,7 @@ public class BankCardInfoActivity_P extends BaseMvp<BankCardInfoActivity_C> impl
             @Override
             public void onSucceed() {
                 //访问网络
-                UtilsToast.showToast(context, "网络请求中~");
+              //  UtilsToast.showToast(context, "网络请求中~");
                   call_setInfo3_Request(editTexts);
             }
 

@@ -15,6 +15,7 @@ import com.xinxinxuedai.MVP.PersonalDetailsActivity.PersonalDetailsActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.view.initAction_Bar;
@@ -121,7 +122,7 @@ public class PersonalDetailsActivity extends BaseActivity implements PersonalDet
 
     @Override
     public void initP() {
-        mPersonalDetailsActivity_p = PersonalDetailsActivity_P.getmPersonalDetailsActivity_p(this);
+        mPersonalDetailsActivity_p =new PersonalDetailsActivity_P(AppContext.getApplication());
         mPersonalDetailsActivity_p.setCallBack(this);
     }
 

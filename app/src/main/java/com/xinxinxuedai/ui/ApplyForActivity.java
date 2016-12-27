@@ -134,7 +134,7 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
                 .setTextSmallColor(getResources().getColor(R.color.home_tv1))
                 .setTopDrawable(R.drawable.home_tv01)
                 .setText("个人信息")
-                .setTextSmall("a")
+                .setTextSmall("")
         ;
 
         mTv2.setCallBack(new button_CallBack() {
@@ -150,7 +150,7 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
                 .setTextSmallColor(getResources().getColor(R.color.home_tv2))
                 .setTopDrawable(R.drawable.home_tv02)
                 .setText("家庭住址")
-                .setTextSmall("b")
+                .setTextSmall("")
         ;
 
         mTv3.setCallBack(new button_CallBack() {
@@ -166,7 +166,7 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
                 .setTextSmallColor(getResources().getColor(R.color.home_tv3))
                 .setTopDrawable(R.drawable.home_tv03)
                 .setText("银行卡信息")
-                .setTextSmall("c")
+                .setTextSmall("")
         ;
 
         mTv4.setCallBack(new button_CallBack() {
@@ -182,7 +182,7 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
                 .setTextSmallColor(getResources().getColor(R.color.home_tv4))
                 .setTopDrawable(R.drawable.home_tv04)
                 .setText("完善资料")
-                .setTextSmall("d")
+                .setTextSmall("")
         ;
 
 
@@ -200,7 +200,7 @@ public class ApplyForActivity extends BaseActivity implements ApplyForActivity_c
 
     @Override
     public void initP() {
-        mApplyForActivity_p = ApplyForActivity_P.getApplyForActivity_P(this);
+        mApplyForActivity_p =new  ApplyForActivity_P(this);
         mApplyForActivity_p.setCallBack(this);
     }
 

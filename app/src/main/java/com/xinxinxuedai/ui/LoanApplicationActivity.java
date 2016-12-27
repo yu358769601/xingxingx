@@ -113,7 +113,7 @@ public class LoanApplicationActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void initP() {
-        mLoanApplicationActivity_p = LoanApplicationActivity_P.getLoanApplicationActivity_P(this);
+        mLoanApplicationActivity_p = new LoanApplicationActivity_P(this);
         mLoanApplicationActivity_p.setCallBack(this);
         mLoanApplicationActivity_p.setClassTag(mClassTag);
 

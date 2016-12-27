@@ -102,7 +102,7 @@ public class LoginActivity_P extends BaseMvp<LoginActivity_C> implements LoginAc
         //手机号码是否够11位
         if (editText1.length()==11){
             //密码是否大于最小位数8
-            if (editText2.length()>=8){
+            if (editText2.length()>=6){
                 // UserRegist_Request
                 //发送登陆的请求
                 UtilsToast.showToast(context, "登陆中~");
@@ -110,7 +110,7 @@ public class LoginActivity_P extends BaseMvp<LoginActivity_C> implements LoginAc
                 call_Login(editText1, editText2);
 
             }else{
-                UtilsToast.showToast(context, "密码长度小于8位");
+                UtilsToast.showToast(context, "密码长度小于6位");
                 return;
             }
 

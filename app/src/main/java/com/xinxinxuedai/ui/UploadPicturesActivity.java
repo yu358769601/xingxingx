@@ -199,7 +199,7 @@ public class UploadPicturesActivity extends BaseActivity implements View.OnClick
 
     @Override
     public void initP() {
-        mUploadPicturesActivity_p = UploadPicturesActivity_P.getmRegisterActivity_p(AppContext.getApplication());
+        mUploadPicturesActivity_p =new  UploadPicturesActivity_P(AppContext.getApplication());
         mUploadPicturesActivity_p.setCallBack(this);
         mUploadPicturesActivity_p.getCallBackData();
     }

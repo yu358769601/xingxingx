@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.text.method.DigitsKeyListener;
+import android.text.method.NumberKeyListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +20,10 @@ import com.xinxinxuedai.MVP.RegisterActivity.countTime.Register_countTime_P;
 import com.xinxinxuedai.MVP.RegisterActivity.countTime.Register_countTime_P_CallBack;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.Utils.UtilsMyText;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
@@ -73,6 +79,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         IntentFilter filter = new IntentFilter("countTime");
         mReceiver1 = new InnerReceiver1();
         registerReceiver(mReceiver1, filter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (Share.checkLogin(AppContext.getApplication())){
+            closeActivity();
+        }
     }
 
     /**
@@ -175,8 +189,42 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mRegister_ok_again.setOnClickListener(this);
         //密码
         mRegister_et_passwrold = (EditText) findViewById(R.id.register_et_passwrold);
+        // 方法1:建立一个DigitsKeyListener,然后把它设为你的EditText的KeyListener
+        DigitsKeyListener numericOnlyListener = new DigitsKeyListener(false,true);
+        mRegister_et_passwrold.setKeyListener(numericOnlyListener);
+// 方法2:为EditText设置一个NumberKeyListener,然后重写getAcceptedChars()方法和getInputType()方法
+        mRegister_et_passwrold.setKeyListener(new NumberKeyListener() {
+            @Override
+            protected char[] getAcceptedChars() {
+
+                return UtilsMyText.getChar();
+            }
+            @Override
+            public int getInputType() {
+                // TODO Auto-generated method stub
+                return InputType.TYPE_TEXT_VARIATION_PASSWORD;
+            }
+        });
+
+
         //确定密码
         mRegister_et_passwrold_ok = (EditText) findViewById(R.id.register_et_passwrold_ok);
+
+        DigitsKeyListener numericOnlyListener1 = new DigitsKeyListener(false,true);
+        mRegister_et_passwrold_ok.setKeyListener(numericOnlyListener1);
+// 方法2:为EditText设置一个NumberKeyListener,然后重写getAcceptedChars()方法和getInputType()方法
+        mRegister_et_passwrold_ok.setKeyListener(new NumberKeyListener() {
+            @Override
+            protected char[] getAcceptedChars() {
+
+                return UtilsMyText.getChar();
+            }
+            @Override
+            public int getInputType() {
+                // TODO Auto-generated method stub
+                return InputType.TYPE_TEXT_VARIATION_PASSWORD;
+            }
+        });
 
         //手机号码
         register_et_phonenum = (EditText) findViewById(R.id.register_et_phonenum);
@@ -192,7 +240,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void initP() {
-        mRegisterActivity_p = RegisterActivity_P.getLoginActivity_P(this);
+        mRegisterActivity_p =new RegisterActivity_P(AppContext.getApplication());
         Register_countTime_P login_countTime_p = Register_countTime_P.getLogin_countTime_P(this);
         mRegisterActivity_p.setStuaus(mClasstag);
         mRegisterActivity_p.setCallBack(this);

@@ -48,7 +48,6 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
  */
 
 public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> implements ReimbursementActivity_M{
-    static ReimbursementActivity_P mReimbursementActivity_p;
     Context context;
     private MyListView_04_more mMyListView_04_more;
     MyListView reimbursement_lv;
@@ -58,13 +57,6 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         this.context = context;
     }
 
-    public static ReimbursementActivity_P getReimbursementActivity_p(Context context){
-        if (mReimbursementActivity_p==null){
-            return mReimbursementActivity_p = new ReimbursementActivity_P(context);
-        }
-
-        return mReimbursementActivity_p;
-    }
 
     ReimbursementActivity_C reimbursementActivity_c;
     @Override
@@ -215,7 +207,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
                         break;
                     case 3:
                         UtilsToast.showToast(AppContext.getApplication(), "充值");
-                        mReimbursementActivity_p.topUp();
+                        topUp();
                         break;
                     case 4:
 

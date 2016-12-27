@@ -92,7 +92,7 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void initP() {
-        mReimbursementActivity_p = ReimbursementActivity_P.getReimbursementActivity_p(AppContext.getApplication());
+        mReimbursementActivity_p =new  ReimbursementActivity_P(AppContext.getApplication());
         mReimbursementActivity_p.setCallBack(this);
 
     }

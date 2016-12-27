@@ -29,19 +29,11 @@ import java.util.List;
 public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C> implements PersonalDetailsActivity_M{
 
 
-    static  PersonalDetailsActivity_P mPersonalDetailsActivity_p;
     Context context;
     public PersonalDetailsActivity_P(Context context) {
         this.context = context;
     }
 
-    public static PersonalDetailsActivity_P getmPersonalDetailsActivity_p(Context context){
-        if(null==mPersonalDetailsActivity_p){
-            return mPersonalDetailsActivity_p = new PersonalDetailsActivity_P(context);
-        }else{
-            return mPersonalDetailsActivity_p;
-        }
-    }
     PersonalDetailsActivity_C personalDetailsActivity_c;
 
     @Override
@@ -159,7 +151,7 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
     }
 
     private void call_setInfo1_Request(List<EditText> editTexts, int select) {
-        UtilsToast.showToast(context, "网络请求中~");
+       // UtilsToast.showToast(context, "网络请求中~");
 
         Hashtable<String, String> hashtable =
                 UtilsHashtable.getHashtable();

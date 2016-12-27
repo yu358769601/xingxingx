@@ -31,7 +31,6 @@ import java.util.List;
  */
 
 public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpActivity_M{
-    static TopUpActivity_P sTopUpActivity_p;
 
     Context context;
     TopUpActivity activity;
@@ -41,12 +40,6 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
         this.context = context;
     }
 
-    public static TopUpActivity_P getTopUpActivity_p(Context context){
-        if (null ==sTopUpActivity_p){
-            return sTopUpActivity_p = new TopUpActivity_P(context);
-        }
-        return sTopUpActivity_p;
-    }
 
     TopUpActivity_C topUpActivity_c;
     @Override
@@ -90,7 +83,7 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
 
         }
         //不为空就 访问网络
-        UtilsToast.showToast(context, "网络请求中~");
+       // UtilsToast.showToast(context, "网络请求中~");
         //把网络获取到的参数返回给 activity
 //        Hashtable<String, String> hashtable =
 //                UtilsHashtable.getHashtable();

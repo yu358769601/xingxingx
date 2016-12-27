@@ -2,6 +2,9 @@ package com.xinxinxuedai.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.method.DigitsKeyListener;
+import android.text.method.NumberKeyListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +17,7 @@ import com.xinxinxuedai.MVP.LoginActivity.LoginActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.UtilsMyText;
 import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
@@ -72,6 +76,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         login_et_phone_num = (EditText) findViewById(R.id.login_et_phone_num);
         view_1 = (View) findViewById(R.id.view_1);
         login_et_passworld = (EditText) findViewById(R.id.login_et_passworld);
+        DigitsKeyListener numericOnlyListener1 = new DigitsKeyListener(false,true);
+        login_et_passworld.setKeyListener(numericOnlyListener1);
+// 方法2:为EditText设置一个NumberKeyListener,然后重写getAcceptedChars()方法和getInputType()方法
+        login_et_passworld.setKeyListener(new NumberKeyListener() {
+            @Override
+            protected char[] getAcceptedChars() {
+
+                return UtilsMyText.getChar();
+            }
+            @Override
+            public int getInputType() {
+                // TODO Auto-generated method stub
+                return InputType.TYPE_TEXT_VARIATION_PASSWORD;
+            }
+        });
+
+
         //登陆按钮
         login_tv_login = (TextView) findViewById(R.id.login_tv_login);
         login_tv_login.setOnClickListener(this);
@@ -134,7 +155,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 break;
         }
     }
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (Share.checkLogin(AppContext.getApplication())){
+            closeActivity();
+        }
+    }
     /**
      * 在控制器里面点了什么按钮
      *
@@ -160,7 +187,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 bundle.putInt("classtag",RegisterActivity.AGAINCLASS);
                 intent.putExtras(bundle);
                 startActivity(intent);
-                closeActivity();
+                //closeActivity();
                 break;
         }
     }

@@ -64,18 +64,11 @@ public class SelectCityActivity_P extends BaseMvp<SelectCityActivity_C> implemen
 
 
 
-    static  SelectCityActivity_P sSelectCityActivity_p;
     Context context;
     public SelectCityActivity_P(Context context) {
         this.context = context;
     }
 
-    public static SelectCityActivity_P getSelectCityActivity_p(Context context){
-        if (sSelectCityActivity_p == null){
-            return sSelectCityActivity_p = new SelectCityActivity_P(context);
-        }
-        return sSelectCityActivity_p;
-    }
 
     SelectCityActivity_C selectCityActivity_c;
     @Override

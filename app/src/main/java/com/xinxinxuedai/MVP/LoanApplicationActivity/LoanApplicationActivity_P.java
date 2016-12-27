@@ -32,7 +32,6 @@ import java.util.List;
 
 public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_CallBack> implements  LoanApplicationActivity_method{
     LoanApplicationActivity_CallBack loanApplicationActivity_callBack;
-    static LoanApplicationActivity_P sLoanApplicationActivity_p;
     Context context;
     //点了什么进来的
     int classTag;
@@ -46,13 +45,6 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
         this.loanApplicationActivity_callBack = loanApplicationActivity_callBack;
     }
 
-    public static LoanApplicationActivity_P getLoanApplicationActivity_P(Context context){
-       if (null == sLoanApplicationActivity_p){
-           return sLoanApplicationActivity_p = new LoanApplicationActivity_P(context);
-       }else{
-           return sLoanApplicationActivity_p;
-       }
-    }
 
 
     @Override
@@ -145,7 +137,7 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
     }
 
     private void call_setLoanInfo_Request(List<TextView> textViews, EditText editText) {
-        UtilsToast.showToast(context, "提交中~");
+       // UtilsToast.showToast(context, "提交中~");
 
         final Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         //入口

@@ -14,6 +14,7 @@ import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogCallBack;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogSelect;
+import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
@@ -81,7 +82,7 @@ public class OrganizingDataActivity extends BaseActivity implements View.OnClick
 
     @Override
     public void initP() {
-        mOrganizingDataActivity_p = OrganizingDataActivity_P.getmOrganizingDataActivity_p(this);
+        mOrganizingDataActivity_p =new OrganizingDataActivity_P(AppContext.getApplication());
         mOrganizingDataActivity_p.setCallBack(this);
     }
 

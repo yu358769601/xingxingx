@@ -38,7 +38,6 @@ import java.util.List;
  */
 
 public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements RegisterActivity_M {
-    static RegisterActivity_P mRegisterActivity_p;
     Context context;
     private Register_countTime_P mRegister_countTime_p;
     private String mFindSms_code;
@@ -50,15 +49,6 @@ public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements Re
     }
     int classTag;
 
-    public static RegisterActivity_P getLoginActivity_P(Context context){
-        if (null== mRegisterActivity_p){
-            return mRegisterActivity_p = new RegisterActivity_P(context);
-        }else{
-
-            return mRegisterActivity_p;
-        }
-
-    }
 
 
     private void initcountTime_P() {
@@ -210,11 +200,12 @@ public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements Re
         //手机号码是否够11位
         if (editText1.length()==11){
             //密码是否大于最小位数8
-            if (editText3.length()>=8&&s3.equals(s4)){
+            if (editText3.length()>=6&&s3.equals(s4)){
                 // UserRegist_Request
                 //发送注册的请求
                 if (classtag ==RegisterActivity.REGISTERCLASS){
-                    if (!mSendSMS_code.equals(s2)){
+
+                    if (null==mSendSMS_code||!mSendSMS_code.equals(s2)){
                         UtilsToast.showToast(context, "验证码不正确");
                         return;
                     }
@@ -223,7 +214,7 @@ public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements Re
                     call_Userlogin(editText1, editText3);
 
                 }else if (classtag ==RegisterActivity.AGAINCLASS){
-                    if (!mFindSms_code.equals(s2)){
+                    if (null==mFindSms_code||!mFindSms_code.equals(s2)){
                         UtilsToast.showToast(context, "验证码不正确");
                         return;
                     }
@@ -235,8 +226,8 @@ public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements Re
             }else if (!s3.equals(s4)){
                 UtilsToast.showToast(context, "两次密码不一致");
                 return;
-            }else if (editText3.length()<8){
-                UtilsToast.showToast(context, "密码长度小于8位");
+            }else if (editText3.length()<6){
+                UtilsToast.showToast(context, "密码长度小于6位");
                 return;
             }
 
@@ -264,6 +255,7 @@ public class RegisterActivity_P extends BaseMvp<RegisterActivity_C>implements Re
             public void onSucceed(FindLoginPassWord userRegist,int dataMode) {
                 UtilsToast.showToast(context, userRegist.message);
                 registerActivity_c.closeActivity();
+
             }
 
             @Override

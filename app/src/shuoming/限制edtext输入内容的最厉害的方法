@@ -1,0 +1,18 @@
+//确定密码
+        mRegister_et_passwrold_ok = (EditText) findViewById(R.id.register_et_passwrold_ok);
+
+        DigitsKeyListener numericOnlyListener1 = new DigitsKeyListener(false,true);
+        mRegister_et_passwrold_ok.setKeyListener(numericOnlyListener1);
+// 方法2:为EditText设置一个NumberKeyListener,然后重写getAcceptedChars()方法和getInputType()方法
+        mRegister_et_passwrold_ok.setKeyListener(new NumberKeyListener() {
+            @Override
+            protected char[] getAcceptedChars() {
+
+                return UtilsMyText.getChar();
+            }
+            @Override
+            public int getInputType() {
+                // TODO Auto-generated method stub
+                return InputType.TYPE_TEXT_VARIATION_PASSWORD;
+            }
+        });

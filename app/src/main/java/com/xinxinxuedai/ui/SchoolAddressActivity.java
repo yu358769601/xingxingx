@@ -20,6 +20,7 @@ import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogCallBack;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogSelect;
 import com.xinxinxuedai.Utils.UtilsLoop.UtilsLoopTextView;
+import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.view.initAction_Bar;
@@ -198,7 +199,7 @@ public class SchoolAddressActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void initP() {
-        mP = SchoolAddressActivity_P.getP(this);
+        mP =new  SchoolAddressActivity_P(AppContext.getApplication());
         mP.setCallBack(this);
     }
 

@@ -85,7 +85,7 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
 
     @Override
     public void initP() {
-        mBankCardInfoActivity_p = BankCardInfoActivity_P.getmBankCardInfoActivity_p(this);
+        mBankCardInfoActivity_p =new  BankCardInfoActivity_P(this);
         mBankCardInfoActivity_p.setCallBack(this);
     }
 

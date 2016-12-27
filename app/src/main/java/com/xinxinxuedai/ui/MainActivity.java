@@ -77,9 +77,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mTv3 = (XueDaiButton) findViewById(R.id.tv3);
         mTv4 = (XueDaiButton) findViewById(R.id.tv4);
 
-
+        //看数据库的(测试)
         TextView test = (TextView) findViewById(R.id.tv_test);
         test.setOnClickListener(this);
+        //签到
+        TextView tv_qiandao = (TextView) findViewById(R.id.tv_qiandao);
+        tv_qiandao.setOnClickListener(this);
+        //服务和借款
+        TextView fuwu = (TextView) findViewById(R.id.fuwu);
+        fuwu.setOnClickListener(this);
+
 
         mMain_iv = (ImageView) findViewById(R.id.main_iv);
         mMain_iv.setOnClickListener(this);
@@ -130,7 +137,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 .setTextSmallColor(getResources().getColor(R.color.home_tv1))
                 .setTopDrawable(R.drawable.home_tv01)
                 .setText("我要借款")
-                .setTextSmall("a")
+                .setTextSmall("Loan")
         ;
 
         mTv2.setCallBack(new button_CallBack() {
@@ -146,7 +153,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 .setTextSmallColor(getResources().getColor(R.color.home_tv2))
                 .setTopDrawable(R.drawable.home_tv02)
                 .setText("我要还款")
-                .setTextSmall("b")
+                .setTextSmall("Repayment")
         ;
 
         mTv3.setCallBack(new button_CallBack() {
@@ -162,7 +169,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 .setTextSmallColor(getResources().getColor(R.color.home_tv3))
                 .setTopDrawable(R.drawable.home_tv03)
                 .setText("借款状态")
-                .setTextSmall("c")
+                .setTextSmall("State")
         ;
 
         mTv4.setCallBack(new button_CallBack() {
@@ -178,7 +185,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 .setTextSmallColor(getResources().getColor(R.color.home_tv4))
                 .setTopDrawable(R.drawable.home_tv04)
                 .setText("关于我们")
-                .setTextSmall("d")
+                .setTextSmall("State")
         ;
 
 
@@ -208,11 +215,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         mMainActivity_p.getCallBackData();
 
-        if (!Share.checkLogin(AppContext.getApplication())){
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            startActivity(intent);
-        }
+
     }
 
 
@@ -232,6 +235,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if (!Share.checkLogin(AppContext.getApplication())){
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        }
+    }
+
+    @Override
     protected void onRestart() {
         super.onRestart();
         //如果是登录状态 我就查询钱数
@@ -239,6 +252,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             mMainActivity_p.getCallBackData();
         }
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -260,6 +275,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             break;
             case R.id.tv_test:
              startActivity(new Intent(AppContext.getApplication(),TestActivity.class));
+
+            break;
+            case R.id.tv_qiandao:
+             startActivity(new Intent(AppContext.getApplication(),SigninActivity.class));
+
+            break;
+            case R.id.fuwu:
+                LogUtils.i("我要打开");
+                Intent intent = new Intent(AppContext.getApplication(), Fuwu_and_xieyi_Activity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("classTag",1);
+                intent.putExtras(bundle);
+                startActivity(intent);
 
             break;
 

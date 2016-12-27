@@ -74,7 +74,7 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
 
     @Override
     public void initP() {
-        mApplicationStatusActivity_p = ApplicationStatusActivity_P.get(AppContext.getApplication());
+        mApplicationStatusActivity_p =new  ApplicationStatusActivity_P(AppContext.getApplication());
         mApplicationStatusActivity_p.setCallBack(this);
 
     }

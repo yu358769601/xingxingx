@@ -22,7 +22,6 @@ import com.xinxinxuedai.ui.LoanApplicationActivity;
 
 public class LoanProductsActivity_P extends BaseMvp<LoanProductsActivity_CallBack> implements LoanProductsActivity_method{
 
-    static LoanProductsActivity_P mLoanProductsActivity_p;
     Context context;
     public LoanProductsActivity_P(Context context){
         this.context = context;
@@ -36,14 +35,6 @@ public class LoanProductsActivity_P extends BaseMvp<LoanProductsActivity_CallBac
 
 
 
-    public static LoanProductsActivity_P getLoanProductsActivity_P(Context context){
-        if (null==mLoanProductsActivity_p){
-            return mLoanProductsActivity_p = new LoanProductsActivity_P(context);
-
-        }else{
-            return mLoanProductsActivity_p;
-        }
-    }
 
 
     @Override
