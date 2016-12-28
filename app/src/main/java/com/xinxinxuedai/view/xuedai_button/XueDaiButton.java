@@ -29,6 +29,7 @@ public class XueDaiButton extends RelativeLayout implements View.OnClickListener
     private RelativeLayout mXuedai_button1;
     int num;
     private ImageView mXuedai_image;
+    private TextView mXuedai_tv_button_info;
 
     public XueDaiButton(Context context) {
         super(context);
@@ -57,44 +58,91 @@ public class XueDaiButton extends RelativeLayout implements View.OnClickListener
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mView = inflater.inflate(R.layout.xuedai_button, this);
-
-        mXuedai_button1 = (RelativeLayout) findViewById(R.id.xuedai_button);
-
+        //外框
+        mXuedai_button1 = (RelativeLayout) mView.findViewById(R.id.xuedai_button);
+        mXuedai_button1.setOnClickListener(this);
+        //下面提示
+        mXuedai_tv_button_info = (TextView) mView.findViewById(R.id.xuedai_tv_button_info);
+        mXuedai_tv_button_info.setVisibility(INVISIBLE);
+        //左上角小字
         mXuedai_button_small = (TextView) mView.findViewById(R.id.xuedai_tv_button_small);
+       //中间字
         mXuedai_button = (TextView) mView.findViewById(R.id.xuedai_tv_button);
         //右上角星星
         mXuedai_image = (ImageView) mView.findViewById(R.id.xuedai_image);
         mXuedai_image.setVisibility(View.INVISIBLE);
-//        mXuedai_button_small.setOnClickListener(this);
-//        mXuedai_button.setOnClickListener(this);
-        mXuedai_button1.setOnClickListener(this);
-
-//        if (null!=mButton_callBack){
-//            mButton_callBack.getTextView(mXuedai_button);
-//            mButton_callBack.getTextViewSmall(mXuedai_button_small);
-//        }
 
     }
+
+    /**
+     * 设置中间字内容
+     * @param text
+     * @return
+     */
     public XueDaiButton setText(String text){
         mXuedai_button.setText(text);
         return  this;
     }
+    /**
+     * 设置下面提示的文字
+     * @param text
+     * @return
+     */
+    public XueDaiButton setInfoText(String text){
+        mXuedai_tv_button_info.setText(text);
+        return  this;
+    }
 
+    /**
+     * 设定提示文字是否显示
+     * @param b true 显示  false 不显示
+     * @return
+     */
+    public XueDaiButton setInfoStuaus(boolean b){
+        if (b){
+            mXuedai_tv_button_info.setVisibility(View.VISIBLE);
+        }else{
+            mXuedai_tv_button_info.setVisibility(View.INVISIBLE);
+        }
+        return  this;
+    }
+
+    /**
+     * 设置左上角字的内容
+     * @param text
+     * @return
+     */
     public XueDaiButton setTextSmall(String text){
         mXuedai_button_small.setText(text);
         return  this;
     }
 
-
+    /**
+     * 设定左上角字的颜色
+     * @param color
+     * @return
+     */
     public XueDaiButton setTextSmallColor(int color){
         mXuedai_button_small.setTextColor(color);
         return  this;
     }
+
+    /**
+     * 设定中间的字的颜色
+     * @param color
+     * @return
+     */
     public XueDaiButton setTextColor(int color){
 
         mXuedai_button.setTextColor(color);
         return  this;
     }
+
+    /**
+     * 设定小星星是否显示
+     * @param b true 显示  false 不显示
+     * @return
+     */
     public XueDaiButton setStarStuaus(boolean b){
         if (b){
             mXuedai_image.setVisibility(View.VISIBLE);
@@ -103,6 +151,12 @@ public class XueDaiButton extends RelativeLayout implements View.OnClickListener
         }
         return  this;
     }
+
+    /**
+     * 设定中间图表示什么
+     * @param Drawable_Id 资源id
+     * @return
+     */
     public XueDaiButton setTopDrawable(int Drawable_Id){
         Drawable drawableTop;
         Resources res = getResources();

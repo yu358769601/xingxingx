@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xinxinxuedai.Utils.task;
+package com.xinxinxuedai.Utils.NoHttp.task;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -64,13 +64,21 @@ public abstract class MultiAsynctask<Param, Update, Result> {
 	 */
 	private ExecutorService mExecutorService = null;
 
+	/**
+	 * 如果默认形式参数创建的对象的话就 设置一个,默认的线程池大小为5
+	 */
 	public MultiAsynctask() {
 		this(getDufaultExecutor());
 	}
 
+	/**
+	 * 如果是传进来一个线程池就设置它为 异步框架的线程池
+	 * @param executorService
+     */
 	public MultiAsynctask(ExecutorService executorService) {
 		mExecutorService = executorService;
 	}
+
 
 	/**
 	 * 拿到默认的线程池
@@ -86,7 +94,7 @@ public abstract class MultiAsynctask<Param, Update, Result> {
 	}
 
 	/**
-	 * 设置默认的线程池
+	 * 除了构造方法以外的设置线程池
 	 * 
 	 * @param executorService
 	 */
@@ -96,6 +104,10 @@ public abstract class MultiAsynctask<Param, Update, Result> {
 		}
 	}
 
+	/**
+	 * 获取一个单例 主线程handler
+	 * @return
+     */
 	public static Handler getDefaultPoster() {
 		synchronized (HANDLER_LOCK) {
 			if (sHandler == null)
@@ -107,13 +119,18 @@ public abstract class MultiAsynctask<Param, Update, Result> {
 	/**
 	 * 开始执行任务
 	 * 
-	 * @param params
+	 * @param params 子线程获取的 参数 其实也是 给抽象方法 让后面的继承者去实现
 	 */
 	public final void execute(Param... params) {
-		mExecutorService.execute(new Tasker(params));
+		mExecutorService.execute(new Tasker<Param,Update,Result>(this,params ));
 	}
 
-	protected abstract Result onExecuteTask(Param... params);
+	/**
+	 * 子类去实现的方法
+	 * @param params 这个可变参数 不一定用 但是得有
+	 * @return 这个返回值 是 给  结果的 那个方法的
+     */
+	protected abstract Result onExecuteTask(Param[] params);
 
 	/**
 	 * 发送进度更新到主线程
@@ -122,6 +139,7 @@ public abstract class MultiAsynctask<Param, Update, Result> {
 	 */
 	public final void onPostUpdate(Update update) {
 		Message.obtain();
+		//获取一个单例的handler
 		Message message = getDefaultPoster().obtainMessage();
 		message.what = WHAT_UPDATE;
 		message.obj = new Messager<Param, Update, Result>(this, update, null);
@@ -133,8 +151,7 @@ public abstract class MultiAsynctask<Param, Update, Result> {
 	 * 
 	 * @param update
 	 */
-	protected void onUpdate(Update update) {
-	}
+	protected abstract void onUpdate(Update update);
 
 	/**
 	 * 发送进度执行结果到主线程
@@ -154,42 +171,12 @@ public abstract class MultiAsynctask<Param, Update, Result> {
 	 * 
 	 * @param result
 	 */
-	protected void onResult(Result result) {
+	protected abstract void onResult(Result result);
 
-	}
 
-	private static class Messager<Param, Update, Result> {
-
-		private final MultiAsynctask<Param, Update, Result> asynctask;
-
-		private final Update update;
-
-		private final Result result;
-
-		public Messager(MultiAsynctask<Param, Update, Result> asynctask, Update update, Result result) {
-			this.asynctask = asynctask;
-			this.update = update;
-			this.result = result;
-		}
-
-		/**
-		 * 调用当前MultiAsynctask的主线程更新方法
-		 */
-		public void onUpdate() {
-			asynctask.onUpdate(update);
-		}
-
-		/**
-		 * 调用当前MultiAsynctask的主线程结果方法
-		 */
-		public void onResult() {
-			asynctask.onResult(result);
-		}
-
-	}
 
 	/**
-	 * <p>
+	 * <p>自定义handler
 	 * 线程间通信使者
 	 * </p>
 	 * Created in Mar 27, 2016 10:00:03 PM.
@@ -213,27 +200,6 @@ public abstract class MultiAsynctask<Param, Update, Result> {
 		}
 	}
 
-	/**
-	 * <p>
-	 * 任务执行器
-	 * </p>
-	 * Created in Mar 27, 2016 10:03:44 PM.
-	 * 
-	 * @author Yolanda;
-	 */
-	private class Tasker implements Runnable {
 
-		private Param[] params;
-
-		public Tasker(Param... params) {
-			this.params = params;
-		}
-
-		@Override
-		public void run() {
-			Result result = onExecuteTask(params);
-			onPostResult(result);
-		}
-	}
 
 }

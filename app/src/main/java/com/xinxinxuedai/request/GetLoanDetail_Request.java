@@ -3,6 +3,7 @@ package com.xinxinxuedai.request;
 import android.content.Context;
 
 import com.alibaba.fastjson.JSONObject;
+import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsToast;
@@ -48,7 +49,6 @@ public class GetLoanDetail_Request {
             });
 
 
-            netWorkCallBack.onSucceed(sData,NetWorkCallBack.CACHEDATA);
         }
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
         //入口
@@ -69,7 +69,7 @@ public class GetLoanDetail_Request {
                                 netWorkCallBack.onSucceed(sData,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
-                            UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());
+                            UtilsToast.showToast(context, context.getString(R.string.tojsonerror) );
                             e.printStackTrace();
                         }
 

@@ -35,6 +35,7 @@
     <string name="applicationstatus_txt3">借款金额:</string>
     <string name="applicationstatus_txt4">申请时间:</string>
     <string name="applicationstatus_txt5">借款状态:</string>
+    <string name="tojsonerror">数据转换错误</string>
 
 
 </resources>

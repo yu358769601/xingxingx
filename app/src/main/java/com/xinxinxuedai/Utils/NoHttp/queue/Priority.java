@@ -13,15 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xinxinxuedai.Utils.task;
+package com.xinxinxuedai.Utils.NoHttp.queue;
 
 /**
- * Created in Mar 27, 2016 9:15:39 PM.
+ * Created in Mar 27, 2016 8:41:19 PM.
  * 
  * @author Yolanda;
  */
-public interface NetworkInterface {
+public enum Priority {
 
-	void onResult(String result);
+	/**
+	 * 优先级最低
+	 */
+	A,
+
+	/**
+	 * 默认优先级
+	 */
+	B,
+
+	/**
+	 * 优先级最高
+	 */
+	C,
+
+	/**
+	 * 一般情况下不用；特殊情况下，请求假如到到队列后立即执行
+	 */
+	D
 
 }

@@ -63,7 +63,7 @@
 
     <TextView
         android:id="@+id/about_us_tv_4"
-        android:layout_below="@+id/about_us_tv_3"
+        android:layout_alignParentBottom="true"
         android:padding="@dimen/size_base480_10dp"
         android:gravity="center_vertical"
         android:textSize="20sp"

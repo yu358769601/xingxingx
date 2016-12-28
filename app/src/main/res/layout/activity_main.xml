@@ -131,6 +131,7 @@
                     android:layout_height="wrap_content"/>
             </RelativeLayout>
             <LinearLayout
+                android:id="@+id/main_ll"
                 android:layout_below="@+id/main_rl"
                 android:orientation="vertical"
                 android:paddingRight="@dimen/size_base480_20dp"
@@ -190,6 +191,11 @@
                         />
                 </LinearLayout>
             </LinearLayout>
+            <View
+                android:layout_below="@+id/main_ll"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_base480_150dp"
+            ></View>
         </RelativeLayout>
     </ScrollView>
     <!--主界面xml-->

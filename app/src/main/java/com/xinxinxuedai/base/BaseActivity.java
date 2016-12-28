@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.umeng.analytics.MobclickAgent;
+import com.xinxinxuedai.Utils.NoHttp.queue.YolandaLinkedQueue;
 
 /**
  * Created by 35876 于萌萌
@@ -20,11 +21,14 @@ import com.umeng.analytics.MobclickAgent;
  */
 public abstract class BaseActivity extends FragmentActivity {
 
+    private YolandaLinkedQueue mQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getlayouXML());
-
+        mQueue = new YolandaLinkedQueue(3);
+        mQueue.start();
 
     }
 
@@ -36,7 +40,10 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (null!=mQueue){
 
+            mQueue.stop();
+        }
     }
     @Override
     public void onResume() {

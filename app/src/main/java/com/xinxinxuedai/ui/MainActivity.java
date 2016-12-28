@@ -66,7 +66,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             @Override
             public void getAction_barView_title(TextView textView) {
                 textView.setText("主页");
-
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(AppContext.getApplication(),Test2Activity.class));
+                    }
+                });
             }
         });
 
@@ -85,6 +90,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         tv_qiandao.setOnClickListener(this);
         //服务和借款
         TextView fuwu = (TextView) findViewById(R.id.fuwu);
+        fuwu.setVisibility(View.GONE);
         fuwu.setOnClickListener(this);
 
 
@@ -138,6 +144,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 .setTopDrawable(R.drawable.home_tv01)
                 .setText("我要借款")
                 .setTextSmall("Loan")
+                .setInfoStuaus(true)
+                .setInfoText("多种借款")
         ;
 
         mTv2.setCallBack(new button_CallBack() {
@@ -154,6 +162,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 .setTopDrawable(R.drawable.home_tv02)
                 .setText("我要还款")
                 .setTextSmall("Repayment")
+                .setInfoStuaus(true)
+                .setInfoText("管理您的欠款")
         ;
 
         mTv3.setCallBack(new button_CallBack() {
@@ -170,6 +180,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 .setTopDrawable(R.drawable.home_tv03)
                 .setText("借款状态")
                 .setTextSmall("State")
+                .setInfoStuaus(true)
+                .setInfoText("申请状态查询")
         ;
 
         mTv4.setCallBack(new button_CallBack() {
@@ -185,7 +197,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 .setTextSmallColor(getResources().getColor(R.color.home_tv4))
                 .setTopDrawable(R.drawable.home_tv04)
                 .setText("关于我们")
-                .setTextSmall("State")
+                .setTextSmall("help")
+                .setInfoStuaus(true)
+                .setInfoText("帮助客服")
         ;
 
 

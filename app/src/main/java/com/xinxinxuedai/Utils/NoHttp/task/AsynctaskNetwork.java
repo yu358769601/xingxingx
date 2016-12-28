@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xinxinxuedai.Utils.task;
+package com.xinxinxuedai.Utils.NoHttp.task;
 
 import android.os.AsyncTask;
 

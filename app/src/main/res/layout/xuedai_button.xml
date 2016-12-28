@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/xuedai_button"
+                style="@style/button_touming"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
     <TextView
         android:id="@+id/xuedai_tv_button_small"
         android:text="hello"
 
-        android:padding="@dimen/size_base480_10dp"
+        android:padding="@dimen/size_base480_5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/xuedai_tv_button"
-        style="@style/button_touming"
+        android:layout_below="@+id/xuedai_tv_button_small"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableTop="@mipmap/ic_launcher"
+        android:drawablePadding="@dimen/size_base480_5dp"
         android:layout_marginRight="@dimen/size_base480_5dp"
-        android:padding="@dimen/size_base480_35dp"
         android:text="我要借款"
         />
+    <TextView
+        android:id="@+id/xuedai_tv_button_info"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:text="信息"
+        android:padding="@dimen/size_base480_5dp"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/xuedai_tv_button"
+        android:layout_height="wrap_content"/>
     <ImageView
         android:id="@+id/xuedai_image"
+
         android:padding="@dimen/size_base480_5dp"
         android:layout_margin="@dimen/size_base480_10dp"
         android:background="@drawable/xing_0"

@@ -3,6 +3,7 @@ package com.xinxinxuedai.request;
 import android.content.Context;
 
 import com.alibaba.fastjson.JSONObject;
+import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.UtilsNet.NetAesCallBack;
@@ -39,7 +40,7 @@ public class UserLogin_Request {
                                 netWorkCallBack.onSucceed(userLogin,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {
-                            UtilsToast.showToast(context, "json解析出错" + jsonObject.toString());
+                            UtilsToast.showToast(context, context.getString(R.string.tojsonerror) );
                             e.printStackTrace();
                         }
 

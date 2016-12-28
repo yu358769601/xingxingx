@@ -162,6 +162,8 @@
         </activity>
         <activity android:name=".ui.Fuwu_and_xieyi_Activity">
         </activity>
+        <activity android:name=".ui.Test2Activity">
+        </activity>
     </application>
 
 </manifest>
