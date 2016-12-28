@@ -35,6 +35,35 @@ public class Request{
 
 	private Hashtable<String,String> mHashtable;
 
+	public String getUrl() {
+		return url;
+	}
 
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
+	public Priority getPriority() {
+		return mPriority;
+	}
+
+	public void setPriority(Priority priority) {
+		mPriority = priority;
+	}
+
+	public int getOrder() {
+		return order;
+	}
+
+	public void setOrder(int order) {
+		this.order = order;
+	}
+
+	public Hashtable<String, String> getHashtable() {
+		return mHashtable;
+	}
+
+	public void setHashtable(Hashtable<String, String> hashtable) {
+		mHashtable = hashtable;
+	}
 }

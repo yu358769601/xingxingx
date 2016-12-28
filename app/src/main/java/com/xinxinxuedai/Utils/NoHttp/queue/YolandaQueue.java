@@ -45,7 +45,7 @@ public class YolandaQueue {
 
 	public void start() {
 		for (int i = 0; i < taskExecutors.length; i++) {
-			taskExecutors[i] = new TaskExecutor(blockingQueue);
+		//	taskExecutors[i] = new TaskExecutor(blockingQueue, this);
 			taskExecutors[i].start();
 		}
 	}

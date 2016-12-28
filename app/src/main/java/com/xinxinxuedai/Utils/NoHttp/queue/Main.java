@@ -30,8 +30,8 @@ public class Main {
 	 */
 	public void start() {
 		// 第一种，先进先出的队列
-		 YolandaLinkedQueue queue = new YolandaLinkedQueue(3);
-		 queue.start();
+//		 YolandaLinkedQueue queue = new YolandaLinkedQueue(3);
+//		 queue.start();
 
 //		// 第二种，没有顺序的队列
 //		YolandaQueue queue = new YolandaQueue(1);

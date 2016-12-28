@@ -27,9 +27,10 @@ public class TaskExecutor <T>extends Thread {
 	private BlockingQueue<T> blockingQueue;
 
 	private boolean isRunning = true;
-
-	public TaskExecutor(BlockingQueue<T> blockingQueue) {
+	YolandaLinkedQueue<T> tYolandaLinkedQueue;
+	public TaskExecutor(BlockingQueue<T> blockingQueue, YolandaLinkedQueue<T> tYolandaLinkedQueue) {
 		this.blockingQueue = blockingQueue;
+		this.tYolandaLinkedQueue = tYolandaLinkedQueue;
 	}
 
 	/**
@@ -50,8 +51,9 @@ public class TaskExecutor <T>extends Thread {
 				return;
 			}
 
+			//网络请求
 
-
+			tYolandaLinkedQueue.getData(t);
 		}
 	}
 

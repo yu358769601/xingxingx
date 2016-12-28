@@ -6,15 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.xinxinxuedai.ui.Test2Activity">
-    <Button
-        android:id="@+id/test2_bt1"
-        android:text="访问"
+
+    <LinearLayout
+        android:id="@+id/ll1"
         android:layout_below="@+id/relativeLayout_title"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/test2_bt1"
+            android:text="访问"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/test2_bt2"
+            android:text="停止访问"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/test2_tv_updata"
-        android:layout_below="@+id/test2_bt1"
+        android:layout_below="@+id/ll1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView

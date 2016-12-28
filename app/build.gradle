@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'yumengmeng'
             keyPassword 'yu6673160'
-            storeFile file('D:/gitbox/xinxinxuedai/app/src/yumengmeng.jks')
+            storeFile file('src/yumengmeng.jks')
             storePassword 'yu6673160'
         }
     }

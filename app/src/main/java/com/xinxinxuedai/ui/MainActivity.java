@@ -209,6 +209,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void initP() {
+
+
         mMainActivity_p = new MainActivity_P(this);
         mMainActivity_p.setCallBack(this);
     }
@@ -251,6 +253,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     protected void onStart() {
         super.onStart();
+        Share.saveToken(AppContext.getApplication(),"2");
         if (!Share.checkLogin(AppContext.getApplication())){
             Intent intent = new Intent(this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

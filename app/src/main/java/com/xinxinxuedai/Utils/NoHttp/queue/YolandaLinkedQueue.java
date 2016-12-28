@@ -23,7 +23,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * 
  * @author Yolanda;
  */
-public class YolandaLinkedQueue<T> {
+public abstract class YolandaLinkedQueue<T> {
 
 	private BlockingQueue<T> blockingQueue;
 
@@ -41,7 +41,7 @@ public class YolandaLinkedQueue<T> {
 
 	public void start() {
 		for (int i = 0; i < taskExecutors.length; i++) {
-			taskExecutors[i] = new TaskExecutor(blockingQueue);
+			taskExecutors[i] = new TaskExecutor(blockingQueue,this);
 			taskExecutors[i].start();
 		}
 	}
@@ -53,4 +53,5 @@ public class YolandaLinkedQueue<T> {
 		}
 	}
 
+	public abstract void getData(T t);
 }

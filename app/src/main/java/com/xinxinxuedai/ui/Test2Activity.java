@@ -6,11 +6,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.xinxinxuedai.R;
-import com.xinxinxuedai.Utils.LogUtils;
-import com.xinxinxuedai.Utils.NoHttp.task.MultiAsynctaskNetwork;
+import com.xinxinxuedai.Utils.NoHttp.controlQueue.ControlQueue;
+import com.xinxinxuedai.Utils.NoHttp.queue.Request;
 import com.xinxinxuedai.Utils.NoHttp.task.NetworkInterface;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
+
+import static com.xinxinxuedai.Utils.NoHttp.controlQueue.ControlQueue.getControlQueue;
 
 public class Test2Activity extends BaseActivity implements View.OnClickListener {
 
@@ -18,6 +20,8 @@ public class Test2Activity extends BaseActivity implements View.OnClickListener 
     private Button test2_bt1;
     private TextView test2_tv;
     private TextView test2_tv_updata;
+    private ControlQueue mControlQueue;
+    private Button test2_bt2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +56,46 @@ public class Test2Activity extends BaseActivity implements View.OnClickListener 
         test2_tv.setOnClickListener(this);
         test2_tv_updata = (TextView) findViewById(R.id.test2_tv_updata);
         test2_tv_updata.setOnClickListener(this);
+        test2_bt2 = (Button) findViewById(R.id.test2_bt2);
+        test2_bt2.setOnClickListener(this);
     }
 
     @Override
     public void initP() {
-
     }
 
     @Override
     public void initData() {
 
+
+        Request request = new Request();
+        request.setUrl("http://www.baidu.com");
+        request.setOrder(0);
+
+        mControlQueue = getControlQueue(5, new NetworkInterface() {
+
+            /**
+             * 返回结果
+             *
+             * @param result
+             */
+            @Override
+            public void onResult(String result) {
+                test2_tv.setText(result);
+            }
+
+            /**
+             * 进度
+             *
+             * @param i
+             */
+            @Override
+            public void onUpData(int i) {
+                test2_tv_updata.setText(i+"");
+            }
+        });
+        mControlQueue.add(request);
+        mControlQueue.start();
     }
 
     @Override
@@ -74,27 +108,40 @@ public class Test2Activity extends BaseActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.test2_bt1:
-                String url = "https://www.baidu.com";
+                initData();
 
-
-                MultiAsynctaskNetwork multiAsynctaskNetwork = new MultiAsynctaskNetwork(url,new NetworkInterface() {
-                    @Override
-                    public void onResult(String result) {
-                        test2_tv.setText(result);
-                    }
-
-                    /**
-                     * 进度
-                     *
-                     * @param i
-                     */
-                    @Override
-                    public void onUpData(int i) {
-                        LogUtils.i("进度是"+i);
-                        test2_tv_updata.setText(i+"");
-                    }
-                });
+//                String url = "https://www.baidu.com";
+//
+//
+//                MultiAsynctaskNetwork multiAsynctaskNetwork = new MultiAsynctaskNetwork(url,new NetworkInterface() {
+//                    @Override
+//                    public void onResult(String result) {
+//                        test2_tv.setText(result);
+//                    }
+//
+//                    /**
+//                     * 进度
+//                     *
+//                     * @param i
+//                     */
+//                    @Override
+//                    public void onUpData(int i) {
+//                        LogUtils.i("进度是"+i);
+//                        test2_tv_updata.setText(i+"");
+//                    }
+//                });
+                break;
+            case R.id.test2_bt2:
+                if (null != mControlQueue)
+                    mControlQueue.stop();
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != mControlQueue)
+            mControlQueue.stop();
     }
 }

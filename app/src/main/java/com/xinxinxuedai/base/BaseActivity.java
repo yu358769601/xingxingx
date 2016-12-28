@@ -27,8 +27,8 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getlayouXML());
-        mQueue = new YolandaLinkedQueue(3);
-        mQueue.start();
+//        mQueue = new YolandaLinkedQueue(3);
+//        mQueue.start();
 
     }
 
