@@ -66,6 +66,7 @@ public class GetLoanDetail_Request {
                                 sData = jsonObject.getObject("data", GetLoanDetail.class);
                                 new MyDbDAO(context,GetLoanDetail.class).add_or_upData(Table.MyJson,sData.getClass().getSimpleName(),sData);
                                 Share.saveInt(context, "status",sData.loan_status);
+                                Share.saveInt(context, "again_flag",sData.again_flag);
                                 netWorkCallBack.onSucceed(sData,NetWorkCallBack.NETDATA);
                             }
                         } catch (Exception e) {

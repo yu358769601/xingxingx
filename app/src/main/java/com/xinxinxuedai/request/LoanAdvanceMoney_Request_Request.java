@@ -31,6 +31,7 @@ public class LoanAdvanceMoney_Request_Request {
     public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack<LoanAdvanceMoney> netWorkCallBack) {
         hashtable.put("action", "loanAdvanceMoney");
         hashtable.put("loan_id", Share.getToken(context));
+        LogUtils.i("提前结清访问网络额数据"+hashtable);
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
                     @Override

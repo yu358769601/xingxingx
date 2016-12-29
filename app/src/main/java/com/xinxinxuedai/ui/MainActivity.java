@@ -253,7 +253,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     protected void onStart() {
         super.onStart();
-        Share.saveToken(AppContext.getApplication(),"2");
+      //  Share.saveToken(AppContext.getApplication(),"2");
         if (!Share.checkLogin(AppContext.getApplication())){
             Intent intent = new Intent(this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

@@ -55,6 +55,8 @@ public class GetLoanDetail implements Serializable{
          * loan_from :
          *
          * fangkuan_time : 0
+         *
+         * again_flag : 0
          */
 
         /** 有拆分Data
@@ -102,6 +104,9 @@ public class GetLoanDetail implements Serializable{
          * loan_from :android  ios
          *
          * fangkuan_time : 放款时间
+         *    //再分期新加的
+         * again_flag : 0 是没有再分期  1 再分一期  2 再分二期  3 在分三期
+         *
          */
 
 
@@ -123,6 +128,7 @@ public class GetLoanDetail implements Serializable{
         public String loan_pack;
         public String loan_from;
         public String fangkuan_time;
+        public int again_flag;
 
 
         @Override
@@ -136,7 +142,7 @@ public class GetLoanDetail implements Serializable{
                         ", money='" + money + '\'' +
                         ", loan_service='" + loan_service + '\'' +
                         ", loan_interest='" + loan_interest + '\'' +
-                        ", loan_term='" + loan_term + '\'' +
+                        ", loan_term=" + loan_term +
                         ", loan_category='" + loan_category + '\'' +
                         ", loan_describe='" + loan_describe + '\'' +
                         ", loan_small_describe='" + loan_small_describe + '\'' +
@@ -146,9 +152,8 @@ public class GetLoanDetail implements Serializable{
                         ", loan_pack='" + loan_pack + '\'' +
                         ", loan_from='" + loan_from + '\'' +
                         ", fangkuan_time='" + fangkuan_time + '\'' +
+                        ", again_flag=" + again_flag +
                         '}';
-
-
         }
 }
 
@@ -168,6 +173,7 @@ public class GetLoanDetail implements Serializable{
 //        "loan_category": "1",
 //        "loan_describe": "asd",
 //        "loan_small_describe": "1111测试0",
+//        "again_flag":"0",
 //        "loan_status": "0",
 //        "loan_result": "",
 //        "loan_plan": "1",

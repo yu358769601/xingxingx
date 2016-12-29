@@ -119,6 +119,7 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
             //分期
             helper.initText_hint(R.id.xuedai_button3_tv3,item.current_flag+"/"+(loan_term/7)+"期");
             //还款按钮
+
             //TextView textView1 = helper.initText(R.id.xuedai_button3_tv5, "");
             TextView textView1= helper.initText_huankuan(R.id.xuedai_button3_tv5,"",item.repay_status);
             if (frist ==position){
@@ -140,7 +141,7 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
             //计划还款日
             helper.initText_hint(R.id.xuedai_button3_tv4,item.plan_date);
             //再分期提示
-            helper.initText(R.id.xuedai_button3_tv6,"");
+          //  helper.initText(R.id.xuedai_button3_tv6,"再分期"+item.zaifenqi+"");
             //再分期按钮
             TextView textView = helper.initText(R.id.xuedai_button3_tv7, "");
             textView.setOnClickListener(new View.OnClickListener() {
@@ -149,8 +150,15 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
                     mListViewCallBack.getZaifenqi(position);
                 }
             });
-            //是否显示下面
-            helper.initLinearLayout_Show(R.id.ll2,item.again_flag);
+            //重要的逻辑
+            //以前没分过期 并且 可以分期
+            if (item.again_flag==0&&item.zaifenqi==1){
+                //是否显示下面
+                // helper.initLinearLayout_Show(R.id.ll2,item.again_flag);
+                helper.initLinearLayout_Show(R.id.ll2,item.zaifenqi);
+            }
+
+
 
 
         }

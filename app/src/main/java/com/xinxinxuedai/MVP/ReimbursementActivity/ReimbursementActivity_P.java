@@ -25,6 +25,7 @@ import com.xinxinxuedai.request.GetLoanDetail_Request;
 import com.xinxinxuedai.request.LoanAdvanceMoney_Request_Request;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.RepaymentListRequest;
+import com.xinxinxuedai.request.RepaymentListRequestZFQ;
 import com.xinxinxuedai.request.Repayment_Request;
 import com.xinxinxuedai.request.UserLoanAdvanceMoney_Request_Request;
 import com.xinxinxuedai.ui.TopUpActivity;
@@ -173,6 +174,9 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
             xueDaiButton_2.setText_tiqian_status(false);
         }
 
+       //如果是 最后一期 并且 还是未还款 在做后一期 然后我就隐藏按钮
+        SetLast(data);
+
         //设置列表数据
         mMyListView_04_more = new MyListView_04_more(AppContext.getApplication(), 0, items,loan_term ,new ListViewCallBack() {
             @Override
@@ -191,6 +195,25 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         mReimbursement_lv.setAdapter(mMyListView_04_more);
         UtilsToast.showToast(context, "网络加载完成~");
     }
+
+    /**
+     * 设置最后的显示问题
+     * @param data
+     */
+    private void SetLast(List<RepaymentList.DataBean> data) {
+        for (int i = 0; i < data.size(); i++) {
+            RepaymentList.DataBean dataBean = data.get(i);
+            if (0==dataBean.repay_status){
+                if (i==data.size()-1){
+                    xueDaiButton_2.setText_tiqian_status(false);
+                    break;
+                }else{
+                    xueDaiButton_2.setText_tiqian_status(true);
+                }
+            }
+        }
+    }
+
     XueDaiButton_2 xueDaiButton_2;
     private void initListOnclic(XueDaiButton_2 xueDaiButton_2) {
         this.xueDaiButton_2 = xueDaiButton_2;
@@ -222,7 +245,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
                         UtilsToast.showToast(AppContext.getApplication(), "点到了右面");
                         break;
                     case 10:
-                        UtilsToast.showToast(AppContext.getApplication(), "点了提前结清");
+                        //UtilsToast.showToast(AppContext.getApplication(), "点了提前结清");
 
                         getShowInfo();
 
@@ -238,6 +261,18 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
      */
     private void getShowInfo() {
         Hashtable<String, String> hashtable = new Hashtable<String, String>();
+        //列表集合里面 有几个还款
+        int huankuan=0;
+        for (int i = 0; i < data.size(); i++) {
+            RepaymentList.DataBean dataBean1 = data.get(i);
+            if (0==dataBean1.repay_status){
+                huankuan = dataBean1.id;
+
+                break;
+            }
+        }
+        //还到第几期的是点的 提前还款
+        hashtable.put("id", huankuan+"");
         LoanAdvanceMoney_Request_Request.request(context, hashtable, new NetWorkCallBack<LoanAdvanceMoney>() {
             @Override
             public void onSucceed(LoanAdvanceMoney money, int dataMode) {
@@ -247,35 +282,57 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
 
             @Override
             public void onError(String jsonObject) {
-
+                UtilsToast.showToast(context, jsonObject);
             }
         });
     }
 
     List<RepaymentList.DataBean> data;
+    //获取列表数据
     @NonNull
-    private List<RepaymentList.DataBean> sendRepaymentListRequest(final int loan_term) {
+    private void sendRepaymentListRequest(final int loan_term) {
+//        //如果没有再分期
+//        if (0==Share.getInt(context, "again_flag")){
+//            RepaymentListRequest.request(context, new NetWorkCallBack<RepaymentList>() {
+//
+//
+//                @Override
+//                public void onSucceed(RepaymentList payMent, int dataMode) {
+//                    data =  payMent.data;
+//                    //获取之后设置数据
+//                    initData(reimbursement_lv, data,loan_term);
+//                }
+//
+//                @Override
+//                public void onError(String jsonObject) {
+//
+//                }
+//
+//            });
+//        }else{
+//            //有再分期
+            RepaymentListRequestZFQ.request(context, new NetWorkCallBack<RepaymentList>() {
+                @Override
+                public void onSucceed(RepaymentList repaymentList, int dataMode) {
+                    data =  repaymentList.data;
 
-        RepaymentListRequest.request(context, new NetWorkCallBack<RepaymentList>() {
+                    //获取之后设置数据
+                    initData(reimbursement_lv, data,loan_term);
+                }
 
+                @Override
+                public void onError(String jsonObject) {
 
-            @Override
-            public void onSucceed(RepaymentList payMent, int dataMode) {
-                data =  payMent.data;
-                //获取之后设置数据
-                initData(reimbursement_lv, data,loan_term);
-            }
+                }
+            });
 
-            @Override
-            public void onError(String jsonObject) {
+//
+//
 
-            }
-
-        });
-
-
-        return data;
     }
+
+
+
     @NonNull
     private ArrayList<huandaiItem> sendRepaymentListRequestTo() {
         RepaymentListRequest.requestmore(context, new NetWorkCallBack() {
@@ -336,9 +393,23 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
             return;
         }
         RepaymentList.DataBean dataBean = data.get(0);
+        //列表集合里面 有几个还款
+        int huankuan=0;
+        for (int i = 0; i < data.size(); i++) {
+            RepaymentList.DataBean dataBean1 = data.get(i);
+            if (0==dataBean1.repay_status){
+                huankuan = dataBean1.id;
+                break;
+            }
+        }
         //借款id
         hashtable.put("loan_id",dataBean.user_loan_id);
+        //还到第几期的是点的 提前还款
+        hashtable.put("id", huankuan+"");
+
         LogUtils.i("loan_id"+dataBean.user_loan_id);
+
+
         UserLoanAdvanceMoney_Request_Request.request(context, hashtable, new NetWorkCallBack<UserLoanAdvanceMoney>() {
             @Override
             public void onSucceed(UserLoanAdvanceMoney money, int dataMode) {
@@ -348,6 +419,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
 
             @Override
             public void onError(String jsonObject) {
+               // LogUtils.i("最外层我在这里"+jsonObject);
                 UtilsToast.showToast(context, jsonObject);
             }
         });
@@ -362,11 +434,13 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
             return;
         }
         RepaymentList.DataBean dataBean = data.get(postion);
-        String id = dataBean.id;
+        int id = dataBean.id;
         String user_loan_id = dataBean.user_loan_id;
         Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
-        hashtable.put("id",id);
+        hashtable.put("id",id+"");
         hashtable.put("loan_id",user_loan_id);
+
+
 
         Repayment_Request.request(context, hashtable, new NetWorkCallBack<RePayMentend>() {
             @Override
