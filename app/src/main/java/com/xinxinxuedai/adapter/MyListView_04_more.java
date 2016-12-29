@@ -150,13 +150,25 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
                     mListViewCallBack.getZaifenqi(position);
                 }
             });
+            LogUtils.i("第一个"+frist);
             //重要的逻辑
             //以前没分过期 并且 可以分期
             if (item.again_flag==0&&item.zaifenqi==1){
-                //是否显示下面
+                if (frist==position){
+                    //是否显示下面
+                    helper.initLinearLayout_Show(R.id.ll2,1);
+                }else{
+                    helper.initLinearLayout_Show(R.id.ll2,0);
+                }
+
                 // helper.initLinearLayout_Show(R.id.ll2,item.again_flag);
-                helper.initLinearLayout_Show(R.id.ll2,item.zaifenqi);
+
             }
+            //一个都没有按钮
+            if (frist==-1){
+                helper.initLinearLayout_Show(R.id.ll2,0);
+            }
+
 
 
 

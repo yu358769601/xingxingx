@@ -82,6 +82,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mTv3 = (XueDaiButton) findViewById(R.id.tv3);
         mTv4 = (XueDaiButton) findViewById(R.id.tv4);
 
+        TextView left= (TextView) findViewById(R.id.tv_left);
+        left.setOnClickListener(this);
+
         //看数据库的(测试)
         TextView test = (TextView) findViewById(R.id.tv_test);
         test.setOnClickListener(this);
@@ -305,6 +308,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 bundle.putInt("classTag",1);
                 intent.putExtras(bundle);
                 startActivity(intent);
+
+            break;
+            case R.id.tv_left:
+                startActivity(new Intent(AppContext.getApplication(),Re_stagingActivity.class));
 
             break;
 

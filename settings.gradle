@@ -1,2 +1,2 @@
-include ':app', ':SmallVideoLib', ':library_XRefreshView', ':MyGreenDAO', ':daoexamplegenerator'
+include ':app', ':SmallVideoLib', ':library_XRefreshView', ':MyGreenDAO', ':daoexamplegenerator', ':MVP'
 include ':androidmobilePY36'

@@ -164,6 +164,8 @@
         </activity>
         <activity android:name=".ui.Test2Activity">
         </activity>
+        <activity android:name=".ui.Re_stagingActivity">
+        </activity>
     </application>
 
 </manifest>
