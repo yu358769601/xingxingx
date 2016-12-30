@@ -13,6 +13,7 @@ import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogCallBack;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogSelect;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.bean.RepaymentList;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_4;
 
@@ -39,8 +40,17 @@ public class Re_stagingActivity extends BaseActivity implements Re_stagingActivi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getBox();
         initP();
         initView();
+    }
+    RepaymentList.DataBean mDataList;
+    private void getBox() {
+        Bundle extras = getIntent().getExtras();
+        if (null!=extras){
+            mDataList = (RepaymentList.DataBean) extras.getSerializable("zaifenqi");
+
+        }
     }
 
     @Override
@@ -81,6 +91,8 @@ public class Re_stagingActivity extends BaseActivity implements Re_stagingActivi
                 textView.setText("再分期申请");
             }
         });
+
+        initData();
     }
 
     @Override
@@ -90,8 +102,23 @@ public class Re_stagingActivity extends BaseActivity implements Re_stagingActivi
         //mPresenter.getData();
     }
 
+    public void setText(TextView text,String s){
+        text.setText(text.getHint().toString()+s);
+    }
+
     @Override
     public void initData() {
+        String plan_date = mDataList.plan_date;
+        String real_data = mDataList.real_data;
+        double real_money = mDataList.real_money;
+        int repay_status = mDataList.repay_status;
+        double service_fee = mDataList.service_fee;
+        double money = mDataList.money;
+//        mDataList.
+//        mDataList.
+
+        setText(re_staging_tv2,money+"");
+        setText(re_staging_tv3,money+"");
 
     }
 

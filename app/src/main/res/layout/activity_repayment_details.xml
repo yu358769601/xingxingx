@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xinxinxuedai.view.initAction_Bar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xinxinxuedai.ui.Repayment_detailsActivity">
+    <com.xinxinxuedai.view.xuedai_button.XueDaiButton_3
+        android:id="@+id/repayment_details_xd3"
+        android:layout_below="@+id/relativeLayout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.xinxinxuedai.view.xuedai_button.XueDaiButton_3>
+    <TextView
+        android:id="@+id/repayment_details_tv"
+        android:text="提示"
+        android:layout_below="@+id/repayment_details_xd3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ScrollView
+        android:layout_below="@+id/repayment_details_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/repayment_details_ll"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </LinearLayout>
+    </ScrollView>
+
+</com.xinxinxuedai.view.initAction_Bar>

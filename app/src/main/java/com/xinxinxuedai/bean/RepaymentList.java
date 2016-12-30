@@ -1,5 +1,6 @@
 package com.xinxinxuedai.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  * 备注:
  */
 
-public class RepaymentList {
+public class RepaymentList implements Serializable{
 //
 //    hashtable.put("action","getLoanPlanList");
 //    LogUtils.i("人员ID"+Share.getToken(context));
@@ -28,7 +29,7 @@ public class RepaymentList {
     public String message;
     public List<DataBean> data;
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          *
          * id : 4177

@@ -166,6 +166,8 @@
         </activity>
         <activity android:name=".ui.Re_stagingActivity">
         </activity>
+        <activity android:name=".ui.Repayment_detailsActivity">
+        </activity>
     </application>
 
 </manifest>

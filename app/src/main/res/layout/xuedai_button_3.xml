@@ -98,6 +98,7 @@
         android:layout_height="wrap_content"/>
     <LinearLayout
         android:id="@+id/ll2"
+        android:visibility="gone"
         android:layout_below="@+id/xuedai_button3_tv4"
         android:orientation="horizontal"
         android:layout_width="match_parent"

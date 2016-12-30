@@ -182,13 +182,13 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
             @Override
             public void getRepayment(int positon) {
                 LogUtils.i("我点了还款位置是"+positon);
-                reimbursementActivity_c.getShowDialog1(positon);
+                reimbursementActivity_c.getShowDialog1(positon,data);
             }
 
             @Override
             public void getZaifenqi(int positon) {
                 LogUtils.i("我点了再分期位置是"+positon);
-                reimbursementActivity_c.getShowDialog2(positon);
+                reimbursementActivity_c.getShowDialog2(positon,data);
             }
         });
         this.mReimbursement_lv = reimbursement_lv;
@@ -203,7 +203,8 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
     private void SetLast(List<RepaymentList.DataBean> data) {
         for (int i = 0; i < data.size(); i++) {
             RepaymentList.DataBean dataBean = data.get(i);
-            if (0==dataBean.repay_status){
+            //如果都是 已结清的 只有最后一个 是没结清的 不显示上面的
+            if (1==dataBean.repay_status){
                 if (i==data.size()-1){
                     xueDaiButton_2.setText_tiqian_status(false);
                     break;

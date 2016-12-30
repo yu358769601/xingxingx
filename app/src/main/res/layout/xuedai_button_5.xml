@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/xuedai_button_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/size_base480_5dp"
+                android:layout_margin="@dimen/size_base480_10dp"
+                android:background="@drawable/border_money_touming"
+        >
+        <TextView
+            android:id="@+id/xuedai_button_5_tv1"
+            style="@style/zaifenqi"
+            android:hint="代金券金额:"
+            android:padding="@dimen/size_base480_5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/xuedai_button_5_tv2"
+            android:layout_below="@+id/xuedai_button_5_tv1"
+            android:hint="过期时间:"
+            style="@style/zaifenqi"
+            android:padding="@dimen/size_base480_5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/xuedai_button_5_iv"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/size_base480_20dp"
+            android:background="@drawable/xing_0"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</RelativeLayout>

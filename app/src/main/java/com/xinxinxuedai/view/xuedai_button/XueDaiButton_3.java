@@ -85,6 +85,7 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
         //还款按钮
         mXuedai_button3_tv5 = (TextView) mView.findViewById(R.id.xuedai_button3_tv5);
         mXuedai_button3_tv5.setTag(7);
+        mXuedai_button3_tv5.setOnClickListener(this);
         //再分期提示
         mXuedai_button3_tv6 = (TextView) mView.findViewById(R.id.xuedai_button3_tv6);
         mXuedai_button3_tv6.setTag(8);
@@ -107,6 +108,13 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
     public XueDaiButton_3 setTv1(String s){
         mXuedai_button3_tv1.setText(mXuedai_button3_tv1.getHint()+s);
         return this;
+    }
+
+    public double getXuedai_button3_tv1(){
+        String substring = mXuedai_button3_tv1.getText().toString().substring(5, mXuedai_button3_tv1.getText().toString().length()-1);
+
+        double v = Double.parseDouble(substring);
+        return v;
     }
     /**
      * 设置已还金额
@@ -160,6 +168,7 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+        if (null!=mButton_callBack)
         mButton_callBack.button_Click(v);
     }
 

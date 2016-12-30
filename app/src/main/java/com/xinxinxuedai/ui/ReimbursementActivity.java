@@ -1,5 +1,6 @@
 package com.xinxinxuedai.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.bean.RepaymentList;
 import com.xinxinxuedai.view.MyListView;
 import com.xinxinxuedai.view.dialog.DialogCallBack;
 import com.xinxinxuedai.view.initAction_Bar;
@@ -21,6 +23,7 @@ import com.xinxinxuedai.view.xuedai_button.XueDaiButton_2;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_3;
 
 import java.net.HttpURLConnection;
+import java.util.List;
 
 //我要还款activity
 public class ReimbursementActivity extends BaseActivity implements View.OnClickListener, ReimbursementActivity_C {
@@ -145,26 +148,46 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
         this.httpURLConnection = httpURLConnection;
     }
 
+    /**
+     * 是否还款
+     * @param positon
+     * @param data
+     */
     @Override
-    public void getShowDialog1(final int positon) {
-        UtilsDialog.showDialog_Text(this, "还款", "是否还款", new DialogCallBack() {
-            @Override
-            public void confirm() {
-                LogUtils.i("我点了还款号码是"+positon);
-                mReimbursementActivity_p.subHuanKuan(positon);
-            }
+    public void getShowDialog1(final int positon, List<RepaymentList.DataBean> data) {
+        RepaymentList.DataBean dataBean = data.get(positon);
+        Intent intent = new Intent(AppContext.getApplication(), Repayment_detailsActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("dataList",dataBean);
+        intent.putExtras(bundle);
+        startActivity(intent);
 
-            @Override
-            public void cancel() {
-                LogUtils.i("取消还款");
-            }
-        });
+       // startActivity(new Intent(AppContext.getApplication(),Repayment_detailsActivity.class));
+
+//        UtilsDialog.showDialog_Text(this, "还款", "是否还款", new DialogCallBack() {
+//            @Override
+//            public void confirm() {
+//                LogUtils.i("我点了还款号码是"+positon);
+//                mReimbursementActivity_p.subHuanKuan(positon);
+//            }
+//
+//            @Override
+//            public void cancel() {
+//                LogUtils.i("取消还款");
+//            }
+//        });
 
     }
 
     @Override
-    public void getShowDialog2(int positon) {
-
+    public void getShowDialog2(int positon, List<RepaymentList.DataBean> data) {
+        RepaymentList.DataBean dataBean = data.get(positon);
+        Intent intent = new Intent(AppContext.getApplication(), Re_stagingActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("zaifenqi",dataBean);
+        intent.putExtras(bundle);
+        startActivity(intent);
+       // startActivity(new Intent(AppContext.getApplication(),Re_stagingActivity.class));
     }
 
     /**

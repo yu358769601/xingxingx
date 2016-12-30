@@ -104,7 +104,8 @@
                     android:layout_toRightOf="@+id/main_iv"
                     android:padding="@dimen/size_base480_5dp"
                     android:textColor="@color/black"
-                    android:text="姓名:玉田"
+                    android:hint="你好 "
+                    android:textColorHint="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView

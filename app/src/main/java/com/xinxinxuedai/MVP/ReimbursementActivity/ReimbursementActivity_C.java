@@ -1,8 +1,10 @@
 package com.xinxinxuedai.MVP.ReimbursementActivity;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
+import com.xinxinxuedai.bean.RepaymentList;
 
 import java.net.HttpURLConnection;
+import java.util.List;
 
 /**
  * Created by 35876 于萌萌
@@ -21,8 +23,8 @@ public interface ReimbursementActivity_C extends BaseMVPinterFace_CallBack{
     void getNetRequest(HttpURLConnection httpURLConnection);
 
 
-    void getShowDialog1(int positon);
-    void getShowDialog2(int positon);
+    void getShowDialog1(int positon, List<RepaymentList.DataBean> data);
+    void getShowDialog2(int positon, List<RepaymentList.DataBean> data);
     void getShowDialog3(double positon);
 
 

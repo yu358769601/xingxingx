@@ -5,73 +5,96 @@
     android:id="@+id/relativeLayout_title"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/woyaohuankuan"
     tools:context="com.xinxinxuedai.ui.Re_stagingActivity">
-
-    <TextView
-    android:id="@+id/re_staging_tv1"
-    android:layout_below="@+id/relativeLayout_title"
-    android:gravity="center"
-    android:text="1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-    <TextView
-    android:id="@+id/re_staging_tv2"
-    android:layout_below="@+id/re_staging_tv1"
-    android:gravity="center"
-    android:text="2"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-    <TextView
-    android:id="@+id/re_staging_tv3"
-    android:layout_below="@+id/re_staging_tv2"
-    android:gravity="center"
-    android:text="3"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-    <TextView
-    android:id="@+id/re_staging_tv4"
-    android:layout_below="@+id/re_staging_tv3"
-    android:gravity="center"
-    android:text="4"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-    <TextView
-    android:id="@+id/re_staging_tv5"
-    android:layout_below="@+id/re_staging_tv4"
-    android:gravity="center"
-    android:text="5"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-    <TextView
-    android:id="@+id/re_staging_tv6"
-    android:layout_below="@+id/re_staging_tv5"
-    android:gravity="center"
-    android:text="6"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-    <TextView
-    android:id="@+id/re_staging_tv7"
-    android:layout_below="@+id/re_staging_tv6"
-    android:gravity="center"
-    android:text="7"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/re_staging_1"
-        android:hint="选择申请借款用途"
-        android:layout_marginTop="@dimen/size_base480_20dp"
-        style="@style/edtext_touming_long"
-        android:background="@drawable/long_button_touming"
-        android:layout_below="@+id/re_staging_tv7"
-        android:padding="@dimen/size_base480_10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <com.xinxinxuedai.view.xuedai_button.XueDaiButton_4
-        android:id="@+id/re_staging_info"
-        android:layout_marginTop="@dimen/size_base480_20dp"
-        android:layout_below="@+id/re_staging_1"
+    <ScrollView
+        android:layout_below="@+id/relativeLayout_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <RelativeLayout
 
-    </com.xinxinxuedai.view.xuedai_button.XueDaiButton_4>
+            android:padding="@dimen/size_base480_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/re_staging_tv1"
+
+                android:gravity="center"
+                style="@style/zaifenqi"
+                android:textColor="@color/orange"
+                android:text="*提交申请再分期的截止时间为\n计划还款日的14点!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/re_staging_tv2"
+                android:layout_below="@+id/re_staging_tv1"
+                style="@style/zaifenqi"
+                android:gravity="center"
+                android:hint="本期可再分期的金额为:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/re_staging_tv3"
+                android:layout_below="@+id/re_staging_tv2"
+                android:gravity="center"
+                style="@style/zaifenqi"
+                android:hint="账户余额:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/re_staging_tv4"
+                android:layout_below="@+id/re_staging_tv3"
+                android:gravity="center"
+                style="@style/zaifenqi"
+                android:text="再分期费用:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/re_staging_tv5"
+                android:layout_below="@+id/re_staging_tv4"
+                android:gravity="center"
+                style="@style/zaifenqi"
+                android:text="本期未分期部分应还金额:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/re_staging_tv6"
+                android:layout_below="@+id/re_staging_tv5"
+                android:gravity="center"
+                style="@style/zaifenqi"
+                android:text="*您的账户余额不足您可以充值***后提交分期申请!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/re_staging_tv7"
+                android:layout_below="@+id/re_staging_tv6"
+                android:gravity="center"
+                style="@style/zaifenqi"
+                android:text="再分期还款账单会与原计划进行叠加"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/re_staging_1"
+                android:hint="选择申请借款用途"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                style="@style/edtext_touming_long"
+                android:background="@drawable/long_button_touming"
+                android:layout_below="@+id/re_staging_tv7"
+                android:padding="@dimen/size_base480_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <com.xinxinxuedai.view.xuedai_button.XueDaiButton_4
+                android:id="@+id/re_staging_info"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                android:layout_below="@+id/re_staging_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.xinxinxuedai.view.xuedai_button.XueDaiButton_4>
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
 </com.xinxinxuedai.view.initAction_Bar>
