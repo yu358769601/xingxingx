@@ -5,6 +5,8 @@ import android.widget.LinearLayout;
 
 import com.xinxinxuedai.MVP.Repayment_detailsActivity.contract.Repayment_detailsActivity_mvpContract;
 import com.xinxinxuedai.MVP.Repayment_detailsActivity.model.Repayment_detailsActivity_mvpModel;
+import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.bean.RepaymentList;
 
 /**
  * Created by Administrator 于萌萌
@@ -39,5 +41,37 @@ public class Repayment_detailsActivity_mvpPresenter implements Repayment_details
             }
         });
 
+    }
+
+    /**
+     * 点了还款按钮之后
+     * @param positon
+     * @param dataList
+     */
+    public void subHuanKuan(int positon, RepaymentList.DataBean dataList) {
+       // ArrayList<RadioGroupData> list = mModel.getList();
+        mModel.sub(positon,dataList, new Repayment_detailsActivity_mvpContract.CallBackMsg() {
+
+
+            @Override
+            public void chenggong(String s) {
+                LogUtils.i("现在还款成功的内容是"+s);
+
+                mView.closeActivity();
+            }
+
+            @Override
+            public void shibai(String s) {
+                LogUtils.i("现在还款失败的内容是"+s);
+            }
+        });
+    }
+
+    /**
+     * 设置给逻辑  告诉他 这个数值  不能低于他
+     * @param interest_money
+     */
+    public void setMoney(double interest_money) {
+        mModel.setMoney(interest_money);
     }
 }

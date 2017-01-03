@@ -42,17 +42,24 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
         getFristsub(datas);
     }
 
-    private void getFristsub(List datas) {
+    /**
+     * 设置第一个按钮的还款是否显示
+     * @param datas
+     */
+    public void getFristsub(List datas) {
         ArrayList<RepaymentList.DataBean> data =(ArrayList<RepaymentList.DataBean>)datas;
         for (int i = 0; i < data.size(); i++) {
             RepaymentList.DataBean dataBean = data.get(i);
             int repay_status = dataBean.repay_status;
             if (repay_status==0){
-                frist = i;
+              frist = i;
+
                 return;
             }
         }
     }
+
+
 
     public void setListViewLoadMore(ListViewLoadMore mListViewLoadMore) {
         this.mListViewLoadMore = mListViewLoadMore;
@@ -118,6 +125,10 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
             helper.initText_hint(R.id.xuedai_button3_tv2,item.real_money+"元");
             //分期
             helper.initText_hint(R.id.xuedai_button3_tv3,item.current_flag+"/"+(loan_term/7)+"期");
+            //已分期金额 只有在已分期为1 时候才显示
+            TextView benjin = helper.initText_hint(R.id.xuedai_button3_tvbenjin, item.benjin + "元");
+            benjin.setVisibility(View.INVISIBLE);
+
             //还款按钮
 
             //TextView textView1 = helper.initText(R.id.xuedai_button3_tv5, "");
@@ -129,6 +140,13 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
             }else{
                 textView1.setVisibility(View.INVISIBLE);
                 LogUtils.i("我显示没按钮"+position);
+            }
+            /**
+             * 如果 已经分期过就显示 易分期金额
+             */
+            if (item.again_flag==1){
+                benjin.setVisibility(View.VISIBLE);
+                textView1.setVisibility(View.INVISIBLE);
             }
 
             textView1.setOnClickListener(new View.OnClickListener() {
@@ -163,6 +181,8 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
 
                 // helper.initLinearLayout_Show(R.id.ll2,item.again_flag);
 
+            }else{
+                helper.initLinearLayout_Show(R.id.ll2,0);
             }
             //一个都没有按钮
             if (frist==-1){

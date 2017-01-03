@@ -21,8 +21,9 @@ public interface ReimbursementActivity_M {
     /**
      * 获取我要还贷界面列表的数据
      * @param reimbursement_lv
+     * @param i
      */
-    void initListViewData(MyListView reimbursement_lv);
+    void initListViewData(MyListView reimbursement_lv, int i);
 
     /**
      * 初始化刷新

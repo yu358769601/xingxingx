@@ -46,7 +46,7 @@
                 android:layout_below="@+id/re_staging_tv3"
                 android:gravity="center"
                 style="@style/zaifenqi"
-                android:text="再分期费用:"
+                android:hint="再分期费用:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
@@ -54,7 +54,7 @@
                 android:layout_below="@+id/re_staging_tv4"
                 android:gravity="center"
                 style="@style/zaifenqi"
-                android:text="本期未分期部分应还金额:"
+                android:hint="本期未分期部分应还金额:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
@@ -62,7 +62,7 @@
                 android:layout_below="@+id/re_staging_tv5"
                 android:gravity="center"
                 style="@style/zaifenqi"
-                android:text="*您的账户余额不足您可以充值***后提交分期申请!"
+                android:hint="*您的账户余额不足您可以充值***后提交分期申请!"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
@@ -70,7 +70,7 @@
                 android:layout_below="@+id/re_staging_tv6"
                 android:gravity="center"
                 style="@style/zaifenqi"
-                android:text="再分期还款账单会与原计划进行叠加"
+                android:hint="再分期还款账单会与原计划进行叠加"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
@@ -91,6 +91,18 @@
                 android:layout_height="wrap_content">
 
             </com.xinxinxuedai.view.xuedai_button.XueDaiButton_4>
+
+            <TextView
+                android:id="@+id/sub"
+                android:text="提交申请"
+                android:layout_marginTop="@dimen/size_base480_20dp"
+                android:layout_below="@+id/re_staging_info"
+                style="@style/button_touming_long"
+                android:padding="@dimen/size_base480_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
         </RelativeLayout>
     </ScrollView>
 

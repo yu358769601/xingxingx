@@ -49,6 +49,10 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
  */
 
 public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> implements ReimbursementActivity_M{
+    int mode1 = 1;
+    int mode2 = 2;
+
+
     Context context;
     private MyListView_04_more mMyListView_04_more;
     MyListView reimbursement_lv;
@@ -79,24 +83,31 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
     /**
      * 获取我要还贷界面列表的数据
      * @param reimbursement_lv
+     * @param i
      */
     @Override
-    public void initListViewData(MyListView reimbursement_lv) {
+    public void initListViewData(MyListView reimbursement_lv, int i) {
         this.reimbursement_lv = reimbursement_lv;
         UtilsToast.showToast(context, "获取网络数据中~");
         //获取上面的 那个数据
-        getTopData();
+        getTopData(i);
 
 
 
 
     }
 
-    private void getTopData() {
+    /**
+     * 获取 头信息
+     * @param i
+     */
+    private void getTopData(final int i) {
         GetLoanDetail_Request.request(context, new NetWorkCallBack<GetLoanDetail>() {
             @Override
             public void onSucceed(GetLoanDetail getLoanDetail, int dataMode) {
                 if (dataMode==NetWorkCallBack.NETDATA){
+                    if (null!=mXueDaiButton_2)
+                    reimbursement_lv.removeHeaderView(mXueDaiButton_2);
                     mXueDaiButton_2 = new XueDaiButton_2(context);
                     //0先息后本  1等额本息
                     //String status = getLoanDetail.loan_plan=="0"?"先息后本":"等额本息";
@@ -107,9 +118,10 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
                             .setText_rightbutton_fenqi(getLoanDetail.loan_term+"天");
                     //  loan_term
                     initListOnclic(mXueDaiButton_2);
-                    reimbursement_lv.addHeaderView(mXueDaiButton_2);
-                    getMoney(mXueDaiButton_2,getLoanDetail);
+                        reimbursement_lv.addHeaderView(mXueDaiButton_2);
 
+                    getMoney(mXueDaiButton_2,getLoanDetail,i);
+                LogUtils.i("测试_访问头信息"+i+"内容是"+getLoanDetail);
                 }
             }
 
@@ -120,16 +132,23 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         });
     }
 
-    private void getMoney(final XueDaiButton_2 xueDaiButton_2, final GetLoanDetail getLoanDetail) {
+    /**
+     * 获取 本金钱数
+     * @param xueDaiButton_2
+     * @param getLoanDetail
+     * @param i
+     */
+    private void getMoney(final XueDaiButton_2 xueDaiButton_2, final GetLoanDetail getLoanDetail, final int i) {
         GetInfo_Request.request(context, new NetWorkCallBack<GetInfo>() {
             @Override
             public void onSucceed(GetInfo getInfo, int dataMode) {
+
                 xueDaiButton_2
                 .setText_balance_of_account(getInfo.loan_money+"元");
-
+                LogUtils.i("测试_获取钱数"+i+"\t"+getInfo.loan_money);
 
                 //网络获取数据
-                sendRepaymentListRequest(getLoanDetail.loan_term);
+                sendRepaymentListRequest(getLoanDetail.loan_term,i);
             }
 
             @Override
@@ -139,7 +158,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         });
     }
     MyListView mReimbursement_lv;
-    private void initData(MyListView reimbursement_lv, List<RepaymentList.DataBean> items, int loan_term) {
+    private void initData(MyListView reimbursement_lv, List<RepaymentList.DataBean> items, int loan_term,int mode ) {
         boolean tag = false;
         if (items==null||items.size()==0){
             return;
@@ -176,6 +195,14 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
 
        //如果是 最后一期 并且 还是未还款 在做后一期 然后我就隐藏按钮
         SetLast(data);
+        LogUtils.i("测试_设置列表"+mode+"\t"+"集合长度"+items.size());
+        if (mode==2){
+            mMyListView_04_more.setData(items);
+            mMyListView_04_more.getFristsub(items);
+
+            return;
+        }
+
 
         //设置列表数据
         mMyListView_04_more = new MyListView_04_more(AppContext.getApplication(), 0, items,loan_term ,new ListViewCallBack() {
@@ -193,7 +220,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         });
         this.mReimbursement_lv = reimbursement_lv;
         mReimbursement_lv.setAdapter(mMyListView_04_more);
-        UtilsToast.showToast(context, "网络加载完成~");
+       // UtilsToast.showToast(context, "网络加载完成~");
     }
 
     /**
@@ -291,7 +318,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
     List<RepaymentList.DataBean> data;
     //获取列表数据
     @NonNull
-    private void sendRepaymentListRequest(final int loan_term) {
+    private void sendRepaymentListRequest(final int loan_term, final int mode) {
 //        //如果没有再分期
 //        if (0==Share.getInt(context, "again_flag")){
 //            RepaymentListRequest.request(context, new NetWorkCallBack<RepaymentList>() {
@@ -318,7 +345,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
                     data =  repaymentList.data;
 
                     //获取之后设置数据
-                    initData(reimbursement_lv, data,loan_term);
+                    initData(reimbursement_lv, data,loan_term,mode);
                 }
 
                 @Override
@@ -449,11 +476,11 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
                 UtilsToast.showToast(context, rePayMent1.message);
                 LogUtils.i("还款网络成功回来的数据"+ rePayMent1.message);
                 //reimbursement_lv.removeAllViews();
-                data.clear();
-                reimbursement_lv.removeHeaderView(mXueDaiButton_2);
-                mMyListView_04_more.notifyDataSetChanged();
+                //data.clear();
+                //reimbursement_lv.removeHeaderView(mXueDaiButton_2);
+               // mMyListView_04_more.notifyDataSetChanged();
                 //重新获取一下网络刷新一下列表
-                initListViewData(reimbursement_lv);
+
 
             }
 
@@ -466,6 +493,12 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         });
     }
 
+    /**
+     * 刷新列表
+     */
+    public void refurbish() {
+        getTopData(2);
+    }
 
     private void configXRfreshView(XRefreshView xRefreshView, XRefreshView.SimpleXRefreshListener listener) {
         xRefreshView.setPullLoadEnable(true);

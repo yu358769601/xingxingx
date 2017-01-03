@@ -1,7 +1,5 @@
 package com.xinxinxuedai.MVP.Re_stagingActivity;
 
-import com.xinxinxuedai.MVP.Re_stagingActivity.contract.Re_stagingActivity_mvpContract;
-
 import java.util.ArrayList;
 
 /**
@@ -12,11 +10,11 @@ import java.util.ArrayList;
  * <p>
  * 备注:
  */
-public class Re_stagingActivity_mvp implements Re_stagingActivity_mvpContract.View {
+public class Re_stagingActivity_mvp  {
 
 
 
-    @Override
+
     public void getData(ArrayList<String> list) {
 
     }

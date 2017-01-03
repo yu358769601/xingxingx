@@ -25,7 +25,7 @@ public class XueDaiButton_5 extends RelativeLayout implements View.OnClickListen
     private TextView xuedai_button_5_tv2;
     private ImageView xuedai_button_5_iv;
     private RelativeLayout xuedai_button_5;
-
+    private boolean check = false;
     public XueDaiButton_5(Context context) {
         super(context);
         initView(context);
@@ -49,6 +49,7 @@ public class XueDaiButton_5 extends RelativeLayout implements View.OnClickListen
        View mView = inflater.inflate(R.layout.xuedai_button_5, this);
         //外框
         xuedai_button_5 = (RelativeLayout) mView.findViewById(R.id.xuedai_button_5);
+       // xuedai_button_5.setOnClickListener(this);
         //代金券金额
         xuedai_button_5_tv1=  (TextView)mView.findViewById(R.id.xuedai_button_5_tv1);
         //过期时间
@@ -90,7 +91,28 @@ public class XueDaiButton_5 extends RelativeLayout implements View.OnClickListen
         return this;
     }
 
+    /**
+     * 改变
+     * @return
+     */
+    public XueDaiButton_5 setCheck(){
+        if (!check){
+            xuedai_button_5_iv.setVisibility(VISIBLE);
+            check = true;
+        }else{
+            xuedai_button_5_iv.setVisibility(INVISIBLE);
+            check = false;
+        }
+        return this;
+    }
 
+    /**
+     * 是否点击
+     * @return
+     */
+    public boolean isCheck(){
+        return check;
+    }
     /**
      * Called when a view has been clicked.
      *
@@ -98,6 +120,10 @@ public class XueDaiButton_5 extends RelativeLayout implements View.OnClickListen
      */
     @Override
     public void onClick(View v) {
-
+//        switch (v.getId()){
+//            case R.id.xuedai_button_5:
+//                setCheck();
+//                break;
+//        }
     }
 }

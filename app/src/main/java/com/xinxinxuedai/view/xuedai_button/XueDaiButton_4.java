@@ -61,7 +61,7 @@ public class XueDaiButton_4 extends RelativeLayout implements View.OnClickListen
 
     }
 
-    public void setData(int day, int moneny, Context context,int classTag) {
+    public void setData(int day, double moneny, Context context,int classTag) {
         double tag = 0;
         switch (day){
             case 28:

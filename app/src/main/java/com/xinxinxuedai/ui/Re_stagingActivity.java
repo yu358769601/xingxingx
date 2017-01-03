@@ -1,6 +1,7 @@
 package com.xinxinxuedai.ui;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,8 +12,10 @@ import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogCallBack;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogSelect;
+import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.RepaymentList;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_4;
@@ -21,10 +24,13 @@ import java.util.ArrayList;
 
 /**
  * 申请再分期activity
- *
+ * 再分期申请actviity
  */
 public class Re_stagingActivity extends BaseActivity implements Re_stagingActivity_mvpContract.View, View.OnClickListener {
-
+    //当前选择的钱数
+    public double mSelectNumMoney;
+    //当前选择的天数
+    public int mSelectNumDay;
     private TextView re_staging_tv1;
     private TextView re_staging_tv2;
     private TextView re_staging_tv3;
@@ -36,18 +42,24 @@ public class Re_stagingActivity extends BaseActivity implements Re_stagingActivi
     private XueDaiButton_4 re_staging_info;
     private initAction_Bar relativeLayout_title;
     private Re_stagingActivityPresenter mPresenter;
+    private TextView sub;
+    private String mZaiFenQDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getBox();
-        initP();
         initView();
+
+        initP();
+        initData();
     }
+
     RepaymentList.DataBean mDataList;
+
     private void getBox() {
         Bundle extras = getIntent().getExtras();
-        if (null!=extras){
+        if (null != extras) {
             mDataList = (RepaymentList.DataBean) extras.getSerializable("zaifenqi");
 
         }
@@ -92,33 +104,45 @@ public class Re_stagingActivity extends BaseActivity implements Re_stagingActivi
             }
         });
 
-        initData();
+        sub = (TextView) findViewById(R.id.sub);
+        sub.setOnClickListener(this);
     }
 
     @Override
     public void initP() {
         mPresenter = new Re_stagingActivityPresenter(AppContext.getApplication(), this);
         mPresenter.method(AppContext.getApplication(), this);
-        //mPresenter.getData();
+
     }
 
-    public void setText(TextView text,String s){
-        text.setText(text.getHint().toString()+s);
+    public void setText(TextView text, String s) {
+        text.setText(text.getHint().toString() + s);
     }
 
     @Override
     public void initData() {
+        mPresenter.getData();
+
+        // mPresenter.setData(mDataList);
+
         String plan_date = mDataList.plan_date;
         String real_data = mDataList.real_data;
-        double real_money = mDataList.real_money;
         int repay_status = mDataList.repay_status;
         double service_fee = mDataList.service_fee;
+        double real_money = mDataList.real_money;
         double money = mDataList.money;
 //        mDataList.
-//        mDataList.
+//        mDataList.                            //还款本金                  还款利息             还款服务费                  违约金
+        String format = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money));
+        double v = Double.parseDouble(format) / 10;
+        //本期可以再分期的钱数
+        setText(re_staging_tv2, format + "元");
+        //再分期费用
+        setText(re_staging_tv4, (v) + "元");
+        //本期末部分应还金额
+        setText(re_staging_tv5, (real_money) + "元");
+        mSelectNumMoney = money;
 
-        setText(re_staging_tv2,money+"");
-        setText(re_staging_tv3,money+"");
 
     }
 
@@ -134,38 +158,71 @@ public class Re_stagingActivity extends BaseActivity implements Re_stagingActivi
                 v.setTag(1);
                 mPresenter.SetOnClick(v);
                 break;
+            case R.id.sub:
+                if (TextUtils.isEmpty(mZaiFenQDay)){
+                    UtilsToast.showToast(AppContext.getApplication(),"还未选择天数");
+                    return;
+                }
+                v.setTag(2);
+                mPresenter.subClick(mZaiFenQDay,mDataList);
+                break;
         }
     }
-    //当前选择的钱数
-    public int mSelectNumMoney;
-    //当前选择的天数
-    public int mSelectNumDay;
+
     @Override
     public void getData(final ArrayList<String> list) {
         UtilsDialog.showDialogRadioGroup(this, "是否再分期", list, new UtilsDialogCallBack() {
             @Override
             public void RadioGroupNum(int selectNum, String selectNumInfo) {
-                re_staging_1.setText(selectNumInfo+"天");
+                re_staging_1.setText(selectNumInfo + "天");
+                mZaiFenQDay = selectNumInfo;
             }
         }, new UtilsDialogSelect() {
             @Override
             public void selectCallBack(int selectNum) {
-                 mSelectNumDay = Integer.parseInt(list.get(selectNum));
-                mSelectNumMoney = 1000;
+                mSelectNumDay = Integer.parseInt(list.get(selectNum));
+
                 setText_Info();
             }
         });
+    }
+
+    @Override
+    public void InfoData(GetInfo getInfo) {
+        setText(re_staging_tv3, getInfo.loan_money + "元");
+
+        String format = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money));
+        double money_ = Double.parseDouble(format) / 10;
+        double money= Double.parseDouble(format);
+        double real_money = mDataList.real_money;
+        double v = real_money + money + money_;
+
+        //钱不够
+        if ((getInfo.loan_money - v) <= 0) {
+           re_staging_tv6.setText("金额不足请充值后在申请");
+            sub.setVisibility(View.INVISIBLE);
+        } else {
+            re_staging_tv6.setText("金额充足可以再分期");
+            sub.setVisibility(View.VISIBLE);
+        }
+
+
+    }
+
+    @Override
+    public void closeActivity() {
+        finish();
     }
 
     /**
      * 动态改变 显示提示计算  服务费什么的
      */
     private void setText_Info() {
-        if (0==mSelectNumMoney || 0==mSelectNumDay){
+        if (0 == mSelectNumMoney || 0 == mSelectNumDay) {
             return;
         }
 
-        re_staging_info.setData(mSelectNumDay,mSelectNumMoney, AppContext.getApplication(),1);
+        re_staging_info.setData(mSelectNumDay, mSelectNumMoney, AppContext.getApplication(), 1);
 
 
     }

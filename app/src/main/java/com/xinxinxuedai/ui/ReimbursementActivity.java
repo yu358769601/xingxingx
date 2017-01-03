@@ -105,7 +105,7 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
 
 
         //获取网络添加列表数据
-        mReimbursementActivity_p.initListViewData(mReimbursement_lv);
+        mReimbursementActivity_p.initListViewData(mReimbursement_lv,1);
 
         //初始化 下拉刷新
        //mReimbursementActivity_p.initRefurbish(xrefreshview);
@@ -159,8 +159,10 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
         Intent intent = new Intent(AppContext.getApplication(), Repayment_detailsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("dataList",dataBean);
+        bundle.putInt("positon",positon);
         intent.putExtras(bundle);
-        startActivity(intent);
+        startActivityForResult(intent,0);
+        LogUtils.i("进到还款详情的界面的数据"+dataBean+"多少号"+positon);
 
        // startActivity(new Intent(AppContext.getApplication(),Repayment_detailsActivity.class));
 
@@ -177,6 +179,19 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
 //            }
 //        });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+      LogUtils.i("后一个界面过来回来的数据是"+"requestCode"+requestCode+"\t"+"resultCode"+resultCode);
+        switch (resultCode){
+            //还款成功
+            case 99:
+                mReimbursementActivity_p.refurbish();
+            break;
+
+
+        }
     }
 
     @Override

@@ -88,7 +88,7 @@ public class GetInfo {
         public String loan_pwd;
         public String loan_add_time;
         public String loan_from;
-        public String loan_money;
+        public double loan_money;
         public String loan_sex;
         public String loan_realname;
         public String loan_card_id;

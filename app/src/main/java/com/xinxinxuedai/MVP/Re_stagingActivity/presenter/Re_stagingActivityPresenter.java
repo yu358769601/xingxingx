@@ -5,7 +5,10 @@ import android.view.View;
 
 import com.xinxinxuedai.MVP.Re_stagingActivity.contract.Re_stagingActivity_mvpContract;
 import com.xinxinxuedai.MVP.Re_stagingActivity.model.Re_stagingActivity_mvpModel;
+import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.bean.GetInfo;
+import com.xinxinxuedai.bean.RepaymentList;
 import com.xinxinxuedai.ui.Re_stagingActivity;
 
 import java.util.ArrayList;
@@ -59,6 +62,27 @@ public class Re_stagingActivityPresenter implements Re_stagingActivity_mvpContra
     }
 
 
+    public void getData() {
+        modelInter.getInfo(new Re_stagingActivity_mvpContract.GetInfoData() {
+            @Override
+            public void CallData(GetInfo getInfo) {
+                viewCall.InfoData(getInfo);
+            }
+        });
+    }
 
-
+    /**
+     * 点了提交
+     * @param zaiFenQDay
+     * @param dataList
+     */
+    public void subClick(String zaiFenQDay, RepaymentList.DataBean dataList) {
+        LogUtils.i("点了提交再分期申请"+"内容是"+"多少天"+zaiFenQDay+"\t"+"id"+dataList.id);
+        modelInter.sub(zaiFenQDay, dataList, new Re_stagingActivity_mvpContract.CallBack() {
+            @Override
+            public void close() {
+                viewCall.closeActivity();
+            }
+        });
+    }
 }

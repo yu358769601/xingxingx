@@ -356,7 +356,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void setDataMoney(GetInfo dataMoney) {
         //设置名字
         mMain_tv_name.setText(mMain_tv_name.getHint()+dataMoney.loan_realname);
+        String s = dataMoney.loan_money + "元";
         //设置余额
-        mMain_tv_money.setText(mMain_tv_money.getHint()+dataMoney.loan_money+"元");
+        mMain_tv_money.setText(mMain_tv_money.getHint()+s);
     }
 }

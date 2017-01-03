@@ -64,13 +64,15 @@ public class RepaymentList implements Serializable{
          * 真实还款金额
          * real_money : 82.50
          *
-         *具备再分期条件0 不具备 1 具备
+         *具备再分期条件0 不具备 1 具备   1已经分期就没有还款按钮
          * again_flag : 0
          *
          *再分期id
          * again_id : 0
          *
          * zaifenqi : 0 不能再分期  1可以再分期
+         *  已分期金额 如果分期了 就显示出来
+         * benjin : 0.0
          *
          */
 
@@ -88,6 +90,28 @@ public class RepaymentList implements Serializable{
         public int again_flag;
         public String again_id;
         public int zaifenqi;
+        public double benjin;
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "id=" + id +
+                    ", user_loan_id='" + user_loan_id + '\'' +
+                    ", money=" + money +
+                    ", interest_money=" + interest_money +
+                    ", service_fee=" + service_fee +
+                    ", weiyue_money=" + weiyue_money +
+                    ", plan_date='" + plan_date + '\'' +
+                    ", real_data='" + real_data + '\'' +
+                    ", current_flag='" + current_flag + '\'' +
+                    ", repay_status=" + repay_status +
+                    ", real_money=" + real_money +
+                    ", again_flag=" + again_flag +
+                    ", again_id='" + again_id + '\'' +
+                    ", zaifenqi=" + zaifenqi +
+                    ", benjin=" + benjin +
+                    '}';
+        }
     }
 
     @Override

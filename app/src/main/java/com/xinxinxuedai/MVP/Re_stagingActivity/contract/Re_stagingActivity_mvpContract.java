@@ -2,6 +2,9 @@ package com.xinxinxuedai.MVP.Re_stagingActivity.contract;
 
 import android.content.Context;
 
+import com.xinxinxuedai.bean.GetInfo;
+import com.xinxinxuedai.bean.RepaymentList;
+
 import java.util.ArrayList;
 
 /**
@@ -16,6 +19,11 @@ public interface Re_stagingActivity_mvpContract {
     public interface View {
 
         void getData(ArrayList<String> list);
+
+        void InfoData(GetInfo getInfo);
+
+        void closeActivity();
+
     }
 
     public interface Presenter {
@@ -38,6 +46,18 @@ public interface Re_stagingActivity_mvpContract {
     public interface Model{
 
         void SetDialog(Dialog dialog);
+
+
+        void getInfo(GetInfoData getInfoData);
+        void sub(String zaiFenQDay, RepaymentList.DataBean dataList,CallBack callBack);
+    }
+
+    interface CallBack{
+        void close();
+    }
+
+    interface GetInfoData{
+        void CallData(GetInfo getInfo);
     }
 
     /**
