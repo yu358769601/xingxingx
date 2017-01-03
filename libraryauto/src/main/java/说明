@@ -1,0 +1,51 @@
+	//软件更新检查
+	private void upDateApp() {
+
+//		//原来自动更新
+//		UpdateChecker.checkForDialog(MainActivity.this, new CallBack() {
+//			@Override
+//			public void callDownLoad() {
+//				UtilsToast.showToast(MainActivity.this, "正在后台下载更新");
+//			}
+//
+//			@Override
+//			public void callCancel(int apkforceUpData) {
+//					if (apkforceUpData==0){
+//						UtilsToast.showToast(MainActivity.this, "此次是强制更新取消退出软件");
+//						finish();
+//					}
+//			}
+//		});
+		UpDataRegist.request(this, new NetAesCallBack() {
+			@Override
+			public void onSucceed(JSONObject jsonObject) {
+				int versionCode = AppUtils.getVersionCode(MainActivity.this);
+				Integer data = jsonObject.getInteger("data");
+				LogUtils.i("更新数据"+jsonObject+"本地版本号"+versionCode+"网络版本号"+data);
+				if (data>versionCode){
+					LogUtils.i("提示版本升级");
+					showDialog(MainActivity.this, "更新", 1, "http://59.110.11.60/APK/ruida.apk", new CallBack() {
+						@Override
+						public void callDownLoad() {
+
+							UtilsToast.showToast(MainActivity.this, "正在后台下载更新");
+						}
+
+						@Override
+						public void callCancel(int apkforceUpData) {
+//							UtilsToast.showToast(MainActivity.this, "此次是强制更新取消退出软件");
+//							finish();
+						}
+					});
+				}
+			}
+
+			@Override
+			public void onError(String errorString) {
+
+			}
+		});
+
+
+
+	}
