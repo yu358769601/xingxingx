@@ -35,12 +35,12 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
     private TextView mXuedai_button3_tv6;
     private TextView mXuedai_button3_tv7;
     private LinearLayout ll2;
+    private TextView xuedai_button3_tvbenjin;
 
     public XueDaiButton_3(Context context) {
         super(context);
         initView(context);
     }
-
 
 
     public XueDaiButton_3(Context context, AttributeSet attrs) {
@@ -54,7 +54,8 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
     }
 
     button_CallBack mButton_callBack;
-    public XueDaiButton_3 setCallBack(button_CallBack mButton_callBack){
+
+    public XueDaiButton_3 setCallBack(button_CallBack mButton_callBack) {
         this.mButton_callBack = mButton_callBack;
         return this;
     }
@@ -95,81 +96,136 @@ public class XueDaiButton_3 extends RelativeLayout implements View.OnClickListen
         //是否显示
         ll2 = (LinearLayout) mView.findViewById(R.id.ll2);
         ll2.setTag(10);
-
-
+        //已分期金额
+        xuedai_button3_tvbenjin = (TextView) mView.findViewById(R.id.xuedai_button3_tvbenjin);
+       // mXuedai_button3_tv7.setTag(9);
 
     }
 
     /**
      * 设置应还金额
+     *
      * @param s
      * @return
      */
-    public XueDaiButton_3 setTv1(String s){
-        mXuedai_button3_tv1.setText(mXuedai_button3_tv1.getHint()+s);
+    public XueDaiButton_3 setTv1(String s) {
+        mXuedai_button3_tv1.setText(mXuedai_button3_tv1.getHint() + s);
         return this;
     }
 
-    public double getXuedai_button3_tv1(){
-        String substring = mXuedai_button3_tv1.getText().toString().substring(5, mXuedai_button3_tv1.getText().toString().length()-1);
+    /**
+     * 是否显示再分期
+     * @param b
+     * @return
+     */
+    public XueDaiButton_3 setTvfenqi(boolean b){
+        if (b){
+            xuedai_button3_tvbenjin.setVisibility(VISIBLE);
+        }else{
+            xuedai_button3_tvbenjin.setVisibility(INVISIBLE);
+        }
+        return this;
+    }
+
+    public double getXuedai_button3_tv1() {
+        String substring = mXuedai_button3_tv1.getText().toString().substring(5, mXuedai_button3_tv1.getText().toString().length() - 1);
 
         double v = Double.parseDouble(substring);
         return v;
     }
+
     /**
      * 设置已还金额
+     *
      * @param s
      * @return
      */
-    public XueDaiButton_3 setTv2(String s){
-        mXuedai_button3_tv2.setText(mXuedai_button3_tv2.getHint()+s);
+    public XueDaiButton_3 setTv2(String s) {
+        mXuedai_button3_tv2.setText(mXuedai_button3_tv2.getHint() + s);
         return this;
     }
+
     /**
      * 设置12/12
+     *
      * @param s
      * @return
      */
-    public XueDaiButton_3 setTv3(String s){
+    public XueDaiButton_3 setTv3(String s) {
         mXuedai_button3_tv3.setText(s);
         return this;
     }
+
     /**
      * 计划还款日
+     *
      * @param s
      * @return
      */
-    public XueDaiButton_3 setTv4(String s){
-        mXuedai_button3_tv4.setText(mXuedai_button3_tv4.getHint()+s);
+    public XueDaiButton_3 setTv4(String s) {
+        mXuedai_button3_tv4.setText(mXuedai_button3_tv4.getHint() + s);
         return this;
     }
+
     /**
      * 还款按钮
+     *
      * @param s
      * @return
      */
-    public XueDaiButton_3 setTv5(String s){
-        mXuedai_button3_tv5.setText(mXuedai_button3_tv5.getHint()+s);
+    public XueDaiButton_3 setTv5(String s) {
+        mXuedai_button3_tv5.setText(mXuedai_button3_tv5.getHint() + s);
         return this;
     }
+
     /**
      * 是否显示
+     *
      * @param
      * @return
      */
-    public XueDaiButton_3 setll_Show(boolean b){
-        if (b){
+    public XueDaiButton_3 setll_Show(boolean b) {
+        if (b) {
             ll2.setVisibility(VISIBLE);
-        }else{
+        } else {
             ll2.setVisibility(GONE);
         }
         return this;
     }
 
+    public XueDaiButton_3 setIv(int status) {
+        //0 待还款  1 已还款 2 逾期 3提前还款 4坏账5减免
+        //我要还款里面的小星星 五颜六色的
+        switch (status) {
+            case 0:
+                mXuedai_button3_iv.setBackgroundResource(R.drawable.loan_status1);
+                break;
+            case 1:
+                mXuedai_button3_iv.setBackgroundResource(R.drawable.loan_status2);
+                break;
+            case 2:
+                mXuedai_button3_iv.setBackgroundResource(R.drawable.loan_status3);
+                break;
+            case 3:
+                mXuedai_button3_iv.setBackgroundResource(R.drawable.ti);
+                break;
+            case 4:
+                mXuedai_button3_iv.setBackgroundResource(R.drawable.home_tv01);
+                break;
+            case 5:
+                mXuedai_button3_iv.setBackgroundResource(R.drawable.home_tv02);
+                break;
+        }
+
+        return this;
+
+        //view.initText(text);
+    }
+
     @Override
     public void onClick(View v) {
-        if (null!=mButton_callBack)
-        mButton_callBack.button_Click(v);
+        if (null != mButton_callBack)
+            mButton_callBack.button_Click(v);
     }
 
 

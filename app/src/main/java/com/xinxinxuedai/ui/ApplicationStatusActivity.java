@@ -2,6 +2,7 @@ package com.xinxinxuedai.ui;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xinxinxuedai.MVP.ApplicationStatusActivity.ApplicationStatusActivity_C;
@@ -12,6 +13,7 @@ import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.view.initAction_Bar;
+import com.xinxinxuedai.view.xuedai_button.XueDaiButton_6;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,7 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
     private TextView applicationstatus_tv5;
     private ApplicationStatusActivity_P mApplicationStatusActivity_p;
     private GetLoanDetail mHomeData;
+    private LinearLayout mZaifenqi_ll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +71,8 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
         applicationstatus_tv3 = (TextView) findViewById(R.id.applicationstatus_tv3);
         applicationstatus_tv4 = (TextView) findViewById(R.id.applicationstatus_tv4);
         applicationstatus_tv5 = (TextView) findViewById(R.id.applicationstatus_tv5);
-
+        //展现再分期数据的
+        mZaifenqi_ll = (LinearLayout) findViewById(R.id.zaifenqi_ll);
         initData();
     }
 
@@ -145,10 +149,36 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
             if (data.loan_status==i){
                 //借款状态
                 applicationstatus_tv5.setText(applicationstatus_txt5+s);
-                return;
+                break;
             }
         }
 
+        if (data.again_flag!=0){
+            if (data.again.size()>0){
+                mZaifenqi_ll.removeAllViews();
+                for (int i = 0; i < data.again.size(); i++) {
+                    GetLoanDetail.AgainBean againBean = data.again.get(i);
+                    XueDaiButton_6 xueDaiButton_6 = setZFQData(againBean);
+                    mZaifenqi_ll.addView(xueDaiButton_6);
+                }
+            }
+
+        }
+
+    }
+
+    public XueDaiButton_6 setZFQData(GetLoanDetail.AgainBean againBean){
+        XueDaiButton_6 xueDaiButton_6 = new XueDaiButton_6(AppContext.getApplication());
+        xueDaiButton_6
+                .setTv1_Text(againBean.again_bid_id)
+                .setTv2_Text(againBean.again_fangkuan)
+                .setTv3_Text(againBean.again_flag)
+                .setTv4_Text(againBean.again_fuwu)
+                .setTv5_Text(againBean.again_lixi)
+                .setTv6_Text(againBean.again_money)
+                .setTv7_Text(againBean.again_time);
+
+        return xueDaiButton_6;
     }
 
     /**

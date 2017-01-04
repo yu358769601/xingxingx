@@ -27,7 +27,11 @@ import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
+import com.xinxinxuedai.bean.GetInfo;
 import com.xinxinxuedai.bean.SetLoanStatus;
+import com.xinxinxuedai.db.DAO.MyDbDAO;
+import com.xinxinxuedai.db.DAO.dbCallBackHelper;
+import com.xinxinxuedai.db.Table;
 import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.request.SetLoanStatus_Request;
 import com.xinxinxuedai.upFile.HttpMultipartPost;
@@ -79,6 +83,7 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
     private ImageView mPlay_status;
     private RelativeLayout mRoot;
     private UrlBroadcastReceiver mUrlBroadcastReceiver;
+    private String mLoan_realname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +100,28 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
 //        Intent intent = getIntent();
 //        videoUri = intent.getStringExtra(MediaRecorderActivity.VIDEO_URI);
 //        LogUtils.i("视频路径返回来的数据是"+videoUri);
+        new MyDbDAO(AppContext.getApplication(), GetInfo.class).find(Table.MyJson,"GetInfo",new dbCallBackHelper<GetInfo>(){
+            /**
+             * 获取数据库信息成功
+             *
+             * @param getInfo
+             */
+            @Override
+            public void getDataSuccess(GetInfo getInfo) {
+                LogUtils.i("我拿到数据了"+getInfo);
+                mLoan_realname = getInfo.loan_realname;
+            }
 
+            /**
+             * 获取数据库信息失败
+             *
+             * @param error
+             */
+            @Override
+            public void getDataError(String error) {
+                LogUtils.i("我拿到数据了"+error);
+            }
+    });
     }
 
     @Override
@@ -357,7 +383,7 @@ public class UploadVideoActivity extends BaseActivity implements View.OnClickLis
                 .captureThumbnailsTime(1)
                 .recordTimeMin((int) (1.5 * 1000))
                 .build();
-        MediaRecorderActivity.goSmallVideoRecorder(this, UploadVideoActivity.class.getName(), config);
+        MediaRecorderActivity.goSmallVideoRecorder(this,mLoan_realname ,UploadVideoActivity.class.getName(), config);
     }
 
     public static void initSmallVideo(Context context) {

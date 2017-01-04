@@ -109,7 +109,7 @@
         <TextView
             android:id="@+id/hint"
             android:textColor="@color/bai"
-            android:text="请朗读以下内容:本人XXX自愿遵守因签订星星学贷所生成的各项服务条款及协议，并承担相关责任。"
+            android:text=""
             android:layout_width="match_parent"
             android:textSize="16sp"
 

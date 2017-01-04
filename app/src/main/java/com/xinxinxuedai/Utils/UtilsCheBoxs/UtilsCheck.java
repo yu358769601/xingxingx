@@ -22,8 +22,9 @@ public class UtilsCheck extends UtilsCheckBoxsBase<RadioGroupData> {
     @Override
     public XueDaiButton_5 setCheckBox(Context context, RadioGroupData radioGroupData) {
         XueDaiButton_5 xueDaiButton_5 = new XueDaiButton_5(context);
-        xueDaiButton_5.setTv1_Text(radioGroupData.money+"");
-        xueDaiButton_5.setTv2_Text( radioGroupData.date);
+        String format = String.format("%.2f", radioGroupData.money);
+        xueDaiButton_5.setTv1_Text(format);
+        xueDaiButton_5.setTv2_Text( radioGroupData.guoqi_time1);
 
         return xueDaiButton_5;
     }
@@ -37,10 +38,10 @@ public class UtilsCheck extends UtilsCheckBoxsBase<RadioGroupData> {
             RadioGroupData radioGroupData = arrayList.get(i);
             if (i==tag){
                 //如果他原本就是 按下去的
-                if (radioGroupData.tag==1){
-                    radioGroupData.tag =0;
+                if (radioGroupData.getItemFlag()==1){
+                    radioGroupData.setItemFlag(0);
                 }else {
-                    radioGroupData.tag=1;
+                    radioGroupData.setItemFlag(1);
 
                 }
             }
@@ -48,7 +49,7 @@ public class UtilsCheck extends UtilsCheckBoxsBase<RadioGroupData> {
         for (int i = 0; i < arrayList.size(); i++) {
 
             RadioGroupData radioGroupData = arrayList.get(i);
-            if (radioGroupData.tag ==1){
+            if (radioGroupData.getItemFlag() ==1){
                 sum+=radioGroupData.money;
             }
 

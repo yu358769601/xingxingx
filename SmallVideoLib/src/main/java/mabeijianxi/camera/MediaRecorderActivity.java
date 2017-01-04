@@ -137,15 +137,21 @@ public class MediaRecorderActivity extends Activity implements
     public final static String MEDIA_RECORDER_CONFIG_KEY = "media_recorder_config_key";
 
     private boolean GO_HOME;
+    private String mName;
+    private TextView hint;
+
     /**
      * @param context
+     * @param loan_realname
      * @param overGOActivityName 录制结束后需要跳转的Activity全类名
      */
-    public static void goSmallVideoRecorder(Activity context, String overGOActivityName, MediaRecorderConfig mediaRecorderConfig) {
+    public static void goSmallVideoRecorder(Activity context, String loan_realname, String overGOActivityName, MediaRecorderConfig mediaRecorderConfig) {
         context.startActivity(new Intent(context,
                 MediaRecorderActivity.class)
                 .putExtra(OVER_ACTIVITY_NAME, overGOActivityName)
-                .putExtra(MEDIA_RECORDER_CONFIG_KEY, mediaRecorderConfig));
+                .putExtra(MEDIA_RECORDER_CONFIG_KEY, mediaRecorderConfig)
+                .putExtra("name",loan_realname)
+        );
     }
 
     @Override
@@ -158,6 +164,7 @@ public class MediaRecorderActivity extends Activity implements
 
     private void initData() {
         Intent intent = getIntent();
+        mName = intent.getStringExtra("name");
         MediaRecorderConfig mediaRecorderConfig = intent.getParcelableExtra(MEDIA_RECORDER_CONFIG_KEY);
         if (mediaRecorderConfig == null) {
             return;
@@ -188,7 +195,9 @@ public class MediaRecorderActivity extends Activity implements
         mRecordController = (TextView) findViewById(R.id.record_controller);
         mBottomLayout = (RelativeLayout) findViewById(R.id.bottom_layout);
         mRecordLed = (CheckBox) findViewById(R.id.record_camera_led);
+        hint = (TextView) findViewById(R.id.hint);
 
+        hint.setText("请朗读以下内容:本人"+mName+"自愿遵守因签订星星学贷所生成的各项服务条款及协议，并承担相关责任");
         // ~~~ 绑定事件
         /*if (DeviceUtils.hasICS())
             mSurfaceView.setOnTouchListener(mOnSurfaveViewTouchListener);*/
@@ -407,8 +416,9 @@ public class MediaRecorderActivity extends Activity implements
         if (mMediaRecorder != null) {
             mMediaRecorder.stopRecord();
         }
-
-        mRecordDelete.setVisibility(View.VISIBLE);
+        //回退键删除_重要功能
+        //mRecordDelete.setVisibility(View.VISIBLE);
+        mRecordDelete.setVisibility(View.INVISIBLE);
         mCameraSwitch.setEnabled(true);
         mRecordLed.setEnabled(true);
 

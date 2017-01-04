@@ -1,6 +1,7 @@
 package com.xinxinxuedai.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,18 +10,28 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loveplusplus.update.AppUtils;
 import com.xinxinxuedai.MVP.mainActivity.MainActivity_CallBack;
 import com.xinxinxuedai.MVP.mainActivity.MainActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
+import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
+import com.xinxinxuedai.Utils.UtilsToast;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.bean.GetInfo;
+import com.xinxinxuedai.bean.UpDataApp;
+import com.xinxinxuedai.request.NetWorkCallBack;
+import com.xinxinxuedai.request.UpDataApp_Request;
+import com.xinxinxuedai.view.dialog.DialogCallBack;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
 import com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger;
+
+import java.util.Hashtable;
 
 //首页activity 主页
 public class MainActivity extends BaseActivity implements View.OnClickListener, MainActivity_CallBack {
@@ -44,8 +55,79 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         super.onCreate(savedInstanceState);
         initP();
         initView();
+        initUpData();
     }
 
+    private void initUpData() {
+        //软件更新检查
+
+//		//原来自动更新
+//		UpdateChecker.checkForDialog(MainActivity.this, new CallBack() {
+//			@Override
+//			public void callDownLoad() {
+//				UtilsToast.showToast(MainActivity.this, "正在后台下载更新");
+//			}
+//
+//			@Override
+//			public void callCancel(int apkforceUpData) {
+//					if (apkforceUpData==0){
+//						UtilsToast.showToast(MainActivity.this, "此次是强制更新取消退出软件");
+//						finish();
+//					}
+//			}
+//		});
+        Hashtable<String, String> hashtable = UtilsHashtable.getHashtable();
+        UpDataApp_Request.request(AppContext.getApplication(), hashtable, new NetWorkCallBack<UpDataApp>() {
+            @Override
+            public void onSucceed(final UpDataApp upDataApp, int dataMode) {
+                final String downloadUrl = upDataApp.data.wangzhi;
+                int versionCode = AppUtils.getVersionCode(AppContext.getApplication());
+                Integer versionCodeNew = upDataApp.data.banben;
+                LogUtils.i("更新数据" + upDataApp + "本地版本号" + versionCode + "网络版本号" + versionCodeNew);
+                //网络版本号和本地版本号
+                if (versionCodeNew > versionCode) {
+                    LogUtils.i("提示版升级");
+                    String qiangzhi;
+                    if (upDataApp.data.qiangzhi==1){
+                         qiangzhi = upDataApp.data.msg+"ps.此版本为强制更新,如不更新将无法使用";
+                    }else{
+                        //qiangzhi ="啊实打实大十大大神大神大神DOI爱神的箭哦啊接DOI啊速度及哦啊的骄傲is基地哦我骄傲is的骄傲is的骚IDu我去玩一U盾哦和啊U盾哦啊是京东爱 奥斯倒是点击";
+                        qiangzhi = upDataApp.data.msg;
+                   }
+
+                    UtilsDialog.showDialog_Text(MainActivity.this, "更新提示", qiangzhi, new DialogCallBack() {
+                        @Override
+                        public void confirm() {
+                            UtilsToast.showToast(AppContext.getApplication(), "正在后台下载更新");
+                            Intent intent = new Intent();
+                            intent.setAction("android.intent.action.VIEW");
+                            Uri content_url = Uri.parse(downloadUrl);
+                           // Uri content_url = Uri.parse("http://a.wdjcdn.com/release/files/phoenix/5.24.2.12070/wandoujia-wandoujia-web_seo_baidu_binded_history_5.24.2.12070.apk?remove=2&append=%07%03eyJhcHBEb3dubG9hZCI6eyJkb3dubG9hZFR5cGUiOiJkb3dubG9hZF9ieV91cmwiLCJwYWNrYWdlTmFtZSI6ImNvbS5zcy5hbmRyb2lkLmFydGljbGUubmV3cyIsImRvd25sb2FkVXJsIjoiaHR0cDovL2FwcHMud2FuZG91amlhLmNvbS9yZWRpcmVjdD9zaWduYXR1cmVcdTAwM2QzYjFhZjExXHUwMDI2dXJsXHUwMDNkaHR0cCUzQSUyRiUyRmFway53YW5kb3VqaWEuY29tJTJGYyUyRmQ3JTJGMDRlNTU0ZDM5NDc3NGUwMDRmMzVmZjkxNjMzZWVkN2MuYXBrXHUwMDI2cG5cdTAwM2Rjb20uc3MuYW5kcm9pZC5hcnRpY2xlLm5ld3NcdTAwMjZtZDVcdTAwM2QwNGU1NTRkMzk0Nzc0ZTAwNGYzNWZmOTE2MzNlZWQ3Y1x1MDAyNmFwa2lkXHUwMDNkMjAzODEyNjZcdTAwMjZ2Y1x1MDAzZDU5NVx1MDAyNnNpemVcdTAwM2QxMjk4ODgyOFx1MDAyNnBvc1x1MDAzZHQlMkZoaXN0b3J5JTJGdmVyc2lvbnMiLCJ0aXRsZSI6IuS7iuaXpeWktOadoSIsImljb25VcmwiOiJodHRwOi8vaW1nLndkamltZy5jb20vbW1zL2ljb24vdjEvMS9hNi81MzQ1ZTgyNjY4MDg0NjI0NDQ3ZjNhMTQ1Y2E2NmE2MV83OF83OC5wbmcifX0Wdj01B0002f79796");
+                            intent.setData(content_url);
+                            startActivity(intent);
+                            finish();
+                        }
+
+                        @Override
+                        public void cancel() {
+                            if (upDataApp.data.qiangzhi==1){
+                                LogUtils.i("强制更新");
+                                finish();
+                            }
+
+                        }
+                    });
+
+                }
+            }
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+
+
+    }
 
 
     @Override

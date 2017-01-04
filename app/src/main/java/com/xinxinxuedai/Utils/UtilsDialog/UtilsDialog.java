@@ -141,7 +141,9 @@ public class UtilsDialog {
        // builder.create().show();
         //设置窗口的大小
         CustomDialog alertDialog = builder.create();
-            alertDialog.show();
+        //点击外面不消失
+        alertDialog.setCancelable(false);
+        alertDialog.show();
         WindowManager.LayoutParams  lp= alertDialog.getWindow().getAttributes();
         DisplayMetrics displayMetrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -202,7 +204,8 @@ public class UtilsDialog {
         //设置窗口的大小
         CustomDialog alertDialog = builder.create();
         builder.setCanl(true);
-
+        //点击外面不消失
+        alertDialog.setCancelable(false);
         alertDialog.show();
         WindowManager.LayoutParams  lp= alertDialog.getWindow().getAttributes();
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -292,6 +295,8 @@ public class UtilsDialog {
        // builder.create().show();
         //设置窗口的大小
         CustomDialog alertDialog = builder.create();
+        //点击外面不消失
+        alertDialog.setCancelable(false);
             alertDialog.show();
         WindowManager.LayoutParams  lp= alertDialog.getWindow().getAttributes();
         DisplayMetrics displayMetrics = new DisplayMetrics();

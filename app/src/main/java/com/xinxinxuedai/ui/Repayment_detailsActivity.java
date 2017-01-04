@@ -104,11 +104,14 @@ public class Repayment_detailsActivity extends BaseActivity implements View.OnCl
             String format = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money));
             double v = Double.parseDouble(format);
             repayment_details_xd3
+                    .setIv(mDataList.repay_status)
                     .setTv1(format+"元")
                     .setTv2(real_money+"元")
-                    .setTv4(plan_date);
+                    .setTv4(plan_date)
+                    .setTvfenqi(false);
 
             mPresenter.setMoney(v);
+            LogUtils.i("应该还款"+format);
         }
         mPresenter.getNetData(repayment_details_ll);
 
@@ -162,15 +165,21 @@ public class Repayment_detailsActivity extends BaseActivity implements View.OnCl
     public void CallBack(double v) {
         String format = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money));
         double v1 = Double.parseDouble(format);
-        double v2=  (v1)- v;
-        if (v1<=0){
+        String v3 = String.format("%.2f", v);
+        double v4 = Double.parseDouble(v3);
+
+        double v2=  (v1)- v4;
+        String sub = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money)-v);
+        LogUtils.i("我应该还款金额"+format+"选择的代金券"+v3);
+        if (v2<=0){
             UtilsToast.showToast(AppContext.getApplication(),"你所选择的代金券金额叠加超过还款金额请重新选择");
             subTag = true;
             return;
         }else{
             subTag = false;
         }
-        repayment_details_xd3.setTv1((v2)+"元");
+     //   repayment_details_xd3.setTv1((v2)+"元");
+        repayment_details_xd3.setTv1(sub+"元");
         //mPresenter.setMoney(v1);
 
 

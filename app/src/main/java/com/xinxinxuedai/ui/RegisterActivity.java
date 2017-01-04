@@ -173,7 +173,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void getAction_barView_title(TextView textView) {
                 if (mClasstag == REGISTERCLASS) {
-                    textView.setText("注册界面");
+                    textView.setText("用户注册");
                 } else if (mClasstag == AGAINCLASS) {
                     textView.setText("重置密码");
                 }

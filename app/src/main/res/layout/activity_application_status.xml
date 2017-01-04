@@ -8,51 +8,64 @@
     android:background="@drawable/jihuajiekuan"
     tools:context="com.xinxinxuedai.ui.ApplicationStatusActivity">
     <!--申请状态xml-->
-    <RelativeLayout
+    <ScrollView
         android:layout_below="@+id/relativeLayout_title"
-        android:padding="@dimen/size_base480_10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/applicationstatus_tv1"
-            style="@style/text_witle_padding"
-            android:hint="@string/applicationstatus_txt1"
-            android:textColorHint="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/applicationstatus_tv2"
-            style="@style/text_witle_padding"
-            android:layout_below="@+id/applicationstatus_tv1"
-            android:hint="@string/applicationstatus_txt2"
-            android:textColorHint="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/applicationstatus_tv3"
-            style="@style/text_witle_padding"
-            android:layout_below="@+id/applicationstatus_tv2"
-            android:hint="@string/applicationstatus_txt3"
-            android:textColorHint="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/applicationstatus_tv4"
-            style="@style/text_witle_padding"
-            android:layout_below="@+id/applicationstatus_tv3"
-            android:hint="@string/applicationstatus_txt4"
-            android:textColorHint="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/applicationstatus_tv5"
-            style="@style/text_witle_padding"
-            android:layout_below="@+id/applicationstatus_tv4"
-            android:hint="@string/applicationstatus_txt5"
-            android:textColorHint="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        <RelativeLayout
 
-    </RelativeLayout>
+            android:padding="@dimen/size_base480_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/applicationstatus_tv1"
+                style="@style/text_witle_padding"
+                android:hint="@string/applicationstatus_txt1"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/applicationstatus_tv2"
+                style="@style/text_witle_padding"
+                android:layout_below="@+id/applicationstatus_tv1"
+                android:hint="@string/applicationstatus_txt2"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/applicationstatus_tv3"
+                style="@style/text_witle_padding"
+                android:layout_below="@+id/applicationstatus_tv2"
+                android:hint="@string/applicationstatus_txt3"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/applicationstatus_tv4"
+                style="@style/text_witle_padding"
+                android:layout_below="@+id/applicationstatus_tv3"
+                android:hint="@string/applicationstatus_txt4"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/applicationstatus_tv5"
+                style="@style/text_witle_padding"
+                android:layout_below="@+id/applicationstatus_tv4"
+                android:hint="@string/applicationstatus_txt5"
+                android:textColorHint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:id="@+id/zaifenqi_ll"
+                android:layout_below="@+id/applicationstatus_tv5"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
 
 </com.xinxinxuedai.view.initAction_Bar>

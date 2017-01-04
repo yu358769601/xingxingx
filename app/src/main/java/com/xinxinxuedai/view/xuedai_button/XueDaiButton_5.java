@@ -64,6 +64,7 @@ public class XueDaiButton_5 extends RelativeLayout implements View.OnClickListen
      * @return
      */
     public XueDaiButton_5 setTv1_Text(String text){
+        //String format = String.format("%.2f", text);
         xuedai_button_5_tv1.setText(xuedai_button_5_tv1.getHint()+text+"元");
         return this;
     }
@@ -73,7 +74,7 @@ public class XueDaiButton_5 extends RelativeLayout implements View.OnClickListen
      * @return
      */
     public XueDaiButton_5 setTv2_Text(String text){
-        xuedai_button_5_tv2.setText(xuedai_button_5_tv2.getHint()+text+"元");
+        xuedai_button_5_tv2.setText(xuedai_button_5_tv2.getHint()+text);
         return this;
     }
 

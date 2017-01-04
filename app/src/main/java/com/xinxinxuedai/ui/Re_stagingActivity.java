@@ -133,15 +133,18 @@ public class Re_stagingActivity extends BaseActivity implements Re_stagingActivi
         double money = mDataList.money;
 //        mDataList.
 //        mDataList.                            //还款本金                  还款利息             还款服务费                  违约金
-        String format = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money));
+       // String format = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money));
+        String format = String.format("%.2f", (mDataList.benjin));
         double v = Double.parseDouble(format) / 10;
         //本期可以再分期的钱数
         setText(re_staging_tv2, format + "元");
         //再分期费用
         setText(re_staging_tv4, (v) + "元");
         //本期末部分应还金额
-        setText(re_staging_tv5, (real_money) + "元");
-        mSelectNumMoney = money;
+        String s = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money)-mDataList.benjin);
+        setText(re_staging_tv5, (s) + "元");
+        //开始预览
+        mSelectNumMoney = mDataList.benjin;
 
 
     }

@@ -64,6 +64,8 @@
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/ll1"
+                android:layout_marginTop="@dimen/size_base480_10dp"
+                android:layout_marginBottom="@dimen/size_base480_10dp"
                 android:orientation="horizontal"
                 android:layout_below="@+id/register_ll"
                 android:layout_width="match_parent"
@@ -101,6 +103,8 @@
             <LinearLayout
                 android:id="@+id/ll2"
                 android:orientation="horizontal"
+                android:layout_marginTop="@dimen/size_base480_10dp"
+                android:layout_marginBottom="@dimen/size_base480_10dp"
                 android:layout_below="@+id/register_et_cunttime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -144,7 +148,7 @@
                 android:drawablePadding="@dimen/size_base480_13dp"
                 android:drawableLeft="@drawable/lock"
                 android:layout_width="match_parent"
-                android:layout_below="@+id/register_et_passwrold"
+                android:layout_below="@+id/ll3"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
         <!--    android:digis="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
@@ -159,11 +163,13 @@
                 android:drawablePadding="@dimen/size_base480_13dp"
                 android:drawableLeft="@drawable/lock"
                 android:layout_width="match_parent"
-                android:layout_below="@+id/register_et_cunttime"
+                android:layout_below="@+id/ll2"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
             <LinearLayout
                 android:id="@+id/ll3"
+                android:layout_marginTop="@dimen/size_base480_10dp"
+                android:layout_marginBottom="@dimen/size_base480_10dp"
                 android:orientation="horizontal"
                 android:layout_below="@+id/register_et_passwrold"
                 android:layout_width="match_parent"

@@ -118,11 +118,12 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
             helper.initImage_status(R.id.xuedai_button3_iv,item.repay_status);
 
             //String.format("%.2f元", (moneny * 0.0275) + (moneny * 0.01)+moneny);
-            String format = String.format("%.2f元", (item.money + item.service_fee + item.interest_money + item.weiyue_money));
+            String format = String.format("%.2f", (item.money + item.service_fee + item.interest_money + item.weiyue_money));
             //应还金额 (本金+利息+服务费+违约金)
-            helper.initText_hint(R.id.xuedai_button3_tv1,format);
+            helper.initText_hint(R.id.xuedai_button3_tv1,format+"元");
             //已还金额
-            helper.initText_hint(R.id.xuedai_button3_tv2,item.real_money+"元");
+            String format1 = String.format("%.2f", (item.real_money));
+            helper.initText_hint(R.id.xuedai_button3_tv2,format1+"元");
             //分期
             helper.initText_hint(R.id.xuedai_button3_tv3,item.current_flag+"/"+(loan_term/7)+"期");
             //已分期金额 只有在已分期为1 时候才显示
@@ -132,24 +133,27 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
             //还款按钮
 
             //TextView textView1 = helper.initText(R.id.xuedai_button3_tv5, "");
-            TextView textView1= helper.initText_huankuan(R.id.xuedai_button3_tv5,"",item.repay_status);
+            TextView huankuan= helper.initText_huankuan(R.id.xuedai_button3_tv5,"",item.repay_status);
             if (frist ==position){
-                textView1.setVisibility(View.VISIBLE);
+                huankuan.setVisibility(View.VISIBLE);
                 LogUtils.i("我显示有按钮"+position);
                 //tag = false;
             }else{
-                textView1.setVisibility(View.INVISIBLE);
+                huankuan.setVisibility(View.INVISIBLE);
                 LogUtils.i("我显示没按钮"+position);
             }
             /**
-             * 如果 已经分期过就显示 易分期金额
+             * 如果 已经分期过就显示 易分期金额 这个很特殊
              */
             if (item.again_flag==1){
                 benjin.setVisibility(View.VISIBLE);
-                textView1.setVisibility(View.INVISIBLE);
+                huankuan.setVisibility(View.INVISIBLE);
+                //已还金额
+                String yihuanjiner = String.format("%.2f", ((item.money + item.service_fee + item.interest_money + item.weiyue_money)-item.benjin));
+                helper.initText_hint(R.id.xuedai_button3_tv2,yihuanjiner+"元");
             }
 
-            textView1.setOnClickListener(new View.OnClickListener() {
+            huankuan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //点击还款
