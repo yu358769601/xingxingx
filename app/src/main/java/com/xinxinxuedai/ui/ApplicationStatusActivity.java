@@ -9,6 +9,7 @@ import com.xinxinxuedai.MVP.ApplicationStatusActivity.ApplicationStatusActivity_
 import com.xinxinxuedai.MVP.ApplicationStatusActivity.ApplicationStatusActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.Utils.UtilsTimer;
 import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.bean.GetLoanDetail;
@@ -167,17 +168,38 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
 
     }
 
+    /**
+     * 再分期的数据  新加的
+     * @param againBean
+     * @return
+     */
     public XueDaiButton_6 setZFQData(GetLoanDetail.AgainBean againBean){
+        LogUtils.i("在分期数据"+againBean);
         XueDaiButton_6 xueDaiButton_6 = new XueDaiButton_6(AppContext.getApplication());
+//        * 放款时间
+//                * again_fangkuan : 1483514223
+//        * 申请时间
+//                * again_time : 1483514141
+//        * 服务费
+//                * again_fuwu : 22.00
+//        * 审核状态 0 待审核 1 审核通过 2 满标放款成功
+//                * again_flag : 2
+//        *分期金额
+//                * again_money : 267.00
+//        * 利息
+//                * again_lixi : 8.00
+//                *
+//        * 手续费
+//                * again_shouxufei : 26.70
         xueDaiButton_6
-                .setTv1_Text(againBean.again_bid_id)
-                .setTv2_Text(againBean.again_fangkuan)
-                .setTv3_Text(againBean.again_flag)
-                .setTv4_Text(againBean.again_fuwu)
-                .setTv5_Text(againBean.again_lixi)
-                .setTv6_Text(againBean.again_money)
-                .setTv7_Text(againBean.again_time);
-
+                .setTv1_Text(againBean.again_flag)
+                .setTv2_Text(againBean.again_money+"")
+                .setTv3_Text(againBean.again_lixi)
+                .setTv4_Text(againBean.again_shouxufei)
+                .setTv5_Text(againBean.again_fuwu)
+                .setTv6_Text(UtilsTimer.getFormat(againBean.again_time*1000))
+                .setTv7_Text(UtilsTimer.getFormat(againBean.again_fangkuan*1000));
+        LogUtils.i("申请时间"+UtilsTimer.getFormat(againBean.again_time*1000)+"放款时间"+UtilsTimer.getFormat(againBean.again_fangkuan*1000));
         return xueDaiButton_6;
     }
 

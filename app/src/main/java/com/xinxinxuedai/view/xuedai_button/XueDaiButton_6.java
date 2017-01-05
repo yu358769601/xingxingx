@@ -68,9 +68,9 @@ public class XueDaiButton_6 extends RelativeLayout implements View.OnClickListen
      * @param text 钱数
      * @return
      */
-    public XueDaiButton_6 setTv1_Text(String text) {
+    public XueDaiButton_6 setTv3_Text(String text) {
         //String format = String.format("%.2f", text);
-        xuedai_button_6_tv1.setText(xuedai_button_6_tv1.getHint() + text + "元");
+        xuedai_button_6_tv3.setText(xuedai_button_6_tv3.getHint() + text + "元");
         return this;
     }
 
@@ -84,7 +84,13 @@ public class XueDaiButton_6 extends RelativeLayout implements View.OnClickListen
         xuedai_button_6_tv2.setText(xuedai_button_6_tv2.getHint() + text);
         return this;
     }
-    public XueDaiButton_6 setTv3_Text(int status) {
+
+    /**
+     * 审核状态
+     * @param status
+     * @return
+     */
+    public XueDaiButton_6 setTv1_Text(int status) {
         ArrayList<String> strings = new ArrayList<>();
        // 审核状态 0 待审核 1 审核通过 2 满标放款成功
         strings.add("待审核");
@@ -93,7 +99,7 @@ public class XueDaiButton_6 extends RelativeLayout implements View.OnClickListen
 
 
 
-        xuedai_button_6_tv3.setText(xuedai_button_6_tv3.getHint() + strings.get(status));
+        xuedai_button_6_tv1.setText(xuedai_button_6_tv1.getHint() + strings.get(status));
         return this;
     }
     public XueDaiButton_6 setTv4_Text(String text) {

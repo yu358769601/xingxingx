@@ -168,34 +168,59 @@ public class GetLoanDetail implements Serializable{
         public static class AgainBean  implements Serializable{
                         /**
                          * again_term : 56
+                         *
+                         *
                          * again_pack : 1
+                         *
+                         *
                          * again_bid_id : 165
+                         *
+                         * 放款时间
                          * again_fangkuan : 1483514223
+                         *
+                         *
                          * plan_id : 10200
+                         *
+                         * 申请时间
                          * again_time : 1483514141
+                         *
+                         * 服务费
                          * again_fuwu : 22.00
+                         *
+                         *
                          * id : 17
+                         *
+                         *
                          * loan_user_id : 11947
+                         *
                          * 审核状态 0 待审核 1 审核通过 2 满标放款成功
                          * again_flag : 2
+                         *
+                         *
                          * loan_id : 12058
+                         *
+                         *分期的钱
                          * again_money : 267.00
+                         *
+                         * 利息
                          * again_lixi : 8.00
+                         *
+                         * 手续费
                          * again_shouxufei : 26.70
                          */
 
                         public String again_term;
                         public String again_pack;
                         public String again_bid_id;
-                        public String again_fangkuan;
+                        public long again_fangkuan;
                         public String plan_id;
-                        public String again_time;
+                        public long again_time;
                         public String again_fuwu;
                         public String id;
                         public String loan_user_id;
                         public int again_flag;
                         public String loan_id;
-                        public String again_money;
+                        public double again_money;
                         public String again_lixi;
                         public String again_shouxufei;
 

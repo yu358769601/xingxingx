@@ -10,14 +10,14 @@
         <TextView
             android:id="@+id/xuedai_button_6_tv1"
             style="@style/zaifenqi"
-            android:hint="代金券金额:"
+            android:hint="审核状态:"
             android:padding="@dimen/size_base480_5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/xuedai_button_6_tv2"
             android:layout_below="@+id/xuedai_button_6_tv1"
-            android:hint="过期时间:"
+            android:hint="分期金额:"
             style="@style/zaifenqi"
             android:padding="@dimen/size_base480_5dp"
             android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         <TextView
             android:id="@+id/xuedai_button_6_tv3"
             android:layout_below="@+id/xuedai_button_6_tv2"
-            android:hint="过期时间:"
+            android:hint="利息:"
             style="@style/zaifenqi"
             android:padding="@dimen/size_base480_5dp"
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
         <TextView
             android:id="@+id/xuedai_button_6_tv4"
             android:layout_below="@+id/xuedai_button_6_tv3"
-            android:hint="过期时间:"
+            android:hint="手续费:"
             style="@style/zaifenqi"
             android:padding="@dimen/size_base480_5dp"
             android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
         <TextView
             android:id="@+id/xuedai_button_6_tv5"
             android:layout_below="@+id/xuedai_button_6_tv4"
-            android:hint="过期时间:"
+            android:hint="服务费:"
             style="@style/zaifenqi"
             android:padding="@dimen/size_base480_5dp"
             android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
         <TextView
             android:id="@+id/xuedai_button_6_tv6"
             android:layout_below="@+id/xuedai_button_6_tv5"
-            android:hint="过期时间:"
+            android:hint="申请时间:"
             style="@style/zaifenqi"
             android:padding="@dimen/size_base480_5dp"
             android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
         <TextView
             android:id="@+id/xuedai_button_6_tv7"
             android:layout_below="@+id/xuedai_button_6_tv6"
-            android:hint="过期时间:"
+            android:hint="放款时间:"
             style="@style/zaifenqi"
             android:padding="@dimen/size_base480_5dp"
             android:layout_width="wrap_content"

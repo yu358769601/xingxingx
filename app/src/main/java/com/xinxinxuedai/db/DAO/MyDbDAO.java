@@ -115,28 +115,33 @@ public class MyDbDAO<T> {
      */
     public void find(String tableName ,String name,dbCallBackHelper<T> back){
         Class<T> t1 = (Class<T>) t;
-        String msg
-                = null;
-        SQLiteDatabase  db = mJson.getReadableDatabase();
-        //结果集 游标
-        //Cursor cursor = db.rawQuery("select sex from student where name=?", new String[]{name});
-        String names = "";
-            names =name;
-        Cursor cursor = db.query(tableName, new String[]{"msg"}, "name=?", new String[]{names}, null, null, null);
-        boolean result = cursor.moveToNext();
-        if(result){
-            msg = cursor.getString(0);
-        }
-        cursor.close();//释放资源
-        db.close();
+       try{
+           String msg
+                   = null;
+           SQLiteDatabase  db = mJson.getReadableDatabase();
+           //结果集 游标
+           //Cursor cursor = db.rawQuery("select sex from student where name=?", new String[]{name});
+           String names = "";
+           names =name;
+           Cursor cursor = db.query(tableName, new String[]{"msg"}, "name=?", new String[]{names}, null, null, null);
+           boolean result = cursor.moveToNext();
+           if(result){
+               msg = cursor.getString(0);
+           }
+           cursor.close();//释放资源
+           db.close();
 
-        if (null==msg){
-            back.getDataError("数据库没有此条目");
-            return;
-        }else{
-            JSONObject jsonObject = JSONArray.parseObject(msg);
-            back.getDataSuccess(jsonObject.toJavaObject(t1));
-        }
+           if (null==msg){
+               back.getDataError("数据库没有此条目");
+               return;
+           }else{
+               JSONObject jsonObject = JSONArray.parseObject(msg);
+               back.getDataSuccess(jsonObject.toJavaObject(t1));
+           }
+       }catch (Exception e){
+           LogUtils.e(e);
+       }
+
     }
 //    /**
 //     * 获取全部的json信息

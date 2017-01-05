@@ -7,8 +7,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xinxinxuedai.MVP.baseMVP.BaseMvp;
+import com.xinxinxuedai.Utils.UtilsBroadcastReceiver;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsHashtable;
 import com.xinxinxuedai.Utils.UtilsToast;
+import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.bean.SetLoanInfo;
@@ -160,12 +162,15 @@ public class LoanApplicationActivity_P  extends BaseMvp<LoanApplicationActivity_
             @Override
             public void onSucceed(SetLoanInfo info, int dataMode) {
                 String message = info.message;
-                UtilsToast.showToast(context, message);
+              //  UtilsToast.showToast(context, message);
                 loanApplicationActivity_callBack.getTextInfo4(hashtable.toString());
 
                 if (dataMode ==NetWorkCallBack.NETDATA) {
                     context.startActivity(new Intent(context,ApplyForActivity.class));
                     loanApplicationActivity_callBack.closeActivity();
+                    //发广播关掉 二选一的界面 发送_关掉二选一界面的_广播
+                    UtilsBroadcastReceiver.sendBroadcastReceiver(
+                            AppContext.getApplication(),"closeActivity","erxuanyi",1);
                 }
                 //网络请求后
             }

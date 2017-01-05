@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.xinxinxuedai.MVP.Re_stagingActivity.contract.Re_stagingActivity_mvpContract;
 import com.xinxinxuedai.MVP.Re_stagingActivity.presenter.Re_stagingActivityPresenter;
 import com.xinxinxuedai.R;
+import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialog;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogCallBack;
 import com.xinxinxuedai.Utils.UtilsDialog.UtilsDialogSelect;
@@ -124,27 +125,31 @@ public class Re_stagingActivity extends BaseActivity implements Re_stagingActivi
         mPresenter.getData();
 
         // mPresenter.setData(mDataList);
-
-        String plan_date = mDataList.plan_date;
-        String real_data = mDataList.real_data;
-        int repay_status = mDataList.repay_status;
-        double service_fee = mDataList.service_fee;
-        double real_money = mDataList.real_money;
-        double money = mDataList.money;
+       try{
+           String plan_date = mDataList.plan_date;
+           String real_data = mDataList.real_data;
+           int repay_status = mDataList.repay_status;
+           double service_fee = mDataList.service_fee;
+           double real_money = mDataList.real_money;
+           double money = mDataList.money;
 //        mDataList.
 //        mDataList.                            //还款本金                  还款利息             还款服务费                  违约金
-       // String format = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money));
-        String format = String.format("%.2f", (mDataList.benjin));
-        double v = Double.parseDouble(format) / 10;
-        //本期可以再分期的钱数
-        setText(re_staging_tv2, format + "元");
-        //再分期费用
-        setText(re_staging_tv4, (v) + "元");
-        //本期末部分应还金额
-        String s = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money)-mDataList.benjin);
-        setText(re_staging_tv5, (s) + "元");
-        //开始预览
-        mSelectNumMoney = mDataList.benjin;
+           // String format = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money));
+           String format = String.format("%.2f", (mDataList.benjin));
+           double v = Double.parseDouble(format) / 10;
+           //本期可以再分期的钱数
+           setText(re_staging_tv2, format + "元");
+           //再分期费用
+           setText(re_staging_tv4, (v) + "元");
+           //本期末部分应还金额
+           String s = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money)-mDataList.benjin);
+           setText(re_staging_tv5, (s) + "元");
+           //开始预览
+           mSelectNumMoney = mDataList.benjin;
+       }catch (Exception e){
+           LogUtils.e(e);
+       }
+
 
 
     }

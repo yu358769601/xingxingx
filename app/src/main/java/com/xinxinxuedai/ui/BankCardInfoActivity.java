@@ -67,7 +67,7 @@ public class BankCardInfoActivity extends BaseActivity implements BankCardInfoAc
         bank_card_info_tv_title.setOnClickListener(this);
         //选择银行卡所属银行
         bank_card_info_tv1_bank = (TextView) findViewById(R.id.bank_card_info_tv1_bank);
-        bank_card_info_tv1_bank.setOnClickListener(this);
+        //bank_card_info_tv1_bank.setOnClickListener(this);
         //开户行名称
         bank_card_info_tv2_open_bank_name = (EditText) findViewById(R.id.bank_card_info_tv2_open_bank_name);
         bank_card_info_tv2_open_bank_name.setOnClickListener(this);

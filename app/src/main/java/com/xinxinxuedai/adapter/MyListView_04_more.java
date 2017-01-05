@@ -124,8 +124,10 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
             //已还金额
             String format1 = String.format("%.2f", (item.real_money));
             helper.initText_hint(R.id.xuedai_button3_tv2,format1+"元");
-            //分期
-            helper.initText_hint(R.id.xuedai_button3_tv3,item.current_flag+"/"+(loan_term/7)+"期");
+            //分期 自定义 当前条目还有长度展示
+           // helper.initText_hint(R.id.xuedai_button3_tv3,item.current_flag+"/"+(loan_term/7)+"期");
+            helper.initText_hint(R.id.xuedai_button3_tv3,(position+1)+"/"+(getCount())+"期");
+
             //已分期金额 只有在已分期为1 时候才显示
             TextView benjin = helper.initText_hint(R.id.xuedai_button3_tvbenjin, item.benjin + "元");
             benjin.setVisibility(View.INVISIBLE);

@@ -7,6 +7,8 @@ android {
             keyPassword 'yu6673160'
             storeFile file('src/yumengmeng.jks')
             storePassword 'yu6673160'
+
+
         }
     }
     compileSdkVersion 22
@@ -61,4 +63,7 @@ dependencies {
     /*友盟统计*/
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile project(':libraryauto')
+    /*内存泄漏*/
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3'
 }

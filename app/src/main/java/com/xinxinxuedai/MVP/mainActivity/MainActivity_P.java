@@ -223,9 +223,10 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
                 context.startActivity(intent);
                 break;
             case 2:
+                //限制进入我要还款_重要
                 if (status !=4){
-                    UtilsToast.showToast(context, "当前状态不需要还款");
-                    return;
+//                    UtilsToast.showToast(context, "当前状态不需要还款");
+//                    return;
                 }
                 intent.setClass(context, ReimbursementActivity.class);
 

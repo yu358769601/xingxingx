@@ -33,7 +33,8 @@ import mabeijianxi.camera.util.StringUtils;
 import mabeijianxi.camera.views.ProgressView;
 
 /**
- * 视频录制
+ * 视频录制activity
+ * 录制视频activity
  */
 public class MediaRecorderActivity extends Activity implements
         MediaRecorderBase.OnErrorListener, OnClickListener, MediaRecorderBase.OnPreparedListener,
@@ -197,7 +198,7 @@ public class MediaRecorderActivity extends Activity implements
         mRecordLed = (CheckBox) findViewById(R.id.record_camera_led);
         hint = (TextView) findViewById(R.id.hint);
 
-        hint.setText("请朗读以下内容:本人"+mName+"自愿遵守因签订星星学贷所生成的各项服务条款及协议，并承担相关责任");
+        hint.setText("请朗读以下内容:本人"+"\t"+mName+"\t"+"自愿遵守因签订星星学贷所生成的各项服务条款及协议，并承担相关责任");
         // ~~~ 绑定事件
         /*if (DeviceUtils.hasICS())
             mSurfaceView.setOnTouchListener(mOnSurfaveViewTouchListener);*/

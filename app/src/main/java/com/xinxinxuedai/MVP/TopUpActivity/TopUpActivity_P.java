@@ -156,8 +156,14 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
         final EditText NameE = editTextViews.get(2);
         final EditText IdNoE = editTextViews.get(3);
         //商户号
-        String MchNtCd = "0002900F0096235";//测试
+        String MchNtCd = "";//测试
         //String MchNtCd = "0002610F0315943";//正式
+        if (b){
+             MchNtCd = "0002610F0315943";//正式
+        }else{
+            MchNtCd = "0002900F0096235";//测试
+        }
+
         //订单号 后台获得
         //mchntOrdId = "186036630280";
 
@@ -169,9 +175,12 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
         String BankCard = UtilsMyText.getTextView(BankCardE);
         String Name = UtilsMyText.getTextView(NameE);
         String IdNo = UtilsMyText.getTextView(IdNoE);
-        String mMchnt_Key = "5old71wihg2tqjug9kkpxnhx9hiujoqj";//测试
-        //String mMchnt_Key = "2yasvrx1prkh3g71ywxuryrgk9mfhp8r";//正式
-
+        String mMchnt_Key = "";//测试
+        if (b){
+            mMchnt_Key= "2yasvrx1prkh3g71ywxuryrgk9mfhp8r";//正式
+        }else{
+            mMchnt_Key = "5old71wihg2tqjug9kkpxnhx9hiujoqj";//测试
+        }
       //  http://www-1.fuiou.com:18670/mobile_pay/update/receive.pay
         //给自己 后台服务器的 回调地址
         String backUrl = "http://qc518.com/user_recharge.php?act=appHuidiao";

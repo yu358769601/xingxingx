@@ -1,5 +1,9 @@
 package com.xinxinxuedai.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,15 +27,38 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
     private XueDaiButton_1 mXuedaibutton_1;
     private XueDaiButton_1 mXuedaibutton_2;
     private GetLoanDetail mHomeData;
-
+    InnerReceiver receiver = new InnerReceiver();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getBox();
+        init();
         initP();
         initView();
     }
 
+    private void init() {
+        //接收_图片路径_广播
+        IntentFilter filter = new IntentFilter("closeActivity");
+
+        registerReceiver(receiver, filter);
+    }
+
+    //接收别的地方过来的数据 写一个内容类
+    public class InnerReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //使用intent获取发送过来的数据
+            String erxuanyi = intent.getStringExtra("erxuanyi");
+            if ("erxuanyi".equals(erxuanyi)){
+//                mTv4.setStarStuaus(true);
+//                mApply_for_sub.setVisibility(View.VISIBLE);
+                finish();
+            }
+            //finish();
+        }
+    }
     @Override
     public int getlayouXML() {
         return R.layout.activity_loan_products;
@@ -64,7 +91,7 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
                 mLoanProductsActivity_p.onclicks(mXuedaibutton_1);
             }
         }).setTextColor(getResources().getColor(R.color.white))
-                .setVisbilityStar(true)
+              //  .setVisbilityStar(true)
 //                .setText_info("我是注释")
                 .setText_infoColor(getResources().getColor(R.color.white))
                 .setTopDrawable(R.drawable.jiekuan01)
@@ -78,7 +105,7 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
                 mLoanProductsActivity_p.onclicks(mXuedaibutton_2);
             }
         }).setTextColor(getResources().getColor(R.color.white))
-                .setVisbilityStar(true)
+               // .setVisbilityStar(true)
                 .setText_info("适用于中长期借款\n借款金额10000元以下")
                 .setText_infoColor(getResources().getColor(R.color.white))
                 .setTopDrawable(R.drawable.jiekuan02)
@@ -110,6 +137,7 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        unregisterReceiver(receiver);
         dump();
     }
 
