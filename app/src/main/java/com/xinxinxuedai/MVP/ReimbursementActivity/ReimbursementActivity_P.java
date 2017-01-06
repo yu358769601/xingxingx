@@ -2,6 +2,7 @@ package com.xinxinxuedai.MVP.ReimbursementActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -28,6 +29,7 @@ import com.xinxinxuedai.request.RepaymentListRequest;
 import com.xinxinxuedai.request.RepaymentListRequestZFQ;
 import com.xinxinxuedai.request.Repayment_Request;
 import com.xinxinxuedai.request.UserLoanAdvanceMoney_Request_Request;
+import com.xinxinxuedai.ui.Fuwu_and_xieyi_Activity;
 import com.xinxinxuedai.ui.TopUpActivity;
 import com.xinxinxuedai.view.MyListView;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_2;
@@ -88,7 +90,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
     @Override
     public void initListViewData(MyListView reimbursement_lv, int i) {
         this.reimbursement_lv = reimbursement_lv;
-        UtilsToast.showToast(context, "获取网络数据中~");
+      //  UtilsToast.showToast(context, "获取网络数据中~");
         //获取上面的 那个数据
         getTopData(i);
 
@@ -148,7 +150,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
                 LogUtils.i("测试_获取钱数"+i+"\t"+getInfo.loan_money);
 
                 //网络获取数据
-                sendRepaymentListRequest(getLoanDetail.loan_term,i);
+                sendRepaymentListRequest(getLoanDetail,i);
             }
 
             @Override
@@ -158,7 +160,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
         });
     }
     MyListView mReimbursement_lv;
-    private void initData(MyListView reimbursement_lv, List<RepaymentList.DataBean> items, int loan_term,int mode ) {
+    private void initData(MyListView reimbursement_lv, List<RepaymentList.DataBean> items, GetLoanDetail getLoanDetail, int mode ) {
         boolean tag = false;
         if (items==null||items.size()==0){
             return;
@@ -169,6 +171,10 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
             RepaymentList.DataBean dataBean = items.get(i);
             switch (dataBean.repay_status){
             //    0 待还款  1 已还款 2 逾期 3提前还款 4坏账5减免
+                case 0:
+
+                    break;
+
                 case 1:
                     count++;
                     break;
@@ -179,7 +185,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
                 break;
             }
         }
-
+        LogUtils.i("count还款个数"+count);
         if (tag){
             //说明有不合适的数据
             LogUtils.i("有逾期可以不能显示提前结清");
@@ -205,11 +211,11 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
 
 
         //设置列表数据
-        mMyListView_04_more = new MyListView_04_more(AppContext.getApplication(), 0, items,loan_term ,new ListViewCallBack() {
+        mMyListView_04_more = new MyListView_04_more(AppContext.getApplication(), 0, items,getLoanDetail,getLoanDetail.loan_term ,new ListViewCallBack() {
             @Override
-            public void getRepayment(int positon) {
+            public void getRepayment(int again_flag, int positon) {
                 LogUtils.i("我点了还款位置是"+positon);
-                reimbursementActivity_c.getShowDialog1(positon,data);
+                reimbursementActivity_c.getShowDialog1(positon,data,again_flag);
             }
 
             @Override
@@ -228,19 +234,22 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
      * @param data
      */
     private void SetLast(List<RepaymentList.DataBean> data) {
+        int j = 0;
         for (int i = 0; i < data.size(); i++) {
             RepaymentList.DataBean dataBean = data.get(i);
             //如果都是 已结清的 只有最后一个 是没结清的 不显示上面的
-            if (1==dataBean.repay_status){
-                if (i==data.size()-1){
-                    xueDaiButton_2.setText_tiqian_status(false);
-                    break;
-                }else{
-                    xueDaiButton_2.setText_tiqian_status(true);
+            if (0==dataBean.repay_status){
+                j ++;
+
                 }
             }
+        if (j==1){
+
+            xueDaiButton_2.setText_tiqian_status(false);
         }
-    }
+
+        }
+
 
     XueDaiButton_2 xueDaiButton_2;
     private void initListOnclic(XueDaiButton_2 xueDaiButton_2) {
@@ -257,7 +266,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
 
                         break;
                     case 3:
-                        UtilsToast.showToast(AppContext.getApplication(), "充值");
+                       // UtilsToast.showToast(AppContext.getApplication(), "充值");
                         topUp();
                         break;
                     case 4:
@@ -267,10 +276,23 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
 
                         break;
                     case 6:
-                        UtilsToast.showToast(AppContext.getApplication(), "点到了左面");
+                        //UtilsToast.showToast(AppContext.getApplication(), "点到了左面");
+                        Intent intent = new Intent(AppContext.getApplication(), Fuwu_and_xieyi_Activity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("classTag",1);
+                        intent.putExtras(bundle);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        reimbursementActivity_c.start(intent);
                         break;
                     case 7:
-                        UtilsToast.showToast(AppContext.getApplication(), "点到了右面");
+                        //UtilsToast.showToast(AppContext.getApplication(), "点到了右面");
+                        Intent intent1 = new Intent(AppContext.getApplication(), Fuwu_and_xieyi_Activity.class);
+                        Bundle bundle1 = new Bundle();
+
+                        bundle1.putInt("classTag",0);
+                        intent1.putExtras(bundle1);
+                        intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        reimbursementActivity_c.start(intent1);
                         break;
                     case 10:
                         //UtilsToast.showToast(AppContext.getApplication(), "点了提前结清");
@@ -318,7 +340,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
     List<RepaymentList.DataBean> data;
     //获取列表数据
     @NonNull
-    private void sendRepaymentListRequest(final int loan_term, final int mode) {
+    private void sendRepaymentListRequest(final GetLoanDetail getLoanDetail, final int mode) {
 //        //如果没有再分期
 //        if (0==Share.getInt(context, "again_flag")){
 //            RepaymentListRequest.request(context, new NetWorkCallBack<RepaymentList>() {
@@ -345,7 +367,7 @@ public class ReimbursementActivity_P extends BaseMvp<ReimbursementActivity_C> im
                     data =  repaymentList.data;
 
                     //获取之后设置数据
-                    initData(reimbursement_lv, data,loan_term,mode);
+                    initData(reimbursement_lv, data,getLoanDetail,mode);
                 }
 
                 @Override

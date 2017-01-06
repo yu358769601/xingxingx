@@ -148,12 +148,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             @Override
             public void getAction_barView_title(TextView textView) {
                 textView.setText("主页");
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(AppContext.getApplication(),Test2Activity.class));
-                    }
-                });
+//                textView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Intent intent = new Intent(AppContext.getApplication(), TopUpActivity. class);
+//                        startActivity(intent);
+//                    }
+//                });
+
+//                textView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        startActivity(new Intent(AppContext.getApplication(),Test2Activity.class));
+//                    }
+//                });
             }
         });
 
@@ -188,7 +196,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mMain_vp = (MyViewPger) findViewById(R.id.main_vp);
 
         iv_red_point = (ImageView) findViewById(R.id.activity_01_point_red);
-
+        iv_red_point.setVisibility(View.GONE);
         mActivity_01_ll = (LinearLayout) findViewById(R.id.activity_01_ll);
         //点击了登陆
         mMain_tv_money = (TextView) findViewById(R.id.main_tv_money);

@@ -35,6 +35,8 @@ public class Repayment_detailsActivity extends BaseActivity implements View.OnCl
     private RepaymentList.DataBean mDataList;
     private int mPositon;
     private boolean subTag;
+    private int mAgain_flag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,7 @@ public class Repayment_detailsActivity extends BaseActivity implements View.OnCl
         if (null!=extras){
             mDataList = (RepaymentList.DataBean) extras.getSerializable("dataList");
             mPositon = extras.getInt("positon");
+            mAgain_flag = extras.getInt("again_flag");
         }
     }
 
@@ -93,6 +96,7 @@ public class Repayment_detailsActivity extends BaseActivity implements View.OnCl
     public void initData() {
 
         if (null!=mDataList){
+            LogUtils.i("进入到还款详情的条目数据是"+mDataList);
             //应该还款的
             double real_money = mDataList.real_money;
             //已还金额
@@ -146,7 +150,7 @@ public class Repayment_detailsActivity extends BaseActivity implements View.OnCl
             @Override
             public void confirm() {
                 LogUtils.i("我点了还款号码是"+mPositon);
-                mPresenter.subHuanKuan(mPositon,mDataList);
+                mPresenter.subHuanKuan(mAgain_flag,mPositon,mDataList);
                 setResult(99);
             }
 

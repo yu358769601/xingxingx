@@ -45,12 +45,13 @@ public class Repayment_detailsActivity_mvpPresenter implements Repayment_details
 
     /**
      * 点了还款按钮之后
+     * @param again_flag
      * @param positon
      * @param dataList
      */
-    public void subHuanKuan(int positon, RepaymentList.DataBean dataList) {
+    public void subHuanKuan(int again_flag, int positon, RepaymentList.DataBean dataList) {
        // ArrayList<RadioGroupData> list = mModel.getList();
-        mModel.sub(positon,dataList, new Repayment_detailsActivity_mvpContract.CallBackMsg() {
+        mModel.sub(positon,dataList, again_flag,new Repayment_detailsActivity_mvpContract.CallBackMsg() {
 
 
             @Override

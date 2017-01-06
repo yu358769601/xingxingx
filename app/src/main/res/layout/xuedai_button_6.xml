@@ -25,7 +25,7 @@
         <TextView
             android:id="@+id/xuedai_button_6_tv3"
             android:layout_below="@+id/xuedai_button_6_tv2"
-            android:hint="利息:"
+            android:hint="分期期限:"
             style="@style/zaifenqi"
             android:padding="@dimen/size_base480_5dp"
             android:layout_width="wrap_content"
@@ -42,6 +42,7 @@
             android:id="@+id/xuedai_button_6_tv5"
             android:layout_below="@+id/xuedai_button_6_tv4"
             android:hint="服务费:"
+            android:visibility="gone"
             style="@style/zaifenqi"
             android:padding="@dimen/size_base480_5dp"
             android:layout_width="wrap_content"

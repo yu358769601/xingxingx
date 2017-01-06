@@ -1,0 +1,6 @@
+ Intent intent = new Intent(AppContext.getApplication(), Fuwu_and_xieyi_Activity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("classTag",1);
+                        intent.putExtras(bundle);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        reimbursementActivity_c.start(intent);

@@ -10,6 +10,6 @@ package com.xinxinxuedai.adapter;
  */
 
 public interface ListViewCallBack {
-    void getRepayment(int positon);
+    void getRepayment(int again_flag, int positon);
     void getZaifenqi(int positon);
 }

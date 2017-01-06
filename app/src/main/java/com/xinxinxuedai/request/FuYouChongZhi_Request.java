@@ -31,6 +31,8 @@ public class FuYouChongZhi_Request {
     public static HttpURLConnection request(final Context context, Hashtable<String, String> hashtable, final NetWorkCallBack<FuYouChongZhi> netWorkCallBack) {
         hashtable.put("action", "fuYouChongZhi");
         hashtable.put("loan_id", Share.getToken(context));
+
+        LogUtils.i("富友充值获取订单"+hashtable);
         NetMessage.get(context)
                 .sendMessage(Constants.new_url, hashtable, Constants.NORMAL, new NetAesCallBack() {
                     @Override

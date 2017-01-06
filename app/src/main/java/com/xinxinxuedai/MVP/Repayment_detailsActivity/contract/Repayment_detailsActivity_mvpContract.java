@@ -26,7 +26,7 @@ public interface Repayment_detailsActivity_mvpContract {
 
     public interface Model {
         void setData(LinearLayout repayment_details_rg,GetModelCallBack callBack);
-        void sub(int postion, RepaymentList.DataBean dataList, CallBackMsg callBack);
+        void sub(int postion, RepaymentList.DataBean dataList, int again_flag, CallBackMsg callBack);
 
         void setMoney(double interest_money);
         ArrayList<RadioGroupData> getList();

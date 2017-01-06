@@ -94,7 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/record_progress"
-        android:layout_marginTop="@dimen/size_base480_400dp"
+        android:layout_marginTop="@dimen/size_base480_450dp"
         android:background="@color/color_381902">
 
         <CheckedTextView
@@ -121,7 +121,7 @@
             android:gravity="center"
             android:text="按住拍"
             android:textSize="16sp"
-            android:layout_marginTop="@dimen/size_base480_50dp"
+            android:layout_marginTop="@dimen/size_base480_30dp"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"

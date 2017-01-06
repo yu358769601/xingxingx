@@ -141,7 +141,7 @@ public class Repayment_detailsActivity_mvpModel implements Repayment_detailsActi
 
 
     @Override
-    public void sub(int postion, RepaymentList.DataBean dataList, final Repayment_detailsActivity_mvpContract.CallBackMsg callBack) {
+    public void sub(int postion, RepaymentList.DataBean dataList, int again_flag, final Repayment_detailsActivity_mvpContract.CallBackMsg callBack) {
         if (null==dataList){
             return;
         }
@@ -166,9 +166,9 @@ public class Repayment_detailsActivity_mvpModel implements Repayment_detailsActi
         hashtable.put("id",id+"");
         hashtable.put("loan_id",user_loan_id);
         hashtable.put("daijinjuan",s);
-        if (dataList.again_flag==0){
+        if (again_flag==0){
             request(context, hashtable,callBack);
-        }else if (dataList.again_flag==1){
+        }else if (again_flag!=0){
             requestZFQ(context, hashtable,callBack);
         }
 

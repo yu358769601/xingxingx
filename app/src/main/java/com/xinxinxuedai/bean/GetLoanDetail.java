@@ -166,7 +166,7 @@ public class GetLoanDetail implements Serializable{
         }
 
         public static class AgainBean  implements Serializable{
-                        /**
+                        /**分期期限
                          * again_term : 56
                          *
                          *

@@ -29,11 +29,15 @@ public class Constants {
 //	public static String image_url = "http://192.168.0.202/wangyueche/upload_img.php?app=ruida&passenger_id=";
 //	public static String fangwen_image_url = "http://192.168.0.202/wangyueche/upload_file/";
 
-	//学贷
+	//学贷 测试
 	public static String new_url = "http://192.168.0.202/qichen/loan_mobile1.php";
 	public static String up_image_url = "http://192.168.0.202/qichen/upload_img.php";
 	public static String image_url = "http://192.168.0.202/qichen/upload_img.php?app=ruida&passenger_id=";
 	public static String fangwen_image_url = "http://192.168.0.202/wangyueche/upload_file/";
+	//学贷 正式
+//	public static String new_url = "http://qc518.com/loan_mobile1.php";
+//	public static String up_image_url = "http://qc518.com/upload_img.php";
+//	public static String image_url = "http://qc518.com/upload_img.php?app=ruida&passenger_id=";
 
 	//正式服务器
 //	public static String new_url = "http://59.110.11.60/ruida_passenger.php";

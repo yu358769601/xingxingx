@@ -36,7 +36,6 @@ import com.xinxinxuedai.ui.ReimbursementActivity;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton;
 import com.xinxinxuedai.yumengmeng.yumengmeng01.adapter.ImageAdapter;
 import com.xinxinxuedai.yumengmeng.yumengmeng01.bean.Banner;
-import com.xinxinxuedai.yumengmeng.yumengmeng01.utils.intctorUtils;
 import com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger;
 
 import java.util.ArrayList;
@@ -134,10 +133,10 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
 //        mPaths.add(new Banner("http://img3.duitang.com/uploads/item/201608/20/20160820091508_diTXf.thumb.700_0.jpeg"));
 //        mPaths.add(new Banner("http://joymepic.joyme.com/article/uploads/allimg/201609/1473906749455425.jpg?watermark/1/image/aHR0cDovL2pveW1lcGljLmpveW1lLmNvbS9hcnRpY2xlL3VwbG9hZHMvMTYwODE5LzgwLTE2MFE5MUZaMzQzOC5wbmc=/dissolve/70"));
         mPaths.add(new Banner(bytes));
-         mPaths.add(new Banner(bytes));
-         mPaths.add(new Banner(bytes));
-         mPaths.add(new Banner(bytes));
-         mPaths.add(new Banner(bytes));
+//         mPaths.add(new Banner(bytes));
+//         mPaths.add(new Banner(bytes));
+//         mPaths.add(new Banner(bytes));
+//         mPaths.add(new Banner(bytes));
 
 
         ImageAdapter imageAdapter = new ImageAdapter(context, mPaths, new ImageAdapter.CallBack() {
@@ -150,8 +149,8 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
         myViewPger.setAdapter(imageAdapter);
         LogUtils.i("设置完成ViewPager");
 
-        activity_01_ll.removeAllViews();
-        intctorUtils.startDrawable(context, mPaths,activity_01_ll,myViewPger,iv_red_point );
+//        activity_01_ll.removeAllViews();
+//        intctorUtils.startDrawable(context, mPaths,activity_01_ll,myViewPger,iv_red_point );
 
         mHandler.postDelayed(loopRunnable, BANNER_LOOP_TIME);
 
@@ -225,8 +224,35 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
             case 2:
                 //限制进入我要还款_重要
                 if (status !=4){
-//                    UtilsToast.showToast(context, "当前状态不需要还款");
+//                    [ShowHUD HUDShowView:self.view showTitle:@"资料未完善，请完善资料～"];
 //                    return;
+//                    case 1:
+//                        [ShowHUD HUDShowView:self.view showTitle:@"借款审核中，请耐心等待～"];
+//                        return;
+//                    case 2:
+//                        [ShowHUD HUDShowView:self.view showTitle:@"借款审核已通过，请等待放款～"];
+//                        return;
+//                    case 3:
+//                        [ShowHUD HUDShowView:self.view showTitle:@"资料有误，借款审核被拒绝～"];
+//                        return;
+//                    case 5:
+//                        [ShowHUD HUDShowView:self.view showTitle:@"资料有误，放款失败～"];
+                    if(status==0){
+                        UtilsToast.showToast(context, "资料未完善");
+                    }
+                    if(status==1){
+                        UtilsToast.showToast(context, "借款审核中,请耐心等待");
+                    }
+                    if(status==2){
+                        UtilsToast.showToast(context, "借款审核已通过，请等待放款");
+                    }
+                    if(status==3){
+                        UtilsToast.showToast(context, "资料有误，借款审核被拒绝");
+                    }
+                    if(status==5){
+                        UtilsToast.showToast(context, "资料有误，放款失败");
+                    }
+                    return;
                 }
                 intent.setClass(context, ReimbursementActivity.class);
 

@@ -176,6 +176,8 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
     public XueDaiButton_6 setZFQData(GetLoanDetail.AgainBean againBean){
         LogUtils.i("在分期数据"+againBean);
         XueDaiButton_6 xueDaiButton_6 = new XueDaiButton_6(AppContext.getApplication());
+        //分期期限
+         // again_term : 56
 //        * 放款时间
 //                * again_fangkuan : 1483514223
 //        * 申请时间
@@ -194,9 +196,9 @@ public class ApplicationStatusActivity extends BaseActivity implements Applicati
         xueDaiButton_6
                 .setTv1_Text(againBean.again_flag)
                 .setTv2_Text(againBean.again_money+"")
-                .setTv3_Text(againBean.again_lixi)
+                .setTv3_Text(againBean.again_term)
                 .setTv4_Text(againBean.again_shouxufei)
-                .setTv5_Text(againBean.again_fuwu)
+              //  .setTv5_Text(againBean.again_fuwu)
                 .setTv6_Text(UtilsTimer.getFormat(againBean.again_time*1000))
                 .setTv7_Text(UtilsTimer.getFormat(againBean.again_fangkuan*1000));
         LogUtils.i("申请时间"+UtilsTimer.getFormat(againBean.again_time*1000)+"放款时间"+UtilsTimer.getFormat(againBean.again_fangkuan*1000));

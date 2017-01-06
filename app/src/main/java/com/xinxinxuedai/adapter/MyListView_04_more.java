@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
 import com.xinxinxuedai.base.BaseListViewAdapter_04;
+import com.xinxinxuedai.bean.GetLoanDetail;
 import com.xinxinxuedai.bean.RepaymentList;
 import com.xinxinxuedai.view.MyListView;
 
@@ -32,13 +33,15 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
 
     // 是否显示还款按钮
     boolean tag = true;
-
+    //重要的判断这个列表的性质 有再分期 还是没有再分期
+    GetLoanDetail getLoanDetail;
     int frist = -1;
-    public MyListView_04_more(Context context, int type, List datas, int loan_term, ListViewCallBack mListViewCallBack) {
+    public MyListView_04_more(Context context, int type, List datas, GetLoanDetail getLoanDetail, int loan_term, ListViewCallBack mListViewCallBack) {
         super(context, type, datas);
         this.type = type;
         this.mListViewCallBack = mListViewCallBack;
         this.loan_term = loan_term;
+        this.getLoanDetail =getLoanDetail;
         getFristsub(datas);
     }
 
@@ -89,6 +92,10 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
         //int i = Integer.parseInt(item.delay);
         int i1 = getViewType(item, position);
         if (i1 == R.layout.xuedai_button_3) {
+            if (position==11){
+
+                LogUtils.i("每条内容是"+item);
+            }
 //            String id = item.id;
 //            //还款服务费
 //            item.interest_money;
@@ -154,12 +161,12 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
                 String yihuanjiner = String.format("%.2f", ((item.money + item.service_fee + item.interest_money + item.weiyue_money)-item.benjin));
                 helper.initText_hint(R.id.xuedai_button3_tv2,yihuanjiner+"元");
             }
-
+            //按了还款 进入到还款详情
             huankuan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //点击还款
-                    mListViewCallBack.getRepayment(position);
+                    mListViewCallBack.getRepayment(getLoanDetail.again_flag,position);
                 }
             });
             //计划还款日

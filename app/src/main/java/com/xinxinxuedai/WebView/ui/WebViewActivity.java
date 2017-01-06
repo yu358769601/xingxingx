@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.app.AppContext;
+import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
@@ -18,10 +20,12 @@ public class WebViewActivity extends BaseActivity {
     private initAction_Bar mRelativeLayout_title;
     private WebView mWb;
   //  private String  path = "https://www.baidu.com";
-    private String  path = "http://192.168.0.202/qichen/choujiang.php?loan_id=1234";
+    private String  path = "http://192.168.0.202/qichen/choujiang.php?loan_id=";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initView();
     }
 
@@ -57,7 +61,12 @@ public class WebViewActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        mWb.loadUrl(path);
+        //Share.getToken(AppContext.getApplication());
+
+
+        mWb.loadUrl(path+Share.getToken(AppContext.getApplication()));
+
+
         WebSettings settings = mWb.getSettings();
         settings.setJavaScriptEnabled(true);
         mWb.setWebViewClient(new WebViewClient(){

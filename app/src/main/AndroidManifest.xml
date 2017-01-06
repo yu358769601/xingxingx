@@ -39,11 +39,6 @@
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
             android:name=".WebView.ui.WebViewActivity"
@@ -167,6 +162,13 @@
         <activity android:name=".ui.Re_stagingActivity">
         </activity>
         <activity android:name=".ui.Repayment_detailsActivity">
+        </activity>
+        <activity android:name=".ui.splashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

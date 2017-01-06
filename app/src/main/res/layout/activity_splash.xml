@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_splash"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xinxinxuedai.ui.splashActivity">
+    <com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger
+        android:id="@+id/splash_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger>
+    <TextView
+        android:id="@+id/splash_go"
+        android:text="点击进入"
+        android:background="@drawable/an"
+        android:textColor="@color/black"
+        android:padding="@dimen/size_base480_20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/size_base480_150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

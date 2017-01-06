@@ -4,7 +4,6 @@ import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.squareup.leakcanary.LeakCanary;
 import com.umeng.analytics.MobclickAgent;
 
 /**
@@ -42,7 +41,7 @@ public class AppContext extends Application {
 
         MobclickAgent.setDebugMode(true);
         //内存泄漏
-        LeakCanary.install(this);
+       // LeakCanary.install(this);
     }
 
 

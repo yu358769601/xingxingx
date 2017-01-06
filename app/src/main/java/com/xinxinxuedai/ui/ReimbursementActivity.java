@@ -138,6 +138,16 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
         dump();
     }
 
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (null!=mReimbursementActivity_p){
+
+            mReimbursementActivity_p.initListViewData(mReimbursement_lv,2);
+        }
+    }
+
     /**
      * 获取网络请求
      *
@@ -152,14 +162,16 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
      * 是否还款
      * @param positon
      * @param data
+     * @param again_flag
      */
     @Override
-    public void getShowDialog1(final int positon, List<RepaymentList.DataBean> data) {
+    public void getShowDialog1(final int positon, List<RepaymentList.DataBean> data, int again_flag) {
         RepaymentList.DataBean dataBean = data.get(positon);
         Intent intent = new Intent(AppContext.getApplication(), Repayment_detailsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("dataList",dataBean);
         bundle.putInt("positon",positon);
+        bundle.putInt("again_flag",again_flag);
         intent.putExtras(bundle);
         startActivityForResult(intent,0);
         LogUtils.i("进到还款详情的界面的数据"+dataBean+"多少号"+positon);
@@ -212,7 +224,8 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
     @Override
     public void getShowDialog3(double positon) {
         double money = positon;
-        String msg = money+"";
+        String info ="\t先息后本\n本金+所有应还的利息+当期的服务费\n\t等额本息(可再分期)\n本金+本金的*10% +所有利息+当期服务费\n本次需要支付的金额:";
+        String msg = info+money+"";
         UtilsDialog.showDialog_Text(this, "提前还款", msg, new DialogCallBack() {
             @Override
             public void confirm() {
@@ -224,6 +237,11 @@ public class ReimbursementActivity extends BaseActivity implements View.OnClickL
                 LogUtils.i("取消还款");
             }
         });
+    }
+
+    @Override
+    public void start(Intent intent) {
+        startActivity(intent);
     }
 
     /**

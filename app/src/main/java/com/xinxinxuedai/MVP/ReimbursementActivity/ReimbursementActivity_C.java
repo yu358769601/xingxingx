@@ -1,5 +1,7 @@
 package com.xinxinxuedai.MVP.ReimbursementActivity;
 
+import android.content.Intent;
+
 import com.xinxinxuedai.MVP.baseMVP.BaseMVPinterFace_CallBack;
 import com.xinxinxuedai.bean.RepaymentList;
 
@@ -23,9 +25,10 @@ public interface ReimbursementActivity_C extends BaseMVPinterFace_CallBack{
     void getNetRequest(HttpURLConnection httpURLConnection);
 
 
-    void getShowDialog1(int positon, List<RepaymentList.DataBean> data);
+    void getShowDialog1(int positon, List<RepaymentList.DataBean> data, int again_flag);
     void getShowDialog2(int positon, List<RepaymentList.DataBean> data);
     void getShowDialog3(double positon);
 
 
+    void start(Intent intent);
 }

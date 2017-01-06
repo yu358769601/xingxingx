@@ -105,7 +105,7 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
 //            }
 //        });
         //先获取订单
-        getoOrder_number(editTextViews,false);
+        getoOrder_number(editTextViews,true);
 
 
 
@@ -222,6 +222,8 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
         //版本
         bundle.putString(AppConfig.MCHNT_SDK_VERSION,"2.0");
 
+
+        LogUtils.i("富友充值发给服务器"+bundle.toString());
         int i= FyPay.pay(activity, bundle, new FyPayCallBack() {
 
             @Override
