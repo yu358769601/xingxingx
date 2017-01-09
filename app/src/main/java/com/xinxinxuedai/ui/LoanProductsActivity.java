@@ -13,8 +13,11 @@ import com.xinxinxuedai.MVP.LoanProductsActivity.LoanProductsActivity_CallBack;
 import com.xinxinxuedai.MVP.LoanProductsActivity.LoanProductsActivity_P;
 import com.xinxinxuedai.R;
 import com.xinxinxuedai.Utils.LogUtils;
+import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.bean.GetLoanDetail;
+import com.xinxinxuedai.request.GetLoanDetail_Request;
+import com.xinxinxuedai.request.NetWorkCallBack;
 import com.xinxinxuedai.view.initAction_Bar;
 import com.xinxinxuedai.view.xuedai_button.XueDaiButton_1;
 import com.xinxinxuedai.view.xuedai_button.button_CallBack;
@@ -27,7 +30,7 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
     private XueDaiButton_1 mXuedaibutton_1;
     private XueDaiButton_1 mXuedaibutton_2;
     private GetLoanDetail mHomeData;
-    InnerReceiver receiver = new InnerReceiver();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +39,17 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
         initP();
         initView();
     }
-
+    InnerReceiver receiver = new InnerReceiver();
+    InnerReceiver receiver1 = new InnerReceiver();
     private void init() {
         //接收_图片路径_广播
         IntentFilter filter = new IntentFilter("closeActivity");
 
         registerReceiver(receiver, filter);
+        //接收_图片路径_广播
+        IntentFilter filter1 = new IntentFilter("uploadpictures_");
+
+        registerReceiver(receiver1, filter1);
     }
 
     //接收别的地方过来的数据 写一个内容类
@@ -59,6 +67,22 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
             //finish();
         }
     }
+
+    //接收别的地方过来的数据 写一个内容类
+    public class InnerReceiver1 extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //使用intent获取发送过来的数据
+            String erxuanyi = intent.getStringExtra("close");
+            if ("close".equals(erxuanyi)){
+//                mTv4.setStarStuaus(true);
+//                mApply_for_sub.setVisibility(View.VISIBLE);
+                finish();
+            }
+            //finish();
+        }
+    }
     @Override
     public int getlayouXML() {
         return R.layout.activity_loan_products;
@@ -68,6 +92,26 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
         mHomeData = (GetLoanDetail) extras.getSerializable("HomeData");
 
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        GetLoanDetail_Request.request(AppContext.getApplication(), new NetWorkCallBack<GetLoanDetail>() {
+            @Override
+            public void onSucceed(GetLoanDetail getLoanDetail, int dataMode) {
+                if (getLoanDetail.loan_status==1){
+                    closeActivity();
+                }
+
+            }
+
+            @Override
+            public void onError(String jsonObject) {
+
+            }
+        });
+    }
+
     @Override
     public void initView() {
         mRelativeLayout_title = (initAction_Bar) findViewById(R.id.relativeLayout_title);
@@ -138,6 +182,7 @@ public class LoanProductsActivity extends BaseActivity implements LoanProductsAc
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
+        unregisterReceiver(receiver1);
         dump();
     }
 

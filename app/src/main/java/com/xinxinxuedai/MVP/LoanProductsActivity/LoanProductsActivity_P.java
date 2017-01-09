@@ -48,14 +48,14 @@ public class LoanProductsActivity_P extends BaseMvp<LoanProductsActivity_CallBac
                     bundle.putInt("tag",0);
                     intent.putExtras(bundle);
                     context.startActivity(intent);
-                    //loanProductsActivity_callBack.closeActivity();
+                    loanProductsActivity_callBack.closeActivity();
                 break;
                 case 2:
                     intent.setClass(context, LoanApplicationActivity.class);
                     bundle.putInt("tag",1);
                     intent.putExtras(bundle);
                     context.startActivity(intent);
-                    //loanProductsActivity_callBack.closeActivity();
+                    loanProductsActivity_callBack.closeActivity();
                 break;
         }
     }

@@ -1,6 +1,8 @@
 package com.xinxinxuedai.ui;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -121,6 +123,32 @@ public class TopUpActivity extends BaseActivity implements View.OnClickListener,
             @Override
             public void getAction_barView_title(TextView textView) {
                 textView.setText("账户充值");
+            }
+        });
+
+        topup_ed1.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (topup_ed1.getText().toString().indexOf(".") >= 0) {
+                    if (topup_ed1.getText().toString().indexOf(".", topup_ed1.getText().toString().indexOf(".") + 1) > 0) {
+                       UtilsToast.showToast(AppContext.getApplication(),"已经输入过'.'");
+                        topup_ed1.setText(topup_ed1.getText().toString().substring(0, topup_ed1.getText().toString().length() - 1));
+                        topup_ed1.setSelection(topup_ed1.getText().toString().length());
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 

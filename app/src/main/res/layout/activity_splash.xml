@@ -12,9 +12,37 @@
         android:layout_height="match_parent">
 
     </com.xinxinxuedai.yumengmeng.yumengmeng01.view.MyViewPger>
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/splash_vp"
+        android:layout_marginBottom="@dimen/size_base480_70dp"
+        >
+        <LinearLayout
+            android:id="@+id/activity_01_ll"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/activity_01_point_red"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_point_red" />
+
+
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/splash_go"
-        android:text="点击进入"
+        android:text="s"
         android:background="@drawable/an"
         android:textColor="@color/black"
         android:padding="@dimen/size_base480_20dp"

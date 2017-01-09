@@ -126,7 +126,7 @@ public abstract class MultiAsynctask<Param, Update, Result> {
 	}
 
 	/**
-	 * 子类去实现的方法
+	 * 子类去实现的方法 子线程
 	 * @param params 这个可变参数 不一定用 但是得有
 	 * @return 这个返回值 是 给  结果的 那个方法的
      */

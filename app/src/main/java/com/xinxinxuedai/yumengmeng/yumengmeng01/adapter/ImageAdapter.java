@@ -41,4 +41,6 @@ public class ImageAdapter extends BaseViewPagerAdapter<Banner> {
 
         return mImageView;
     }
+
+
 }

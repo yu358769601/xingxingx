@@ -58,6 +58,8 @@
                 style="@style/edit_style_uptop"
                 android:hint="请输入金额"
                 android:text=""
+                android:maxLength="6"
+                android:inputType="numberDecimal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

@@ -62,20 +62,8 @@
     </View>
 
     <TextView
-        android:id="@+id/about_us_tv_4"
-        android:layout_alignParentBottom="true"
-        android:padding="@dimen/size_base480_10dp"
-        android:gravity="center_vertical"
-        android:textSize="20sp"
-        android:drawableLeft="@drawable/phoneinfo"
-        android:textColor="@color/white"
-        android:text="\t\t\t客服服务电话:400-967-5600"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
         android:id="@+id/about_us_tv_3"
-        android:padding="@dimen/size_base480_30dp"
+        android:padding="@dimen/size_base480_10dp"
         android:textSize="18sp"
         android:textColor="@color/white"
         android:lineSpacingExtra="3dp"
@@ -85,4 +73,30 @@
         android:layout_below="@+id/view1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/about_us_tv_4"
+        android:padding="@dimen/size_base480_10dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        android:drawablePadding="@dimen/size_base480_20dp"
+        android:drawableLeft="@drawable/phoneinfo"
+        android:textColor="@color/white"
+        android:text="客服服务电话:400-967-5600"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/about_us_tv_3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"/>
+
+    <TextView
+        android:id="@+id/about_us_version"
+        android:padding="@dimen/size_base480_20dp"
+        android:hint="当前版本:"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </com.xinxinxuedai.view.initAction_Bar>

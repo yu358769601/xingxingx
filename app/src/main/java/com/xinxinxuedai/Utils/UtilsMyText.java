@@ -96,6 +96,10 @@ public class UtilsMyText {
         }
     }
 
+    public static void setHintAddText(TextView textView,String s){
+        textView.setText(textView.getHint().toString()+s);
+    }
+
     /**
      * 获取限制 text 输入内容的char[] 主要是没有空格
      * @return

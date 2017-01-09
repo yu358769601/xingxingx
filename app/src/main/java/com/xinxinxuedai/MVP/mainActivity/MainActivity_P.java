@@ -259,6 +259,12 @@ public class MainActivity_P extends BaseMvp<MainActivity_CallBack> implements Ma
                 context.startActivity(intent);
                 break;
             case 3:
+                if (status == 0){
+                    UtilsToast.showToast(context, "资料未完善");
+                    return;
+                }
+
+
                 intent.setClass(context, ApplicationStatusActivity.class);
                 bundle.putSerializable("HomeData",mDetail);
                 intent.putExtras(bundle);

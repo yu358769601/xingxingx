@@ -82,28 +82,13 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
 
 
         }
-        //不为空就 访问网络
-       // UtilsToast.showToast(context, "网络请求中~");
-        //把网络获取到的参数返回给 activity
-//        Hashtable<String, String> hashtable =
-//                UtilsHashtable.getHashtable();
-//        hashtable.put("money","");
-//        hashtable.put("bank_card","");
-//        hashtable.put("real_name","");
-//        hashtable.put("id_card","");
-//        hashtable.put("mobile","");
-//        FuYouChongZhi_Request.request(context, hashtable, new NetWorkCallBack() {
-//
-//            @Override
-//            public void onSucceed(Object o) {
-//
-//            }
-//
-//            @Override
-//            public void onError(String jsonObject) {
-//
-//            }
-//        });
+
+        double v = Double.parseDouble(editTextViews.get(0).getText().toString());
+        int i = (int) v;
+        if (i<=10){
+            UtilsToast.showToast(context, "充值金额小于10元");
+            return;
+        }
         //先获取订单
         getoOrder_number(editTextViews,true);
 
@@ -171,7 +156,7 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
         //用户ID
         String UserId = "321341564654";
         //元
-        int Amt = (Integer.parseInt(UtilsMyText.getTextView(AmtE))*100);
+        int Amt = (int)(Double.parseDouble(UtilsMyText.getTextView(AmtE))*100);
         String BankCard = UtilsMyText.getTextView(BankCardE);
         String Name = UtilsMyText.getTextView(NameE);
         String IdNo = UtilsMyText.getTextView(IdNoE);

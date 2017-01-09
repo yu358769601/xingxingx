@@ -15,6 +15,8 @@ import com.xinxinxuedai.app.Share;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
 
+import static com.xinxinxuedai.util.Constants._url;
+
 /**
  * 服务 和协议
  */
@@ -24,9 +26,9 @@ public class Fuwu_and_xieyi_Activity extends BaseActivity {
     private String  path;
     //  private String  path = "https://www.baidu.com";
     //1协议
-    private String  path_1 = "http://192.168.0.202/qichen/jiekuan.html";
+    private String  path_1 = _url+"jiekuan.html";
     //0服务
-    private String  path_0 = "http://192.168.0.202/qichen/fuwu.html";
+    private String  path_0 = _url+"fuwu.html";
     private int mClassTag;
 
     @Override

@@ -99,10 +99,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                         @Override
                         public void confirm() {
                             UtilsToast.showToast(AppContext.getApplication(), "正在后台下载更新");
+                            // Uri content_url = Uri.parse("http://a.wdjcdn.com/release/files/phoenix/5.24.2.12070/wandoujia-wandoujia-web_seo_baidu_binded_history_5.24.2.12070.apk?remove=2&append=%07%03eyJhcHBEb3dubG9hZCI6eyJkb3dubG9hZFR5cGUiOiJkb3dubG9hZF9ieV91cmwiLCJwYWNrYWdlTmFtZSI6ImNvbS5zcy5hbmRyb2lkLmFydGljbGUubmV3cyIsImRvd25sb2FkVXJsIjoiaHR0cDovL2FwcHMud2FuZG91amlhLmNvbS9yZWRpcmVjdD9zaWduYXR1cmVcdTAwM2QzYjFhZjExXHUwMDI2dXJsXHUwMDNkaHR0cCUzQSUyRiUyRmFway53YW5kb3VqaWEuY29tJTJGYyUyRmQ3JTJGMDRlNTU0ZDM5NDc3NGUwMDRmMzVmZjkxNjMzZWVkN2MuYXBrXHUwMDI2cG5cdTAwM2Rjb20uc3MuYW5kcm9pZC5hcnRpY2xlLm5ld3NcdTAwMjZtZDVcdTAwM2QwNGU1NTRkMzk0Nzc0ZTAwNGYzNWZmOTE2MzNlZWQ3Y1x1MDAyNmFwa2lkXHUwMDNkMjAzODEyNjZcdTAwMjZ2Y1x1MDAzZDU5NVx1MDAyNnNpemVcdTAwM2QxMjk4ODgyOFx1MDAyNnBvc1x1MDAzZHQlMkZoaXN0b3J5JTJGdmVyc2lvbnMiLCJ0aXRsZSI6IuS7iuaXpeWktOadoSIsImljb25VcmwiOiJodHRwOi8vaW1nLndkamltZy5jb20vbW1zL2ljb24vdjEvMS9hNi81MzQ1ZTgyNjY4MDg0NjI0NDQ3ZjNhMTQ1Y2E2NmE2MV83OF83OC5wbmcifX0Wdj01B0002f79796");
                             Intent intent = new Intent();
                             intent.setAction("android.intent.action.VIEW");
                             Uri content_url = Uri.parse(downloadUrl);
-                           // Uri content_url = Uri.parse("http://a.wdjcdn.com/release/files/phoenix/5.24.2.12070/wandoujia-wandoujia-web_seo_baidu_binded_history_5.24.2.12070.apk?remove=2&append=%07%03eyJhcHBEb3dubG9hZCI6eyJkb3dubG9hZFR5cGUiOiJkb3dubG9hZF9ieV91cmwiLCJwYWNrYWdlTmFtZSI6ImNvbS5zcy5hbmRyb2lkLmFydGljbGUubmV3cyIsImRvd25sb2FkVXJsIjoiaHR0cDovL2FwcHMud2FuZG91amlhLmNvbS9yZWRpcmVjdD9zaWduYXR1cmVcdTAwM2QzYjFhZjExXHUwMDI2dXJsXHUwMDNkaHR0cCUzQSUyRiUyRmFway53YW5kb3VqaWEuY29tJTJGYyUyRmQ3JTJGMDRlNTU0ZDM5NDc3NGUwMDRmMzVmZjkxNjMzZWVkN2MuYXBrXHUwMDI2cG5cdTAwM2Rjb20uc3MuYW5kcm9pZC5hcnRpY2xlLm5ld3NcdTAwMjZtZDVcdTAwM2QwNGU1NTRkMzk0Nzc0ZTAwNGYzNWZmOTE2MzNlZWQ3Y1x1MDAyNmFwa2lkXHUwMDNkMjAzODEyNjZcdTAwMjZ2Y1x1MDAzZDU5NVx1MDAyNnNpemVcdTAwM2QxMjk4ODgyOFx1MDAyNnBvc1x1MDAzZHQlMkZoaXN0b3J5JTJGdmVyc2lvbnMiLCJ0aXRsZSI6IuS7iuaXpeWktOadoSIsImljb25VcmwiOiJodHRwOi8vaW1nLndkamltZy5jb20vbW1zL2ljb24vdjEvMS9hNi81MzQ1ZTgyNjY4MDg0NjI0NDQ3ZjNhMTQ1Y2E2NmE2MV83OF83OC5wbmcifX0Wdj01B0002f79796");
                             intent.setData(content_url);
                             startActivity(intent);
                             finish();
@@ -401,7 +401,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
             break;
             case R.id.tv_left:
-                startActivity(new Intent(AppContext.getApplication(),Re_stagingActivity.class));
+                startActivity(new Intent(AppContext.getApplication(),xingxingxinyongActivity.class));
 
             break;
 

@@ -110,7 +110,7 @@ public class PersonalDetailsActivity_P extends BaseMvp<PersonalDetailsActivity_C
                 case 3:
                     break;
                 case 4:
-                    if (UtilsMyText.getLengh(editText)<=8){
+                    if (UtilsMyText.getLengh(editText)<=4){
                         UtilsToast.showToast(context, "家庭住址长度不正确");
                         return;
                     }

@@ -19,7 +19,8 @@ public class SigninActivity extends BaseActivity {
     private initAction_Bar mRelativeLayout_title;
     private WebView mWb;
     //  private String  path = "https://www.baidu.com";
-    private String  path = "http://192.168.0.202/qichen/choujiang.php?loan_id=";
+    //private String  path = "http://192.168.0.202/qichen/choujiang.php?loan_id=";
+    private String  path = "http://qc518.com/choujiang.php?loan_id=";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

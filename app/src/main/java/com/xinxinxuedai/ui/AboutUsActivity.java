@@ -1,16 +1,22 @@
 package com.xinxinxuedai.ui;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.loveplusplus.update.AppUtils;
 import com.xinxinxuedai.R;
+import com.xinxinxuedai.Utils.UtilsMyText;
+import com.xinxinxuedai.app.AppContext;
 import com.xinxinxuedai.base.BaseActivity;
 import com.xinxinxuedai.view.initAction_Bar;
+
 //关于我们activity
-public class AboutUsActivity extends BaseActivity {
+public class AboutUsActivity extends BaseActivity implements View.OnClickListener {
 
     private initAction_Bar mRelativeLayout_title;
+    private TextView about_us_version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,11 @@ public class AboutUsActivity extends BaseActivity {
                 textView.setText("关于我们");
             }
         });
+
+
+        about_us_version = (TextView) findViewById(R.id.about_us_version);
+        about_us_version.setOnClickListener(this);
+        initData();
     }
 
     @Override
@@ -46,11 +57,22 @@ public class AboutUsActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        String versionName = AppUtils.getVersionName(AppContext.getApplication());
+        UtilsMyText.setHintAddText(about_us_version,versionName);
     }
 
     @Override
     public void initListener() {
+
+    }
+
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
 
     }
 }
