@@ -85,8 +85,9 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
 
         double v = Double.parseDouble(editTextViews.get(0).getText().toString());
         int i = (int) v;
-        if (i<=10){
+        if (i<10){
             UtilsToast.showToast(context, "充值金额小于10元");
+
             return;
         }
         //先获取订单
@@ -97,7 +98,20 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
     }
 
     private void getoOrder_number(final List<EditText> editTextViews, final boolean b) {
+        EditText AmtE = editTextViews.get(0);
+         EditText BankCardE = editTextViews.get(1);
+         EditText NameE = editTextViews.get(2);
+         EditText IdNoE = editTextViews.get(3);
+        int Amt = (int)(Double.parseDouble(UtilsMyText.getTextView(AmtE)));
+        String BankCard = UtilsMyText.getTextView(BankCardE);
+        String Name = UtilsMyText.getTextView(NameE);
+        String IdNo = UtilsMyText.getTextView(IdNoE);
+
         Hashtable<String, String> hashtable= new Hashtable<>();
+        hashtable.put("money",Amt+"");
+        hashtable.put("bank_card",BankCard+"");
+        hashtable.put("real_name",Name+"");
+        hashtable.put("id_card",IdNo+"");
         FuYouChongZhi_Request.request(context, hashtable, new NetWorkCallBack<FuYouChongZhi>() {
             @Override
             public void onSucceed(FuYouChongZhi fuYouChongZhi, int dataMode) {

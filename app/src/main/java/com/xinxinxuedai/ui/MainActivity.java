@@ -207,6 +207,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         initText();
     }
 
+    //双击退出程序
     private long firstPressTime = 0;
     @Override
     public void onBackPressed() {
@@ -384,7 +385,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 mMainActivity_p.initClickView(v);
             break;
             case R.id.tv_test:
-             startActivity(new Intent(AppContext.getApplication(),TestActivity.class));
+           //  startActivity(new Intent(AppContext.getApplication(),TestActivity.class));
+             startActivity(new Intent(AppContext.getApplication(),TopUpActivity.class));
 
             break;
             case R.id.tv_qiandao:

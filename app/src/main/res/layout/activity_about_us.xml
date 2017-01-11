@@ -50,7 +50,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/about_us_tv_2_2"
         android:gravity="center_horizontal"
-        android:text="我们有专职客服人员,为您提高服务"
+        android:text="我们有专职客服人员,为您提供服务"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <View
@@ -67,7 +67,7 @@
         android:textSize="18sp"
         android:textColor="@color/white"
         android:lineSpacingExtra="3dp"
-        android:text="\t\t\t&quot;星星学贷&quot;是黑龙江启辰资产管理有限公司推出的转为在校大学生(专科及以上)退出的信用借款服务,旨在帮助学生解决资金压力,提前实现自己的梦想.\n1分钟申请10分钟审核,24小时内放款.\n无抵押,无贷款,纯信用借款."
+        android:text="\t\t\t&quot;星星学贷&quot;是黑龙江启辰资产管理有限公司推出的专为在校大学生(专科及以上)推出的信用借款服务,旨在帮助学生解决资金压力,提前实现自己的梦想.\n1分钟申请,10分钟审核,24小时内放款.\n无抵押,纯信用借款."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/view1"
