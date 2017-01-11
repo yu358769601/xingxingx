@@ -105,7 +105,7 @@ public class Register_countTime_P implements Register_countTime_interface {
 
     @Override
     public void stopCountDown() {
-        numCount = 10;
+        numCount = 60;
         status = STOP;
         if (null!= login_countTime_p_callBack)
             login_countTime_p_callBack.getCountTimeStatus(status);
