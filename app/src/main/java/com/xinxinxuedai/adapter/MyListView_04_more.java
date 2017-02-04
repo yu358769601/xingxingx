@@ -53,6 +53,10 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
         ArrayList<RepaymentList.DataBean> data =(ArrayList<RepaymentList.DataBean>)datas;
         for (int i = 0; i < data.size(); i++) {
             RepaymentList.DataBean dataBean = data.get(i);
+            //测试
+//            if (i==3){
+//                dataBean.repay_status = 1;
+//            }
             int repay_status = dataBean.repay_status;
             if (repay_status==0){
               frist = i;
@@ -96,6 +100,7 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
 
                 LogUtils.i("每条内容是"+item);
             }
+            LogUtils.i("每条内容是"+item);
 //            String id = item.id;
 //            //还款服务费
 //            item.interest_money;
@@ -121,8 +126,11 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
 //            item.service_fee;
 //            //借款id
 //            item.user_loan_id;
+
             //图
             helper.initImage_status(R.id.xuedai_button3_iv,item.repay_status);
+
+
 
             //String.format("%.2f元", (moneny * 0.0275) + (moneny * 0.01)+moneny);
             String format = String.format("%.2f", (item.money + item.service_fee + item.interest_money + item.weiyue_money));
@@ -138,6 +146,8 @@ public class MyListView_04_more extends BaseListViewAdapter_04<RepaymentList.Dat
             //已分期金额 只有在已分期为1 时候才显示
             TextView benjin = helper.initText_hint(R.id.xuedai_button3_tvbenjin, item.benjin + "元");
             benjin.setVisibility(View.INVISIBLE);
+
+
 
             //还款按钮
 

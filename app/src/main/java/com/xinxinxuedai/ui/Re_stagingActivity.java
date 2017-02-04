@@ -197,13 +197,21 @@ public class Re_stagingActivity extends BaseActivity implements Re_stagingActivi
 
     @Override
     public void InfoData(GetInfo getInfo) {
+        //账户余额
         setText(re_staging_tv3, getInfo.loan_money + "元");
-
+                                                //还款本金              还款利息                还款服务费                   违约金
         String format = String.format("%.2f", (mDataList.money + mDataList.service_fee + mDataList.interest_money + mDataList.weiyue_money));
-        double money_ = Double.parseDouble(format) / 10;
+        //手续费
+        double money_ = mDataList.money / 10;
         double money= Double.parseDouble(format);
+
+        double v1 = mDataList.service_fee + mDataList.interest_money;
+        //真实还款金额
         double real_money = mDataList.real_money;
-        double v = real_money + money + money_;
+        double v = v1 + money_;
+
+        //再分期算法  还款本金/10  + 还款利息 + 还款服务费  如果 余额  减去  他们的结果  小于等于0  就不让在分期  反之亦然
+
 
         //钱不够
         if ((getInfo.loan_money - v) <= 0) {

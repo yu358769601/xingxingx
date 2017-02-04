@@ -102,7 +102,8 @@ public class TopUpActivity_P extends BaseMvp<TopUpActivity_C> implements  TopUpA
          EditText BankCardE = editTextViews.get(1);
          EditText NameE = editTextViews.get(2);
          EditText IdNoE = editTextViews.get(3);
-        int Amt = (int)(Double.parseDouble(UtilsMyText.getTextView(AmtE)));
+        String Amt = UtilsMyText.getTextView(AmtE);
+        //int Amt = (int)(Double.parseDouble(UtilsMyText.getTextView(AmtE)));
         String BankCard = UtilsMyText.getTextView(BankCardE);
         String Name = UtilsMyText.getTextView(NameE);
         String IdNo = UtilsMyText.getTextView(IdNoE);

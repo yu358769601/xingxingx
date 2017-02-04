@@ -35,8 +35,8 @@ public class LogUtils {
   // private static int mDebuggable = LogUtils.LEVEL_NONE;
             //debug
  // private static int mDebuggable = LogUtils.LEVEL_INFO;
-  private static int mDebuggable = LogUtils.LEVEL_NONE;
-   //  private static int mDebuggable = LogUtils.LEVEL_INFO;
+  //private static int mDebuggable = LogUtils.LEVEL_NONE;
+    private static int mDebuggable = LogUtils.LEVEL_INFO;
 
     /** 用于记时的变量 */
     private static long mTimestamp = 0;
